@@ -1,4 +1,4 @@
-
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,24 +8,24 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Music Voting</title>
     <!-- Bootstrap -->
-    <link href="{{asset('public/assets/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- FontAwesome -->
-    <link href="{{asset('public/assets/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/font-awesome.min.css')}}" rel="stylesheet">
 
-    <link href="{{asset('public/assets/css/responsive.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/responsive.css')}}" rel="stylesheet">
 
     <!-- Animate -->
-    <link href="{{asset('public/assets/css/animate.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
     <!-- Owl Slider -->
-    <link href="{{asset('public/assets/css/owl.carousel.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/owl.carousel.css')}}" rel="stylesheet">
     <!-- Owl Slider Theme -->
-    <link href="{{asset('public/assets/css/owl.theme.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/owl.theme.css')}}" rel="stylesheet">
     <!--Jquery Validation -->
-    <link href="{{asset('public/assets/css/validationEngine.jquery.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/validationEngine.jquery.css')}}" rel="stylesheet">
 
-    <link href="{{asset('public/assets/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
     <!-- Custom -->
-    <link href="{{asset('public/assets/css/custom.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/custom.css')}}" rel="stylesheet">
     <!-- StyleSheet -->
     <!-- Responsive -->
 
@@ -52,7 +52,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                <img src="{{asset('public/assets/images/site_logo.png')}}" class="img-responsive center-block" width="100%"/>
+                <img src="{{asset('assets/images/site_logo.png')}}" class="img-responsive center-block" width="100%"/>
             </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -74,14 +74,14 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">artist <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="artist_detail.php">Artist</a></li>
+                        <li><a href="{{route('artist_detail')}}">Artist</a></li>
                         <li><a href="#">Another action</a></li>
                         <li><a href="#">Something else here</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Free Beats</a></li>
-                <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                <li><a href="signup.php" class="btn btn-default">log in</a></li>
+                <li><a href="{{route('musicvoting_search')}}"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                <li><a href="{{url('login')}}" class="btn btn-default">log in</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-->
@@ -96,7 +96,7 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="{{asset('public/assets/images/slider_banner_1.png')}}" class="img-responsive center-block" width="100%" alt="music voting">
+            <img src="{{asset('assets/images/slider_banner_1.png')}}" class="img-responsive center-block" width="100%" alt="music voting">
             <div class="carousel-caption">
                 <h2>the biggest contest is in session!</h2>
                 <p>
@@ -110,7 +110,7 @@
             </div>
         </div>
         <div class="item">
-            <img src="{{asset('public/assets/images/slider_banner_1.png')}}" class="img-responsive center-block" width="100%" alt="music voting">
+            <img src="{{asset('assets/images/slider_banner_1.png')}}" class="img-responsive center-block" width="100%" alt="music voting">
             <div class="carousel-caption">
                 <h2>the biggest contest is in session!</h2>
                 <p>

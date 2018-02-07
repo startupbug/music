@@ -24,3 +24,13 @@ Route::get('/contest','HomeController@contest')->name('contest');
 Route::get('/winner','HomeController@winner')->name('winner');
 
 Route::get('/musicvoting_genre','HomeController@musicvoting_genre')->name('musicvoting_genre');
+
+Route::get('/musicvoting_search','HomeController@musicvoting_search')->name('musicvoting_search');
+
+Route::get('/artist_detail','HomeController@artist_detail')->name('artist_detail');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+

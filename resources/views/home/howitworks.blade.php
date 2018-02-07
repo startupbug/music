@@ -6,7 +6,7 @@
 <div class="container">
 	<div class="row ">
 		<div class="col-md-4 col-sm-6 col-xs-12">
-			<div class="images_left"><img src="{{asset('pulic/assets/images/register.png')}}" class="img-responsive"></div>
+			<div class="images_left"><img src="{{asset('assets/images/register.png')}}" class="img-responsive"></div>p
 		</div>
 		<div class="col-md-8 col-sm-6 col-xs-12">
 			<h1 class="heading_right">
@@ -27,12 +27,12 @@
 			</p>
 		</div>
 		<div class="col-md-4 col-sm-6 col-xs-12 cell2">
-			<div class="images_right"><img src="{{asset('public/assets/images/upload.png')}}"" class="img-responsive"></div>
+			<div class="images_right"><img src="{{asset('assets/images/upload.png')}}"" class="img-responsive"></div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-4 col-sm-6 col-xs-12">
-			<div class="images_left"><img src="{{asset('public/assets/images/getfamous.png" class="img-responsive"></div>
+			<div class="images_left"><img src="{{asset('assets/images/getfamous.png" class="img-responsive"></div>
 		</div>
 		<div class="col-md-8 col-sm-6 col-xs-12">
 			<h1 class="heading_right">
@@ -58,7 +58,7 @@
 		<div class="col-md-4">
 			<div class="laptop_image">
                 
-                <img src="{{asset('public/assets/images/laptop_img.png')}}" class="img-responsive center-block"/>
+                <img src="{{asset('assets/images/laptop_img.png')}}" class="img-responsive center-block"/>
             </div>
 		</div>
 	</div>

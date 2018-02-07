@@ -76,4 +76,4 @@
 
 
 
-<?php include('footer.php'); ?>
+@endsection

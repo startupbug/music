@@ -1,10 +1,12 @@
-<?php include('header.php'); ?>
+@extends('layouts.default')
+@section('content')
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-8">
 			<div class="row">
 				<div class="col-md-4">
-					 <div class="img-side"><img src="images/man.png" class="img-responsive"/></div>
+					 <div class="img-side"><img src="{{asset('assets/images/man.png')}}" class="img-responsive"/></div>
 				</div>
 				<div class="col-md-8">
 					<h1 class="side_heading">
@@ -13,17 +15,17 @@
 					<h2 class="sub_heading">
 						KENDRICK LAMAR
 					</h2>
-					<img src="images/trophee.png" class="img-responsive"> 
+					<img src="{{asset('assets/images/trophee.png')}}" class="img-responsive"> 
 					<h3 class="points">500</h3>
 					<h3 class="points_rate">POINTS</h3>
 					<div class="row">
 						<div class="col-md-12">
 							<ul>
 								
-								<li class="social_media"><img src="images/instagram.png"><h2 class="mid_head">1881</h2><h3 class="mid_side">FOLLOWERS</h3></li>
+								<li class="social_media"><img src="{{asset('assets/images/instagram.png')}}"><h2 class="mid_head">1881</h2><h3 class="mid_side">FOLLOWERS</h3></li>
 
-								<li class="social_media"><img src="images/facebook.png"><h2 class="mid_head">2.5K</h2><h3 class="mid_like">LIKES</h3></li>
-								<li class="social_media"><img src="images/google-plus.png"><h2 class="mid_head">1200</h2><h3 class="mid_side">FOLLOWERS</h3></li>
+								<li class="social_media"><img src="{{asset('assets/images/facebook.png')}}"><h2 class="mid_head">2.5K</h2><h3 class="mid_like">LIKES</h3></li>
+								<li class="social_media"><img src="{{asset('assets/images/google-plus.png')}}"><h2 class="mid_head">1200</h2><h3 class="mid_side">FOLLOWERS</h3></li>
 							</ul>
 							</div>
 						
@@ -154,5 +156,4 @@
 
 
 
-
-<?php include('footer.php'); ?>
+@endsection

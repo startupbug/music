@@ -23,47 +23,31 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home.index');
+        return view('home');
     }
-    public function artist_detail()
-    {
-        return view('artist_detail');
-    }
-    public function artist_listing()
-    {
-        return view('artist_listing');
-    }
+
     public function contest()
     {
         return view('home.contest');
-    }
-    public function faq()
-    {
-        return view('faq');
-    }
-    public function howitworks()
-    {
-        return view('howitworks');
-    }
-    public function musicvoting_genre()
-    {
-        return view('home.musicvoting_genre');
-    }
-    public function musicvoting_privacy()
-    {
-        return view('musicvoting_privacy');
-    }
-    public function musicvoting_search()
-    {
-        return view('musicvoting_search');
-    }
-    public function musicvoting_terms()
-    {
-        return view('musicvoting_terms');
     }
 
     public function winner()
     {
         return view('home.winner');
+    }
+
+    public function musicvoting_genre()
+    {
+        return view('home.musicvoting_genre');
+    }
+
+    public function artist_detail()
+    {
+        return view('home.artist_detail');
+    }
+
+    public function musicvoting_search()
+    {
+        return view('musicvoting_search');
     }
 }

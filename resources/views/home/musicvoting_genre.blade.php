@@ -46,7 +46,7 @@
   	<div class="col-md-8">
 			<div class="row">
 				<div class="col-md-3">
-					<div class="genre"><img src="{{assets('pulic/assets/images/genre_image.png" class="img-responsive"></div>
+					<div class="genre"><img src="{{asset('assets/images/genre_image.png')}}" class="img-responsive"></div>
 				</div>
 				<div class="col-md-9">
 					<h3 class="top_heading">
@@ -69,10 +69,10 @@
 					<div class="col-md-12">
 							<ul>
 								
-								<li class="social_media"><img src="{{assets('pulic/assets/images/instagram.png"><h2 class="mid_head">1881</h2><h3 class="mid_side">FOLLOWERS</h3></li>
+								<li class="social_media"><img src="{{asset('assets/images/images/instagram.png')}}"><h2 class="mid_head">1881</h2><h3 class="mid_side">FOLLOWERS</h3></li>
 
-								<li class="social_media"><img src="{{assets('pulic/assets/images/facebook.png"><h2 class="mid_head">2.5K</h2><h3 class="mid_like">LIKES</h3></li>
-								<li class="social_media"><img src="{{assets('pulic/assets/images/google-plus.png"><h2 class="mid_head">1200</h2><h3 class="mid_side">FOLLOWERS</h3></li>
+								<li class="social_media"><img src="{{asset('assets/images/facebook.png')}}"><h2 class="mid_head">2.5K</h2><h3 class="mid_like">LIKES</h3></li>
+								<li class="social_media"><img src="{{asset('assets/images/google-plus.png')}}"><h2 class="mid_head">1200</h2><h3 class="mid_side">FOLLOWERS</h3></li>
 							</ul>
 							</div>
               </div>
@@ -90,7 +90,7 @@
 			<div class="comment-wrap">
 				<div class="photo">
 						<!--<div class="avatar" style="background-image: url(img src="images/comment_male.png"></div>-->
-						<div class="avatar"><img src="{{asset('pulic/assets/images/comment_male.png')}}"></div>
+						<div class="avatar"><img src="{{asset('assets/images/comment_male.png')}}"></div>
 				</div>
 				<div class="comment-block">
 						<form action="">
@@ -103,7 +103,7 @@
 	<div class="comment-wrap">
 				<div class="photo">
 						<!--<div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg')">-->
-							<div class="avatar"><img src="{{asset('pulic/assets/images/comment_img.png')}}"></div>
+							<div class="avatar"><img src="{{asset('assets/images/comment_img.png')}}"></div>
 						
 				</div>
 				<div class="comment-block">
@@ -116,7 +116,7 @@
 				<div class="photo">
 						<!--<div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg')">-->
 							
-							<div class="avatar"><img src="{{asset('pulic/assets/images/com_img.png')}}"></div>
+							<div class="avatar"><img src="{{asset('assets/images/com_img.png')}}"></div>
 						
 				</div>
 				<div class="comment-block">
@@ -128,7 +128,7 @@
 
 		<div class="comment-wrap">
 				<div class="photo">
-						<div class="avatar"><img src="{{asset('pulic/assets/images/comment_image.png')}}"></div>
+						<div class="avatar"><img src="{{asset('assets/images/comment_image.png')}}"></div>
 				</div>
 				<div class="comment-block">
 						<p class="comment-text">Wow! Blown away, Strong performance
@@ -283,4 +283,4 @@ welldone!</p>
 </div>-->
 
 
-<?php include('footer.php'); ?>
+@endsection
