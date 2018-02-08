@@ -1,7 +1,25 @@
 <div class="col-md-3 color_bg">
-	<div class="dashboard_name"><img src="{{asset('/dashboard/images/name.png')}}" class="img-responsive"></div>
+	<div class="dashboard_name">	
+
+
+<form action="{{ route('musicianImageUpload') }}" enctype="multipart/form-data" method="POST">
+	<div class="alert alert-danger print-error-msg" style="display:none">
+	<ul></ul>
+	</div>
+	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+	<div class="form-group">
+
+	<img src="{{asset('/dashboard/musician_image/'. $users->image )}}" class="img-responsive">
+	<input type="file" name="image" class="form-control">
+	</div>
+	<div class="form-group">
+	<button class="btn btn-success upload-image" type="submit">Upload Image</button>
+	</div>
+</form>
+
+	</div>
 	<h3 class="name_person">
-		KING_LAMAR
+		{{$users->name}}
 	</h3>
 	<div class="row">
 		<div class="col-md-6 col-sm-6 col-xs-12">
@@ -79,3 +97,30 @@
 		</div>
 	</div>
 </div>
+
+
+<script type="text/javascript">
+  $(".dashboard_name").on("click",".upload-image",function(e){
+    $(this).parents("form").ajaxForm(options);
+  });
+
+
+  var options = { 
+    complete: function(response) 
+    {
+    	if($.isEmptyObject(response.responseJSON.error)){
+    		$("input[name='title']").val('');
+    		alert('Image Upload Successfully.');
+    	}else{
+    		printErrorMsg(response.responseJSON.error);
+    	}
+    }
+  };
+  function printErrorMsg (msg) {
+	$(".print-error-msg").find("ul").html('');
+	$(".print-error-msg").css('display','block');
+	$.each( msg, function( key, value ) {
+		$(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+	});
+  }
+</script>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -31,8 +31,20 @@ class HomeController extends Controller
         return view('index');
     }
 
-    public function dashboard()
-    {
-        return view('dashboard.main_index');
+    
+    public function user_dashboard(){
+
+        if(Auth::user()->role_id == 1){
+            return redirect()->route('main_index');
+        }
+        elseif(Auth::user()->role_id == 2){
+            return redirect()->route('main_index');
+        }
+        elseif(Auth::user()->role_id == 3){
+            return redirect()->route('main_index');
+        }
+        else{
+            return redirect()->route('/');
+        }
     }
 }

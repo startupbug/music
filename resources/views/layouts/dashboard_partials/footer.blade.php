@@ -17,6 +17,7 @@
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <!-- Bootstrap -->
         <script src="{{asset('dashboard/js/bootstrap.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <!-- Custom-js -->
     </body>
 </html>
