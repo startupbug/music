@@ -1,0 +1,598 @@
+/*
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .shrink {
+        background-color: #0a292d96 !important;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .music_navigation_main {
+        top: 12px;
+    }
+
+    .music_navbar li a {
+        padding: 8px 6px;
+        font-size: 15px;
+    }
+
+    .music_voting_slider .carousel-inner .item .carousel-caption h2 {
+        font-size: 40px;
+    }
+
+    .music_voting_slider .carousel-inner .item .carousel-caption p {
+        font-size: 14px;
+        padding: 0px 90px;
+    }
+
+    .music_navbar li a.btn {
+        padding: 8px 28px;
+        border-color: #ffffff;
+        background-color: inherit;
+        margin-left: 6px;
+    }
+
+    .promote_music {
+        padding: 20px 0px;
+    }
+
+    .promote_music h2 {
+        font-size: 30px;
+    }
+
+    .promote_music p {
+        font-size: 14px;
+        margin-top: 18px;
+    }
+
+    .promote_music a {
+        margin-top: 20px;
+        font-size: 14px;
+        padding: 3px 55px;
+    }
+
+    .bg_gray {
+        padding: 16px 0px;
+    }
+
+    .player_audio {
+        padding: 30px 0px;
+    }
+
+    .player_left_side {
+        float: left;
+        width: 300px;
+        height: 300px;
+    }
+
+    .player_body h4 {
+        font-size: 30px;
+        margin-top: 60px;
+        margin-bottom: 30px;
+    }
+
+    .player_body p {
+        font-size: 16px;
+    }
+
+    .songs_box {
+        height: 245px !important;
+    }
+
+    .songs_box p {
+        font-size: 16px;
+    }
+
+    .songs_box p a {
+        font-size: 16px;
+    }
+
+    .sign_up_now {
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+
+    .sign_up_now p {
+        font-size: 16px;
+    }
+
+    .sign_up_now a {
+        margin-top: 15px;
+    }
+
+    .heading_two {
+        padding: 20px 0px;
+    }
+
+    .work_box h4 {
+        margin-top: 15px;
+    }
+
+    .work_box p {
+        font-size: 16px;
+        margin-top: 12px;
+        padding: 0px 18px;
+    }
+
+    .what_we_do p {
+        margin-top: 20px;
+    }
+
+    .laptop_picture {
+        margin-top: 67px;
+    }
+
+    .what_we_do a {
+        margin-top: 30px;
+    }
+
+    .what_we_do a span {
+        font-size: 20px;
+    }
+
+    .contest_bg {
+        padding: 100px 0px;
+        background-size: 100%;
+    }
+
+    .contest_box h2 {
+        font-size: 30px;
+    }
+
+    .contest_box p {
+        font-family: 'Conv_Montserrat-Regular';
+        text-align: center;
+        font-size: 16px;
+        color: #282828;
+        margin-top: 16px;
+        padding: 0px 80px;
+    }
+
+    .footer_logo {
+        padding: 15px 0px;
+    }
+
+    .footer_logo ul {
+        margin-top: 10px;
+    }
+
+    .copy_right {
+        padding: 8px 0px;
+    }
+
+    .copy_right p {
+        font-size: 14px;
+    }
+}
+
+/*
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+    .shrink {
+        background-color: #0a292d96 !important;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .music_navigation_main {
+        top: 12px;
+    }
+
+    .music_navbar li a {
+        padding: 8px 5px;
+        font-size: 14px;
+    }
+
+    .music_voting_slider .carousel-inner .item .carousel-caption h2 {
+        font-size: 20px;
+    }
+
+    .music_voting_slider .carousel-inner .item .carousel-caption p {
+        font-size: 14px;
+        padding: 0px 0px;
+    }
+
+    .music_voting_slider .carousel-inner .item .carousel-caption a.btn {
+        margin-top: 5px;
+    }
+
+    .music_navbar li a.btn {
+        padding: 6px 10px;
+        border-color: #ffffff;
+        background-color: inherit;
+        margin-left: 6px;
+    }
+
+    .promote_music {
+        padding: 20px 0px;
+    }
+
+    .promote_music h2 {
+        font-size: 20px;
+    }
+
+    .promote_music p {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .promote_music a {
+        margin-top: 14px;
+        font-size: 12px;
+        padding: 5px 40px;
+    }
+
+    .bg_gray {
+        padding: 16px 0px;
+    }
+
+    .playing_heading h2 {
+        font-family: 'Conv_bebas';
+        color: #282828;
+        font-size: 30px;
+        text-align: center;
+        margin-bottom: 12px;
+    }
+
+    .player_audio {
+        padding: 20px 0px;
+    }
+
+    .player_left_side {
+        float: left;
+        width: 250px;
+        height: 250px;
+    }
+
+    .player_body h4 {
+        font-size: 20px;
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+
+    .player_body p {
+        font-size: 14px;
+    }
+
+    .change_width {
+        width: 25%;
+    }
+
+    .songs_box {
+        height: 190px;
+    }
+
+    .songs_box p {
+        font-size: 14px;
+    }
+
+    .songs_box p a {
+        font-size: 14px;
+    }
+
+    .sign_up_now {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .sign_up_now p {
+        font-size: 16px;
+        padding: 0px 160px;
+    }
+
+    .sign_up_now a {
+        margin-top: 15px;
+    }
+
+    .heading_two {
+        padding: 30px 0px;
+    }
+
+    .heading_two h2 {
+        font-family: 'Conv_bebas';
+        color: #454545;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .work_box {
+        height: 215px;
+        margin-bottom: 20px;
+    }
+
+    .work_box h4 {
+        margin-top: 15px;
+    }
+
+    .work_box p {
+        font-size: 16px;
+        margin-top: 12px;
+        padding: 0px 18px;
+    }
+
+    .what_we_do {
+        text-align: center;
+    }
+
+    .what_we_do h2 {
+        font-family: 'Conv_bebas';
+        color: #282828;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .what_we_do p {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .laptop_picture {
+        margin-top: 20px;
+    }
+
+    .what_we_do a {
+        margin-top: 20px;
+    }
+
+    .what_we_do a span {
+        font-size: 16px;
+    }
+
+    .mid-div {
+        display: none;
+    }
+
+    .contest_bg {
+        padding: 43px 0px;
+        background-size: 100%;
+    }
+
+    .contest_box h2 {
+        font-size: 25px;
+    }
+
+    .contest_box p {
+        font-family: 'Conv_Montserrat-Regular';
+        text-align: center;
+        font-size: 16px;
+        color: #060606;
+        margin-top: 16px;
+        padding: 0px 40px;
+    }
+
+    .footer_logo {
+        padding: 15px 0px;
+    }
+
+    .footer_logo ul {
+        margin-top: 10px;
+    }
+
+    .copy_right {
+        padding: 8px 0px;
+    }
+
+    .copy_right p {
+        font-size: 14px;
+    }
+}
+
+/*
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+    nav.shrink .navbar-brand {
+        width: 20%;
+    }
+
+    nav.shrink .navbar-toggle {
+        padding: 10px 10px;
+        margin: 40px 15px 8px 0;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .navbar-toggle {
+        background-color: #cf1828;
+    }
+
+    .navbar-toggle .icon-bar {
+        background-color: #fff;
+    }
+
+    .music_voting_slider .carousel-inner .item .carousel-caption h2 {
+        font-size: 20px;
+    }
+
+    .music_voting_slider .carousel-inner .item .carousel-caption p {
+        padding: 0px 0px;
+    }
+
+    .music_voting_slider .carousel-inner .item .carousel-caption a.btn {
+        margin-top: 8px;
+    }
+
+    .promote_music {
+        padding: 20px 0px;
+    }
+
+    .promote_music h2 {
+        font-family: 'Conv_bebas';
+        color: #282828;
+        font-size: 25px;
+        text-transform: uppercase;
+    }
+
+    .promote_music p {
+        font-size: 14px;
+        margin-top: 20px;
+    }
+
+    .promote_music a {
+        margin-top: 20px;
+        font-size: 14px;
+        padding: 6px 50px;
+    }
+
+    .bg_gray {
+        padding: 20px 0px;
+    }
+
+    .playing_heading h2 {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .player_audio {
+        padding: 20px 0px;
+    }
+
+    .player_left_side {
+        float: left;
+        width: 250px;
+        height: 250px;
+    }
+
+    .player_body h4 {
+        font-size: 20px;
+        margin-top: 0px;
+        margin-bottom: 15px;
+    }
+
+    .player_body p {
+        font-size: 16px;
+
+    }
+
+    .change_width {
+        width: 25%;
+    }
+
+    .songs_box {
+        text-align: center;
+        height: 190px;
+        margin-bottom: 30px;
+    }
+
+    .songs_box p {
+        font-size: 14px;
+    }
+
+    .songs_box p a {
+        font-size: 14px;
+    }
+
+    .sign_up_now {
+        margin-top: 25px;
+    }
+
+    .sign_up_now p {
+        padding: 0px 100px;
+    }
+
+    .sign_up_now a {
+        margin-top: 20px;
+    }
+
+    .heading_two {
+        padding: 20px 0px;
+    }
+
+    .heading_two h2 {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .work_box {
+        height: 215px;
+        margin-bottom: 15px;
+    }
+
+    .work_box h4 {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .work_box p {
+        font-size: 14px;
+        margin-top: 30px;
+        padding: 0px 13px;
+        letter-spacing: 1px;
+    }
+
+    .what_we_do {
+        text-align: center;
+    }
+
+    .what_we_do h2 {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .what_we_do p {
+        font-size: 16px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .what_we_do a {
+        margin-top: 25px;
+    }
+
+    .what_we_do a span {
+        display: block;
+        font-size: 20px;
+        font-family: 'Conv_Montserrat-Regular';
+    }
+
+    .laptop_picture {
+        margin-top: 20px;
+    }
+
+    .contest_bg {
+        padding: 28px 0px;
+        background-size: 100%;
+    }
+
+    .contest_box h2 {
+        font-size: 20px;
+    }
+
+    .contest_box p {
+        font-size: 16px;
+        margin-top: 15px;
+        padding: 0px 33px;
+    }
+
+    .footer_logo {
+        padding: 15px 0px;
+    }
+
+    .copy_right p {
+        font-size: 14px;
+    }
+
+}
+
+/*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+}
