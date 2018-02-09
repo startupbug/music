@@ -19,8 +19,23 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is-admin'], function () {
 });
 
 Route::group(['prefix' => 'musician', 'middleware' => 'is-musician'], function () {
-Route::get('/index','MusicianController@index')->name('main_index');
-Route::post('ajaxImageUpload', ['as'=>'musicianImageUpload','uses'=>'MusicianController@musician_image']);
+
+Route::get('/index','Musician\MusicianController@index')->name('main_index');
+
+Route::get('/overview','Musician\MusicianController@overview')->name('musician_overview');
+
+Route::get('/track','Musician\TracksController@index')->name('musician_track');
+Route::get('/create_track','Musician\TracksController@create')->name('create_track');
+
+Route::get('/album','Musician\AlbumsController@index')->name('musician_album');
+Route::get('/create_album','Musician\AlbumsController@create')->name('create_album');
+
+Route::get('/setting','Musician\MusicianController@setting')->name('musician_setting');
+
+Route::post('ajaxImageUpload', ['as'=>'musicianImageUpload','uses'=>'Musician\MusicianController@musician_image']);
+
+Route::get('/musician_logout', 'Musician\MusicianController@musician_logout')->name('logout_musician');
+
 });
 
 Auth::routes();

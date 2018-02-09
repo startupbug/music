@@ -1,7 +1,5 @@
 <div class="col-md-3 color_bg">
-	<div class="dashboard_name">	
-
-
+	<div class="dashboard_name">
 <form action="{{ route('musicianImageUpload') }}" enctype="multipart/form-data" method="POST">
 	<div class="alert alert-danger print-error-msg" style="display:none">
 	<ul></ul>
@@ -16,7 +14,6 @@
 	<button class="btn btn-success upload-image" type="submit">Upload Image</button>
 	</div>
 </form>
-
 	</div>
 	<h3 class="name_person">
 		{{$users->name}}
@@ -36,7 +33,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
 				<div class="side_img"><img src="{{asset('/dashboard/images/side_two.png')}}" class="img-responsive"></div>
-				<a href="dashboard_overview.php"><p class="side_paragraph">
+				<a href="{{route('musician_overview')}}"><p class="side_paragraph">
 					OVERVIEW
 				</a></p>
 			</div>
@@ -46,7 +43,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
 				<div class="side_img"><img src="{{asset('/dashboard/images/side_three.png')}}" class="img-responsive"></div>
-				<a href="index.php"><p class="side_paragraph">
+				<a href="{{route('musician_album')}}"><p class="side_paragraph">
 					MY ALBUMS
 				</a></p>
 			</div>
@@ -54,7 +51,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
 				<div class="side_img"><img src="{{asset('/dashboard/images/side_four.png')}}" class="img-responsive"></div>
-				<a href="musicvoting_tracks.php"><p class="side_paragraph">
+				<a href="{{route('musician_track')}}"><p class="side_paragraph">
 					MY TRACKS
 				</a></p>
 			</div>
@@ -64,7 +61,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
 				<div class="side_img"><img src="{{asset('/dashboard/images/side_five.png')}}" class="img-responsive"></div>
-				<a href="setting.php"><p class="side_paragraph">
+				<a href="{{route('musician_setting')}}"><p class="side_paragraph">
 					SETTINGS
 				</a></p>
 			</div>
@@ -81,9 +78,11 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="last_border">
+				<a href="{{route('logout_musician')}}">
 				<p class="side_para">
 					LOGOUT
 				</p>
+				</a>
 			</div>
 		</div>
 	</div>

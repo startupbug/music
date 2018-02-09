@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+
+namespace App\Http\Controllers\Musician;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Album;
 use App\User;
 use Auth;
-use Validator;
-use Illuminate\Support\Facades\Input;
 
-class MusicianController extends Controller
+class AlbumsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,29 +16,10 @@ class MusicianController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {  
-        $args['users'] = User::where('id',Auth::user()->id)->first();
-        return view('dashboard.musician.main_index')->with($args);
-    }
-
-    public function musician_image(Request $request)
     {
-        if(Input::file('image')){
-
-               User::where('id' ,'=', Auth::user()->id)->update([
-                'image' => $this->UploadImage('image', Input::file('image'))
-            ]);                 
-        }
-        return back();
-    }
-
-    public function UploadImage($type, $file){
-        if( $type == 'image'){
-        $path = base_path() . '/public/image/';
-        }
-        $filename = md5($file->getClientOriginalName() . time()) . '.' . $file->getClientOriginalExtension();
-        $file->move( $path , $filename);
-        return $filename;
+        $args['albums'] = Album::all();
+        $args['users'] = User::where('id',Auth::user()->id)->first();
+        return view('dashboard.musician.album.index')->with($args);
     }
 
     /**
@@ -46,8 +28,9 @@ class MusicianController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {       
+        $args['users'] = User::where('id',Auth::user()->id)->first();
+        return view('dashboard.musician.album.create')->with($args);
     }
 
     /**
