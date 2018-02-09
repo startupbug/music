@@ -21,14 +21,45 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+   public function index()
     {
         return view('home');
+    }
+
+
+    public function dashboard()
+    {
+        return view('dashboard.main_index');
     }
 
      public function public_index()
     {
         return view('index');
+    }
+
+     public function contest()
+    {
+        return view('contest');
+    }
+
+    public function winner()
+    {
+        return view('winner');
+    }
+
+    public function musicvoting_genre()
+    {
+        return view('musicvoting_genre');
+    }
+
+     public function artist_detail()
+    {
+        return view('artist_detail');
+    }
+
+    public function musicvoting_search()
+    {
+        return view('musicvoting_search');
     }
 
     

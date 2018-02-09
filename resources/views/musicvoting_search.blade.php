@@ -1,9 +1,9 @@
-
-<?php include('header.php'); ?>
+@extends('layouts.public_index')
+@section('content')
 
 <div class="container">
-	<div class="row">
-		<div class="col-md-12">
+  <div class="row">
+    <div class="col-md-12">
             <div class="input-group" id="adv-search">
                 <input type="text" class="form-control" placeholder="Search artist" />
                 <div class="input-group-btn">
@@ -40,22 +40,22 @@
             </div>
           </div>
         </div>
-	</div>
+  </div>
 
 
 
 
 <div class="container">
-	<div class="row border">
-		<div class="col-md-6">
+  <div class="row border">
+    <div class="col-md-6">
 
-			<h1 class="left_heading">TRACKS</h1>
-		</div>
-		<div class="col-md-6">
+      <h1 class="left_heading">TRACKS</h1>
+    </div>
+    <div class="col-md-6">
 
-			<h1 class="right_heading">SEE MORE</h1>
-		</div>
-	</div>
+      <h1 class="right_heading">SEE MORE</h1>
+    </div>
+  </div>
 </div>
 
 <div class="container images_video">
@@ -65,7 +65,7 @@
             <div class="col-xs-12 col-sm-6 col-md-2 change_width">
                 <div class="songs_box">
                     <a href="javascript:">
-                        <img src="images/song_img_<?php echo $a; ?>.png" class="img-responsive center-block"/>
+                        <img src="{{asset('assets/images/song_img_'. $a.'.png')}}" class="img-responsive center-block"/>
                         <div class="mask">
                             <span class="play_icon">
                                 <i class="fa fa-play fa-5x" aria-hidden="true"></i>
@@ -100,49 +100,42 @@
 </div>
 
   <div class="container">
-	<div class="row">
-		<div class="col-md-2 col-md-6 col-md-12 width_change">
-			<div class="images_person"><img src="images/michael.png" class="img-responsive"></div>
-			<h3 class="artist">
-				MICHAEL JACKSON
-			</h3>
-		</div>
-		<div class="col-md-2 col-md-6 col-md-12 width_change">
-      <div class="images_person"><img src="images/nirvana.png" class="img-responsive"></div>
+  <div class="row">
+    <div class="col-md-2 col-md-6 col-md-12 width_change">
+      <div class="images_person"><img src="{{asset('assets/images/michael.png')}}" class="img-responsive"></div>
+      <h3 class="artist">
+        MICHAEL JACKSON
+      </h3>
+    </div>
+    <div class="col-md-2 col-md-6 col-md-12 width_change">
+      <div class="images_person"><img src="{{asset('assets/images/nirvana.png')}}" class="img-responsive"></div>
       <h3 class="artist">
         NIRVANA
       </h3>
     </div>
 
     <div class="col-md-2 col-md-6 col-md-12 width_change">
-      <div class="images_person"><img src="images/greenday.png" class="img-responsive"></div>
+      <div class="images_person"><img src="{{asset('assets/images/greenday.png')}}" class="img-responsive"></div>
       <h3 class="artist">
         GREEN DAY
       </h3>
 
     </div>
     <div class="col-md-2 col-md-6 col-md-12 width_change">
-      <div class="images_person"><img src="images/floyd.png" class="img-responsive"></div>
+      <div class="images_person"><img src="{{asset('assets/images/floyd.png')}}" class="img-responsive"></div>
       <h3 class="artist">
         PINK FLOYD
       </h3>
 
     </div>
     <div class="col-md-2 col-md-6 col-md-12 width_changes">
-      <div class="images_person"><img src="images/zee.png" class="img-responsive"></div>
+      <div class="images_person"><img src="{{asset('assets/images/zee.png')}}" class="img-responsive"></div>
       <h3 class="artist">
         JAY-Z
       </h3>
 
     </div>
-	</div>
+  </div>
 </div>
 
-
-
-
-
-
-
-
-<?php include('footer.php'); ?>
+@endsection

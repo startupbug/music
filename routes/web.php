@@ -15,8 +15,28 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/index', 'HomeController@public_index')->name('public_index');
+
+Route::get('/main_index','HomeController@dashboard')->name('main_index');
+
+Route::get('/contest','HomeController@contest')->name('contest');
+
+Route::get('/winner','HomeController@winner')->name('winner');
+
+Route::get('/musicvoting_genre','HomeController@musicvoting_genre')->name('musicvoting_genre');
+
+Route::get('/artist_detail','HomeController@artist_detail')->name('artist_detail');
+
+Route::get('/musicvoting_search','HomeController@musicvoting_search')->name('musicvoting_search');
+
+Route::group(['prefix' => 'promoter', 'middleware' => 'promoter'], function () {     
+    Route::get('/promoterindex','PrmoterController@index')->name('promoterindex');
+});
+
 Route::group(['prefix' => 'admin', 'middleware' => 'is-admin'], function () {
 });
+
+//Route::get('/promoterindex','PrmoterController@index')->name('promoterindex');
 
 Route::group(['prefix' => 'musician', 'middleware' => 'is-musician'], function () {
 Route::get('/index','MusicianController@index')->name('main_index');

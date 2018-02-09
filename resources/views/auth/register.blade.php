@@ -1,21 +1,23 @@
-@extends('layouts.app')
+@extends('layouts.public_index')
 
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 clearfix col-center signup_form">
+               
+               
+                    
+                       
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                 <div class="signup_form_box">
+                    <form class="form-horizontal" method="POST" action="{{ route('register') }} " id="Sign_up_form">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control validate[required]" name="name" value="{{ old('name') }}" data-errormessage-value-missing="Name of entity is required!" id="" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -29,11 +31,25 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control validate[required]" name="email" value="{{ old('email') }}" data-errormessage-value-missing="Email of entity is required!" required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                            <label for="username" class="col-md-4 control-label">User Name</label>
+
+                            <div class="col-md-6">
+                                <input id="username" type="text" class="form-control validate[required]" name="username" value="{{ old('username') }}" data-errormessage-value-missing="Username of entity is required!" required>
+
+                                @if ($errors->has('username'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('username') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -59,6 +75,30 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                            <label for="phone" class="col-md-4 control-label">Phone</label>
+
+                            <div class="col-md-6">
+                                <input id="phone" type="text" class="form-control validate[required]" name="phone" value="{{ old('phone') }}" data-errormessage-value-missing="Phone of entity is required!" required>
+
+                                @if ($errors->has('phone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="checkbox" data-errormessage-value-missing="Phone of entity is required!" required> I agree to the Terms and Conditions.
+                                </label>
+                            </div>
+                        </div>
                         </div>
 
                         <div class="form-group">
