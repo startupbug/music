@@ -1,6 +1,5 @@
 @extends('layouts.dashboard_index')
 @section('content')
-
 <div class="col-md-9">
     <h3 class="heading_dashboard">
         ARTIST DASHBOARD
@@ -19,31 +18,40 @@
     </div>
     <hr class="line">
     <div class="row">
-      <div class="col-md-7 col-sm-12 col-xs-12 col-md-offset-3 ">
-        <h3>SELECT A TRACK</h3>
-        <div class="input-group">
-          <input type="text" class="form-control" readonly>
-          <label class="input-group-btn label_cus">
-              <span class="btn btn-primary">SELECT A FILE<input type="file" style="display: none;" multiple>
-              </span>
-          </label>
-        </div>
-      </div>
-      <div class="col-md-7 col-sm-12 col-xs-12 col-md-offset-3">
-        <h3>SELECT TRACK ART</h3>
-        <div class="input-group">
-          <input type="text" class="form-control" readonly>
-          <label class="input-group-btn label_cus">
-              <span class="btn btn-primary">SELECT A FILE<input type="file" style="display: none;" multiple>
-              </span>
-          </label>
-        </div>
-      </div>
-      <div class="col-md-7 col-sm-12 col-xs-12 col-md-offset-3">
-        <div class="input-group">
-          <button type="button" name="button" class="btn btn-primary">UPLOAD</button>
-        </div>
-      </div>
+      <form action="{{route('upload_track')}}" enctype="multipart/form-data" method="POST">
+          {{csrf_field()}}
+           <div class="col-md-7 col-sm-12 col-xs-12 col-md-offset-3 ">
+            <h3>SELECT A TRACK</h3>
+            <input type="text" class="form-control" name="name"> 
+          </div>
+          <div class="col-md-7 col-sm-12 col-xs-12 col-md-offset-3 ">
+            <h3>SELECT A TRACK</h3>
+            <div class="input-group">
+              <input type="text" class="form-control" readonly>
+              <label class="input-group-btn label_cus">
+                  <span class="btn btn-primary">SELECT A FILE
+                    <input type="file" name="video" style="display: none;">
+                  </span>
+              </label>
+            </div>
+          </div>
+          <div class="col-md-7 col-sm-12 col-xs-12 col-md-offset-3">
+            <h3>SELECT TRACK ART</h3>
+            <div class="input-group">
+              <input type="text" class="form-control" readonly>
+              <label class="input-group-btn label_cus">
+                  <span class="btn btn-primary">SELECT A FILE
+                    <input type="file" name="image" style="display: none;">
+                  </span>
+              </label>
+            </div>
+          </div>
+          <div class="col-md-7 col-sm-12 col-xs-12 col-md-offset-3">
+            <div class="input-group">
+              <button type="submit" name="button" class="btn btn-primary">UPLOAD</button>
+            </div>
+          </div>
+      </form>
     </div>
 </div>
 @endsection

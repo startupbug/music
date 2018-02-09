@@ -1,8 +1,8 @@
 <?php
-
 namespace App\Http\Controllers\Musician;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Role;
 use App\User;
 use Auth;
 use Validator;
@@ -16,9 +16,8 @@ class MusicianController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {  
-        $args['users'] = User::where('id',Auth::user()->id)->first();
-        return view('dashboard.musician.index')->with($args);
+    { 
+        return view('dashboard.musician.index');
     }
 
     public function musician_image(Request $request)
@@ -48,21 +47,55 @@ class MusicianController extends Controller
      */
     public function overview()
     {
-        $args['users'] = User::where('id',Auth::user()->id)->first();
-        return view('dashboard.musician.overview')->with($args);
+        return view('dashboard.musician.overview');
     }
 
-    //  public function track()
-    // {
-    //     $args['users'] = User::where('id',Auth::user()->id)->first();
-    //     return view('dashboard.musician.track')->with($args);
-    // }
-
-     public function setting()
+     public function redeem()
     {
-        $args['users'] = User::where('id',Auth::user()->id)->first();
+        return view('dashboard.musician.redeem');
+    }
+
+    public function edit_account($id)
+    {   
+      $args['musician'] = User::find($id);
+      $args['roles'] = Role::select('roles.name')->where('roles.id','=',$args['musician']['role_id'])->first();      
+      return view('dashboard.musician.account.edit_account')->with($args);
+    }
+
+    public function update_account(Request $request,$id)
+    {
+        $u = User::find($id);
+        $u->name = Input::get('name');
+        $u->phone = Input::get('phone');
+        $u->email = Input::get('email');
+        $u->password = Input::get('password');
+        $u->username = Input::get('username');
+        $u->save();
+        return redirect()->route('main_index');            
+    }
+     public function edit_links($id)
+    {
+      $args['musician'] = User::find($id);
+      return view('dashboard.musician.account.edit_links')->with($args);
+    }
+    
+    public function update_links(Request $request,$id)
+    {
+        $u = User::find($id);
+        $u->facebook = Input::get('facebook');
+        $u->instagram = Input::get('instagram');
+        $u->twitter = Input::get('twitter');
+        $u->save();
+        return redirect()->route('main_index');            
+    }
+
+    public function setting()
+    {
+        $args['musician'] = User::where('users.id',Auth::user()->id)->first(); 
+        $args['roles'] = Role::select('roles.name')->where('roles.id','=',$args['musician']['role_id'])->first();                
         return view('dashboard.musician.setting')->with($args);
     }
+
 
      public function musician_logout(Request $request) {     
       Auth::logout();

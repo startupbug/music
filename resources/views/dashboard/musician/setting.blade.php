@@ -14,9 +14,14 @@
         <h3 class="all_album">
         ACCOUNT
         </h3>
-        <h3 class="add_album">
-        EDIT
-        </h3>
+        <?php
+        $musician_id = Auth::user()->id;
+        ?>
+        <a href="{{route('edit_account',['id'=>$musician_id])}}">
+          <h3 class="add_album">
+          EDIT
+          </h3>
+        </a>
       </div>
     </div>
   <hr class="line">   
@@ -24,37 +29,27 @@
       <form>
         <div class='field'>
           <label for='name'>Full name</label>
-          <input id='name' name='name' type='text' value='John doe'>
+          <input id='name' name='name' type='text' value='{{$musician->name}}' readonly>
         </div>
         <div class='field'>
           <label for='email'>Phone</label>
-          <input id='email' name='phone' type='phone' value='111-222-333'>
+          <input id='email' name='phone' type='phone' value='{{$musician->phone}}' readonly>
         </div>
         <div class='field'>
           <label for='email'>Email</label>
-          <input id='email' name='email' type='email' value='john_doe@dummy.com'>
+          <input id='email' name='email' type='email' value='{{$musician->email}}' readonly>
         </div>
         <div class='field'>
           <label for='password'>Password</label>
-          <input id='password' name='password' type='password'> <span class="stars">
-                    <i class="glyphicon glyphicon-star"></i>
-                    <i class="glyphicon glyphicon-star" ></i>
-                    <i class="glyphicon glyphicon-star" ></i>
-                    <i class="glyphicon glyphicon-star" ></i>
-                    <i class="glyphicon glyphicon-star" ></i>
-                    <i class="glyphicon glyphicon-star" ></i>
-                    <i class="glyphicon glyphicon-star" ></i>
-                    <i class="glyphicon glyphicon-star" ></i>
-                    <i class="glyphicon glyphicon-star" ></i>
-          </span>
+          <input id='password' name='password' type='password' value="{{$musician->password}}" readonly>
         </div>
         <div class='field'>
           <label for='username'>Username</label>
-          <input id='username' name='username' type='username' value='KING_LAMAR'>
+          <input id='username' name='username' type='username' value='{{$musician->username}}' readonly>
         </div>
         <div class='field'>
           <label for='account'>Account Type</label>
-          <input id='account' name='account' type='account' value='Artist'>
+          <input id='account' name='account' type='account' value='{{$roles->name}}' readonly>
         </div>
       </form>
     </div>
@@ -63,9 +58,11 @@
         <h3 class="all_album">
         LINKS
         </h3>
+        <a href="{{route('edit_links',['id'=>$musician_id])}}">
         <h3 class="add_album">
         EDIT
         </h3>
+        </a>
       </div>
     </div>
   <hr class="line">
@@ -73,15 +70,15 @@
       <form>
         <div class='field'>
           <label for='name'>Facebook</label>
-          <input id='name' name='name' type='text' value='fb.com/king_lamar'>
+          <input id='facebook' name='facebook' type='text' value='{{$musician->facebook}}'>
         </div>
         <div class='field'>
           <label for='email'>Twitter</label>
-          <input id='email' name='phone' type='phone' value='twitter.com/KingLamar'>
+          <input id='twitter' name='twitter' type='text' value='{{$musician->twitter}}'>
         </div>
         <div class='field'>
           <label for='email'>Instagram</label>
-          <input id='email' name='email' type='email' value='@King_Lamar'>
+          <input id='instagram' name='instagram' type='text' value='{{$musician->instagram}}'>
         </div>
       </form>
     </div>
