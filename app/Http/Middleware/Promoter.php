@@ -15,10 +15,9 @@ class Promoter
      */
     public function handle($request, Closure $next)
     {
- 
-        if(Auth::check() && Auth::user()->role_id != 3)
-        {//dd(Auth::user());
-            return redirect()->route('home');
+        if(!Auth::check() || Auth::user()->role_id != '3')
+        {
+            return redirect()->route('login');
         }
         return $next($request);
     }

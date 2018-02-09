@@ -17,8 +17,6 @@
 
 /*CSS OF MUSICVOTING_TRACKS*/
 
-
-
 .box {
     cursor: pointer;
     height: 198px;
@@ -28,43 +26,43 @@
     /*overflow: hidden;*/
     /*width: 198px;*/
 }
-  
- .box img {  
-    /*position: absolute;*/  
-    left: 0;  
-    -webkit-transition: all 300ms ease-out;  
-    -moz-transition: all 300ms ease-out;  
-    -o-transition: all 300ms ease-out;  
-    -ms-transition: all 300ms ease-out;  
-    transition: all 300ms ease-out;  
-}  
+
+ .box img {
+    /*position: absolute;*/
+    left: 0;
+    -webkit-transition: all 300ms ease-out;
+    -moz-transition: all 300ms ease-out;
+    -o-transition: all 300ms ease-out;
+    -ms-transition: all 300ms ease-out;
+    transition: all 300ms ease-out;
+}
 
 
-.box .caption {  
+.box .caption {
     font-family: Tahoma;
     font-size: .5em;
-    background-color: rgba(0,0,0,0.8);  
-    position: absolute;  
-    color: #fff;  
-    z-index: 100;  
-    -webkit-transition: all 300ms ease-out;  
-    -moz-transition: all 300ms ease-out;  
-    -o-transition: all 300ms ease-out;  
-    -ms-transition: all 300ms ease-out;  
-    transition: all 300ms ease-out;  
-    left: 0;  
-    opacity: 0;  
-    width: 150px;  
-    height: 150px;  
-    text-align: left;  
+    background-color: rgba(0,0,0,0.8);
+    position: absolute;
+    color: #fff;
+    z-index: 100;
+    -webkit-transition: all 300ms ease-out;
+    -moz-transition: all 300ms ease-out;
+    -o-transition: all 300ms ease-out;
+    -ms-transition: all 300ms ease-out;
+    transition: all 300ms ease-out;
+    left: 0;
+    opacity: 0;
+    width: 150px;
+    height: 150px;
+    text-align: left;
     padding: 15px;
-}  
+}
 
- 
 
- .box:hover .fade-caption {  
-    opacity: 1;  
-}  
+
+ .box:hover .fade-caption {
+    opacity: 1;
+}
 
 .content_box_statics h1 {
     font-size: 24px;
@@ -117,7 +115,7 @@ h3.name_person {
     text-align: center;
     color: white;
     font-size: 40px;
-    font-family: 'Conv_bebas'; 
+    font-family: 'Conv_bebas';
 }
 
 .side_border {
@@ -270,7 +268,7 @@ h3.album_person_name {
 
 footer {
     background-color: #000000;
-    
+
 }
 
 h3.footer_last {
@@ -305,39 +303,39 @@ hr {
     }
 
     p.side_heading {
-  
+
     right: 46%;
 }
 
 h3.add_album {
-   
+
     font-size: 13px;
-   
+
     margin-top: 24px;
 }
 
 h3.all_album {
     font-size: 18px;
-    
+
 }
 
 h3.heading_dashboard {
     font-size: 35px;
-    
+
 }
 
 h3.album {
     font-size: 20px;
-   
+
 }
 
 h3.album_person_name {
     FONT-SIZE: 14PX;
-   
+
 }
 
 .button_dashboard button.btn {
-    
+
     margin-bottom: 10px;
 }
 .dashboard_album img.img-responsive {
@@ -357,11 +355,11 @@ h3.album_person_name {
     width: 26%;
     height: 193px;
     top: 0px;
-    
+
     margin-top: 1px;
 }
 p.side_heading {
-  
+
     right: 46%;
 }
 }
@@ -371,7 +369,7 @@ p.side_heading {
 
     p.side_paragraph {
     font-size: 14px;
-   
+
 }
 .box .caption {
     width: 80%;
@@ -400,8 +398,8 @@ p.side_heading {
 
 .form {
   background: #fff;
- 
-  
+
+
 }
 .form:before,
 .form:after {
@@ -421,7 +419,7 @@ p.side_heading {
 .form .field label {
     color: #cf1828;
     font-size: 18px;
- 
+
 }
 .form .field input {
   outline: none;
@@ -443,7 +441,7 @@ color: #212121;
   margin-bottom: 25px;
   padding-top: 30px;
   color: #a1a1a1;
-  
+
   font-size: 12px;
   font-weight: 600;
   -webkit-font-smoothing: antialiased;
@@ -469,7 +467,7 @@ color: #212121;
   border: none;
   border-radius: 100px;
   color: #fff;
-  
+
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
@@ -486,7 +484,7 @@ color: #212121;
 
     .form .field {
     width: 100%;
-   
+
 }
 }
 
@@ -576,11 +574,11 @@ span.stars {
 }
 
 .main {
-    float: left; 
+    float: left;
     width: 721px;
-     padding-left: 30px; 
+     padding-left: 30px;
     /* border-left: 1px dashed #646c71; */
-    
+
 }
 
 .main ul {
@@ -679,7 +677,7 @@ span.stars {
 
 .main .lines div::before {
     counter-increment: z-axis 500;
-    content: counter(z-axis);    
+    content: counter(z-axis);
     display: block;
     position: absolute;
     top: -10px;
@@ -857,13 +855,13 @@ h4.points-cs {
 
 
 .btn-group, .btn-group-vertical {
-  
+
     left: 65%;
     margin-top: 32px;
 }
 
 .dropdown-menu {
- 
+
     min-width: auto;
 }
 
@@ -877,7 +875,7 @@ button.btn.btn-default.dropdown-toggle {
 button.btn.btn-default.btn-number {
     background-color: #cf1828;
     border: 1px solid #cf1828;
-}   
+}
 
 .btn-default:hover {
     color: #333;
@@ -959,7 +957,7 @@ h3.last_redeem_content {
     top: -5px;
     /* margin-left: 18px; */
     /* margin-top: 5px; */
-   
+
 }
 }
 
@@ -977,56 +975,6 @@ h3.last_redeem_content {
 
     }
 
-@media only screen and (max-device-width : 1024px) and (min-device-width : 768px) {
-
-
-    .dashboard_name {
-    margin-top: auto;
-}
-}
-
-
-@media only screen and (max-device-width : 767px) and (min-device-width : 320px) {
-
-
-    .btn-group, .btn-group-vertical {
-    left: 30%;
-    margin-top: 10px;
-}
-}
-
-
-
-@media only screen and (max-device-width : 1024px) and (min-device-width : 768px) {
-
-
-    .btn-group, .btn-group-vertical {
-    left: 52%;
-    margin-top: 28px;
-}
-}
-
-@media only screen and (max-device-width : 767px) and (min-device-width : 320px) {
-    .col-md-3.color_bg {
-   
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    height: auto;
-}
-}
-
-    
-
-@media only screen and (max-device-width : 1024px) and (min-device-width : 768px) {
-
-    .col-md-3.color_bg {
-   
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    height: auto;
-}
-}
-
 
 .side_paragraph a {
     font-size: 18px;
@@ -1039,3 +987,122 @@ a:focus, a:hover {
     color: white;
     text-decoration: none;
 }
+
+
+/* Sheheryar CSS */
+.btn-primary {
+    background-color: #cf1828;
+    border-color: #cf1828;
+    height: 43px;
+}
+.btn-primary:hover {
+    background-color: #c40011;
+    border-color: #c40011;
+}
+.btn {
+    border-radius: 0px;
+}
+.form-control[readonly]{
+      background-color: #909090;
+      height: 43px;
+}
+.form-control {
+    border: 1px solid #909090;
+    border-radius: 0px;
+}
+h3 {
+  font-family: 'Conv_bebas';
+}
+label.input-group-btn.label_cus .btn {
+    font-family: 'Conv_bebas';
+    width: 200px;
+    font-size: 17px;
+    letter-spacing: 1.5px;
+}
+.btn-primary.active, .btn-primary:active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #cf1828;
+    border-color: #cf1828;
+}
+.btn-primary:active:hover{
+  color: #fff;
+  background-color: #cf1828;
+  border-color: #cf1828;
+}
+.btn-primary.focus, .btn-primary:focus {
+    color: #fff;
+    background-color: #cf1828;
+    border-color: #cf1828;
+}
+
+button.btn.btn-primary {
+    width: 560px;
+    margin-top: 30px;
+    height: 43px;
+    font-family: 'Conv_bebas';
+    font-size: 21px;
+    letter-spacing: 1.5px;
+}
+
+
+
+
+/* tablet */
+@media only screen and (max-device-width : 1024px) and (min-device-width : 768px) {
+
+
+    .dashboard_name {
+      margin-top: auto;
+    }
+    button.btn.btn-primary {
+        width: 100%;
+    }
+    label.input-group-btn.label_cus .btn {
+        width: 100%;
+    }
+}
+
+/* mobile */
+@media only screen and (max-device-width : 767px) and (min-device-width : 320px) {
+
+
+    .btn-group, .btn-group-vertical {
+      left: 30%;
+      margin-top: 10px;
+    }
+    button.btn.btn-primary {
+        width: 100%;
+    }
+    label.input-group-btn.label_cus .btn {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-device-width : 1024px) and (min-device-width : 768px) {
+
+
+    .btn-group, .btn-group-vertical {
+    left: 52%;
+    margin-top: 28px;
+  }
+}
+
+@media only screen and (max-device-width : 767px) and (min-device-width : 320px) {
+    .col-md-3.color_bg {
+
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    height: auto;
+  }
+}
+
+@media only screen and (max-device-width : 1024px) and (min-device-width : 768px) {
+
+    .col-md-3.color_bg {
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      height: auto;
+    }
+}
+
+

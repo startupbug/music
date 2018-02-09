@@ -59,5 +59,6 @@ class Kernel extends HttpKernel
         'is-musician' => \App\Http\Middleware\IsMusicianMiddleware::class,
         'is-admin' => \App\Http\Middleware\IsAdminMiddleware::class,
         'promoter' => \App\Http\Middleware\Promoter::class,
+        'is-user'=>\App\Http\Middleware\IsUserMiddleware::class,
     ];
 }

@@ -39,7 +39,9 @@
                 </li>
                 <li><a href="#">Free Beats</a></li>
                 <li><a href="{{route('musicvoting_search')}}"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                <li><a href="{{url('login')}}" class="btn btn-default">log in</a></li>
+                <!-- <li><a href="{{url('login')}}" class="btn btn-default">log in</a></li> -->
+                <li><a href="" class="btn btn-default" data-toggle="modal" data-target="#myLoginModal">log in</a></li>
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-->

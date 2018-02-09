@@ -147,7 +147,7 @@
         
 
         <div class="box">  
-        <div class="dashboard_album"><img src="./assets/images/tracks_one.png')}}" class="img-responsive"></div>
+        <div class="dashboard_album"><img src="{{asset('/dashboard/images/tracks_one.png')}}" class="img-responsive"></div>
          
         <span class="caption fade-caption"> 
        <div class="star"><span class="glyphicon glyphicon-star"></span></div>
@@ -167,7 +167,7 @@
         
 
       <div class="box">  
-        <div class="dashboard_album"><img src="./assets/images/tracks_two.png')}}" class="img-responsive"></div>
+        <div class="dashboard_album"><img src="{{asset('/dashboard/images/tracks_two.png')}}" class="img-responsive"></div>
         <span class="caption fade-caption"> 
       <div class="star"><span class="glyphicon glyphicon-star"></span></div>
         <h3 class="hover_heading">MAKESONGFEATURED</h3>
@@ -184,7 +184,7 @@
   
 
   <div class="box">  
-        <div class="dashboard_album"><img src="./assets/images/tracks_three.png" class="img-responsive"></div>
+        <div class="dashboard_album"><img src="{{asset('/dashboard/images/tracks_three.png')}}" class="img-responsive"></div>
         <span class="caption fade-caption"> 
       <div class="star"><span class="glyphicon glyphicon-star"></span></div>
         <h3 class="hover_heading">MAKESONGFEATURED</h3>
@@ -201,7 +201,7 @@
   
 
  <div class="box">  
-        <div class="dashboard_album"><img src="./assets/images/tracks_four.png" class="img-responsive"></div>
+        <div class="dashboard_album"><img src="{{asset('/dashboard/images/tracks_four.png')}}" class="img-responsive"></div>
         <span class="caption fade-caption"> 
       <div class="star"><span class="glyphicon glyphicon-star"></span></div>
         <h3 class="hover_heading">MAKESONGFEATURED</h3>
@@ -237,25 +237,25 @@
 
       <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
-         <div class="dashboard_album"><img src="./assets/images/album_one.png" class="img-responsive"></div>
+         <div class="dashboard_album"><img src="{{asset('/dashboard/images/album_one.png')}}" class="img-responsive"></div>
          <h3 class="album_person_name">
              MICHAEL JACKSON
          </h3>
      </div>
      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="dashboard_album"><img src="./assets/images/album_two.png" class="img-responsive"></div>
+        <div class="dashboard_album"><img src="{{asset('/dashboard/images/album_two.png')}}" class="img-responsive"></div>
         <h3 class="album_person_name">
          NIRVANA
      </h3>
  </div>
  <div class="col-md-3 col-sm-6 col-xs-12">
-   <div class="dashboard_album"><img src="./assets/images/album_three.png" class="img-responsive"></div>
+   <div class="dashboard_album"><img src="{{asset('/dashboard/images/album_three.png')}}" class="img-responsive"></div>
    <h3 class="album_person_name">
      GREEN DAY
  </h3>
 </div>
 <div class="col-md-3 col-sm-6 col-xs-12">
-   <div class="dashboard_album"><img src="./assets/images/album_four.png" class="img-responsive"></div>
+   <div class="dashboard_album"><img src="{{asset('/dashboard/images/album_four.png')}}" class="img-responsive"></div>
    <h3 class="album_person_name">
      PINK FLOYD
  </h3>

@@ -119,6 +119,38 @@ footer, header, hgroup, menu, nav, section {
     font-style: normal;
 }
 
+h4.login-title {
+              font-family: 'Conv_bebas';
+              text-align: center;
+              font-size: 40px;
+              color: #ca0202;
+              text-transform: uppercase;
+              padding: 55px 0;
+            }
+            .modal-body {
+                margin-top: 10px;
+            }
+            button.btn.btn-default {
+                background-color: #ca0202;
+                border-color: #ca0202;
+            }
+            .red-color
+            {
+              border: 1px solid #ca0202;
+            }
+            .login-footer
+            {
+              margin: 0 0 25px 0;
+              text-align: center;
+            }
+            .login-footer a
+            {
+              font-family: 'Conv_Montserrat-Regular';
+              color: #ca0202;
+              font-size: 16px;
+              letter-spacing: -0.5px;
+            }
+
 .bg_color_white {
     background-color: #FFFFFF;
 }
