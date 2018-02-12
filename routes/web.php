@@ -67,10 +67,12 @@ Route::post('ajaxImageUpload',['as'=>'musicianImageUpload','uses'=>'Musician\Mus
 Route::get('/overview','Musician\MusicianController@overview')->name('musician_overview');
 
 Route::get('/track','Musician\TracksController@index')->name('musician_track');
+Route::get('/edit_track','Musician\TracksController@edit')->name('edit_track');
 Route::get('/create_track','Musician\TracksController@create')->name('create_track');
 Route::post('/upload_track','Musician\TracksController@store')->name('upload_track');
 
 Route::get('/album','Musician\AlbumsController@index')->name('musician_album');
+Route::get('/edit_album','Musician\AlbumsController@edit')->name('edit_album');
 Route::get('/create_album','Musician\AlbumsController@create')->name('create_album');
 Route::post('/upload_album','Musician\AlbumsController@store')->name('upload_album');
 
