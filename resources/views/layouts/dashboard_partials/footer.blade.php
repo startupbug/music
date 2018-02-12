@@ -23,6 +23,7 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <!-- Bootstrap -->
 <script src="{{asset('dashboard/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('dashboard/js/custom.js')}}"></script>
 <script src="{{asset('dashboard/js/jquery.canvasjs.min.js')}}"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
 
@@ -52,7 +53,6 @@
     });
   }
 </script>
-
 
 <!-- Sheheryar Javascript -->
 <script type="text/javascript">

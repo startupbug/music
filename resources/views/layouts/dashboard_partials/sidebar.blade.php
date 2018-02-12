@@ -5,7 +5,7 @@ $users = User::select('name','image')->where('id',Auth::user()->id)->first();
 ?>
 <div class="col-md-3 color_bg">
 	<div class="dashboard_name">
-		<form action="{{ route('musicianImageUpload') }}" enctype="multipart/form-data" method="POST">
+		<!-- <form action="{{ route('musicianImageUpload') }}" enctype="multipart/form-data" method="POST">
 			<div class="alert alert-danger print-error-msg" style="display:none">
 			<ul></ul>
 			</div>
@@ -18,7 +18,17 @@ $users = User::select('name','image')->where('id',Auth::user()->id)->first();
 			<div class="form-group">
 			<button class="btn btn-success upload-image" type="submit">Upload Image</button>
 			</div>
-		</form>
+		</form> -->
+		<div class="image-box">
+			<img src="{{asset('/dashboard/musician_image/'. $users->image )}}" class="img-responsive">
+			<form action="{{route('musicianImageUpload')}}" method="post" enctype="multipart/form-data" id="change_profile">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<div class="camera_image">
+					<i class="fa fa-camera fa-2x" aria-hidden="true"></i>
+					<input type="file" name="image" id="change_profile">
+				</div>
+			</form>
+		</div>
 	</div>
 	<h3 class="name_person">
 		{{$users->name}}

@@ -1,66 +1,5 @@
-<?php include('header.php') ?>
-
-<?php include('sidebar.php') ?>
-
-<style media="screen">
-  .dashboard_album {
-    position: relative;
-  }
-  .dashboard_album .middle i{
-    font-size: 20px;
-  }
-  .dashboard_album .middle {
-    position: absolute;
-    top: 6px;
-    right: 9px;
-  }
-  .dashboard_album .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    top: 21px;
-    right: 9px;
-    padding: 5px 0 3px 0;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-
-  .dropdown-content a {
-    color: black;
-    padding: 0px 3px 3px 3px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-    font-size: 11px;
-    font-weight: bold;
-  }
-
-  /* .dropdownmenu:hover .dropdown-content {
-      display: block;
-  } */
-
-  .dropdownmenu:hover .middle i {
-      color: gray;
-  }
-
-  .dropdownmenu .dropdown-content a:hover {
-      color: gray;
-  }
-
-/* new css */
-
-  .btn-group{
-    left: 0%;
-    margin-top: 0px;
-    width: 100%;
-  }
-  button.multiselect.dropdown-toggle.btn.btn-default {
-        width: 100%;
-  }
-  ul.multiselect-container.dropdown-menu {
-    width: 100%;
-  }
-</style>
+@extends('layouts.dashboard_index')
+@section('content')
   <div class="col-md-9">
     <h3 class="heading_dashboard">
         ARTIST DASHBOARD
@@ -484,8 +423,5 @@
         </div>
       </div>
     </div>
-
   </div>
-<?php include('footer.php') ?>
-
-<!-- Include the plugin's CSS and JS: -->
+@endsection

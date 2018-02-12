@@ -22,13 +22,18 @@ class MusicianController extends Controller
 
     public function musician_image(Request $request)
     {
+        $img_name = '';
         if(Input::file('image')){
-
+                $img_name = $this->UploadImage('image', Input::file('image'));
                User::where('id' ,'=', Auth::user()->id)->update([
-                'image' => $this->UploadImage('image', Input::file('image'))
-            ]);                 
+                'image' => $img_name
+            ]);  
+        $path = asset('/dashboard/musician_image').'/'.$img_name;  
+        return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]); 
+        }else{
+             return \Response()->json(['error' => "Image uploading failed", 'code' => 202]);
         }
-        return back();
+         
     }
 
     public function UploadImage($type, $file){
@@ -157,4 +162,5 @@ class MusicianController extends Controller
     {
         //
     }
+        
 }

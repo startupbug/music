@@ -37,9 +37,11 @@
 				</span>
 				</div>  
 			</div>
-			<h3 class="album_person_name">
-				{{$album->name}}
-			</h3>
+			<a href="{{route('edit_album')}}">
+				<h3 class="album_person_name">
+					{{$album->name}}
+				</h3>
+			</a>
 		</div>
 		@endforeach		
 	</div>
