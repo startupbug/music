@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col-md-10 color_bottom">
           <h3 class="all_album">
-              ALBUM NAME
+              {{$edit_track->name}}
           </h3>
       </div>
       <div class="col-md-2 color_bottom">
@@ -24,8 +24,8 @@
               Action <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
-              <li><a data-toggle="modal" data-target="#EditTrackModal">Edit</a></li>
-              <li><a href="#">Delete</a></li>
+              <li><a data-toggle="modal" data-target="#EditTrackModal">Edit</a></li>  
+              <li><a href="{{route('delete_track',['id' => $edit_track->id])}}">Delete</a></li>
             </ul>
           </div>
       </div>
@@ -34,22 +34,20 @@
     <div class="row">
       <div class="col-md-3 col-sm-12 col-xs-12">
         <div class="dashboard_album">
-          <img src="./assets/images/album_one.png" width="100%" class="img-thumbnail">
+          <img src="{{asset('/dashboard/musician/tracks/images/'.$edit_track->image)}}" width="100%" class="img-thumbnail">
         </div>
       </div>
-      <div class="col-md-5 col-sm-12 col-xs-12">
+     <!--  <div class="col-md-5 col-sm-12 col-xs-12">
          <div class="header">
               <h1>Lorem Ipsum</h1>
               <h4>Web Developer</h4>
               <span>ALBUM Count</span>
          </div>
-      </div>
+      </div> -->
       <div class="col-md-4 col-sm-12 col-xs-12">
           <div class="dashboard_album">
             <video width="100%" controls>
-              <source src="movie.mp4" type="video/mp4">
-              <source src="movie.ogg" type="video/ogg">
-              Your browser does not support the video tag.
+              <source src="{{asset('/dashboard/musician/tracks/videos/'.$edit_track->video)}}" type="video/mp4">              
             </video>
             <div class="dropdownmenu">
               <div class="middle"><i class="fa fa-ellipsis-v"></i></div>
@@ -63,7 +61,6 @@
       </div>
     </div>
   </div>
-
   <div class="container">
     <!-- Edit Album Modal -->
     <div class="modal fade" id="EditTrackModal" role="dialog">
@@ -75,18 +72,20 @@
             <h4 class="modal-title"><b>UPDATE TRACk</b></h4>
           </div>
           <div class="modal-body">
-            <form class="" action="#" method="post">
+            <form class="" action="{{route('update_track',['id'=>$edit_track->id])}}" enctype="multipart/form-data" method="POST">
+              {{csrf_field()}}
               <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <h4><b>TRACK NAME</b></h4>
-                  <input type="text" class="form-control">
+                  <input type="text" name="name" value="{{$edit_track->name}}" class="form-control">
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <h4><b>Select IMAGE</b></h4>
                   <div class="input-group">
                     <input type="text" class="form-control" readonly>
                     <label class="input-group-btn label_cus">
-                        <span class="btn btn-primary">SELECT IMAGE<input type="file" style="display: none;" multiple>
+                        <span class="btn btn-primary">SELECT IMAGE
+                          <input type="file" name="image" style="display: none;">
                         </span>
                     </label>
                   </div>
@@ -96,7 +95,8 @@
                   <div class="input-group">
                     <input type="text" class="form-control" readonly>
                     <label class="input-group-btn label_cus">
-                        <span class="btn btn-primary">SELECT VIDEO<input type="file" style="display: none;" multiple>
+                        <span class="btn btn-primary">SELECT VIDEO
+                          <input type="file" name="video" style="display: none;" >
                         </span>
                     </label>
                   </div>

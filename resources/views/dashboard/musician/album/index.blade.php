@@ -37,7 +37,7 @@
 				</span>
 				</div>  
 			</div>
-			<a href="{{route('edit_album')}}">
+			<a href="{{route('edit_album',['id' => $album->id])}}">
 				<h3 class="album_person_name">
 					{{$album->name}}
 				</h3>

@@ -27,14 +27,21 @@ Route::post('ajaxImageUpload',['as'=>'musicianImageUpload','uses'=>'Musician\Mus
 Route::get('/overview','Musician\MusicianController@overview')->name('musician_overview');
 
 Route::get('/track','Musician\TracksController@index')->name('musician_track');
-Route::get('/edit_track','Musician\TracksController@edit')->name('edit_track');
+Route::get('/edit_track/{id}/','Musician\TracksController@edit')->name('edit_track');
+Route::post('/update_track/{id}/','Musician\TracksController@update_track')->name('update_track');
+Route::get('/delete_track/{id}/','Musician\TracksController@destroy')->name('delete_track');
 Route::get('/create_track','Musician\TracksController@create')->name('create_track');
 Route::post('/upload_track','Musician\TracksController@store')->name('upload_track');
 
 Route::get('/album','Musician\AlbumsController@index')->name('musician_album');
-Route::get('/edit_album','Musician\AlbumsController@edit')->name('edit_album');
+Route::get('/edit_album/{id}','Musician\AlbumsController@edit')->name('edit_album');
+Route::post('/update_album/{id}/','Musician\AlbumsController@update_album')->name('update_album');
+Route::post('/add_video','Musician\AlbumsController@add_video')->name('add_video');
+Route::get('/delete_album/{id}/','Musician\AlbumsController@destroy')->name('delete_album');
 Route::get('/create_album','Musician\AlbumsController@create')->name('create_album');
 Route::post('/upload_album','Musician\AlbumsController@store')->name('upload_album');
+
+Route::post('/upload_video','Musician\AlbumsController@upload_video')->name('upload_video');
 
 Route::get('/setting','Musician\MusicianController@setting')->name('musician_setting');
 Route::get('/edit_account/{id}','Musician\MusicianController@edit_account')->name('edit_account');
