@@ -35,6 +35,6 @@ class PrmoterController extends Controller
 
      public function promoter_logout(Request $request) {     
       Auth::logout();
-      return redirect('/login');
+      return redirect('/');
     }
 }

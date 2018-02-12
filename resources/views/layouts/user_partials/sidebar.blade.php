@@ -6,6 +6,7 @@
 	<div class="row">
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
+				<a href="{{route('user_index')}}">
 				<div class="side_img"><img src="{{asset('/dashboard/images/side_two.png')}}" class="img-responsive"></div>
 				<p class="side_paragraph">
 					OVERVIEW
@@ -14,6 +15,7 @@
 		</div>
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
+				<a href="{{route('user_setting')}}">
 				<div class="side_img"><img src="{{asset('/dashboard/images/side_five.png')}}" class="img-responsive"></div>
 				<p class="side_paragraph">
 					SETTINGS
@@ -26,6 +28,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="last_border">
+				<a href="{{route('logout_user')}}">
 				<p class="side_para">
 					LOGOUT
 				</p>

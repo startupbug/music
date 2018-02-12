@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 class RegisteredController extends Controller
 {
     public function index()
@@ -18,6 +18,6 @@ class RegisteredController extends Controller
 
      public function user_logout(Request $request) {     
       Auth::logout();
-      return redirect('/login');
+      return redirect('/');
     }
 }

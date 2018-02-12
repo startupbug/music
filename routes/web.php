@@ -45,7 +45,7 @@ Route::group(['prefix' => 'promoter', 'middleware' => 'promoter'], function () {
 
 Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {     
    Route::get('/index','RegisteredController@index')->name('user_index');
-   Route::get('/setting','RegisteredController@index')->name('user_setting');
+   Route::get('/setting','RegisteredController@setting')->name('user_setting');
    Route::get('/user_logout', 'RegisteredController@user_logout')->name('logout_user');
 });
 
