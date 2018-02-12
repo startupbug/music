@@ -39,8 +39,7 @@ class TracksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { 
-     
+    {     
         // Uploading Track
         ini_set('memory_limit','256M');      
         $this->validate($request, [         
@@ -66,6 +65,35 @@ class TracksController extends Controller
         $p->image = $this->UploadFiles('image', Input::file('image'));        
         $p->save();         
         return redirect()->route('musician_track');    
+    }
+
+     public function edit(Request $request,$id)
+    {
+       $args['edit_track'] = Track::find($id);
+       return view('dashboard.musician.track.edit')->with($args);
+    }
+
+
+    public function update_track(Request $request, $id)
+    {
+        $p = Track::find($id);
+        $p->name = Input::get('name');
+        if ($request->hasFile('video')) {
+          $video=$request->file('video');
+          $filename=time() . '.' . $video->getClientOriginalExtension();          
+          $location=public_path('dashboard/musician/tracks/videos/'.$filename);
+          $p->video=$filename;         
+        }
+        $p->video = $this->UploadFiles('video', Input::file('video'));
+        if ($request->hasFile('image')) {
+          $image=$request->file('image');
+          $filename=time() . '.' . $image->getClientOriginalExtension();          
+          $location=public_path('dashboard/musician/tracks/images/'.$filename);
+          $p->image=$filename;         
+        }
+        $p->image = $this->UploadFiles('image', Input::file('image'));             
+        $p->save();
+        return redirect()->route('musician_track'); 
     }
 
      public function UploadFiles($type, $files){
@@ -97,11 +125,7 @@ class TracksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
-    {
-       return view('dashboard.musician.track.edit');
-    }
-
+   
 
     /**
      * Update the specified resource in storage.
@@ -110,10 +134,7 @@ class TracksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -121,8 +142,9 @@ class TracksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        //
+        $track_delete = Track::destroy($id);
+        return redirect()->route('musician_track');
     }
 }
