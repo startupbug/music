@@ -22,105 +22,281 @@
     <hr class="line">
     <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="dashboard_album"><img src="{{asset('./dashboard/images/album_one.png')}}" class="img-responsive"></div>
+            <div class="dashboard_album">
+                <img src="{{asset('./dashboard/images/album_one.png')}}" width="100%">
+                <div class="dropdownmenu">
+                    <div class="middle">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                    <div class="dropdown-content">
+                      <a href="#">Edit</a>
+                      <a href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
             <h3 class="album_person_name">
                 MICHAEL JACKSON
             </h3>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="dashboard_album"><img src="{{asset('./dashboard/images/album_two.png')}}" class="img-responsive"></div>
+            <div class="dashboard_album">
+                <img src="{{asset('./dashboard/images/album_one.png')}}" width="100%">
+                <div class="dropdownmenu">
+                    <div class="middle">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                    <div class="dropdown-content">
+                      <a href="#">Edit</a>
+                      <a href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
             <h3 class="album_person_name">
-                NIRVANA
+                MICHAEL JACKSON
             </h3>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="dashboard_album"><img src="{{asset('./dashboard/images/album_three.png')}}" class="img-responsive"></div>
+            <div class="dashboard_album">
+                <img src="{{asset('./dashboard/images/album_one.png')}}" width="100%">
+                <div class="dropdownmenu">
+                    <div class="middle">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                    <div class="dropdown-content">
+                      <a href="#">Edit</a>
+                      <a href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
             <h3 class="album_person_name">
-                GREEN DAY
+                MICHAEL JACKSON
             </h3>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="dashboard_album"><img src="{{asset('./dashboard/images/album_four.png')}}" class="img-responsive"></div>
+            <div class="dashboard_album">
+                <img src="{{asset('./dashboard/images/album_one.png')}}" width="100%">
+                <div class="dropdownmenu">
+                    <div class="middle">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                    <div class="dropdown-content">
+                      <a href="#">Edit</a>
+                      <a href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
             <h3 class="album_person_name">
-                PINK FLOYD
+                MICHAEL JACKSON
             </h3>
         </div>
     </div>
     <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="dashboard_album"><img src="{{asset('./dashboard/images/album_one.png')}}" class="img-responsive"></div>
+            <div class="dashboard_album">
+                <img src="{{asset('./dashboard/images/album_one.png')}}" width="100%">
+                <div class="dropdownmenu">
+                    <div class="middle">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                    <div class="dropdown-content">
+                      <a href="#">Edit</a>
+                      <a href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
             <h3 class="album_person_name">
                 MICHAEL JACKSON
             </h3>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="dashboard_album"><img src="{{asset('./dashboard/images/album_two.png')}}" class="img-responsive"></div>
+            <div class="dashboard_album">
+                <img src="{{asset('./dashboard/images/album_one.png')}}" width="100%">
+                <div class="dropdownmenu">
+                    <div class="middle">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                    <div class="dropdown-content">
+                      <a href="#">Edit</a>
+                      <a href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
             <h3 class="album_person_name">
-                NIRVANA
+                MICHAEL JACKSON
             </h3>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="dashboard_album"><img src="{{asset('./dashboard/images/album_three.png')}}" class="img-responsive"></div>
+            <div class="dashboard_album">
+                <img src="{{asset('./dashboard/images/album_one.png')}}" width="100%">
+                <div class="dropdownmenu">
+                    <div class="middle">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                    <div class="dropdown-content">
+                      <a href="#">Edit</a>
+                      <a href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
             <h3 class="album_person_name">
-                GREEN DAY
+                MICHAEL JACKSON
             </h3>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="dashboard_album"><img src="{{asset('./dashboard/images/album_four.png')}}" class="img-responsive"></div>
+            <div class="dashboard_album">
+                <img src="{{asset('./dashboard/images/album_one.png')}}" width="100%">
+                <div class="dropdownmenu">
+                    <div class="middle">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                    <div class="dropdown-content">
+                      <a href="#">Edit</a>
+                      <a href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
             <h3 class="album_person_name">
-                PINK FLOYD
+                MICHAEL JACKSON
             </h3>
         </div>
     </div>
     <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="dashboard_album"><img src="{{asset('./dashboard/images/album_one.png')}}" class="img-responsive"></div>
+            <div class="dashboard_album">
+                <img src="{{asset('./dashboard/images/album_one.png')}}" width="100%">
+                <div class="dropdownmenu">
+                    <div class="middle">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                    <div class="dropdown-content">
+                      <a href="#">Edit</a>
+                      <a href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
             <h3 class="album_person_name">
                 MICHAEL JACKSON
             </h3>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="dashboard_album"><img src="{{asset('./dashboard/images/album_two.png')}}" class="img-responsive"></div>
+            <div class="dashboard_album">
+                <img src="{{asset('./dashboard/images/album_one.png')}}" width="100%">
+                <div class="dropdownmenu">
+                    <div class="middle">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                    <div class="dropdown-content">
+                      <a href="#">Edit</a>
+                      <a href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
             <h3 class="album_person_name">
-                NIRVANA
+                MICHAEL JACKSON
             </h3>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="dashboard_album"><img src="{{asset('./dashboard/images/album_three.png')}}" class="img-responsive"></div>
+            <div class="dashboard_album">
+                <img src="{{asset('./dashboard/images/album_one.png')}}" width="100%">
+                <div class="dropdownmenu">
+                    <div class="middle">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                    <div class="dropdown-content">
+                      <a href="#">Edit</a>
+                      <a href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
             <h3 class="album_person_name">
-                GREEN DAY
+                MICHAEL JACKSON
             </h3>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="dashboard_album"><img src="{{asset('./dashboard/images/album_four.png')}}" class="img-responsive"></div>
+            <div class="dashboard_album">
+                <img src="{{asset('./dashboard/images/album_one.png')}}" width="100%">
+                <div class="dropdownmenu">
+                    <div class="middle">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                    <div class="dropdown-content">
+                      <a href="#">Edit</a>
+                      <a href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
             <h3 class="album_person_name">
-                PINK FLOYD
+                MICHAEL JACKSON
             </h3>
         </div>
     </div>
     <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="dashboard_album"><img src="{{asset('./dashboard/images/album_one.png')}}" class="img-responsive"></div>
+            <div class="dashboard_album">
+                <img src="{{asset('./dashboard/images/album_one.png')}}" width="100%">
+                <div class="dropdownmenu">
+                    <div class="middle">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                    <div class="dropdown-content">
+                      <a href="#">Edit</a>
+                      <a href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
             <h3 class="album_person_name">
                 MICHAEL JACKSON
             </h3>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="dashboard_album"><img src="{{asset('./dashboard/images/album_two.png')}}" class="img-responsive"></div>
+            <div class="dashboard_album">
+                <img src="{{asset('./dashboard/images/album_one.png')}}" width="100%">
+                <div class="dropdownmenu">
+                    <div class="middle">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                    <div class="dropdown-content">
+                      <a href="#">Edit</a>
+                      <a href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
             <h3 class="album_person_name">
-                NIRVANA
+                MICHAEL JACKSON
             </h3>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="dashboard_album"><img src="{{asset('./dashboard/images/album_three.png')}}" class="img-responsive"></div>
+            <div class="dashboard_album">
+                <img src="{{asset('./dashboard/images/album_one.png')}}" width="100%">
+                <div class="dropdownmenu">
+                    <div class="middle">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                    <div class="dropdown-content">
+                      <a href="#">Edit</a>
+                      <a href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
             <h3 class="album_person_name">
-                GREEN DAY
+                MICHAEL JACKSON
             </h3>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="dashboard_album"><img src="{{asset('./dashboard/images/album_four.png')}}" class="img-responsive"></div>
+            <div class="dashboard_album">
+                <img src="{{asset('./dashboard/images/album_one.png')}}" width="100%">
+                <div class="dropdownmenu">
+                    <div class="middle">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </div>
+                    <div class="dropdown-content">
+                      <a href="#">Edit</a>
+                      <a href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
             <h3 class="album_person_name">
-                PINK FLOYD
+                MICHAEL JACKSON
             </h3>
         </div>
     </div>
