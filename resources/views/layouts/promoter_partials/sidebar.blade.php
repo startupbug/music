@@ -49,6 +49,9 @@
 	<div class="row">
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
+				 <?php
+        			$promoter_id = Auth::user()->id;
+        		?>
 				<a href="{{route('promotersetting')}}">
 				<div class="side_img"><img src="{{asset('/assets/images/side_five.png')}}" class="img-responsive"></div>
 				<p class="side_paragraph">

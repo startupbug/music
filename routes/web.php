@@ -37,6 +37,8 @@ Route::group(['prefix' => 'promoter', 'middleware' => 'promoter'], function () {
     Route::get('/musicvoting_tracks','PrmoterController@musicvoting_tracks')->name('promotermusicvoting_tracks');
     Route::get('/redeempoint','PrmoterController@redeempoint')->name('promoterredeempoint');
     Route::get('/setting','PrmoterController@setting')->name('promotersetting');
+    Route::get('/edit/{id}','PrmoterController@edit')->name('editpromoter');
+    Route::post('/update_account/{id}','PrmoterController@update_account')->name('promoter_update_account');
     Route::get('/promoter_logout', 'PrmoterController@promoter_logout')->name('logout_promoter');
 });
 

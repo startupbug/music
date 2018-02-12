@@ -32,6 +32,7 @@
 				<p class="side_para">
 					LOGOUT
 				</p>
+				</a>
 			</div>
 		</div>
 	</div>
