@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Role;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Hash;
 class PrmoterController extends Controller
 {
     public function index()
@@ -56,6 +57,56 @@ class PrmoterController extends Controller
         $u->username = Input::get('username');
         $u->save();
         return redirect()->route('promoterdashboard');            
+    }
+
+    public function edit_links($id)
+    {
+      $args['promoter'] = User::find($id);
+      return view('dashboard.promoter.account.edit_link')->with($args);
+    }
+
+    public function update_links(Request $request,$id)
+    {
+        $u = User::find($id);
+        $u->facebook = Input::get('facebook');
+        $u->instagram = Input::get('instagram');
+        $u->twitter = Input::get('twitter');
+        $u->save();
+        return redirect()->route('main_index');            
+    }
+
+    public function promoter_update_password()
+    {
+        $oldpassword = Input::get('oldpassword');
+         $old_password = Auth::user()->password;
+         if(Hash::check($oldpassword,$old_password))
+            {
+                $new_password = Input::get('newpassword');
+                $confirm_password = Input::get('confirmpassword');
+                if($new_password == $confirm_password)
+                {
+                    $newpassword = bcrypt($new_password);
+                    DB::table('users')
+                        ->where('id', Auth::user()->id)
+                        ->update(['password' => $newpassword]);
+                    return redirect()->route('promoterdashboard'); 
+                }
+                else
+                {
+                    echo "Your password doesn't match";
+
+                }
+            }
+            else
+            {
+                echo "enter correct password";
+            }
+    }
+
+    public function promoter_track_assign()
+    {
+        $promoter_tracks = DB::table('invitations')->where('promoter_id','=',Auth::user()->id)->get();
+        return view("dashboard.promoter.tracks_assign.tracks_assign",['promoter_tracks' => $promoter_tracks]);
     }
 
      public function promoter_logout(Request $request) {     

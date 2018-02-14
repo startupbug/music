@@ -2,7 +2,7 @@
 @section('content')
     <div class="col-md-9">
         <h3 class="heading_dashboard">
-          PROMOTER DASHBOARD
+          USER  DASHBOARD
      </h3>
      <div class="border_red">
         <h3 class="album">
@@ -16,8 +16,9 @@
             </h3>
             <?php $user_id = Auth::user()->id?>
             <h3 class="add_album">
-              <a href="{{route('editpromoter',['id'=>$user_id])}}">
+              <a href="{{route('edituser',['id'=>$user_id])}}">
                 EDIT
+              </a>
             </h3>
         </div>
     </div>
@@ -68,9 +69,11 @@
             <h3 class="all_album">
                LINKS
             </h3>
+           <a href="{{route('user_edit_links',['id'=>$user_id])}}">
             <h3 class="add_album">
-                EDIT
+              EDIT
             </h3>
+          </a>
         </div>
     </div>
     <hr class="line">

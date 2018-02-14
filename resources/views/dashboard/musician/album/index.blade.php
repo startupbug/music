@@ -41,7 +41,7 @@
 				<h3 class="album_person_name">
 					{{$album->name}}
 				</h3>
-			</a>
+				</a>
 		</div>
 		@endforeach		
 	</div>

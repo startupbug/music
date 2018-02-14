@@ -39,6 +39,10 @@ Route::group(['prefix' => 'promoter', 'middleware' => 'promoter'], function () {
     Route::get('/setting','PrmoterController@setting')->name('promotersetting');
     Route::get('/edit/{id}','PrmoterController@edit')->name('editpromoter');
     Route::post('/update_account/{id}','PrmoterController@update_account')->name('promoter_update_account');
+    Route::get('/edit_links/{id}','PrmoterController@edit_links')->name('promoter_edit_links');
+    Route::post('/update_links/{id}','PrmoterController@update_links')->name('promoter_update_links');
+    Route::post('/update_password/{id}','PrmoterController@promoter_update_password')->name('promoter_update_password');
+    Route::get('/tracks_assign','PrmoterController@promoter_track_assign')->name('promoter_track_assign');
     Route::get('/promoter_logout', 'PrmoterController@promoter_logout')->name('logout_promoter');
 });
 
@@ -48,6 +52,11 @@ Route::group(['prefix' => 'promoter', 'middleware' => 'promoter'], function () {
 Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {     
    Route::get('/index','RegisteredController@index')->name('user_index');
    Route::get('/setting','RegisteredController@setting')->name('user_setting');
+   Route::get('/edit/{id}','RegisteredController@edit')->name('edituser');
+   Route::post('/update_account/{id}','RegisteredController@update_account')->name('user_update_account');
+   Route::get('/edit_links/{id}','RegisteredController@edit_links')->name('user_edit_links');
+   Route::post('/update_links/{id}','RegisteredController@update_links')->name('user_update_links');
+   Route::get('album_videos/{id}','RegisteredController@album_videos')->name('user_album_videos');
    Route::get('/user_logout', 'RegisteredController@user_logout')->name('logout_user');
 });
 

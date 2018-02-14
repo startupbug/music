@@ -3,7 +3,7 @@
 
     <div class="col-md-9">
         <h3 class="heading_dashboard">
-          DASHBOARD
+         USER DASHBOARD
      </h3>
      <div class="border_red">
         <h3 class="album">
@@ -28,7 +28,11 @@
       <div class="row">
         
         <div class="col-md-3 col-sm-6 col-xs-12">
-         <div class="dashboard_album"><img src="{{asset('/dashboard/musician/tracks/images/'.$track->image)}}" class="img-responsive"></div>
+         <div class="dashboard_album"><img src="{{asset('/dashboard/musician/tracks/images/'.$track->image)}}" class="img-responsive">
+         <video width="100%" controls>
+              <source src="{{asset('/dashboard/musician/tracks/videos/'.$track->video)}}" type="video/mp4">              
+            </video>
+        </div>
          <h3 class="album_person_name">
              {{$track->name}}
          </h3>
@@ -51,10 +55,14 @@
       <div class="row">        
         @foreach($albums as $album)
      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="dashboard_album"><img src="{{asset('/dashboard/musician/albums/images/'.$track->image)}}" class="img-responsive"></div>
+        <a href="{{route('user_album_videos',['id' => $album->id])}}">
+        <div class="dashboard_album">
+            <img src="{{asset('/dashboard/musician/albums/images/'.$track->image)}}" class="img-responsive">
+        </div>
         <h3 class="album_person_name">
          NIRVANA
      </h3>
+     </a>
  </div>
  @endforeach
 </div>

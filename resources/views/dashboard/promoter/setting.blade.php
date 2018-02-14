@@ -1,9 +1,5 @@
 @extends('layouts.promoter_index')
 @section('content')
-
-
-
-
     <div class="col-md-9">
         <h3 class="heading_dashboard">
           PROMOTER DASHBOARD
@@ -73,9 +69,11 @@
             <h3 class="all_album">
                LINKS
             </h3>
-            <h3 class="add_album">
-                EDIT
-            </h3>
+            <a href="{{route('promoter_edit_links',['id'=>$promoter_id])}}">
+        <h3 class="add_album">
+        EDIT
+        </h3>
+        </a>
         </div>
     </div>
     <hr class="line">
