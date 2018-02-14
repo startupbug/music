@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
-{
-    
+{    
      public function dashboard()
     {
         return view('dashboard.main_index');
@@ -36,5 +34,4 @@ class PagesController extends Controller
     {
         return view('musicvoting_search');
     }
-
 }

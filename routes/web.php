@@ -31,7 +31,8 @@ Route::get('/musicvoting_search','PagesController@musicvoting_search')->name('mu
 
 
 
-Route::group(['prefix' => 'promoter', 'middleware' => 'promoter'], function () {     
+Route::group(['prefix' => 'promoter', 'middleware' => 'promoter'], function () {  
+Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'PrmoterController@promoter_image']);   
     Route::get('/promoterindex','PrmoterController@index')->name('promoterindex');
     Route::get('/promoterdashboard','PrmoterController@dashboard_overview')->name('promoterdashboard');
     Route::get('/musicvoting_tracks','PrmoterController@musicvoting_tracks')->name('promotermusicvoting_tracks');
@@ -43,12 +44,10 @@ Route::group(['prefix' => 'promoter', 'middleware' => 'promoter'], function () {
     Route::post('/update_links/{id}','PrmoterController@update_links')->name('promoter_update_links');
     Route::post('/update_password/{id}','PrmoterController@promoter_update_password')->name('promoter_update_password');
     Route::get('/tracks_assign','PrmoterController@promoter_track_assign')->name('promoter_track_assign');
+    Route::get('/approve_status/{id}/', ["as" => "approve-status", "uses" => "PrmoterController@approve_status"]);
+    Route::get('/disapprove_status/{id}/', ["as" => "disapprove-status", "uses" => "PrmoterController@disapprove_status"]);
     Route::get('/promoter_logout', 'PrmoterController@promoter_logout')->name('logout_promoter');
 });
-
-
-
-
 Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {     
    Route::get('/index','RegisteredController@index')->name('user_index');
    Route::get('/setting','RegisteredController@setting')->name('user_setting');
@@ -113,7 +112,3 @@ Auth::routes();
 Route::get('home1', 'HomeController@user_dashboard')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
-
-

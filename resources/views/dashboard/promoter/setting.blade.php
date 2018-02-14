@@ -27,41 +27,29 @@
     <form>
       <div class='field'>
         <label for='name'>Full name</label>
-        <input id='name' name='name' type='text' value='{{($user->name)}}'>
+        <input id='name' name='name' type='text' value='{{($user->name)}}' readonly>
       </div>
       <div class='field'>
         <label for='email'>Phone</label>
-        <input id='email' name='phone' type='phone' value='{{($user->phone)}}'>
+        <input id='email' name='phone' type='phone' value='{{($user->phone)}}' readonly>
       </div>
       <div class='field'>
         <label for='email'>Email</label>
-        <input id='email' name='email' type='email' value='{{($user->email)}}'>
+        <input id='email' name='email' type='email' value='{{($user->email)}}' readonly>
       </div>
       <div class='field'>
         <label for='password'>Password</label>
         <!--<input id='password' name='password' type='password' value=''>-->
-           <input id='password' name='password' type='password' value=""> <span class="stars">
-                            <i class="glyphicon glyphicon-star"></i>
-                            <i class="glyphicon glyphicon-star" ></i>
-                            <i class="glyphicon glyphicon-star" ></i>
-                            <i class="glyphicon glyphicon-star" ></i>
-                            <i class="glyphicon glyphicon-star" ></i>
-                            <i class="glyphicon glyphicon-star" ></i>
-                            <i class="glyphicon glyphicon-star" ></i>
-                            <i class="glyphicon glyphicon-star" ></i>
-                            <i class="glyphicon glyphicon-star" ></i>
-            </span>
+           <input id='password' name='password' type='password' value="********">
       </div>
       <div class='field'>
         <label for='username'>Username</label>
-        <input id='username' name='username' type='username' value='{{($user->username)}}'>
-      </div>
-      @if(Auth::user()->role_id == 3)
-        <div class='field'>
+        <input id='username' name='username' type='username' value='{{($user->username)}}' readonly>
+      </div>     
+      <div class='field'>
           <label for='account'>Account Type</label>
-          <input id='account' name='account' type='account' value='promoter'>
-        </div>
-      @endif
+          <input id='account' name='account' type='account' value='{{$roles->name}}' readonly>
+      </div>    
     </form>
   </div>
  <div class="row">
