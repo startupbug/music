@@ -1,5 +1,4 @@
-</div>
-    </div>
+
         <footer>
             <div class="container-fluid footer_color">
                 <div class="container">
@@ -13,10 +12,10 @@
         </footer>
         <!--./End Container Fulid --->
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="../assets/js/jquery-3.1.1.min.js"></script>
+        <script src="{{asset('/dashboard/js/jquery-3.1.1.min.js')}}"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <!-- Bootstrap -->
-        <script src="../assets/js/bootstrap.min.js"></script>
+        <script src="{{asset('/dashboard/js/bootstrap.min.js')}}"></script>
         <!-- Custom-js -->
     </body>
 </html>

@@ -1,193 +1,75 @@
-<?php include('header.php') ?>
-
-<?php include('sidebar.php') ?>
-
+@extends('layouts.user_index')
+@section('content')
 
     <div class="col-md-9">
         <h3 class="heading_dashboard">
-          DASHBOARD
+         USER DASHBOARD
      </h3>
      <div class="border_red">
         <h3 class="album">
             OVERVIEW
         </h3>
     </div>
+
   <div class="row">
         <div class="col-md-12 color_bottom">
-
-
             <h3 class="all_album">
                 TRACKS
             </h3>
 
-
             <h3 class="add_album">
                 VIEW ALL
             </h3>
         </div>
     </div>
+
     <hr class="line">
-
-
+    @foreach($tracks as $track)
       <div class="row">
+        
         <div class="col-md-3 col-sm-6 col-xs-12">
-         <div class="dashboard_album"><img src="../assets/images/tracks_one.png" class="img-responsive"></div>
+         <div class="dashboard_album"><img src="{{asset('/dashboard/musician/tracks/images/'.$track->image)}}" class="img-responsive">
+         <video width="100%" controls>
+              <source src="{{asset('/dashboard/musician/tracks/videos/'.$track->video)}}" type="video/mp4">              
+            </video>
+        </div>
          <h3 class="album_person_name">
-             MICHAEL JACKSON
+             {{$track->name}}
          </h3>
+        
      </div>
-     <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="dashboard_album"><img src="../assets/images/tracks_two.png" class="img-responsive"></div>
-        <h3 class="album_person_name">
-         NIRVANA
-     </h3>
- </div>
- <div class="col-md-3 col-sm-6 col-xs-12">
-   <div class="dashboard_album"><img src="../assets/images/tracks_three.png" class="img-responsive"></div>
-   <h3 class="album_person_name">
-     GREEN DAY
- </h3>
+    @endforeach  
 </div>
-<div class="col-md-3 col-sm-6 col-xs-12">
-   <div class="dashboard_album"><img src="../assets/images/tracks_four.png" class="img-responsive"></div>
-   <h3 class="album_person_name">
-     PINK FLOYD
- </h3>
-</div>
-</div>
-
-
-    <!--<div class="row">
-        <div class="col-md-3">
-        
-
-        <div class="box">  
-        <div class="dashboard_album"><img src="../assets/images/tracks_one.png" class="img-responsive"></div>
-         
-        <span class="caption fade-caption"> 
-       <div class="star"><span class="glyphicon glyphicon-star"></span></div>
-        <h3 class="hover_heading">MAKESONGFEATURED</h3>
-        <div class="trophy"><i class="fa fa-trophy" style="font-size:24px"></i></div>
-        <h3 class="hover_heading">ADDSONGTOCONTEST</h3> 
-       
-        </span>  
-    </div>
-    <h3 class="album_person_name">
-            XSCAPE
-         </h3>
-    </div>
-
-
-     <div class="col-md-3">
-        
-
-      <div class="box">  
-        <div class="dashboard_album"><img src="../assets/images/tracks_two.png" class="img-responsive"></div>
-        <span class="caption fade-caption"> 
-      <div class="star"><span class="glyphicon glyphicon-star"></span></div>
-        <h3 class="hover_heading">MAKESONGFEATURED</h3>
-        <div class="trophy"><i class="fa fa-trophy" style="font-size:24px"></i></div>
-        <h3 class="hover_heading">ADDSONGTOCONTEST</h3> 
-       
-        </span>  
-    </div>
-     <h3 class="album_person_name">
-        ALL APOLOGIES
-     </h3>
- </div>
- <div class="col-md-3">
-  
-
-  <div class="box">  
-        <div class="dashboard_album"><img src="../assets/images/tracks_three.png" class="img-responsive"></div>
-        <span class="caption fade-caption"> 
-      <div class="star"><span class="glyphicon glyphicon-star"></span></div>
-        <h3 class="hover_heading">MAKESONGFEATURED</h3>
-        <div class="trophy"><i class="fa fa-trophy" style="font-size:24px"></i></div>
-        <h3 class="hover_heading">ADDSONGTOCONTEST</h3> 
-       
-        </span>  
-    </div>
-    <h3 class="album_person_name">
-     AMRICAN IDIOT
- </h3>
-</div>
-<div class="col-md-3">
-  
-
- <div class="box">  
-        <div class="dashboard_album"><img src="../assets/images/tracks_four.png" class="img-responsive"></div>
-        <span class="caption fade-caption"> 
-      <div class="star"><span class="glyphicon glyphicon-star"></span></div>
-        <h3 class="hover_heading">MAKESONGFEATURED</h3>
-        <div class="trophy"><i class="fa fa-trophy" style="font-size:24px"></i></div>
-        <h3 class="hover_heading">ADDSONGTOCONTEST</h3> 
-       
-        </span>  
-    </div>
-    <h3 class="album_person_name">
-     HEY YOU
- </h3>
-</div>
-</div>-->
-
-
 
 <div class="row">
         <div class="col-md-12 color_bottom">
-
-
             <h3 class="all_album">
                 ALBUMS
             </h3>
-
-
             <h3 class="add_album">
                 VIEW ALL
             </h3>
         </div>
     </div>
     <hr class="line">
-
-
-      <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-         <div class="dashboard_album"><img src="../assets/images/album_one.png" class="img-responsive"></div>
-         <h3 class="album_person_name">
-             MICHAEL JACKSON
-         </h3>
-     </div>
+      <div class="row">        
+        @foreach($albums as $album)
      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="dashboard_album"><img src="../assets/images/album_two.png" class="img-responsive"></div>
+        <a href="{{route('user_album_videos',['id' => $album->id])}}">
+        <div class="dashboard_album">
+            <img src="{{asset('/dashboard/musician/albums/images/'.$track->image)}}" class="img-responsive">
+        </div>
         <h3 class="album_person_name">
          NIRVANA
      </h3>
+     </a>
  </div>
- <div class="col-md-3 col-sm-6 col-xs-12">
-   <div class="dashboard_album"><img src="../assets/images/album_three.png" class="img-responsive"></div>
-   <h3 class="album_person_name">
-     GREEN DAY
- </h3>
-</div>
-<div class="col-md-3 col-sm-6 col-xs-12">
-   <div class="dashboard_album"><img src="../assets/images/album_four.png" class="img-responsive"></div>
-   <h3 class="album_person_name">
-     PINK FLOYD
- </h3>
-</div>
+ @endforeach
 </div>
 
-   
-
-
-
-
-</div>
-</div>
-</div>
 </div>
 
-<?php include('footer.php') ?>
+@endsection
 
 
 

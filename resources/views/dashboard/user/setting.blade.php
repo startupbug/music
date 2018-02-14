@@ -1,10 +1,8 @@
-<?php include('header.php') ?>
-
-<?php include('sidebar.php') ?>
-
+@extends('layouts.user_index')
+@section('content')
     <div class="col-md-9">
         <h3 class="heading_dashboard">
-          PROMOTER DASHBOARD
+          USER  DASHBOARD
      </h3>
      <div class="border_red">
         <h3 class="album">
@@ -13,42 +11,35 @@
     </div>
     <div class="row">
         <div class="col-md-12 color_bottom">
-
-
             <h3 class="all_album">
                ACCOUNT
             </h3>
-
-
+            <?php $user_id = Auth::user()->id?>
             <h3 class="add_album">
+              <a href="{{route('edituser',['id'=>$user_id])}}">
                 EDIT
+              </a>
             </h3>
         </div>
-
-
-
     </div>
     <hr class="line">
-   
  <div class='form'>
     <form>
       <div class='field'>
         <label for='name'>Full name</label>
-        <input id='name' name='name' type='text' value='John doe'>
+        <input id='name' name='name' type='text' value='{{($user->name)}}'>
       </div>
       <div class='field'>
         <label for='email'>Phone</label>
-        <input id='email' name='phone' type='phone' value='111-222-333'>
+        <input id='email' name='phone' type='phone' value='{{($user->phone)}}'>
       </div>
-      
       <div class='field'>
         <label for='email'>Email</label>
-        <input id='email' name='email' type='email' value='john_doe@dummy.com'>
+        <input id='email' name='email' type='email' value='{{($user->email)}}'>
       </div>
       <div class='field'>
         <label for='password'>Password</label>
         <!--<input id='password' name='password' type='password' value=''>-->
-
            <input id='password' name='password' type='password'> <span class="stars">
                             <i class="glyphicon glyphicon-star"></i>
                             <i class="glyphicon glyphicon-star" ></i>
@@ -59,41 +50,33 @@
                             <i class="glyphicon glyphicon-star" ></i>
                             <i class="glyphicon glyphicon-star" ></i>
                             <i class="glyphicon glyphicon-star" ></i>
-            </span>
-            
+            </span>  
       </div>
-       
       <div class='field'>
         <label for='username'>Username</label>
-        <input id='username' name='username' type='username' value='KING_LAMAR'>
+        <input id='username' name='username' type='username' value='{{($user->username)}}'>
       </div>
-
-
+      @if(Auth::user()->role_id == 4)
        <div class='field'>
         <label for='account'>Account Type</label>
-        <input id='account' name='account' type='account' value='Artist'>
+        <input id='account' name='account' type='account' value='Registered User'>
       </div>
-      
-     
+      @endif
     </form>
   </div>
-
  <div class="row">
         <div class="col-md-12 color_bottom">
-
-
             <h3 class="all_album">
                LINKS
             </h3>
-
-
+           <a href="{{route('user_edit_links',['id'=>$user_id])}}">
             <h3 class="add_album">
-                EDIT
+              EDIT
             </h3>
+          </a>
         </div>
     </div>
     <hr class="line">
-
     <div class='form'>
     <form>
       <div class='field'>
@@ -104,20 +87,14 @@
         <label for='email'>Twitter</label>
         <input id='email' name='phone' type='phone' value='twitter.com/KingLamar'>
       </div>
-      
       <div class='field'>
         <label for='email'>Instagram</label>
         <input id='email' name='email' type='email' value='@King_Lamar'>
       </div>
       </form>
   </div>
-
-
-
-
 </div>
 </div>
 </div>
 </div>
-
-<?php include('footer.php') ?>
+@endsection

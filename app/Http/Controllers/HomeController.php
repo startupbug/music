@@ -19,30 +19,28 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('home');
-    }
-
-     public function public_index()
+   public function index()
     {
         return view('index');
     }
 
+
+   
     
     public function user_dashboard(){
 
-        if(Auth::user()->role_id == 1){
-            return redirect()->route('main_index');
-        }
-        elseif(Auth::user()->role_id == 2){
+        if(Auth::user()->role_id == 2){
             return redirect()->route('main_index');
         }
         elseif(Auth::user()->role_id == 3){
-            return redirect()->route('main_index');
+            return redirect()->route('promoterindex');
+        }
+         elseif(Auth::user()->role_id == 4){
+            return redirect()->route('userindex');
         }
         else{
             return redirect()->route('/');
         }
     }
+
 }

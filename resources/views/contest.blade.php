@@ -1,4 +1,5 @@
-<?php include('header.php'); ?>
+@extends('layouts.public_index')
+@section('content')
 
 <div class="container">
 	<div class="row">
@@ -11,7 +12,7 @@
 			</p>
 		</div>
 		<div class="col-md-6">
-			<div class="img_video"><img src="images/contest_video.png" class="img-responsive"></div>
+			<div class="img_video"><img src="{{asset('assets/images/contest_video.png')}}" class="img-responsive"></div>
 		</div>
 	</div>
 </div>
@@ -37,7 +38,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12 border_right">
 			<div class="row">
 				<div class="col-md-4">
-					<div class="top_ranking"><img src="images/contest_1.png" class="img-responsive"></div>
+					<div class="top_ranking"><img src="{{asset('assets/images/contest_1.png')}}" class="img-responsive"></div>
 				</div>
 				<div class="col-md-8">
 					<h3 class="ranking">
@@ -58,7 +59,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="row">
 				<div class="col-md-4">
-					<div class="top_ranking"><img src="images/contest_2.png" class="img-responsive"></div>
+					<div class="top_ranking"><img src="{{asset('assets/images/contest_2.png')}}" class="img-responsive"></div>
 				</div>
 				<div class="col-md-8">
 					<h3 class="ranking">
@@ -87,7 +88,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12 border_right">
 			<div class="row">
 				<div class="col-md-4">
-					<div class="top_ranking"><img src="images/contest_3.png" class="img-responsive"></div>
+					<div class="top_ranking"><img src="{{asset('assets/images/contest_3.png')}}" class="img-responsive"></div>
 				</div>
 				<div class="col-md-8">
 					<h3 class="ranking">
@@ -108,7 +109,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="row">
 				<div class="col-md-4">
-					<div class="top_ranking"><img src="images/contest_4.png" class="img-responsive"></div>
+					<div class="top_ranking"><img src="{{asset('assets/images/contest_4.png')}}" class="img-responsive"></div>
 				</div>
 				<div class="col-md-8">
 					<h3 class="ranking">
@@ -139,7 +140,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12 border_right">
 			<div class="row">
 				<div class="col-md-4">
-					<div class="top_ranking"><img src="images/contest_5.png" class="img-responsive"></div>
+					<div class="top_ranking"><img src="{{ asset('assets/images/contest_5.png') }}" class="img-responsive"></div>
 				</div>
 				<div class="col-md-8">
 					<h3 class="ranking">
@@ -160,7 +161,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="row">
 				<div class="col-md-4">
-					<div class="top_ranking"><img src="images/contest_6.png" class="img-responsive"></div>
+					<div class="top_ranking"><img src="{{asset('assets/images/contest_6.png')}}" class="img-responsive"></div>
 				</div>
 				<div class="col-md-8">
 					<h3 class="ranking">
@@ -189,7 +190,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12 border_right">
 			<div class="row">
 				<div class="col-md-4">
-					<div class="top_ranking"><img src="images/contest_7.png" class="img-responsive"></div>
+					<div class="top_ranking"><img src="{{asset('assets/images/contest_7.png')}}" class="img-responsive"></div>
 				</div>
 				<div class="col-md-8">
 					<h3 class="ranking">
@@ -210,7 +211,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="row">
 				<div class="col-md-4">
-					<div class="top_ranking"><img src="images/contest_8.png" class="img-responsive"></div>
+					<div class="top_ranking"><img src="{{asset('assets/images/contest_8.png')}}" class="img-responsive"></div>
 				</div>
 				<div class="col-md-8">
 					<h3 class="ranking">
@@ -239,7 +240,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12 border_right">
 			<div class="row">
 				<div class="col-md-4">
-					<div class="top_ranking"><img src="images/contest_9.png" class="img-responsive"></div>
+					<div class="top_ranking"><img src="{{asset('assets/images/contest_9.png')}}" class="img-responsive"></div>
 				</div>
 				<div class="col-md-8">
 					<h3 class="ranking">
@@ -260,7 +261,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="row">
 				<div class="col-md-4">
-					<div class="top_ranking"><img src="images/contest_10.png" class="img-responsive"></div>
+					<div class="top_ranking"><img src="{{asset('assets/images/contest_10.png')}}" class="img-responsive"></div>
 				</div>
 				<div class="col-md-8">
 					<h3 class="ranking">
@@ -294,7 +295,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-4 col-sm-6 col-xs-12">
-			<div class="border_contest"><img src="images/contest_img1.png" class="img-responsive"></div>
+			<div class="border_contest"><img src="{{asset('assets/images/contest_img1.png')}}" class="img-responsive"></div>
 			<h3 class="contest_winner">
 				IST RUNNER UP
 			</h3>
@@ -303,7 +304,7 @@
 			</h3>
 		</div>
 		<div class="col-md-4 col-sm-6 col-xs-12">
-			<div class="border_contest"><img src="images/contest_img2.png" class="img-responsive winner"></div>
+			<div class="border_contest"><img src="{{asset('assets/images/contest_img2.png')}}" class="img-responsive winner"></div>
 			<h3 class="contest_winner">
 				IST RUNNER UP
 			</h3>
@@ -312,7 +313,7 @@
 			</h3>
 		</div>
 		<div class="col-md-4 col-sm-6 col-xs-12">
-			<div class="border_contest"><img src="images/contest_img3.png" class="img-responsive"></div>
+			<div class="border_contest"><img src="{{asset('assets/images/contest_img3.png')}}" class="img-responsive"></div>
 			<h3 class="contest_winner">
 				IST RUNNER UP
 			</h3>
@@ -322,11 +323,4 @@
 		</div>
 	</div>
 </div>
-
-
-
-
-
-
-
-<?php include('footer.php'); ?>
+@endsection

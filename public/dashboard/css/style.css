@@ -17,8 +17,6 @@
 
 /*CSS OF MUSICVOTING_TRACKS*/
 
-
-
 .box {
     cursor: pointer;
     height: 198px;
@@ -73,13 +71,21 @@
     font-weight: 400;
     margin-top: 45px;
 }
-.col-md-4.color_bg {
+.color_bg {
     background-color: #212121;
-    height: 1575px;
+    position: sticky;
+    top: 0;
+    height: calc(100vh + 200px);
+    position: -webkit-sticky;
+
 }
-.col-md-3.color_bg {
+.color_bg {
     background-color: #212121;
-    height: 1575px;
+    position: sticky;
+    top: 0;
+    height: calc(100vh + 200px);
+    position: -webkit-sticky;
+
 }
 .dashboard_name img.img-responsive {
     text-align: center;
@@ -1094,6 +1100,7 @@ button.btn-custom span {
 
 
 
+
 .dashboard_album {
     position: relative;
   }
@@ -1329,3 +1336,5 @@ button.btn-custom span {
       height: auto;
     }
 }
+
+

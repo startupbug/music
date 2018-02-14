@@ -17,13 +17,13 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right music_navbar">
                 <li><a href="">HOME</a></li>
-                <li><a href="">CONTEST</a></li>
-                <li><a href="">WINNER</a></li>
+                <li><a href="{{route('contest')}}">CONTEST</a></li>
+                <li><a href="{{route('winner')}}">WINNER</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Genre <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="">Genre</a></li>
+                        <li><a href="{{route('musicvoting_genre')}}">Genre</a></li>
                         <li><a href="#">Another action</a></li>
                         <li><a href="#">Something else here</a></li>
                     </ul>
@@ -32,14 +32,16 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">artist <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="">Artist</a></li>
+                        <li><a href="{{route('artist_detail')}}">Artist</a></li>
                         <li><a href="#">Another action</a></li>
                         <li><a href="#">Something else here</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Free Beats</a></li>
-                <li><a href=""><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                <li><a href="" class="btn btn-default">log in</a></li>
+                <li><a href="{{route('musicvoting_search')}}"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                <!-- <li><a href="{{url('login')}}" class="btn btn-default">log in</a></li> -->
+                <li><a href="" class="btn btn-default" data-toggle="modal" data-target="#myLoginModal">log in</a></li>
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-->

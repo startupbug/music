@@ -1,4 +1,5 @@
-<?php include('header.php'); ?>
+@extends('layouts.public_index')
+@section('content')
 
 <div class="container">
 	<div class="row">
@@ -14,7 +15,7 @@
 	<div class="row">
 		<div class="col-md-4 col-sm-6 col-xs-12">
 			<div class="winner_border">
-			<div class="image_winner"><img src="images/winner_img.png" class="img-responsive"></div>
+			<div class="image_winner"><img src="{{asset('assets/images/winner_img.png')}}" class="img-responsive"></div>
 		</div>
 	</div>
 		<div class="col-md-8">
@@ -30,7 +31,7 @@
 	<div class="row">
 		<div class="col-md-4 col-sm-6 col-xs-12">
 			<div class="winner_border">
-			<div class="image_winner"><img src="images/winner_img.png" class="img-responsive"></div>
+			<div class="image_winner"><img src="{{asset('assets/images/winner_img.png')}}" class="img-responsive"></div>
 		</div>
 	</div>
 		<div class="col-md-8">
@@ -47,7 +48,7 @@
 	<div class="row">
 		<div class="col-md-4 col-sm-6 col-xs-12">
 			<div class="winner_border">
-			<div class="image_winner"><img src="images/winner_img.png" class="img-responsive"></div>
+			<div class="image_winner"><img src="{{asset('assets/images/winner_img.png')}}" class="img-responsive"></div>
 		</div>
 	</div>
 		<div class="col-md-8">
@@ -63,6 +64,4 @@
 </div>
 
 
-
-
-<?php include('footer.php'); ?>
+@endsection

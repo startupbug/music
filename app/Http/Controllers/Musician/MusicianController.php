@@ -133,7 +133,7 @@ class MusicianController extends Controller
 
      public function musician_logout(Request $request) {     
       Auth::logout();
-      return redirect('/login');
+      return redirect('/');
     }
 
     /**

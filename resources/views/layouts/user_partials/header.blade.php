@@ -7,12 +7,9 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title></title>
         <!-- Bootstrap -->
-        <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{asset('/dashboard/css/bootstrap.min.css')}}" rel="stylesheet">
          <!-- FontAwesome -->
-       <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+       <link href="{{asset('/dashboard/css/font-awesome.min.css')}}" rel="stylesheet">
         <!-- StyleSheet -->
-        <link href="../assets/css/style.css" rel="stylesheet">
+        <link href="{{asset('/dashboard/css/style.css')}}" rel="stylesheet">
     </head>
-    <body>
-        <div class="container-fluid">
-            <div class="row">
