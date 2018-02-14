@@ -72,7 +72,7 @@
       <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="dashboard_album">
             <video width="100%" controls>
-              <source src="{{asset('/dashboard/musician/albums/videos/'.$value->video)}}" type="video/mp4">             
+              <source src="{{asset('/dashboard/musician/tracks/videos/'.$value->video)}}" type="video/mp4">             
             </video>
             <div class="dropdownmenu">
               <div class="middle"><i class="fa fa-ellipsis-v"></i></div>
@@ -182,12 +182,35 @@
                   <input type="text" name="name" class="form-control">
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
+                  <h4><b>DESCRIPTION</b></h4>
+                  <input type="text" name="description" class="form-control">
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                      <h3>CATEGORY</h3>                         
+                       <select class="form-control" name="category">
+                         @foreach($categories as $category)
+                         <option value="{{$category->id}}">{{$category->name}}</option>     
+                         @endforeach
+                       </select>      
+                  </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
                   <h4><b>VIDEO</b></h4>
                   <div class="input-group">
                     <input type="text" class="form-control" readonly>
                     <label class="input-group-btn label_cus">
                         <span class="btn btn-primary">SELECT VIDEO
-                          <input type="file" name="video" style="display: none;" multiple>
+                          <input type="file" name="video" style="display: none;">
+                        </span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <h4><b>IMAGE</b></h4>
+                  <div class="input-group">
+                    <input type="text" class="form-control" readonly>
+                    <label class="input-group-btn label_cus">
+                        <span class="btn btn-primary">SELECT VIDEO
+                          <input type="file" name="image" style="display: none;">
                         </span>
                     </label>
                   </div>

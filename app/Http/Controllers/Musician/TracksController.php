@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\Track;
 use App\User;
+use App\Category;
+use App\Invitation;
 use Auth;
 
 class TracksController extends Controller
@@ -18,7 +20,7 @@ class TracksController extends Controller
      */
     public function index()
     {        
-        $args['tracks'] = Track::all();
+        $args['tracks'] = Track::where('user_id',Auth::user()->id)->get();
         return view('dashboard.musician.track.index')->with($args);
     }
 
@@ -29,7 +31,8 @@ class TracksController extends Controller
      */
     public function create()
     { 
-        return view('dashboard.musician.track.create');
+        $args['categories'] = Category::get();
+        return view('dashboard.musician.track.create')->with($args);
     }
 
     /**
@@ -49,6 +52,9 @@ class TracksController extends Controller
         ]);
         $p = new Track;
         $p->name = Input::get('name');
+        $p->description = Input::get('description');
+        $p->category_id = Input::get('category');
+        $p->user_id = Auth::user()->id;
         if ($request->hasFile('video')) {
           $video=$request->file('video');
           $filename=time() . '.' . $video->getClientOriginalExtension();          
@@ -67,12 +73,29 @@ class TracksController extends Controller
         return redirect()->route('musician_track');    
     }
 
-     public function edit(Request $request,$id)
-    {
-       $args['edit_track'] = Track::find($id);
-       return view('dashboard.musician.track.edit')->with($args);
-    }
+    public function assignPrommoter(Request $request){
+        $musician_id = Auth::user()->id;                
+        $promoter_email =  Input::get('promoter_email');
+        $track_id =  Input::get('track_id');
+        $promoter_id = User::where('email',$promoter_email)->select('id')->first();
 
+        $i = new Invitation;
+        $i->musician_id = $musician_id;
+        $i->promoter_id = $promoter_id['id'];
+        $i->track_id = $track_id;
+        $i->status = 0; 
+        $i->save();
+        return back();
+        
+    
+    }
+    
+    public function edit(Request $request,$id)
+    {
+        $args['users'] = User::where('role_id',3)->get();
+        $args['edit_track'] = Track::find($id);
+        return view('dashboard.musician.track.edit')->with($args);
+    }
 
     public function update_track(Request $request, $id)
     {

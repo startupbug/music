@@ -29,6 +29,7 @@ Route::get('/overview','Musician\MusicianController@overview')->name('musician_o
 Route::get('/track','Musician\TracksController@index')->name('musician_track');
 Route::get('/edit_track/{id}/','Musician\TracksController@edit')->name('edit_track');
 Route::post('/update_track/{id}/','Musician\TracksController@update_track')->name('update_track');
+Route::post('/assign_promoter/','Musician\TracksController@assignPrommoter')->name('assign_promoter');
 Route::get('/delete_track/{id}/','Musician\TracksController@destroy')->name('delete_track');
 Route::get('/create_track','Musician\TracksController@create')->name('create_track');
 Route::post('/upload_track','Musician\TracksController@store')->name('upload_track');
@@ -46,6 +47,7 @@ Route::post('/upload_video','Musician\AlbumsController@upload_video')->name('upl
 Route::get('/setting','Musician\MusicianController@setting')->name('musician_setting');
 Route::get('/edit_account/{id}','Musician\MusicianController@edit_account')->name('edit_account');
 Route::post('/update_account/{id}','Musician\MusicianController@update_account')->name('update_account');
+Route::post('/update_password/{id}','Musician\MusicianController@update_password')->name('update_password');
 Route::get('/edit_links/{id}','Musician\MusicianController@edit_links')->name('edit_links');
 Route::post('/update_links/{id}','Musician\MusicianController@update_links')->name('update_links');
 

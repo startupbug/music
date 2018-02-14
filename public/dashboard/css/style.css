@@ -1251,6 +1251,26 @@ button.btn-custom span {
     }
 
    /* End Side bar Image By Sheheryar*/
+
+    /*New Css Transparent Modal Edit icons */
+      .middle i {
+       color: #fff;
+     }
+     .dashboard_album .dropdown-content {
+       padding: 5px 5px 3px 5px;
+       background-color: #fffdfda8;
+     }
+
+     /*Dropdown For Categories On Tracks Sheheryar*/
+      .form-control{
+           color: #fff;
+           font-size: 16px;
+         }
+         .form-control:focus {
+           background-color: #747473;
+           border: 1px solid #747473;
+        }
+    /*Dropdown For Categories On Tracks By Sheheryar*/
    
 /* tablet */
 @media only screen and (max-device-width : 1024px) and (min-device-width : 768px) {

@@ -16,9 +16,9 @@ class CreateAlbumVideosTable extends Migration
         Schema::create('album__videos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('album_id')->unsigned();
-            $table->integer('video_id')->unsigned();
+            $table->integer('track_id')->unsigned();
             $table->foreign('album_id')->references('id')->on('albums')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('video_id')->references('id')->on('videos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('track_id')->references('id')->on('tracks')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -1,11 +1,10 @@
 @extends('layouts.dashboard_index')
 @section('content')
-
 <div class="col-md-9">
   <h3 class="heading_dashboard">
    ARTIST DASHBOARD
  </h3>
-<div class="border_red">
+ <div class="border_red">
   <h3 class="album">
     OVERVIEW
   </h3>
@@ -28,17 +27,11 @@
     <ul class="dropdown-menu" role="menu">
       <li><a href="#">Action</a></li>
       <li><a href="#">Another</a></li>
-
-
     </ul>
   </div>
 </div>
 </div>
 <hr class="line">
-
-
-
-
 <div class="main">
   <h4 class="points-cs">POINTS</h4>
   <h2 class="cstm-heding">2017</h2>
@@ -106,106 +99,72 @@
               <dt>DEC</dt>
               <dd></dd>
             </dl>
-
-
           </div>
-
         </div>
         <h4 class="months-cs">MONTHS</h4>
       </article>
     </li>
-
-
   </ul>
 </div>
-
-
-
-
-
-
-
 <div class="row">
   <div class="col-md-12 color_bottom">
-
-
     <h3 class="all_album">
      MY TRACKS
    </h3>
-
-
-   <h3 class="add_album">
-    VIEW ALL
-  </h3>
+   <a href="{{route('musician_track')}}">
+     <h3 class="add_album">
+        VIEW ALL
+      </h3>
+    </a>
 </div>
 </div>
 <hr class="line">
 <div class="row">
+ @foreach($all_tracks as $value)
  <div class="col-md-3 col-sm-6 col-xs-12">
-      <div class="box">  
-        <div class="dashboard_album">
-          <img src="{{asset('/dashboard/images/tracks_three.png')}}" class="img-responsive custom-image-dashboard" >
-
-        <span class="caption fade-caption"> 
-          <div class="star"><span class="glyphicon glyphicon-star"></span></div>
-          <h3 class="hover_heading">MAKESONGFEATURED</h3>
-          <div class="trophy"><i class="fa fa-trophy" style="font-size:24px"></i></div>
-          <h3 class="hover_heading">ADDSONGTOCONTEST</h3> 
-        </span>
-        </div>  
-      </div>
-      <a href="">
-        <h3 class="album_person_name">
-          abc
-        </h3>
-      </a>
-  </div>
+  <div class="box">  
+    <div class="dashboard_album">
+      <img src="{{asset('dashboard/musician/tracks/images/'.$value->image)}}" class="img-responsive custom-image-dashboard" >
+      <span class="caption fade-caption"> 
+        <div class="star"><span class="glyphicon glyphicon-star"></span></div>
+        <h3 class="hover_heading">MAKESONGFEATURED</h3>
+        <div class="trophy"><i class="fa fa-trophy" style="font-size:24px"></i></div>
+        <h3 class="hover_heading">ADDSONGTOCONTEST</h3> 
+      </span>
+    </div>  
+  </div>      
+  <h3 class="album_person_name">
+    {{$value->name}}
+  </h3>      
 </div>
-
-
-
+@endforeach
+</div>
 <div class="row">
   <div class="col-md-12 color_bottom">
-
-
     <h3 class="all_album">
      MY ALBUMS
    </h3>
 
+  <a href="{{route('musician_album')}}">
+     <h3 class="add_album">
+        VIEW ALL
+      </h3>
+  </a>
 
-   <h3 class="add_album">
-    VIEW ALL
-  </h3>
 </div>
 </div>
 <hr class="line">
-
-
 <div class="row">
+  @foreach($all_albums as $value)
   <div class="col-md-3 col-sm-6 col-xs-12">
-   <div class="dashboard_album"><img src="{{asset('/dashboard/images/album_one.png')}}" class="img-responsive"></div>
-   <h3 class="album_person_name">
-     MICHAEL JACKSON
-   </h3>
- </div>
-
+   <div class="dashboard_album">
+    <img src="{{asset('dashboard/musician/albums/images/'.$value->image)}}" class="img-responsive">
+  </div>
+  <h3 class="album_person_name">
+   {{$value->name}}
+ </h3>
 </div>
-
-
-
-
-
-
+@endforeach
 </div>
-
+</div>
 @endsection
-
-
-
-
-
-
-
-
-
-

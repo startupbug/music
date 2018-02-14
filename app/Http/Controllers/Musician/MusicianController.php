@@ -4,7 +4,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Role;
 use App\User;
+use App\Track;
+use App\Album;
 use Auth;
+use Hash;
 use Validator;
 use Illuminate\Support\Facades\Input;
 
@@ -17,7 +20,8 @@ class MusicianController extends Controller
      */
     public function index()
     { 
-        return view('dashboard.musician.index');
+         $args['all_albums'] = Album::where('user_id',Auth::user()->id)->get();
+        return view('dashboard.musician.index')->with($args);
     }
 
     public function musician_image(Request $request)
@@ -52,7 +56,9 @@ class MusicianController extends Controller
      */
     public function overview()
     {
-        return view('dashboard.musician.overview');
+        $args['all_tracks'] = Track::get();
+        $args['all_albums'] = Album::get();
+        return view('dashboard.musician.overview')->with($args);
     }
 
      public function redeem()
@@ -73,10 +79,33 @@ class MusicianController extends Controller
         $u->name = Input::get('name');
         $u->phone = Input::get('phone');
         $u->email = Input::get('email');
-        $u->password = Input::get('password');
+        // $u->password = Input::get('password');
         $u->username = Input::get('username');
         $u->save();
-        return redirect()->route('main_index');            
+        return redirect()->route('musician_setting');            
+    }
+    public function update_password(Request $request,$id)
+    {
+        if (Hash::check($request->old_password, Auth::user()->password)) {
+            if($request->password === $request->password_confirmation){
+                $user = User::where('id', Auth::user()->id)->update([
+                    'password' => bcrypt($request->password)
+                ]);
+                if($user){
+                   return redirect()->route('musician_setting'); 
+                }
+                else{
+                    return \Response()->json(['error' => "Profile update failed", 'code' => 202]);
+                }
+            }
+            else{
+                return \Response()->json(['error' => 'Password does not match with confirmation password', 'code' => 202]);
+            }
+        }
+        else{
+            return \Response()->json(['error' => 'Old password is incorrect, please enter valid password', 'code' => 401]);
+        }
+                   
     }
      public function edit_links($id)
     {
