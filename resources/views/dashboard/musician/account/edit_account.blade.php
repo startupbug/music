@@ -32,10 +32,10 @@
               <label for='email'>Email</label>
               <input id='email' name='email' value="{{$musician->email}}" type='email' class="form-control">
             </div>
-            <div class='fields'>
+            <!-- <div class='fields'>
               <label for='password'>Password</label>
                <input id='password' name='password' type='password' value="{{$musician->password}}" class="form-control">
-            </div>
+            </div> -->
             <div class='fields'>
               <label for='username'>Username</label>
               <input id='username' name='username' type='text' value="{{$musician->username}}" class="form-control">
@@ -44,6 +44,29 @@
               <label for='account'>Account Type</label>
               <input id='account' name='account' type='text' value="{{$roles->name}}" class="form-control" readonly>
             </div>
+            <div class="field-button">
+             <button type="submit" name="button" class="btn btn-default" style="width:100%">Update</button>
+           </div>          
+          </form>
+        </div>
+
+
+        <hr class="line">
+        <div class='form'>          
+          <form action="{{route('update_password',['id'=>$musician->id])}}" method="POST">
+            {{csrf_field()}}
+            <div class='fields'>
+              <label for='name'>Old Password</label>
+              <input type="password" name="old_password" class="form-control"/>
+            </div>
+            <div class='fields'>
+              <label for='email'>New Password</label>
+             <input type="password" name="password" class="form-control"/>
+            </div>
+             <div class='fields'>
+              <label for='password'>Confirm Password</label>
+               <input type="password" name="password_confirmation" class="form-control"/>
+            </div>                        
             <div class="field-button">
              <button type="submit" name="button" class="btn btn-default" style="width:100%">Update</button>
            </div>          

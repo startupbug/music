@@ -26,6 +26,7 @@
             <ul class="dropdown-menu" role="menu">
               <li><a data-toggle="modal" data-target="#EditTrackModal">Edit</a></li>  
               <li><a href="{{route('delete_track',['id' => $edit_track->id])}}">Delete</a></li>
+              <li><a data-toggle="modal" data-target="#selectPromoter">Assign Promoter</a></li>  
             </ul>
           </div>
       </div>
@@ -101,6 +102,40 @@
                     </label>
                   </div>
                 </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <button type="submit" name="button" class="btn btn-primary" style="width:100%">SUBMIT</button>
+                </div>
+              </div>
+            </form>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="selectPromoter" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"><b>UPDATE TRACk</b></h4>
+          </div>
+          <div class="modal-body">
+            <form class="" action="{{route('assign_promoter')}}" method="POST">
+              <input type="hidden" name="track_id" value="{{$edit_track->id}}">
+              {{csrf_field()}}
+              <div class="row">
+               <div class="col-md-12 col-sm-12 col-xs-12">
+                  <h4><b>Promoter Email</b></h4>
+               <input list="browsers" name="promoter_email" class="form-control">
+                <datalist id="browsers">
+                  @foreach($users as $user)
+                  <option value="{{$user->email}}"></option>                  
+                  @endforeach
+                </datalist>  
+                  <!-- <input type="text" class="form-control"> -->
+                </div>                          
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <button type="submit" name="button" class="btn btn-primary" style="width:100%">SUBMIT</button>
                 </div>

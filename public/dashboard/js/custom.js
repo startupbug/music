@@ -41,6 +41,10 @@ $(function() {
                 }
                 if(response.code === 202){
                     // alert(response.error);
+                    //alert(response.img);
+                }
+                if(response.code === 202){
+                    //alert(response.error);
                 }
             },
             error: function(){
@@ -48,6 +52,10 @@ $(function() {
             }
         });
     });
+
+     $(document).ready(function() {
+        $('#example').DataTable();
+    } );
 
 
    

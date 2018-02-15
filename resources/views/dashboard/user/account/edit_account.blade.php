@@ -49,6 +49,37 @@
            </div>          
           </form>
         </div>
+
+        <div class="row">
+            <div class="col-md-12 color_bottom">
+                <h3 class="all_album">
+                   EDIT PASSWORD
+                </h3>
+            </div>
+        </div>
+        <hr class="line">
+        <div class='form'>          
+          <form action="{{route('user_update_password',['id'=>$user->id])}}" method="POST">
+            {{csrf_field()}}
+            <div class='fields'>
+              <label for='password'>Old Password</label>
+               <input id='password' name='old_password' type='password' value="" class="form-control" data-errormessage-value-missing="Name of entity is required!" required autofocus>
+            </div>
+            <div class='fields'>
+              <label for='password'>New Password</label>
+               <input id='password' name='password' type='password' value="" class="form-control" data-errormessage-value-missing="Name of entity is required!" required autofocus>
+            </div>
+            <div class='fields'>
+              <label for='password'>Confirm Password</label>
+               <input id='password' name='password_confirmation' type='password' value="" class="form-control" data-errormessage-value-missing="Name of entity is required!" required autofocus>
+            </div>   
+             <div class="field-button">
+             <button type="submit" name="password-button" class="btn btn-default" style="width:100%">Update</button>
+           </div>       
+          </form>
+
+      </div>
+
       </div>
     </div>
   </div>

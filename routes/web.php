@@ -31,7 +31,8 @@ Route::get('/musicvoting_search','PagesController@musicvoting_search')->name('mu
 
 
 
-Route::group(['prefix' => 'promoter', 'middleware' => 'promoter'], function () {     
+Route::group(['prefix' => 'promoter', 'middleware' => 'promoter'], function () {  
+Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'PrmoterController@promoter_image']);   
     Route::get('/promoterindex','PrmoterController@index')->name('promoterindex');
     Route::get('/promoterdashboard','PrmoterController@dashboard_overview')->name('promoterdashboard');
     Route::get('/musicvoting_tracks','PrmoterController@musicvoting_tracks')->name('promotermusicvoting_tracks');
@@ -43,12 +44,10 @@ Route::group(['prefix' => 'promoter', 'middleware' => 'promoter'], function () {
     Route::post('/update_links/{id}','PrmoterController@update_links')->name('promoter_update_links');
     Route::post('/update_password/{id}','PrmoterController@promoter_update_password')->name('promoter_update_password');
     Route::get('/tracks_assign','PrmoterController@promoter_track_assign')->name('promoter_track_assign');
+    Route::get('/approve_status/{id}/', ["as" => "approve-status", "uses" => "PrmoterController@approve_status"]);
+    Route::get('/disapprove_status/{id}/', ["as" => "disapprove-status", "uses" => "PrmoterController@disapprove_status"]);
     Route::get('/promoter_logout', 'PrmoterController@promoter_logout')->name('logout_promoter');
 });
-
-
-
-
 Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {     
    Route::get('/index','RegisteredController@index')->name('user_index');
    Route::get('/setting','RegisteredController@setting')->name('user_setting');
@@ -58,6 +57,8 @@ Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {
    Route::post('/update_links/{id}','RegisteredController@update_links')->name('user_update_links');
    Route::get('album_videos/{id}','RegisteredController@album_videos')->name('user_album_videos');
    Route::post('userajaxImageUpload',['as'=>'userImageUpload','uses'=>'RegisteredController@user_images']);
+   Route::post('/update_password/{id}','RegisteredController@user_update_password')->name('user_update_password');
+
    Route::get('/user_logout', 'RegisteredController@user_logout')->name('logout_user');
 });
 
@@ -81,6 +82,7 @@ Route::get('/overview','Musician\MusicianController@overview')->name('musician_o
 Route::get('/track','Musician\TracksController@index')->name('musician_track');
 Route::get('/edit_track/{id}/','Musician\TracksController@edit')->name('edit_track');
 Route::post('/update_track/{id}/','Musician\TracksController@update_track')->name('update_track');
+Route::post('/assign_promoter/','Musician\TracksController@assignPrommoter')->name('assign_promoter');
 Route::get('/delete_track/{id}/','Musician\TracksController@destroy')->name('delete_track');
 Route::get('/create_track','Musician\TracksController@create')->name('create_track');
 Route::post('/upload_track','Musician\TracksController@store')->name('upload_track');
@@ -98,6 +100,7 @@ Route::post('/upload_video','Musician\AlbumsController@upload_video')->name('upl
 Route::get('/setting','Musician\MusicianController@setting')->name('musician_setting');
 Route::get('/edit_account/{id}','Musician\MusicianController@edit_account')->name('edit_account');
 Route::post('/update_account/{id}','Musician\MusicianController@update_account')->name('update_account');
+Route::post('/update_password/{id}','Musician\MusicianController@update_password')->name('update_password');
 Route::get('/edit_links/{id}','Musician\MusicianController@edit_links')->name('edit_links');
 Route::post('/update_links/{id}','Musician\MusicianController@update_links')->name('update_links');
 
@@ -112,7 +115,3 @@ Auth::routes();
 Route::get('home1', 'HomeController@user_dashboard')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
-
-

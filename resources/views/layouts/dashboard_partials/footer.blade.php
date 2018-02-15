@@ -125,6 +125,10 @@
                $(this).siblings('.dropdown-content').toggle();
              });
 
+            $('.dashboard_album').mouseleave(function(){
+            $('.dropdownmenu .dropdown-content').hide();
+          });
+
           // album/track multi select videos by sheheryar
            $(document).ready(function() {
                      $('#example-getting-started').multiselect();

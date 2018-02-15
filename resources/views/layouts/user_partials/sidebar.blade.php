@@ -18,7 +18,9 @@
 			</form>
 		</div>
 		</div>
-	
+	<h3 class="name_person">
+		{{$users->name}}
+	</h3>
 	<div class="row">
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">

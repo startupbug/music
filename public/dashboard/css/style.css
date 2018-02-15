@@ -83,13 +83,14 @@
     background-color: #212121;
     position: sticky;
     top: 0;
-    height: calc(100vh + 200px);
+    height: calc(100vh + 10%);
     position: -webkit-sticky;
-
 }
 .dashboard_name img.img-responsive {
     text-align: center;
     margin: 0 auto;
+    height: 100%;
+    width: 100%;
 }
 h3.hover_heading {
     font-size: 16px;
@@ -185,7 +186,7 @@ p.side_para {
     border: 1px solid #cf1828;
     background-color: #cf1828;
     margin-top: 6px;
-    padding-bottom: 18px;
+    margin-bottom: 20px;
 }
 span.glyphicon.glyphicon-play {
     position: absolute;
@@ -206,8 +207,8 @@ p.feature {
     font-size: 43px;
     color: white;
     text-align: center;
-    line-height: 10px;
-    font-family: 'Conv_bebas'
+    line-height: 43px;
+    font-family: 'Conv_bebas';
 }
 
 .dashboard_name {
@@ -1258,7 +1259,39 @@ button.btn-custom span {
     }
 
    /* End Side bar Image By Sheheryar*/
-   
+
+    /*New Css Transparent Modal Edit icons */
+      .middle i {
+       color: #fff;
+     }
+     .dashboard_album .dropdown-content {
+       padding: 5px 5px 3px 5px;
+       background-color: #fffdfda8;
+     }
+
+     /*Dropdown For Categories On Tracks Sheheryar*/
+      .form-control{
+           color: #fff;
+           font-size: 16px;
+         }
+         .form-control:focus {
+           background-color: #747473;
+           border: 1px solid #747473;
+        }
+    /*Dropdown For Categories On Tracks By Sheheryar*/
+
+
+    /*promoter datatables for invitations*/
+    #example_filter input.form-control.input-sm{
+          color: black;
+          background: #fff;
+        }
+        .dataTables_length select.form-control.input-sm{
+          background: #fff;
+          color: black;
+
+        }
+   /*promoter datatables for invitations*/
 /* tablet */
 @media only screen and (max-device-width : 1024px) and (min-device-width : 768px) {
 

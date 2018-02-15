@@ -9,6 +9,7 @@ use App\User;
 use App\Role;
 use Validator;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Hash;
 class RegisteredController extends Controller
 {
     public function index()
@@ -95,6 +96,30 @@ class RegisteredController extends Controller
         $filename = md5($file->getClientOriginalName() . time()) . '.' . $file->getClientOriginalExtension();
         $file->move( $path , $filename);
         return $filename;
+    }
+
+
+    public function user_update_password(Request $request)
+    {
+        if (Hash::check($request->old_password, Auth::user()->password)) {
+            if($request->password === $request->password_confirmation){
+                $user = User::where('id', Auth::user()->id)->update([
+                    'password' => bcrypt($request->password)
+                ]);
+                if($user){
+                   return redirect()->route('user_setting'); 
+                }
+                else{
+                    return \Response()->json(['error' => "Profile update failed", 'code' => 202]);
+                }
+            }
+            else{
+                return \Response()->json(['error' => 'Password does not match with confirmation password', 'code' => 202]);
+            }
+        }
+        else{
+            return \Response()->json(['error' => 'Old password is incorrect, please enter valid password', 'code' => 401]);
+        }
     }
 
 

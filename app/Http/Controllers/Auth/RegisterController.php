@@ -6,7 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use Hash;
 class RegisterController extends Controller
 {
     /*
@@ -72,10 +72,11 @@ class RegisterController extends Controller
                 'password' => bcrypt($data['password']),
                 'role_id' => $data['role_id'],
                 ]);   
+
                 
                 //Updating unique id of User
                 $update_uniqueid = User::find($user->id);
-                $update_uniqueid->unique_id = $user->id;
+                $update_uniqueid->promoter_affiliated_id = $user->id.Hash::make(str_random(5));
                 $update_uniqueid->save();
 
                 return $user;

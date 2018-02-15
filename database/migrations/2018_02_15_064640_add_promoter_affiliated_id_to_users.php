@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVideosTable extends Migration
+class AddPromoterAffiliatedIdToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateVideosTable extends Migration
      */
     public function up()
     {
-        Schema::create('videos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('video');
-            $table->timestamps();
+         Schema::table('users', function($table) {
+            $table->string('promoter_affiliated_id')->unique();
         });
     }
 
@@ -28,6 +25,9 @@ class CreateVideosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('videos');
+        
+         Schema::table('users', function($table) {
+            $table->dropColumn('promoter_affiliated_id');
+         });
     }
 }

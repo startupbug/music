@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAccountUniqueidToUsers extends Migration
+class DropUniqueIdFromUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,8 @@ class AddAccountUniqueidToUsers extends Migration
     public function up()
     {
          Schema::table('users', function($table) {
-            $table->integer('account');
-            $table->integer('unique_id')->unsigned()->unique();
-        });
+             $table->dropColumn('unique_id');
+          });
     }
 
     /**
@@ -26,9 +25,8 @@ class AddAccountUniqueidToUsers extends Migration
      */
     public function down()
     {
-          Schema::table('users', function($table) {
-            $table->dropColumn('account');
-            $table->dropColumn('unique_id');
-         });
-        }
+        Schema::table('users', function($table) {
+             $table->integer('unique_id');
+          });
+    }
 }

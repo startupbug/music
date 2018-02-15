@@ -59,15 +59,15 @@
             {{csrf_field()}}
             <div class='fields'>
               <label for='password'>Old Password</label>
-               <input id='password' name='oldpassword' type='password' value="" class="form-control" data-errormessage-value-missing="Name of entity is required!" required autofocus>
+               <input id='password' name='old_password' type='password' value="" class="form-control" data-errormessage-value-missing="Name of entity is required!" required autofocus>
             </div>
             <div class='fields'>
               <label for='password'>New Password</label>
-               <input id='password' name='newpassword' type='password' value="" class="form-control" data-errormessage-value-missing="Name of entity is required!" required autofocus>
+               <input id='password' name='password' type='password' value="" class="form-control" data-errormessage-value-missing="Name of entity is required!" required autofocus>
             </div>
             <div class='fields'>
               <label for='password'>Confirm Password</label>
-               <input id='password' name='confirmpassword' type='password' value="" class="form-control" data-errormessage-value-missing="Name of entity is required!" required autofocus>
+               <input id='password' name='password_confirmation' type='password' value="" class="form-control" data-errormessage-value-missing="Name of entity is required!" required autofocus>
             </div>   
              <div class="field-button">
              <button type="submit" name="password-button" class="btn btn-default" style="width:100%">Update</button>

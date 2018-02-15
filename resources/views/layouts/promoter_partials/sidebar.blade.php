@@ -1,7 +1,36 @@
+<?php
+use App\User;
+$users = User::select('name','image')->where('id',Auth::user()->id)->first();
+?>
 <div class="col-md-3 color_bg">
-	<div class="dashboard_name"><img src="{{asset('/assets/images/name.png')}}" class="img-responsive"></div>
+	<div class="dashboard_name">
+		<!-- <form action="{{ route('musicianImageUpload') }}" enctype="multipart/form-data" method="POST">
+			<div class="alert alert-danger print-error-msg" style="display:none">
+			<ul></ul>
+			</div>
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			<div class="form-group">
+
+			<img src="{{asset('/dashboard/musician_image/'. $users->image )}}" class="img-responsive">
+			<input type="file" name="image" class="form-control">
+			</div>
+			<div class="form-group">
+			<button class="btn btn-success upload-image" type="submit">Upload Image</button>
+			</div>
+		</form> -->
+		<div class="image-box" style="height: 198px;">
+			<img src="{{asset('/dashboard/promoter_images/'. $users->image )}}" class="img-responsive">
+			<form action="{{route('promoterImageUpload')}}" method="post" enctype="multipart/form-data" id="change_profile">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<div class="camera_image">
+					<i class="fa fa-camera fa-2x" aria-hidden="true"></i>
+					<input type="file" name="image" id="change_profile">
+				</div>
+			</form>
+		</div>
+	</div>
 	<h3 class="name_person">
-		KING_LAMAR
+		{{$users->name}}
 	</h3>
 	<div class="row">
 		<div class="col-md-6 col-sm-6 col-xs-12">
@@ -30,9 +59,11 @@
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
 				<div class="side_img"><img src="{{asset('/assets/images/side_three.png')}}" class="img-responsive"></div>
-				<p class="side_paragraph">
-					MY ALBUMS
-				</p>
+				<a href="">
+					<p class="side_paragraph">
+						INVITATIONS
+					</p>
+				</a>
 			</div>
 		</div>
 		<div class="col-md-6 col-sm-6 col-xs-12">

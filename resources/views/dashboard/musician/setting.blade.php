@@ -41,7 +41,7 @@
         </div>
         <div class='field'>
           <label for='password'>Password</label>
-          <input id='password' name='password' type='password' value="{{$musician->password}}" readonly>
+          <input id='password' name='password' type='password' value="*********" readonly>
         </div>
         <div class='field'>
           <label for='username'>Username</label>
