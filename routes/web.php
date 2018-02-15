@@ -44,6 +44,7 @@ Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'PrmoterContr
     Route::post('/update_links/{id}','PrmoterController@update_links')->name('promoter_update_links');
     Route::post('/update_password/{id}','PrmoterController@promoter_update_password')->name('promoter_update_password');
     Route::get('/tracks_assign','PrmoterController@promoter_track_assign')->name('promoter_track_assign');
+    Route::get('/unapproved_invitations','PrmoterController@unapproved_invitations')->name('unapproved_invitations');
     Route::get('/approve_status/{id}/', ["as" => "approve-status", "uses" => "PrmoterController@approve_status"]);
     Route::get('/disapprove_status/{id}/', ["as" => "disapprove-status", "uses" => "PrmoterController@disapprove_status"]);
     Route::get('/promoter_logout', 'PrmoterController@promoter_logout')->name('logout_promoter');

@@ -59,7 +59,7 @@ $users = User::select('name','image')->where('id',Auth::user()->id)->first();
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
 				<div class="side_img"><img src="{{asset('/assets/images/side_three.png')}}" class="img-responsive"></div>
-				<a href="">
+				<a href="{{route('promoter_track_assign')}}">
 					<p class="side_paragraph">
 						INVITATIONS
 					</p>

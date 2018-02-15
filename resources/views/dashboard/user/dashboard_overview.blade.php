@@ -29,9 +29,7 @@
         
         <div class="col-md-3 col-sm-6 col-xs-12">
          <div class="dashboard_album"><img src="{{asset('/dashboard/musician/tracks/images/'.$track->image)}}" class="img-responsive">
-         <video width="100%" controls>
-              <source src="{{asset('/dashboard/musician/tracks/videos/'.$track->video)}}" type="video/mp4">              
-            </video>
+  
         </div>
          <h3 class="album_person_name">
              {{$track->name}}
