@@ -2,6 +2,15 @@
 @section('content')
 <div class="col-md-9">
   <h3 class="heading_dashboard">
+    @if (Session::has('status'))
+    <div class="alert alert-info">{{ Session::get('status') }}</div>
+    @endif
+    @if (Session::has('password_status'))
+    <div class="alert alert-info">{{ Session::get('password_status') }}</div>
+    @endif
+     @if (Session::has('link_status'))
+    <div class="alert alert-info">{{ Session::get('link_status') }}</div>
+    @endif
   ARTIST DASHBOARD
   </h3>
     <div class="border_red">
@@ -70,17 +79,18 @@
       <form>
         <div class='field'>
           <label for='name'>Facebook</label>
-          <input id='facebook' name='facebook' type='text' value='{{$musician->facebook}}'>
+          <input id='facebook' name='facebook' type='text' value='{{$musician->facebook}}' readonly>
         </div>
         <div class='field'>
           <label for='email'>Twitter</label>
-          <input id='twitter' name='twitter' type='text' value='{{$musician->twitter}}'>
+          <input id='twitter' name='twitter' type='text' value='{{$musician->twitter}}' readonly>
         </div>
         <div class='field'>
           <label for='email'>Instagram</label>
-          <input id='instagram' name='instagram' type='text' value='{{$musician->instagram}}'>
+          <input id='instagram' name='instagram' type='text' value='{{$musician->instagram}}' readonly>
         </div>
       </form>
     </div>
 </div>
+
 @endsection

@@ -10,6 +10,7 @@ use App\User;
 use App\Category;
 use App\Invitation;
 use Auth;
+use Session;
 
 class TracksController extends Controller
 {
@@ -69,7 +70,8 @@ class TracksController extends Controller
           $p->image=$filename;         
         }
         $p->image = $this->UploadFiles('image', Input::file('image'));        
-        $p->save();         
+        $p->save();      
+        Session::flash('upload_track','new track upload');   
         return redirect()->route('musician_track');    
     }
 

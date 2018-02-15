@@ -73,8 +73,18 @@
              <button type="submit" name="password-button" class="btn btn-default" style="width:100%">Update</button>
            </div>       
           </form>
-
       </div>
+        @if(count($errors))
+        <div class="form-group">
+         <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $erroring)
+                  <li>{{$erroring}}  </li>
+                  @endforeach
+            </ul>
+          </div>
+        </div>
+        @endif
     </div>
   </div>
 </div>

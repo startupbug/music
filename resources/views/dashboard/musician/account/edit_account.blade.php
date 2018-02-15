@@ -46,11 +46,9 @@
             </div>
             <div class="field-button">
              <button type="submit" name="button" class="btn btn-default" style="width:100%">Update</button>
-           </div>          
+           </div>        
           </form>
         </div>
-
-
         <hr class="line">
         <div class='form'>          
           <form action="{{route('update_password',['id'=>$musician->id])}}" method="POST">
@@ -69,6 +67,17 @@
             </div>                        
             <div class="field-button">
              <button type="submit" name="button" class="btn btn-default" style="width:100%">Update</button>
+             @if(count($errors))
+        <div class="form-group">
+         <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $erroring)
+                  <li>{{$erroring}}  </li>
+                  @endforeach
+            </ul>
+          </div>
+        </div>
+        @endif
            </div>          
           </form>
         </div>

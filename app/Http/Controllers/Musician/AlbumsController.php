@@ -10,6 +10,7 @@ use App\Category;
 use App\Track;
 use App\User;
 use Auth;
+use Session;
 
 class AlbumsController extends Controller
 {
@@ -75,7 +76,8 @@ class AlbumsController extends Controller
         $p->video=$filename;         
       }  
       $p->video = $this->UploadVideo('video', Input::file('video'));
-      $p->save();         
+      $p->save();      
+     
       return redirect()->route('musician_album');       
     }
 
@@ -118,7 +120,8 @@ class AlbumsController extends Controller
         $p->image=$filename;         
       }
       $p->image = $this->UploadFiles('image', Input::file('image'));        
-      $p->save();         
+      $p->save();   
+         Session::flash('upload_album','new album upload');        
       return redirect()->route('musician_album');       
     }
 

@@ -33,10 +33,6 @@
               <input id='email' name='email' value="{{$user->email}}" type='email' class="form-control">
             </div>
             <div class='fields'>
-              <label for='password'>Password</label>
-               <input id='password' name='password' type='password' value="{{$user->password}}" class="form-control">
-            </div>
-            <div class='fields'>
               <label for='username'>Username</label>
               <input id='username' name='username' type='text' value="{{$user->username}}" class="form-control">
             </div>
@@ -77,9 +73,18 @@
              <button type="submit" name="password-button" class="btn btn-default" style="width:100%">Update</button>
            </div>       
           </form>
-
       </div>
-
+        @if(count($errors))
+        <div class="form-group">
+         <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $erroring)
+                  <li>{{$erroring}}  </li>
+                  @endforeach
+            </ul>
+          </div>
+        </div>
+        @endif
       </div>
     </div>
   </div>

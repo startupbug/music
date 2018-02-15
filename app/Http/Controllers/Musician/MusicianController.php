@@ -8,6 +8,7 @@ use App\Track;
 use App\Album;
 use Auth;
 use Hash;
+use Session;
 use Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -76,6 +77,14 @@ class MusicianController extends Controller
 
     public function update_account(Request $request,$id)
     {
+
+        $this->validate(request(),[
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'username' => 'required'
+        ]);
+
         $u = User::find($id);
         $u->name = Input::get('name');
         $u->phone = Input::get('phone');
@@ -83,16 +92,24 @@ class MusicianController extends Controller
         // $u->password = Input::get('password');
         $u->username = Input::get('username');
         $u->save();
+        Session::flash('status','you information is update');
         return redirect()->route('musician_setting');            
     }
     public function update_password(Request $request,$id)
     {
+        $this->validate(request(),[
+            'old_password' => 'required',
+            'password' => 'required',
+            'password_confirmation' => 'required',
+        ]);
+
         if (Hash::check($request->old_password, Auth::user()->password)) {
             if($request->password === $request->password_confirmation){
                 $user = User::where('id', Auth::user()->id)->update([
                     'password' => bcrypt($request->password)
                 ]);
                 if($user){
+                    Session::flash('password_status','you password is update');
                    return redirect()->route('musician_setting'); 
                 }
                 else{
@@ -106,6 +123,7 @@ class MusicianController extends Controller
         else{
             return \Response()->json(['error' => 'Old password is incorrect, please enter valid password', 'code' => 401]);
         }
+
                    
     }
      public function edit_links($id)
@@ -116,12 +134,19 @@ class MusicianController extends Controller
     
     public function update_links(Request $request,$id)
     {
+        $this->validate(request(),[
+            'facebook' => 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
+            'instagram'=> 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
+            'twitter' => 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
+        ]);
+
         $u = User::find($id);
         $u->facebook = Input::get('facebook');
         $u->instagram = Input::get('instagram');
         $u->twitter = Input::get('twitter');
         $u->save();
-        return redirect()->route('main_index');            
+        Session::flash('link_status','you link is update');
+        return redirect()->route('musician_setting');            
     }
 
     public function setting()
