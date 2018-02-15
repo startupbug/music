@@ -51,6 +51,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'role_id' => 'required|string|',
         ]);
     }
 
@@ -62,10 +63,35 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        if($data['role_id'] ==3 )
+        {
+
+             $user =  User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+                'role_id' => $data['role_id'],
+                ]);   
+                
+                //Updating unique id of User
+                $update_uniqueid = User::find($user->id);
+                $update_uniqueid->unique_id = $user->id;
+                $update_uniqueid->save();
+
+                return $user;
+        }
+        else
+        {
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+                'role_id' => $data['role_id'],
+                ]);  
+        }
+        
+
     }
+
+
 }

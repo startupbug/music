@@ -6,6 +6,7 @@ use App\Role;
 use App\User;
 use Auth;
 use Validator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 class MusicianController extends Controller

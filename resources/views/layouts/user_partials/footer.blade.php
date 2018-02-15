@@ -15,4 +15,5 @@
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <!-- Bootstrap -->
         <script src="{{asset('/dashboard/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('/dashboard/js/custom.js')}}"></script>
         <!-- Custom-js -->

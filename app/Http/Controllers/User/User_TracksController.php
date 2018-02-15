@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class TracksController extends Controller
+class User_TracksController extends Controller
 {
     public function index()
     {

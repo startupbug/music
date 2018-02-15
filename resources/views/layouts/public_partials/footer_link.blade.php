@@ -18,3 +18,6 @@
 <script src="{{asset('assets/js/custom1.js')}}"></script>
 <!-- Custom-js -->
 <script src="{{asset('assets/js/custom.js')}}"></script>
+<script src="{{asset('assets/js/mycustom.js')}}"></script>
+
+

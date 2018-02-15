@@ -57,6 +57,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {
    Route::get('/edit_links/{id}','RegisteredController@edit_links')->name('user_edit_links');
    Route::post('/update_links/{id}','RegisteredController@update_links')->name('user_update_links');
    Route::get('album_videos/{id}','RegisteredController@album_videos')->name('user_album_videos');
+   Route::post('userajaxImageUpload',['as'=>'userImageUpload','uses'=>'RegisteredController@user_images']);
    Route::get('/user_logout', 'RegisteredController@user_logout')->name('logout_user');
 });
 

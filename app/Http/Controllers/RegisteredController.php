@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Role;
+use Validator;
 use Illuminate\Support\Facades\Input;
 class RegisteredController extends Controller
 {
@@ -66,8 +67,40 @@ class RegisteredController extends Controller
         return redirect()->route('main_index');            
     }
 
+    public function user_images(Request $request)
+    {
+     
+         $img_name = '';
+        if(Input::file('image')){
+                $img_name = $this->UploadImage('image', Input::file('image'));
+
+                
+               User::where('id' ,'=', Auth::user()->id)->update([
+                'image' => $img_name
+            ]);  
+        $path = asset('/dashboard/user_images').'/'.$img_name; 
+
+        return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]); 
+        }else{
+             return \Response()->json(['error' => "Image uploading failed", 'code' => 202]);
+        }
+
+
+    }
+
+    public function UploadImage($type, $file){
+        if( $type == 'image'){
+        $path = base_path() . '/public/dashboard/user_images/';
+        }
+        $filename = md5($file->getClientOriginalName() . time()) . '.' . $file->getClientOriginalExtension();
+        $file->move( $path , $filename);
+        return $filename;
+    }
+
+
      public function user_logout(Request $request) {     
       Auth::logout();
       return redirect('/');
     }
-}
+          }
+
