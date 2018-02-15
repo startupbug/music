@@ -40,7 +40,7 @@
       <div class='field'>
         <label for='password'>Password</label>
         <!--<input id='password' name='password' type='password' value=''>-->
-           <input id='password' name='password' type='password' value="********">
+           <input id='password' name='password' type='password' value="********" readonly>
       </div>
       <div class='field'>
         <label for='username'>Username</label>
@@ -69,15 +69,15 @@
     <form>
       <div class='field'>
         <label for='name'>Facebook</label>
-        <input id='name' name='name' type='text' value='fb.com/king_lamar'>
+        <input id='name' name='name' type='text' value='fb.com/king_lamar' readonly>
       </div>
       <div class='field'>
         <label for='email'>Twitter</label>
-        <input id='email' name='phone' type='phone' value='twitter.com/KingLamar'>
+        <input id='email' name='phone' type='phone' value='twitter.com/KingLamar' readonly>
       </div>
       <div class='field'>
         <label for='email'>Instagram</label>
-        <input id='email' name='email' type='email' value='@King_Lamar'>
+        <input id='email' name='email' type='email' value='@King_Lamar' readonly>
       </div>
       </form>
   </div>

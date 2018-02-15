@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\Track;
 use App\Role;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
@@ -40,12 +41,28 @@ class PrmoterController extends Controller
 
     public function dashboard_overview()
     {
-    	return view('dashboard.promoter.dashboard_overview');
+        $args['all_tracks'] = Track::leftJoin('invitations','invitations.track_id','=','tracks.id')
+                                    ->where('invitations.promoter_id',Auth::user()->id)
+                                    ->where('invitations.status',1)
+                                    ->take(4)
+                                    ->get();  
+        $args['invitations'] = DB::table('invitations')
+                                ->leftJoin('users','users.id','=','invitations.musician_id')
+                                ->leftJoin('tracks','tracks.id','=','invitations.track_id')
+                                ->select('invitations.id','users.name as musician_name','tracks.name as track_name','invitations.status','tracks.image')
+                                ->where('invitations.promoter_id','=',Auth::user()->id)
+                                ->where('invitations.status','=',0)
+                                ->get();      
+    	return view('dashboard.promoter.dashboard_overview')->with($args);
     }
 
     public function musicvoting_tracks()
     {
-    	return view('dashboard.promoter.musicvoting_tracks');
+        $args['all_tracks'] = Track::leftJoin('invitations','invitations.track_id','=','tracks.id')
+                                    ->where('invitations.promoter_id',Auth::user()->id)
+                                    ->where('invitations.status',1)                                   
+                                    ->get();  
+    	return view('dashboard.promoter.musicvoting_tracks')->with($args);
     }
 
     public function redeempoint()
@@ -126,6 +143,17 @@ class PrmoterController extends Controller
                                 ->where('invitations.promoter_id','=',Auth::user()->id)
                                 ->get();
         return view("dashboard.promoter.tracks_assign.tracks_assign",['promoter_tracks' => $promoter_tracks]);
+    }
+      public function unapproved_invitations()
+    {
+        $unapproved_invitations = DB::table('invitations')
+                                ->leftJoin('users','users.id','=','invitations.musician_id')
+                                ->leftJoin('tracks','tracks.id','=','invitations.track_id')
+                                ->select('invitations.id','users.name as musician_name','tracks.name as track_name','invitations.status')
+                                ->where('invitations.promoter_id','=',Auth::user()->id)
+                                ->where('invitations.status',0)
+                                ->get();
+        return view("dashboard.promoter.tracks_assign.invitations",['unapproved_invitations' => $unapproved_invitations]);
     }
     public function disapprove_status($id)
     {
