@@ -1,6 +1,9 @@
 @extends('layouts.dashboard_index')
 @section('content')
 <div class="col-md-9">
+	@if (Session::has('upload_album'))
+    	<div class="alert alert-info">{{ Session::get('upload_album') }}</div>
+    @endif
 <h3 class="heading_dashboard">
 	ARTIST DASHBOARD
 </h3>

@@ -10,6 +10,7 @@ use App\User;
 use App\Category;
 use App\Invitation;
 use Auth;
+use Session;
 
 class TracksController extends Controller
 {
@@ -68,8 +69,10 @@ class TracksController extends Controller
           $location=public_path('dashboard/musician/tracks/videos/'.$filename);
           $p->image=$filename;         
         }
-        $p->image = $this->UploadFiles('image', Input::file('image'));        
-        $p->save();        
+        $p->image = $this->UploadFiles('image', Input::file('image'));   
+        $p->save();      
+        Session::flash('upload_track','new track upload');   
+
         return redirect()->route('musician_track');    
     }
 
@@ -78,7 +81,6 @@ class TracksController extends Controller
         $promoter_email =  Input::get('promoter_email');
         $track_id =  Input::get('track_id');
         $promoter_id = User::where('email',$promoter_email)->select('id')->first();
-
         $i = new Invitation;
         $i->musician_id = $musician_id;
         $i->promoter_id = $promoter_id['id'];

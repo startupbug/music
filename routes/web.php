@@ -58,6 +58,9 @@ Route::post('userImageUpload',['as'=>'userImageUpload','uses'=>'RegisteredContro
    Route::get('/edit_links/{id}','RegisteredController@edit_links')->name('user_edit_links');
    Route::post('/update_links/{id}','RegisteredController@update_links')->name('user_update_links');
    Route::get('album_videos/{id}','RegisteredController@album_videos')->name('user_album_videos');
+   Route::post('userajaxImageUpload',['as'=>'userImageUpload','uses'=>'RegisteredController@user_images']);
+   Route::post('/update_password/{id}','RegisteredController@user_update_password')->name('user_update_password');
+
    Route::get('/user_logout', 'RegisteredController@user_logout')->name('logout_user');
 });
 

@@ -19,7 +19,7 @@
         </div>
         <hr class="line">
         <div class='form'>
-         <form action="{{route('update_links',['id'=>$promoter->id])}}" method="POST">
+         <form action="{{route('promoter_update_links',['id'=>$promoter->id])}}" method="POST">
           {{csrf_field()}}
             <div class='fields'>
               <label for='name'>Facebook</label>
@@ -38,9 +38,18 @@
            </div>    
           </form>
         </div>
-
+          @if(count($errors))
+        <div class="form-group">
+         <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $erroring)
+                  <li>{{$erroring}}  </li>
+                  @endforeach
+            </ul>
+          </div>
+        </div>
+        @endif
       </div>
-
     </div>
   </div>
 </div>

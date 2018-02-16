@@ -21,26 +21,43 @@ class HomeController extends Controller
      */
    public function index()
     {
-        return view('index');
-    }
 
-
-   
-    
-    public function user_dashboard(){
-
-        if(Auth::user()->role_id == 2){
+        if(Auth::user()->role_id === 2){
             return redirect()->route('main_index');
         }
-        elseif(Auth::user()->role_id == 3){
+        elseif(Auth::user()->role_id === 3){
             return redirect()->route('promoterindex');
         }
-         elseif(Auth::user()->role_id == 4){
+         elseif(Auth::user()->role_id === 4){
+            return redirect()->route('user_index');
+        }
+        else{
+            return view('index');
+        }
+        
+        }
+
+    public function user_dashboard(){
+
+        if(Auth::user()->role_id === 2){
+            return redirect()->route('main_index');
+        }
+        elseif(Auth::user()->role_id === 3){
+            return redirect()->route('promoterindex');
+        }
+         elseif(Auth::user()->role_id === 4){
             return redirect()->route('userindex');
         }
         else{
             return redirect()->route('/');
         }
+    }
+
+    /*Testing Routes */
+    public function logoutz(){
+        $check = Auth::logout();
+        //dd($check);
+        return redirect()->route('logout_promoter');
     }
 
 }

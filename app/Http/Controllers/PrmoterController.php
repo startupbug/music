@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Hash;
 class PrmoterController extends Controller
 {
     public function index()
-    {//dd(Auth::user());       
+    {
     	return view('dashboard.promoter.index');
     }
      public function promoter_image(Request $request)
@@ -86,6 +86,13 @@ class PrmoterController extends Controller
 
      public function update_account(Request $request,$id)
     {
+          $this->validate(request(),[
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'username' => 'required'
+        ]);
+
         $u = User::find($id);
         $u->name = Input::get('name');
         $u->phone = Input::get('phone');
@@ -103,6 +110,13 @@ class PrmoterController extends Controller
 
     public function update_links(Request $request,$id)
     {
+        $this->validate(request(),[
+            'facebook' => 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
+            'instagram'=> 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
+            'twitter' => 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
+        ]);
+
+
         $u = User::find($id);
         $u->facebook = Input::get('facebook');
         $u->instagram = Input::get('instagram');
@@ -113,13 +127,20 @@ class PrmoterController extends Controller
 
     public function promoter_update_password(Request $request)
     {
+        $this->validate(request(),[
+            'old_password' => 'required',
+            'password' => 'required',
+            'password_confirmation' => 'required',
+        ]);
+
+
         if (Hash::check($request->old_password, Auth::user()->password)) {
             if($request->password === $request->password_confirmation){
                 $user = User::where('id', Auth::user()->id)->update([
                     'password' => bcrypt($request->password)
                 ]);
                 if($user){
-                   return redirect()->route('musician_setting'); 
+                   return redirect()->route('promotersetting'); 
                 }
                 else{
                     return \Response()->json(['error' => "Profile update failed", 'code' => 202]);

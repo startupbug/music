@@ -37,6 +37,10 @@ $(function() {
             success: function(response){
                 if(response.code === 200){
                     $('.image-box > img').attr('src', response.img);
+                    // alert(response.img);
+                }
+                if(response.code === 202){
+                    // alert(response.error);
                     //alert(response.img);
                 }
                 if(response.code === 202){

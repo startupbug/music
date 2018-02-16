@@ -55,6 +55,24 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('role_id') ? ' has-error' : '' }}">
+                            <label for="role_id" class="col-md-4 control-label">Account</label>
+
+                            <div class="col-md-6">
+                                <input id="role_id" type="radio" class="form-control validate[required]" name="role_id" value="2">Musician
+
+                                <input id="role_id" type="radio" class="form-control validate[required]" name="role_id" value="3">Promoter
+
+                                <input id="role_id" type="radio" class="form-control validate[required]" name="role_id" value="4">User
+
+                                @if ($errors->has('role_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('role_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
