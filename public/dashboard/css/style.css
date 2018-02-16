@@ -71,7 +71,7 @@
     font-weight: 400;
     margin-top: 45px;
 }
-.color_bg {
+.col-md-* .color_bg {
     background-color: #212121;
     position: sticky;
     top: 0;

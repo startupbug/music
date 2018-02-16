@@ -1,24 +1,46 @@
 <?php
-
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use App\User;
 use App\Role;
-use Illuminate\Support\Facades\Input;
+use Auth;
+
 class RegisteredController extends Controller
 {
     public function index()
     {
       $tracks = DB::table('tracks')->get();
-      $albums = DB::table('albums')->get();
-      //getting all tracks from database 
+      $albums = DB::table('albums')->get();   
       return view('dashboard.user.dashboard_overview',['tracks' => $tracks, 'albums' => $albums]);
     }
 
-    public function album_videos()
+    public function user_image(Request $request)
+    {     
+        $img_name = '';
+        if(Input::file('image')){
+                $img_name = $this->UploadImage('image', Input::file('image'));
+               User::where('id' ,'=', Auth::user()->id)->update([
+                'image' => $img_name
+            ]); 
+        $path = asset('/dashboard/user_images').'/'.$img_name;  
+        return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]); 
+        }else{
+             return \Response()->json(['error' => "Image uploading failed", 'code' => 202]);
+        }
+    }
+
+    public function UploadImage($type, $file){
+        if( $type == 'image'){
+        $path = base_path() . '/public/dashboard/user_images/';
+        }
+        $filename = md5($file->getClientOriginalName() . time()) . '.' . $file->getClientOriginalExtension();
+        $file->move( $path , $filename);
+        return $filename;
+    }
+
+     public function album_videos()
     {
       $albums = DB::table('albums')->get()->first();
       return view('dashboard.user.album_videos',['album' => $albums]);
@@ -27,14 +49,13 @@ class RegisteredController extends Controller
     public function setting()
     {
     	 $users = DB::table('users')->where('id', Auth::user()->id)->first();
-
-        return view('dashboard.user.setting',['user' => $users]);
+       return view('dashboard.user.setting',['user' => $users]);
     }
-
+  
     public function edit($id)
     {
-         $args['user'] = User::find($id);
-            $args['roles'] = Role::select('roles.name')->where('roles.id','=',$args['user']['role_id'])->first();      
+        $args['user'] = User::find($id);
+        $args['roles'] = Role::select('roles.name')->where('roles.id','=',$args['user']['role_id'])->first();      
       return view('dashboard.user.account.edit_account')->with($args);
     }
 
@@ -63,10 +84,10 @@ class RegisteredController extends Controller
         $u->instagram = Input::get('instagram');
         $u->twitter = Input::get('twitter');
         $u->save();
-        return redirect()->route('main_index');            
+        return redirect()->route('user_setting');            
     }
 
-     public function user_logout(Request $request) {     
+    public function user_logout(Request $request) {     
       Auth::logout();
       return redirect('/');
     }

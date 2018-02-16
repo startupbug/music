@@ -27,39 +27,30 @@
     <form>
       <div class='field'>
         <label for='name'>Full name</label>
-        <input id='name' name='name' type='text' value='{{($user->name)}}'>
+        <input id='name' name='name' type='text' value='{{($user->name)}}' readonly>
       </div>
       <div class='field'>
         <label for='email'>Phone</label>
-        <input id='email' name='phone' type='phone' value='{{($user->phone)}}'>
+        <input id='email' name='phone' type='phone' value='{{($user->phone)}}' readonly> 
       </div>
       <div class='field'>
         <label for='email'>Email</label>
-        <input id='email' name='email' type='email' value='{{($user->email)}}'>
+        <input id='email' name='email' type='email' value='{{($user->email)}}' readonly>
       </div>
       <div class='field'>
         <label for='password'>Password</label>
         <!--<input id='password' name='password' type='password' value=''>-->
-           <input id='password' name='password' type='password'> <span class="stars">
-                            <i class="glyphicon glyphicon-star"></i>
-                            <i class="glyphicon glyphicon-star" ></i>
-                            <i class="glyphicon glyphicon-star" ></i>
-                            <i class="glyphicon glyphicon-star" ></i>
-                            <i class="glyphicon glyphicon-star" ></i>
-                            <i class="glyphicon glyphicon-star" ></i>
-                            <i class="glyphicon glyphicon-star" ></i>
-                            <i class="glyphicon glyphicon-star" ></i>
-                            <i class="glyphicon glyphicon-star" ></i>
+           <input id='password' name='password' type='password' value="*******" readonly> <span class="stars">                          
             </span>  
       </div>
       <div class='field'>
         <label for='username'>Username</label>
-        <input id='username' name='username' type='username' value='{{($user->username)}}'>
+        <input id='username' name='username' type='username' value='{{($user->username)}}' readonly>
       </div>
       @if(Auth::user()->role_id == 4)
        <div class='field'>
         <label for='account'>Account Type</label>
-        <input id='account' name='account' type='account' value='Registered User'>
+        <input id='account' name='account' type='account' value='Registered User' readonly>
       </div>
       @endif
     </form>
@@ -77,22 +68,22 @@
         </div>
     </div>
     <hr class="line">
-    <div class='form'>
-    <form>
-      <div class='field'>
-        <label for='name'>Facebook</label>
-        <input id='name' name='name' type='text' value='fb.com/king_lamar'>
-      </div>
-      <div class='field'>
-        <label for='email'>Twitter</label>
-        <input id='email' name='phone' type='phone' value='twitter.com/KingLamar'>
-      </div>
-      <div class='field'>
-        <label for='email'>Instagram</label>
-        <input id='email' name='email' type='email' value='@King_Lamar'>
-      </div>
+   <div class='form'>
+      <form>
+        <div class='field'>
+          <label for='name'>Facebook</label>
+          <input id='facebook' name='facebook' type='text' value='{{$user->facebook}}' readonly >
+        </div>
+        <div class='field'>
+          <label for='email'>Twitter</label>
+          <input id='twitter' name='twitter' type='text' value='{{$user->twitter}}' readonly> 
+        </div>
+        <div class='field'>
+          <label for='email'>Instagram</label>
+          <input id='instagram' name='instagram' type='text' value='{{$user->instagram}}' readonly>
+        </div>
       </form>
-  </div>
+    </div>
 </div>
 </div>
 </div>

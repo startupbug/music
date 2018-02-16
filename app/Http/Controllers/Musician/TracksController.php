@@ -69,7 +69,7 @@ class TracksController extends Controller
           $p->image=$filename;         
         }
         $p->image = $this->UploadFiles('image', Input::file('image'));        
-        $p->save();         
+        $p->save();        
         return redirect()->route('musician_track');    
     }
 
@@ -168,6 +168,7 @@ class TracksController extends Controller
     public function destroy(Request $request,$id)
     {
         $track_delete = Track::destroy($id);
+
         return redirect()->route('musician_track');
     }
 }

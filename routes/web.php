@@ -49,7 +49,8 @@ Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'PrmoterContr
     Route::get('/disapprove_status/{id}/', ["as" => "disapprove-status", "uses" => "PrmoterController@disapprove_status"]);
     Route::get('/promoter_logout', 'PrmoterController@promoter_logout')->name('logout_promoter');
 });
-Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {     
+Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {   
+Route::post('userImageUpload',['as'=>'userImageUpload','uses'=>'RegisteredController@user_image']);    
    Route::get('/index','RegisteredController@index')->name('user_index');
    Route::get('/setting','RegisteredController@setting')->name('user_setting');
    Route::get('/edit/{id}','RegisteredController@edit')->name('edituser');
