@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
@@ -10,6 +10,7 @@ use App\Role;
 use Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
+use Session;
 class RegisteredController extends Controller
 {
     public function index()
@@ -54,7 +55,8 @@ class RegisteredController extends Controller
         $u->email = Input::get('email');
         $u->username = Input::get('username');
         $u->save();
-        return redirect()->route('user_index');            
+        Session::flash('status','your information is updated');
+        return redirect()->route('user_setting');            
     }
 
     public function edit_links($id)
@@ -77,7 +79,8 @@ class RegisteredController extends Controller
         $u->instagram = Input::get('instagram');
         $u->twitter = Input::get('twitter');
         $u->save();
-        return redirect()->route('main_index');            
+        Session::flash('link_status','your link is update');
+        return redirect()->route('user_setting');            
     }
 
     public function user_images(Request $request)
@@ -91,7 +94,7 @@ class RegisteredController extends Controller
                User::where('id' ,'=', Auth::user()->id)->update([
                 'image' => $img_name
             ]);  
-        $path = asset('/dashboard/user_images').'/'.$img_name; 
+        $path = asset('/dashboard/profile_images').'/'.$img_name; 
 
         return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]); 
         }else{
@@ -103,7 +106,7 @@ class RegisteredController extends Controller
 
     public function UploadImage($type, $file){
         if( $type == 'image'){
-        $path = base_path() . '/public/dashboard/user_images/';
+        $path = base_path() . '/public/dashboard/profile_images/';
         }
         $filename = md5($file->getClientOriginalName() . time()) . '.' . $file->getClientOriginalExtension();
         $file->move( $path , $filename);
@@ -126,7 +129,8 @@ class RegisteredController extends Controller
                     'password' => bcrypt($request->password)
                 ]);
                 if($user){
-                   return redirect()->route('user_setting'); 
+                    Session::flash('password_status','you password is update');
+                    return redirect()->route('user_setting'); 
                 }
                 else{
                     return \Response()->json(['error' => "Profile update failed", 'code' => 202]);

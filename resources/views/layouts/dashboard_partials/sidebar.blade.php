@@ -5,23 +5,17 @@ $users = User::select('name','image')->where('id',Auth::user()->id)->first();
 ?>
 <div class="col-md-3 color_bg">
 	<div class="dashboard_name">
-		<!-- <form action="{{ route('musicianImageUpload') }}" enctype="multipart/form-data" method="POST">
-			<div class="alert alert-danger print-error-msg" style="display:none">
-			<ul></ul>
-			</div>
-			<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			<div class="form-group">
-
-			<img src="{{asset('/dashboard/musician_image/'. $users->image )}}" class="img-responsive">
-			<input type="file" name="image" class="form-control">
-			</div>
-			<div class="form-group">
-			<button class="btn btn-success upload-image" type="submit">Upload Image</button>
-			</div>
-		</form> -->
 		<div class="image-box">
-			<img src="{{asset('/dashboard/musician_image/'. $users->image )}}" class="img-responsive">
-			<form action="{{route('musicianImageUpload')}}" method="post" enctype="multipart/form-data" id="change_profile">
+			@if(Auth::user()->role_id == 2)
+				<img src="{{asset('/dashboard/profile_images/'. $users->image )}}" class="img-responsive">
+				<form action="{{route('musicianImageUpload')}}" method="post" enctype="multipart/form-data" id="change_profile">
+			@elseif(Auth::user()->role_id == 3)
+				<img src="{{asset('/dashboard/profile_images/'. $users->image )}}" class="img-responsive">
+				<form action="{{route('promoterImageUpload')}}" method="post" enctype="multipart/form-data" id="change_profile">
+			@elseif(Auth::user()->role_id == 4)
+				<img src="{{asset('/dashboard/profile_images/'. $users->image )}}" class="img-responsive">
+				<form action="{{route('userImageUpload')}}" method="post" enctype="multipart/form-data" id="change_profile">
+			@endif
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="camera_image">
 					<i class="fa fa-camera fa-2x" aria-hidden="true"></i>
@@ -34,6 +28,7 @@ $users = User::select('name','image')->where('id',Auth::user()->id)->first();
 		{{$users->name}}
 	</h3>
 	<div class="row">
+		@if(Auth::user()->role_id == 2 || Auth::user()->role_id == 3)
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
 				<div class="side_img"><img src="{{asset('/dashboard/images/side_one.png')}}" class="img-responsive"></div>
@@ -45,20 +40,34 @@ $users = User::select('name','image')->where('id',Auth::user()->id)->first();
 				</p>
 			</div>
 		</div>
+		@endif
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
 					<div class="side_img">
 						<img src="{{asset('/dashboard/images/side_two.png')}}" class="img-responsive">
 					</div>
+					@if(Auth::user()->role_id == 2)
 					<a href="{{route('musician_overview')}}">
 						<p class="side_paragraph">
 						OVERVIEW
 						</p>
 					</a>
+					@elseif(Auth::user()->role_id == 3)
+					<a href="{{route('promoterindex')}}">
+						<p class="side_paragraph">
+						OVERVIEW
+						</p>
+					</a>
+					@elseif(Auth::user()->role_id == 4)
+					<a href="{{route('user_index')}}">
+						<p class="side_paragraph">
+						OVERVIEW
+						</p>
+					</a>
+					@endif
 			</div>
 		</div>
-	</div>
-	<div class="row">
+		@if(Auth::user()->role_id == 2)
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
 				<div class="side_img">
@@ -71,52 +80,112 @@ $users = User::select('name','image')->where('id',Auth::user()->id)->first();
 				</a>
 			</div>
 		</div>
+		@endif
+		@if(Auth::user()->role_id == 3)
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
-				<div class="side_img">
-					<img src="{{asset('/dashboard/images/side_four.png')}}" class="img-responsive"></div>
-				<a href="{{route('musician_track')}}">
+				<div class="side_img"><img src="{{asset('/assets/images/side_three.png')}}" class="img-responsive"></div>
+				<a href="{{route('promoter_track_assign')}}">
 					<p class="side_paragraph">
-					MY TRACKS
+						INVITATIONS
 					</p>
 				</a>
 			</div>
 		</div>
-	</div>
-	<div class="row">
+		@endif
+		@if(Auth::user()->role_id == 3 || Auth::user()->role_id == 2)
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div class="side_border">
+					<div class="side_img">
+						<img src="{{asset('/dashboard/images/side_four.png')}}" class="img-responsive">
+					</div>
+					@if(Auth::user()->role_id == 2 )
+						<a href="{{route('musician_track')}}">
+							<p class="side_paragraph">
+							MY TRACKS
+							</p>
+						</a>
+					@elseif(Auth::user()->role_id == 3 )
+						<a href="{{route('promotermusicvoting_tracks')}}">
+							<p class="side_paragraph">
+							MY TRACKS
+							</p>
+						</a>
+					@endif
+				</div>
+			</div>
+		@endif
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
 				<div class="side_img">
 					<img src="{{asset('/dashboard/images/side_five.png')}}" class="img-responsive">
 				</div>
-				<a href="{{route('musician_setting')}}">
-					<p class="side_paragraph">
-					SETTINGS
-					</p>
-				</a>
+				@if(Auth::user()->role_id == 2)
+					<a href="{{route('musician_setting')}}">
+						<p class="side_paragraph">
+						SETTINGS
+						</p>
+					</a>
+				@elseif(Auth::user()->role_id == 3)
+					<a href="{{route('promotersetting')}}">
+						<p class="side_paragraph">
+						SETTINGS
+						</p>
+					</a>
+				 @elseif(Auth::user()->role_id == 4)
+					<a href="{{route('user_setting')}}">
+						<p class="side_paragraph">
+						SETTINGS
+						</p>
+					</a>
+				@endif
 			</div>
 		</div>
+		@if(Auth::user()->role_id == 3 || Auth::user()->role_id == 2)
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
 				<div class="side_img">
 					<img src="{{asset('dashboard/images/side_six.png')}}" class="img-responsive">
 				</div>
+				@if(Auth::user()->role_id == 2)
 				<a href="{{route('musician_redeem')}}">
 					<p class="side_paragraph">
 						REDEEMPOINTS
 					</p>
 				</a>
+				@elseif(Auth::user()->role_id == 3)
+				<a href="{{route('promoterredeempoint')}}">
+					<p class="side_paragraph">
+						REDEEMPOINTS
+					</p>
+				</a>
+				@endif
 			</div>
 		</div>
+		@endif
 	</div>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="last_border">
-				<a href="{{route('logout_musician')}}">
-				<p class="side_para">
-					LOGOUT
-				</p>
-				</a>
+				@if(Auth::user()->role_id == 2)
+					<a href="{{route('logout_musician')}}">
+					<p class="side_para">
+						LOGOUT
+					</p>
+					</a>
+				@elseif(Auth::user()->role_id == 3)
+					<a href="{{route('logout_promoter')}}">
+					<p class="side_para">
+						LOGOUT
+					</p>
+					</a>
+				@elseif(Auth::user()->role_id == 4)
+					<a href="{{route('logout_user')}}">
+					<p class="side_para">
+						LOGOUT
+					</p>
+					</a>
+				@endif
 			</div>
 		</div>
 	</div>

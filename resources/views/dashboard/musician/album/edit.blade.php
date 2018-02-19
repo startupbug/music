@@ -1,5 +1,6 @@
 @extends('layouts.dashboard_index') 
 @section('content')
+
   <div class="col-md-9">
     <h3 class="heading_dashboard">
         ARTIST DASHBOARD
@@ -71,9 +72,11 @@
       @foreach($all_videos as $value)
       <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="dashboard_album">
+            <a href="{{route('musicvoting_genre',['id' => $value->id])}}">
             <video width="100%" controls>
               <source src="{{asset('/dashboard/musician/tracks/videos/'.$value->video)}}" type="video/mp4">             
             </video>
+            </a>
             <div class="dropdownmenu">
               <div class="middle"><i class="fa fa-ellipsis-v"></i></div>
               <div class="dropdown-content">

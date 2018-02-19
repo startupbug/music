@@ -143,7 +143,7 @@ class AlbumsController extends Controller
                             ->get();                                
     $args['all_videos'] = Album_Video::leftJoin('tracks','tracks.id','=','album__videos.track_id')
                                       ->leftJoin('albums','albums.id','=','album__videos.album_id')
-                                      ->select('tracks.name','tracks.video')
+                                      ->select('tracks.name','tracks.video','tracks.id')
                                       ->where('album__videos.album_id','=',$id)
                                       ->where('tracks.user_id','=',Auth::user()->id)
                                       ->get();                                              

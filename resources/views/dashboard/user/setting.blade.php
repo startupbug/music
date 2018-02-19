@@ -2,6 +2,15 @@
 @section('content')
     <div class="col-md-9">
         <h3 class="heading_dashboard">
+          @if (Session::has('status'))
+            <div class="alert alert-info">{{ Session::get('status') }}</div>
+          @endif
+          @if (Session::has('password_status'))
+            <div class="alert alert-info">{{ Session::get('password_status') }}</div>
+          @endif
+          @if (Session::has('link_status'))
+            <div class="alert alert-info">{{ Session::get('link_status') }}</div>
+          @endif
           USER  DASHBOARD
      </h3>
      <div class="border_red">
@@ -73,15 +82,15 @@
     <form>
       <div class='field'>
         <label for='name'>Facebook</label>
-        <input id='name' name='name' type='text' value='fb.com/king_lamar' readonly>
+        <input id='name' name='name' type='text' value='{{$user->facebook}}' readonly>
       </div>
       <div class='field'>
         <label for='email'>Twitter</label>
-        <input id='email' name='phone' type='phone' value='twitter.com/KingLamar' readonly>
+        <input id='email' name='phone' type='phone' value='{{$user->twitter}}' readonly>
       </div>
       <div class='field'>
         <label for='email'>Instagram</label>
-        <input id='email' name='email' type='email' value='@King_Lamar' readonly>
+        <input id='email' name='email' type='email' value='{{$user->instagram}}' readonly>
       </div>
       </form>
   </div>

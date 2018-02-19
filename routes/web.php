@@ -23,44 +23,44 @@ Route::get('/contest','PagesController@contest')->name('contest');
 
 Route::get('/winner','PagesController@winner')->name('winner');
 
-Route::get('/musicvoting_genre','PagesController@musicvoting_genre')->name('musicvoting_genre');
+Route::get('/musicvoting_genre/{id}','PagesController@musicvoting_genre')->name('musicvoting_genre');
 
 Route::get('/artist_detail','PagesController@artist_detail')->name('artist_detail');
 
 Route::get('/musicvoting_search','PagesController@musicvoting_search')->name('musicvoting_search');
 
-
+Route::post('/insert_comment/{id}','CommentController@insert_comment')->name('insert_comments');
 
 Route::group(['prefix' => 'promoter', 'middleware' => 'promoter'], function () {  
-Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'PrmoterController@promoter_image']);   
-    Route::get('/promoterindex','PrmoterController@index')->name('promoterindex');
-    Route::get('/promoterdashboard','PrmoterController@dashboard_overview')->name('promoterdashboard');
-    Route::get('/musicvoting_tracks','PrmoterController@musicvoting_tracks')->name('promotermusicvoting_tracks');
-    Route::get('/redeempoint','PrmoterController@redeempoint')->name('promoterredeempoint');
-    Route::get('/setting','PrmoterController@setting')->name('promotersetting');
-    Route::get('/edit/{id}','PrmoterController@edit')->name('editpromoter');
-    Route::post('/update_account/{id}','PrmoterController@update_account')->name('promoter_update_account');
-    Route::get('/edit_links/{id}','PrmoterController@edit_links')->name('promoter_edit_links');
-    Route::post('/update_links/{id}','PrmoterController@update_links')->name('promoter_update_links');
-    Route::post('/update_password/{id}','PrmoterController@promoter_update_password')->name('promoter_update_password');
-    Route::get('/tracks_assign','PrmoterController@promoter_track_assign')->name('promoter_track_assign');
-    Route::get('/unapproved_invitations','PrmoterController@unapproved_invitations')->name('unapproved_invitations');
-    Route::get('/approve_status/{id}/', ["as" => "approve-status", "uses" => "PrmoterController@approve_status"]);
-    Route::get('/disapprove_status/{id}/', ["as" => "disapprove-status", "uses" => "PrmoterController@disapprove_status"]);
-    Route::get('/promoter_logout', 'PrmoterController@promoter_logout')->name('logout_promoter');
+Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'Promoter\PrmoterController@promoter_image']);   
+    Route::get('/promoterindex','Promoter\PrmoterController@index')->name('promoterindex');
+    Route::get('/promoterdashboard','Promoter\PrmoterController@dashboard_overview')->name('promoterdashboard');
+    Route::get('/musicvoting_tracks','Promoter\PrmoterController@musicvoting_tracks')->name('promotermusicvoting_tracks');
+    Route::get('/redeempoint','Promoter\PrmoterController@redeempoint')->name('promoterredeempoint');
+    Route::get('/setting','Promoter\PrmoterController@setting')->name('promotersetting');
+    Route::get('/edit/{id}','Promoter\PrmoterController@edit')->name('editpromoter');
+    Route::post('/update_account/{id}','Promoter\PrmoterController@update_account')->name('promoter_update_account');
+    Route::get('/edit_links/{id}','Promoter\PrmoterController@edit_links')->name('promoter_edit_links');
+    Route::post('/update_links/{id}','Promoter\PrmoterController@update_links')->name('promoter_update_links');
+    Route::post('/update_password/{id}','Promoter\PrmoterController@promoter_update_password')->name('promoter_update_password');
+    Route::get('/tracks_assign','Promoter\PrmoterController@promoter_track_assign')->name('promoter_track_assign');
+    Route::get('/unapproved_invitations','Promoter\PrmoterController@unapproved_invitations')->name('unapproved_invitations');
+    Route::get('/approve_status/{id}/', ["as" => "approve-status", "uses" => "Promoter\PrmoterController@approve_status"]);
+    Route::get('/disapprove_status/{id}/', ["as" => "disapprove-status", "uses" => "Promoter\PrmoterController@disapprove_status"]);
+    Route::get('/promoter_logout', 'Promoter\PrmoterController@promoter_logout')->name('logout_promoter');
 });
 Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {     
-   Route::get('/index','RegisteredController@index')->name('user_index');
-   Route::get('/setting','RegisteredController@setting')->name('user_setting');
-   Route::get('/edit/{id}','RegisteredController@edit')->name('edituser');
-   Route::post('/update_account/{id}','RegisteredController@update_account')->name('user_update_account');
-   Route::get('/edit_links/{id}','RegisteredController@edit_links')->name('user_edit_links');
-   Route::post('/update_links/{id}','RegisteredController@update_links')->name('user_update_links');
-   Route::get('album_videos/{id}','RegisteredController@album_videos')->name('user_album_videos');
-   Route::post('userajaxImageUpload',['as'=>'userImageUpload','uses'=>'RegisteredController@user_images']);
-   Route::post('/update_password/{id}','RegisteredController@user_update_password')->name('user_update_password');
+   Route::get('/index','User\RegisteredController@index')->name('user_index');
+   Route::get('/setting','User\RegisteredController@setting')->name('user_setting');
+   Route::get('/edit/{id}','User\RegisteredController@edit')->name('edituser');
+   Route::post('/update_account/{id}','User\RegisteredController@update_account')->name('user_update_account');
+   Route::get('/edit_links/{id}','User\RegisteredController@edit_links')->name('user_edit_links');
+   Route::post('/update_links/{id}','User\RegisteredController@update_links')->name('user_update_links');
+   Route::get('album_videos/{id}','User\RegisteredController@album_videos')->name('user_album_videos');
+   Route::post('userajaxImageUpload',['as'=>'userImageUpload','uses'=>'User\RegisteredController@user_images']);
+   Route::post('/update_password/{id}','User\RegisteredController@user_update_password')->name('user_update_password');
 
-   Route::get('/user_logout', 'RegisteredController@user_logout')->name('logout_user');
+   Route::get('/user_logout', 'User\RegisteredController@user_logout')->name('logout_user');
 });
 
  
