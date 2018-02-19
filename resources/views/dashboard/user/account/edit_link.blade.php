@@ -9,7 +9,6 @@
               SETTINGS
           </h3>
         </div>
-
         <div class="row">
           <div class="col-md-12 color_bottom">
               <h3 class="all_album">

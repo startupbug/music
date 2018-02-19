@@ -36,21 +36,24 @@
     <form>
       <div class='field'>
         <label for='name'>Full name</label>
-        <input id='name' name='name' type='text' value='{{($user->name)}}' disabled >
+
+        <input id='name' name='name' type='text' value='{{($user->name)}}' readonly>
+      </div>
+      <div class='field'>
+        <label for='email'>Phone</label>
+        <input id='email' name='phone' type='phone' value='{{($user->phone)}}' readonly> 
+      </div>
+      <div class='field'>
+        <label for='email'>Email</label>
+        <input id='email' name='email' type='email' value='{{($user->email)}}' readonly>        
       </div>
       <div class='field'>
         <label for='email'>Phone</label>
         <input id='email' name='phone' type='phone' value='{{($user->phone)}}' disabled>
       </div>
       <div class='field'>
-        <label for='email'>Email</label>
-        <input id='email' name='email' type='email' value='{{($user->email)}}' disabled>
-      </div>
-      <div class='field'>
         <label for='password'>Password</label>
-        <!--<input id='password' name='password' type='password' value=''>-->
            <input id='password' name='password' type='password' value="********" readonly> <span class="stars" disabled>
-                            
             </span>  
       </div>
       <div class='field'>
@@ -94,6 +97,20 @@
       </div>
       </form>
   </div>
+   <div class='form'>
+      <form>
+        <div class='field'>
+          <label for='name'>Facebook</label>
+          <input id='facebook' name='facebook' type='text' value='{{$user->facebook}}' readonly >
+        </div>
+        <div class='field'>
+          <label for='email'>Twitter</label>
+          <input id='twitter' name='twitter' type='text' value='{{$user->twitter}}' readonly> 
+        </div>
+        <div class='field'>
+          <label for='email'>Instagram</label>
+          <input id='instagram' name='instagram' type='text' value='{{$user->instagram}}' readonly>
+        </div>
 </div>
 </div>
 </div>

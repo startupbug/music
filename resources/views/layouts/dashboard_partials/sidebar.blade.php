@@ -1,10 +1,10 @@
 <?php
 use App\User;
-
 $users = User::select('name','image')->where('id',Auth::user()->id)->first();
 ?>
 <div class="col-md-3 color_bg">
 	<div class="dashboard_name">
+	<div class="dashboard_name">		
 		<div class="image-box">
 			@if(Auth::user()->role_id == 2)
 				<img src="{{asset('/dashboard/profile_images/'. $users->image )}}" class="img-responsive">

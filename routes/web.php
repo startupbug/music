@@ -49,6 +49,7 @@ Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'Promoter\Prm
     Route::get('/disapprove_status/{id}/', ["as" => "disapprove-status", "uses" => "Promoter\PrmoterController@disapprove_status"]);
     Route::get('/promoter_logout', 'Promoter\PrmoterController@promoter_logout')->name('logout_promoter');
 });
+
 Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {     
    Route::get('/index','User\RegisteredController@index')->name('user_index');
    Route::get('/setting','User\RegisteredController@setting')->name('user_setting');
@@ -59,8 +60,19 @@ Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {
    Route::get('album_videos/{id}','User\RegisteredController@album_videos')->name('user_album_videos');
    Route::post('userajaxImageUpload',['as'=>'userImageUpload','uses'=>'User\RegisteredController@user_images']);
    Route::post('/update_password/{id}','User\RegisteredController@user_update_password')->name('user_update_password');
-
    Route::get('/user_logout', 'User\RegisteredController@user_logout')->name('logout_user');
+   Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {   
+   Route::post('userImageUpload',['as'=>'userImageUpload','uses'=>'RegisteredController@user_image']);    
+   Route::get('/index','RegisteredController@index')->name('user_index');
+   Route::get('/setting','RegisteredController@setting')->name('user_setting');
+   Route::get('/edit/{id}','RegisteredController@edit')->name('edituser');
+   Route::post('/update_account/{id}','RegisteredController@update_account')->name('user_update_account');
+   Route::get('/edit_links/{id}','RegisteredController@edit_links')->name('user_edit_links');
+   Route::post('/update_links/{id}','RegisteredController@update_links')->name('user_update_links');
+   Route::get('album_videos/{id}','RegisteredController@album_videos')->name('user_album_videos');
+   Route::post('userajaxImageUpload',['as'=>'userImageUpload','uses'=>'RegisteredController@user_images']);
+   Route::post('/update_password/{id}','RegisteredController@user_update_password')->name('user_update_password');
+   Route::get('/user_logout', 'RegisteredController@user_logout')->name('logout_user');
 });
 
  
@@ -75,9 +87,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is-admin'], function () {
 Route::group(['prefix' => 'musician', 'middleware' => 'is-musician'], function () {
 
 Route::get('/index','Musician\MusicianController@index')->name('main_index');
-
 Route::post('ajaxImageUpload',['as'=>'musicianImageUpload','uses'=>'Musician\MusicianController@musician_image']);
-
 Route::get('/overview','Musician\MusicianController@overview')->name('musician_overview');
 
 Route::get('/track','Musician\TracksController@index')->name('musician_track');
@@ -87,12 +97,14 @@ Route::post('/assign_promoter/','Musician\TracksController@assignPrommoter')->na
 Route::get('/delete_track/{id}/','Musician\TracksController@destroy')->name('delete_track');
 Route::get('/create_track','Musician\TracksController@create')->name('create_track');
 Route::post('/upload_track','Musician\TracksController@store')->name('upload_track');
+Route::post('/update_video/{id}/','Musician\TracksController@update_video')->name('update_video');
 
 Route::get('/album','Musician\AlbumsController@index')->name('musician_album');
 Route::get('/edit_album/{id}','Musician\AlbumsController@edit')->name('edit_album');
 Route::post('/update_album/{id}/','Musician\AlbumsController@update_album')->name('update_album');
 Route::post('/add_video','Musician\AlbumsController@add_video')->name('add_video');
 Route::get('/delete_album/{id}/','Musician\AlbumsController@destroy')->name('delete_album');
+Route::get('/delete_from_album/{album_id}/{track_id}','Musician\AlbumsController@delete_from_album')->name('delete_from_album');
 Route::get('/create_album','Musician\AlbumsController@create')->name('create_album');
 Route::post('/upload_album','Musician\AlbumsController@store')->name('upload_album');
 
