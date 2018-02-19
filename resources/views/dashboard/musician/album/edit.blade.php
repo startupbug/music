@@ -71,15 +71,16 @@
       @foreach($all_videos as $value)
       <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="dashboard_album">
-            <video width="100%" controls>
+            <video width="100%" height="160px" controls>
               <source src="{{asset('/dashboard/musician/tracks/videos/'.$value->video)}}" type="video/mp4">             
             </video>
             <div class="dropdownmenu">
               <div class="middle"><i class="fa fa-ellipsis-v"></i></div>
               <div class="dropdown-content">
-                <a href="#">Edit</a>
-                <a href="#">Delete</a>
-                <a href="#">Delete From Album</a>
+                <input type="hidden" name="id" value="{{$value->id}}">
+                <a data-toggle="modal" data-target="#EditVideoModal{{$value->id}}">Edit</a>
+                <a href="{{route('delete_track',['id'=>$value->id])}}">Delete</a>                               
+                <a href="{{route('delete_from_album',['album_id'=>$edit_album->id,'track_id'=>$value->id])}}">Delete From Album</a>
               </div>
             </div>
             <h3 class="album_person_name">
@@ -87,11 +88,44 @@
       			</h3>
           </div>
       </div>
+      <div class="modal fade" id="EditVideoModal{{$value->id}}" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"><b>ADD VIDEO</b></h4>
+          </div>
+          <div class="modal-body">
+            <form action="{{route('update_video',['id'=>$value->id])}}" enctype="multipart/form-data" method="post" >   
+            {{csrf_field()}}       
+              <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <input type="hidden" name="track_id" value="{{$value->id}}">
+                  <h4><b>EDIT VIDEO</b></h4>
+                  <div class="input-group">
+                    <input type="text" class="form-control" readonly>
+                    <label class="input-group-btn label_cus">
+                        <span class="btn btn-primary">SELECT VIDEO
+                          <input type="file" name="video" style="display: none;">
+                        </span>
+                    </label>
+                  </div>
+                </div>  
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <button type="submit" name="button" class="btn btn-primary" style="width:100%">SUBMIT</button>
+                </div>
+              </div>
+            </form>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>    
       @endforeach   
     </div>  
     <div class="button_dashboard"><button type="button" class="btn">LOAD MORE</button></div>
   </div>
-
   <div class="container">
     <!-- Edit Album Modal -->
     <div class="modal fade" id="EditAlbumModal" role="dialog">
@@ -164,6 +198,7 @@
         </div>
       </div>
     </div>
+      <!-- Edit Video Modal -->
     <!-- Upload Video Modal -->
     <div class="modal fade" id="UploadVideoModal" role="dialog">
       <div class="modal-dialog">
@@ -203,18 +238,19 @@
                         </span>
                     </label>
                   </div>
-                </div>
+                </div>                
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <h4><b>IMAGE</b></h4>
                   <div class="input-group">
                     <input type="text" class="form-control" readonly>
                     <label class="input-group-btn label_cus">
-                        <span class="btn btn-primary">SELECT VIDEO
+                        <span class="btn btn-primary">SELECT IMAGE
                           <input type="file" name="image" style="display: none;">
                         </span>
                     </label>
                   </div>
                 </div>
+                <input type="hidden"  name="album_id" value="{{$edit_album->id}}">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <button type="submit" name="button" class="btn btn-primary" style="width:100%">SUBMIT</button>
                 </div>

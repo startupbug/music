@@ -10,6 +10,7 @@ use App\Category;
 use App\Track;
 use App\User;
 use Auth;
+use DB;
 use Session;
 
 class AlbumsController extends Controller
@@ -47,7 +48,7 @@ class AlbumsController extends Controller
       $p->album_id = Input::get('album_id');  
       $p->track_id = Input::get('video_id');
       $p->save();
-      return redirect()->route('musician_album');
+      return redirect()->back();
     }
     public function upload_video(Request $request)
     {         
@@ -76,9 +77,13 @@ class AlbumsController extends Controller
         $p->video=$filename;         
       }  
       $p->video = $this->UploadVideo('video', Input::file('video'));
-      $p->save();      
-     
-      return redirect()->route('musician_album');       
+      $p->save();
+
+      $m = new Album_Video;
+      $m->track_id = $p->id;
+      $m->album_id = Input::get('album_id');  
+      $m->save();      
+      return redirect()->back();       
     }
 
     public function UploadVideo($type, $files){
@@ -101,18 +106,18 @@ class AlbumsController extends Controller
       $this->validate($request, [
         'name'=> 'required|min:3|max:40|regex:/^[(a-zA-Z\s)]{3,25}+[a-z0-9A-Z ]*/',            
         'image' => 'required',
-        'video' => 'required'           
+        // 'video' => 'required'           
       ]);       
       $p = new Album;
       $p->name = Input::get('name');        
       $p->user_id = Auth::user()->id;        
-      if ($request->hasFile('video')) {        
-        $video=$request->file('video');
-        $filename=time() . '.' . $video->getClientOriginalExtension();          
-        $location=public_path('dashboard/musician/albums/videos/'.$filename);
-        $p->video=$filename;         
-      }
-      $p->video = $this->UploadFiles('video', Input::file('video'));
+      // if ($request->hasFile('video')) {        
+      //   $video=$request->file('video');
+      //   $filename=time() . '.' . $video->getClientOriginalExtension();          
+      //   $location=public_path('dashboard/musician/albums/videos/'.$filename);
+      //   $p->video=$filename;         
+      // }
+      // $p->video = $this->UploadFiles('video', Input::file('video'));
       if ($request->hasFile('image')) {            
         $image=$request->file('image');
         $filename=time() . '.' . $image->getClientOriginalExtension();          
@@ -143,7 +148,7 @@ class AlbumsController extends Controller
                             ->get();                                
     $args['all_videos'] = Album_Video::leftJoin('tracks','tracks.id','=','album__videos.track_id')
                                       ->leftJoin('albums','albums.id','=','album__videos.album_id')
-                                      ->select('tracks.name','tracks.video')
+                                      ->select('tracks.name','tracks.video','tracks.id')
                                       ->where('album__videos.album_id','=',$id)
                                       ->where('tracks.user_id','=',Auth::user()->id)
                                       ->get();                                              
@@ -182,43 +187,16 @@ class AlbumsController extends Controller
   {
     $track_delete = Album::destroy($id);
     return redirect()->route('musician_album');
-  }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  } 
+  public function delete_from_album(Request $request,$album_id,$track_id)
+  {
+    $f = Track::where('user_id',Auth::user()->id)->find($track_id);
+     if($f && !empty($f)){
+      DB::table('album__videos')->where('album_id', '=', $album_id)
+                                ->where('track_id', '=', $track_id)
+                                ->delete();
+     }
+    return redirect()->back();
+  }  
     
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    
-  }
+}

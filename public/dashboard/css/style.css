@@ -1250,8 +1250,9 @@ button.btn-custom span {
         position: absolute;
         bottom: 20px;
     }
-    .image-box{
-        max-width: 198px;
+    .image-box{    
+        width: 198px;
+               height: 198px;
         margin: auto;
         border-radius: 50%;
         overflow: hidden;

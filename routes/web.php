@@ -76,9 +76,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is-admin'], function () {
 Route::group(['prefix' => 'musician', 'middleware' => 'is-musician'], function () {
 
 Route::get('/index','Musician\MusicianController@index')->name('main_index');
-
 Route::post('ajaxImageUpload',['as'=>'musicianImageUpload','uses'=>'Musician\MusicianController@musician_image']);
-
 Route::get('/overview','Musician\MusicianController@overview')->name('musician_overview');
 
 Route::get('/track','Musician\TracksController@index')->name('musician_track');
@@ -88,12 +86,14 @@ Route::post('/assign_promoter/','Musician\TracksController@assignPrommoter')->na
 Route::get('/delete_track/{id}/','Musician\TracksController@destroy')->name('delete_track');
 Route::get('/create_track','Musician\TracksController@create')->name('create_track');
 Route::post('/upload_track','Musician\TracksController@store')->name('upload_track');
+Route::post('/update_video/{id}/','Musician\TracksController@update_video')->name('update_video');
 
 Route::get('/album','Musician\AlbumsController@index')->name('musician_album');
 Route::get('/edit_album/{id}','Musician\AlbumsController@edit')->name('edit_album');
 Route::post('/update_album/{id}/','Musician\AlbumsController@update_album')->name('update_album');
 Route::post('/add_video','Musician\AlbumsController@add_video')->name('add_video');
 Route::get('/delete_album/{id}/','Musician\AlbumsController@destroy')->name('delete_album');
+Route::get('/delete_from_album/{album_id}/{track_id}','Musician\AlbumsController@delete_from_album')->name('delete_from_album');
 Route::get('/create_album','Musician\AlbumsController@create')->name('create_album');
 Route::post('/upload_album','Musician\AlbumsController@store')->name('upload_album');
 
