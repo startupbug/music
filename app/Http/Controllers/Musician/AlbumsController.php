@@ -15,34 +15,17 @@ use Session;
 
 class AlbumsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-      $args['albums'] = Album::where('user_id',Auth::user()->id)->get();        
-      return view('dashboard.musician.album.index')->with($args);
+     $args['albums'] = Album::where('user_id',Auth::user()->id)->get();        
+     return view('dashboard.musician.album.index')->with($args);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-      return view('dashboard.musician.album.create');
+     return view('dashboard.musician.album.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */   
-
+    
     public function add_video(Request $request){
       $p = new Album_Video;
       $p->album_id = Input::get('album_id');  
@@ -52,11 +35,10 @@ class AlbumsController extends Controller
     }
     public function upload_video(Request $request)
     {         
-        // Uploading Album
       ini_set('memory_limit','256M');      
       $this->validate($request, [
-        'name'=> 'required|min:3|max:40|regex:/^[(a-zA-Z\s)]{3,25}+[a-z0-9A-Z ]*/',           
-        'video' => 'required'           
+       'name'=> 'required|min:3|max:40|regex:/^[(a-zA-Z\s)]{3,25}+[a-z0-9A-Z ]*/',           
+       'video' => 'required'           
       ]);       
       $p = new Track;
       $p->name = Input::get('name');        
@@ -86,8 +68,7 @@ class AlbumsController extends Controller
       return redirect()->back();       
     }
 
-    public function UploadVideo($type, $files){
-        // Uploading Files[image & video]
+    public function UploadVideo($type, $files){      
       ini_set('memory_limit','256M');
       $path = base_path() . '/public/dashboard/musician/tracks/images/';
       if( $type == 'video' ){
@@ -98,26 +79,16 @@ class AlbumsController extends Controller
       return $filename;
     }
 
-
     public function store(Request $request)
-    {         
-        // Uploading Album
+    {
       ini_set('memory_limit','256M');      
       $this->validate($request, [
         'name'=> 'required|min:3|max:40|regex:/^[(a-zA-Z\s)]{3,25}+[a-z0-9A-Z ]*/',            
-        'image' => 'required',
-        // 'video' => 'required'           
+        'image' => 'required',      
       ]);       
       $p = new Album;
       $p->name = Input::get('name');        
-      $p->user_id = Auth::user()->id;        
-      // if ($request->hasFile('video')) {        
-      //   $video=$request->file('video');
-      //   $filename=time() . '.' . $video->getClientOriginalExtension();          
-      //   $location=public_path('dashboard/musician/albums/videos/'.$filename);
-      //   $p->video=$filename;         
-      // }
-      // $p->video = $this->UploadFiles('video', Input::file('video'));
+      $p->user_id = Auth::user()->id;              
       if ($request->hasFile('image')) {            
         $image=$request->file('image');
         $filename=time() . '.' . $image->getClientOriginalExtension();          
@@ -172,7 +143,7 @@ class AlbumsController extends Controller
   }
 
   public function UploadFiles($type, $files){
-        // Uploading Files[image & video]
+    // Uploading Files[image & video]
     ini_set('memory_limit','256M');
     $path = base_path() . '/public/dashboard/musician/albums/images/';
     if( $type == 'video' ){
@@ -197,6 +168,6 @@ class AlbumsController extends Controller
                                 ->delete();
      }
     return redirect()->back();
-  }  
+  }
     
 }

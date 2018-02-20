@@ -60,13 +60,8 @@ Route::post('userImageUpload',['as'=>'userImageUpload','uses'=>'RegisteredContro
    Route::get('album_videos/{id}','RegisteredController@album_videos')->name('user_album_videos');
    Route::post('userajaxImageUpload',['as'=>'userImageUpload','uses'=>'RegisteredController@user_images']);
    Route::post('/update_password/{id}','RegisteredController@user_update_password')->name('user_update_password');
-
    Route::get('/user_logout', 'RegisteredController@user_logout')->name('logout_user');
 });
-
- 
-
-
 
 Route::group(['prefix' => 'admin', 'middleware' => 'is-admin'], function () {
 });
@@ -74,7 +69,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is-admin'], function () {
 //Route::get('/promoterindex','PrmoterController@index')->name('promoterindex');
 
 Route::group(['prefix' => 'musician', 'middleware' => 'is-musician'], function () {
-
 Route::get('/index','Musician\MusicianController@index')->name('main_index');
 Route::post('ajaxImageUpload',['as'=>'musicianImageUpload','uses'=>'Musician\MusicianController@musician_image']);
 Route::get('/overview','Musician\MusicianController@overview')->name('musician_overview');
@@ -105,7 +99,8 @@ Route::post('/update_account/{id}','Musician\MusicianController@update_account')
 Route::post('/update_password/{id}','Musician\MusicianController@update_password')->name('update_password');
 Route::get('/edit_links/{id}','Musician\MusicianController@edit_links')->name('edit_links');
 Route::post('/update_links/{id}','Musician\MusicianController@update_links')->name('update_links');
-
+Route::get('/approve_featured/{id}/', ["as" => "approve-featured", "uses" => "Musician\MusicianController@approve_featured"]);
+Route::get('/disapprove_featured/{id}/', ["as" => "disapprove-featured", "uses" => "Musician\MusicianController@disapprove_featured"]);
 Route::get('/redeem','Musician\MusicianController@redeem')->name('musician_redeem');
 
 Route::get('/musician_logout', 'Musician\MusicianController@musician_logout')->name('logout_musician');

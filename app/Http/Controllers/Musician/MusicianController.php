@@ -51,6 +51,21 @@ class MusicianController extends Controller
         return $filename;
     }
 
+     public function disapprove_featured($id)
+    {
+        DB::table('tracks')
+            ->where('id', $id)
+            ->update(['featured' => 0]);         
+        return redirect()->back();
+    }
+    public function approve_featured($id)
+    { 
+        DB::table('tracks')
+            ->where('id', $id)
+            ->update(['featured' => 1]);        
+        return redirect()->back();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -58,8 +73,8 @@ class MusicianController extends Controller
      */
     public function overview()
     {
-        $args['all_tracks'] = Track::get();
-        $args['all_albums'] = Album::get();
+        $args['all_tracks'] = Track::take(8)->orderBy('id','DESC')->get();
+        $args['all_albums'] = Album::take(8)->orderBy('id','DESC')->get();
         return view('dashboard.musician.overview')->with($args);
     }
 
@@ -157,7 +172,7 @@ class MusicianController extends Controller
     }
 
 
-     public function musician_logout(Request $request) {     
+    public function musician_logout(Request $request) {     
       Auth::logout();
       return redirect('/');
     }
