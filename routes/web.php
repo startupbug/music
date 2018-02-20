@@ -50,7 +50,8 @@ Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'Promoter\Prm
     Route::get('/promoter_logout', 'Promoter\PrmoterController@promoter_logout')->name('logout_promoter');
 });
 
-Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {     
+Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {  
+   Route::post('userImageUpload',['as'=>'userImageUpload','uses'=>'User\RegisteredController@user_image']);
    Route::get('/index','User\RegisteredController@index')->name('user_index');
    Route::get('/setting','User\RegisteredController@setting')->name('user_setting');
    Route::get('/edit/{id}','User\RegisteredController@edit')->name('edituser');
@@ -61,18 +62,6 @@ Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {
    Route::post('userajaxImageUpload',['as'=>'userImageUpload','uses'=>'User\RegisteredController@user_images']);
    Route::post('/update_password/{id}','User\RegisteredController@user_update_password')->name('user_update_password');
    Route::get('/user_logout', 'User\RegisteredController@user_logout')->name('logout_user');
-   Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {   
-   Route::post('userImageUpload',['as'=>'userImageUpload','uses'=>'RegisteredController@user_image']);    
-   Route::get('/index','RegisteredController@index')->name('user_index');
-   Route::get('/setting','RegisteredController@setting')->name('user_setting');
-   Route::get('/edit/{id}','RegisteredController@edit')->name('edituser');
-   Route::post('/update_account/{id}','RegisteredController@update_account')->name('user_update_account');
-   Route::get('/edit_links/{id}','RegisteredController@edit_links')->name('user_edit_links');
-   Route::post('/update_links/{id}','RegisteredController@update_links')->name('user_update_links');
-   Route::get('album_videos/{id}','RegisteredController@album_videos')->name('user_album_videos');
-   Route::post('userajaxImageUpload',['as'=>'userImageUpload','uses'=>'RegisteredController@user_images']);
-   Route::post('/update_password/{id}','RegisteredController@user_update_password')->name('user_update_password');
-   Route::get('/user_logout', 'RegisteredController@user_logout')->name('logout_user');
 });
 
  

@@ -5,7 +5,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
 use App\User;
 use App\Role;
 use Validator;
@@ -21,15 +20,19 @@ class RegisteredController extends Controller
       return view('dashboard.user.dashboard_overview',['tracks' => $tracks, 'albums' => $albums]);
     }
 
-    public function user_image(Request $request)
-    {     
-        $img_name = '';
+    public function user_images(Request $request)
+    {
+     
+         $img_name = '';
         if(Input::file('image')){
                 $img_name = $this->UploadImage('image', Input::file('image'));
+
+                
                User::where('id' ,'=', Auth::user()->id)->update([
                 'image' => $img_name
-            ]); 
-        $path = asset('/dashboard/user_images').'/'.$img_name;  
+            ]);  
+        $path = asset('/dashboard/profile_images').'/'.$img_name; 
+
         return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]); 
         }else{
              return \Response()->json(['error' => "Image uploading failed", 'code' => 202]);
@@ -38,7 +41,7 @@ class RegisteredController extends Controller
 
     public function UploadImage($type, $file){
         if( $type == 'image'){
-        $path = base_path() . '/public/dashboard/user_images/';
+        $path = base_path() . '/public/dashboard/profile_images/';
         }
         $filename = md5($file->getClientOriginalName() . time()) . '.' . $file->getClientOriginalExtension();
         $file->move( $path , $filename);
@@ -104,34 +107,6 @@ class RegisteredController extends Controller
         $u->save();
         Session::flash('link_status','your link is update');
         return redirect()->route('user_setting');            
-    }
-
-    public function user_images(Request $request)
-    {
-     
-         $img_name = '';
-        if(Input::file('image')){
-                $img_name = $this->UploadImage('image', Input::file('image'));
-
-                
-               User::where('id' ,'=', Auth::user()->id)->update([
-                'image' => $img_name
-            ]);  
-        $path = asset('/dashboard/profile_images').'/'.$img_name; 
-
-        return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]); 
-        }else{
-             return \Response()->json(['error' => "Image uploading failed", 'code' => 202]);
-        }
-    }
-
-    public function UploadImage($type, $file){
-        if( $type == 'image'){
-        $path = base_path() . '/public/dashboard/profile_images/';
-        }
-        $filename = md5($file->getClientOriginalName() . time()) . '.' . $file->getClientOriginalExtension();
-        $file->move( $path , $filename);
-        return $filename;
     }
 
     public function user_update_password(Request $request)

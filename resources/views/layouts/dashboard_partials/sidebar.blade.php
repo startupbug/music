@@ -199,3 +199,6 @@ $users = User::select('name','image')->where('id',Auth::user()->id)->first();
 		</div>
 	</div>
 </div>
+</form>
+</form>
+</div>

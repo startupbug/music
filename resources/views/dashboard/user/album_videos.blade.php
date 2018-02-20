@@ -36,17 +36,10 @@
       <div class="col-md-3 col-sm-12 col-xs-12">
         <div class="dashboard_album">
              <video width="100%" controls>
-              <source src="{{asset('/dashboard/musician/albums/videos/'.$album->video)}}" type="video/mp4">              
+              <source src="{{asset('/dashboard/musician/albums/videos/'.$album->image)}}" type="video/mp4">              
             </video>
         </div>
       </div>
-      <!-- <div class="col-md-6 col-sm-12 col-xs-12">
-         <div class="header">
-              <h1>Lorem Ipsum</h1>
-              <h4>Web Developer</h4>
-              <span>ALBUM Count</span>
-         </div>
-      </div> -->
     </div>
    
     <hr class="line">
