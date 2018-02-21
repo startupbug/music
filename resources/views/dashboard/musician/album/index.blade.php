@@ -30,21 +30,14 @@
 		<div class="col-md-3 col-sm-6 col-xs-12">
 			<div class="box">  
 				<div class="dashboard_album">
-					<img src="{{asset('/dashboard/musician/albums/images/'.$album->image)}}" class="img-responsive custom-image-dashboard" >
-
-				<span class="caption fade-caption"> 
-					<div class="star"><span class="glyphicon glyphicon-star"></span></div>
-					<h3 class="hover_heading">MAKESONGFEATURED</h3>
-					<div class="trophy"><i class="fa fa-trophy" style="font-size:24px"></i></div>
-					<h3 class="hover_heading">ADDSONGTOCONTEST</h3> 
-				</span>
+				<img src="{{asset('/dashboard/musician/albums/images/'.$album->image)}}" class="img-responsive custom-image-dashboard" >				
 				</div>  
 			</div>
 			<a href="{{route('edit_album',['id' => $album->id])}}">
 				<h3 class="album_person_name">
 					{{$album->name}}
 				</h3>
-				</a>
+			</a>
 		</div>
 		@endforeach		
 	</div>

@@ -127,9 +127,17 @@
       <img src="{{asset('dashboard/musician/tracks/images/'.$value->image)}}" class="img-responsive custom-image-dashboard" >
       <span class="caption fade-caption"> 
         <div class="star"><span class="glyphicon glyphicon-star"></span></div>
-        <h3 class="hover_heading">MAKESONGFEATURED</h3>
+        @if($value->featured == '1')
+        <a href="{{route('disapprove-featured',['id'=>$value->id])}}" title="Click To UnFeatured">
+          <h3 class="hover_heading">MAKESONGUNFEATURED</h3>
+        </a>
+        @else
+        <a href="{{route('approve-featured',['id'=>$value->id])}}" title="Click To Featured">
+          <h3 class="hover_heading">MAKESONGFEATURED</h3>
+        </a>
+        @endif        
         <div class="trophy"><i class="fa fa-trophy" style="font-size:24px"></i></div>
-        <h3 class="hover_heading">ADDSONGTOCONTEST</h3> 
+        <a href=""> <h3 class="hover_heading">ADDSONGTOCONTEST</h3> </a>
       </span>
     </div>  
   </div>      
@@ -158,7 +166,7 @@
   @foreach($all_albums as $value)
   <div class="col-md-3 col-sm-6 col-xs-12">
    <div class="dashboard_album">
-    <img src="{{asset('dashboard/musician/albums/images/'.$value->image)}}" class="img-responsive">
+    <img src="{{asset('dashboard/musician/albums/images/'.$value->image)}}" class="img-responsive custom-image-dashboard">
   </div>
   <h3 class="album_person_name">
    {{$value->name}}

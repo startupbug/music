@@ -14,19 +14,31 @@ use App\Track;
 use App\Comment;
 class PagesController extends Controller
 {    
-    public function index()
-    {
-        return view('index');
-    }
+    // public function index()
+    // {
+    //     return view('index');
+    // }
 
-     public function dashboard()
-    {
-        return view('dashboard.main_index');
-    }
+    //  public function dashboard()
+    // {
+        
+    //     return view('dashboard.main_index');
+    // }
 
      public function contest()
     {
         return view('contest');
+    }
+
+    public function index(){
+      $args['tracks'] = Track::leftJoin('users','users.id','=','tracks.user_id')
+                                ->select('users.name as user_name','tracks.name as track_name','tracks.image as track_image')
+                                ->inRandomOrder()
+                                ->take(10)
+                                ->get();
+      $rand_num  = rand(1,10);
+      $args['abc'] = $args['tracks'][$rand_num];      
+      return view ('index')->with($args);
     }
 
     public function winner()
@@ -35,15 +47,14 @@ class PagesController extends Controller
     }
 
     public function musicvoting_genre($id)
-    {   //dd($id);
+    {   
         $track_video = DB::table('tracks')->where('id', $id)->first();
         $track_uploader = Db::table('users')->where('id',$track_video->user_id)->first();
        // dd($track_video);
         //dd($track_video->video);
-
         $commenting = DB::table('comments')
                     ->join('users','comments.user_id','=','users.id')
-                    ->select('comments.*','users.*','users.image' )
+                    ->select('comments.*','users.*','users.image')
                     ->where('track_id', $id)
                     ->get();
 

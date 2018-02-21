@@ -15,6 +15,7 @@ class PrmoterController extends Controller
 {
     public function index()
     {
+
     	return view('dashboard.promoter.index');
     }
      public function promoter_image(Request $request)

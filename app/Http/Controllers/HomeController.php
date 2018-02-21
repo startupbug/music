@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Http\Controllers; 
 use Illuminate\Http\Request;
 use Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -13,6 +15,7 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
+
 
     /**
      * Show the application dashboard.
@@ -62,8 +65,7 @@ class HomeController extends Controller
 
     /*Testing Routes */
     public function logoutz(){
-        $check = Auth::logout();
-        //dd($check);
+        $check = Auth::logout();       
         return redirect()->route('logout_promoter');
     }
 

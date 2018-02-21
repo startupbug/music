@@ -20,8 +20,8 @@
         <div class='form'>          
           <form action="{{route('update_account',['id'=>$musician->id])}}" method="POST">
             {{csrf_field()}}
-            <div class='fields'>
-              <label for='name'>Full name</label>
+              <div class='fields'>
+                <label for='name'>Full name</label>
               <input id='name' name='name' type='text' value="{{$musician->name}}" class="form-control" >
             </div>
             <div class='fields'>
