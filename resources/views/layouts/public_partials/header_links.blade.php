@@ -24,6 +24,10 @@
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
     <!-- Custom -->
     <link href="{{asset('assets/css/custom.css')}}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
+
+    
     <!-- StyleSheet -->
     <!-- Responsive -->    
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

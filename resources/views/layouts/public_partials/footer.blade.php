@@ -70,7 +70,7 @@
                     <div class="well">
                        <form action="#">
                           <div class="input-group">
-                           <input class="btn btn-lg footer" name="email" id="email" type="email" placeholder="Email Address" required>
+                           <input class="btn btn-lg footer" name="myemail" id="myemail" type="email" placeholder="Email Address" required>
                            <button class="btn btn-info btn-lg footer" type="submit">SUBSCRIBE</button>
                        </div>
                        </form>

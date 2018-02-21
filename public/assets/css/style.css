@@ -656,3 +656,5 @@ nav.shrink .music_navbar {
     border: none;
     color: #ffffff;
 }
+
+.rating .fa-star{color: yellow;}
