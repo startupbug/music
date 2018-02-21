@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Http\Controllers; 
 use Illuminate\Http\Request;
 use Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -13,15 +15,9 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
    public function index()
     {
-
         if(Auth::user()->role_id === 2){
             return redirect()->route('main_index');
         }
@@ -32,13 +28,11 @@ class HomeController extends Controller
             return redirect()->route('user_index');
         }
         else{
-            return view('index');
-        }
-        
-        }
+                return view('index');         
+        }        
+    }
 
     public function user_dashboard(){
-
         if(Auth::user()->role_id === 2){
             return redirect()->route('main_index');
         }
@@ -48,15 +42,13 @@ class HomeController extends Controller
          elseif(Auth::user()->role_id === 4){
             return redirect()->route('userindex');
         }
-        else{
+        else{            
             return redirect()->route('/');
         }
     }
-
     /*Testing Routes */
     public function logoutz(){
-        $check = Auth::logout();
-        //dd($check);
+        $check = Auth::logout();       
         return redirect()->route('logout_promoter');
     }
 

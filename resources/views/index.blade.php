@@ -11,14 +11,13 @@
                         <div class="player_box clearfix">
                             <div class="player_left_side">
                                 <a href="#">
-                                    <img class="img-responsive" src="{{asset('assets/images/song_img_1.png')}}" alt="">
+                                    <img class="img-responsive" src="{{asset('/dashboard/musician/tracks/images/'.$abc->track_image)}}" alt="">
                                 </a>
                             </div>
                             <div class="player_body">
                                 <h4>NOW PLAYING</h4>
-                                <p>Track Name: <span class="track_name">Insurgency</span></p>
-                                <p>Album Name: <span class="album">Insurgency</span></p>
-                                <p>Artist: <span class="artist">John Doe</span></p>
+                                <p>Track Name: <span class="track_name">{{$abc->track_name}}</span></p>
+                                <p>Artist: <span class="artist">{{$abc->user_name}}</span></p>
                                 <p>Rating:
                                     <span class="rating"><?php for ($a = 1; $a <= 4; $a++) { ?>
                                             <i class="fa fa-star-o" aria-hidden="true"></i>
@@ -42,30 +41,27 @@
                     </div>
                 </div>
             </div><!--./End Row Player-->
-            <div class="row">
-                <?php
-                for ($a = 1; $a <= 10; $a++) { ?>
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 change_width">
-                        <div class="songs_box">
-                            <a href="javascript:">
-                                <img src="{{asset('assets/images/song_img_').$a.'.png'}}" class="img-responsive center-block"/>
-                                <div class="mask">
-                                <span class="play_icon">
-                                    <i class="fa fa-play fa-5x" aria-hidden="true"></i>
-                                    <span data-img="images/song_img_<?php echo $a; ?>.png"
-                                          data-Tname="Xscape <?php echo $a; ?>"
-                                          data-album="Insurgency" data-artis="Michael Jackson" data-rating="">
-                                  </span>
+            <div class="row">   
+            @foreach($tracks as $value)             
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 change_width">
+                    <div class="songs_box">
+                        <a href="javascript:">
+                            <img src="{{asset('/dashboard/musician/tracks/images/'.$value->track_image)}}" class="img-responsive center-block"/>
+                            <div class="mask">
+                            <span class="play_icon">
+                                <i class="fa fa-play fa-5x" aria-hidden="true"></i>
+                                <span data-img="images/song_img_<?php echo $a; ?>.png"
+                                      data-Tname="Xscape <?php echo $a; ?>"
+                                      data-album="Insurgency" data-artis="Michael Jackson" data-rating="">
                               </span>
-                                </div>
-                            </a>
-                            <p><a href="#">Xscape</a></p>
-                            <p>Michael Jackson</p>
-                        </div>
+                          </span>
+                            </div>
+                        </a>
+                        <p><a href="#">{{$value->track_name}}</a></p>
+                        <p>{{$value->user_name}}</p>
                     </div>
-                    <?php
-                }
-                ?>
+                </div> 
+            @endforeach             
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-center clearfix">

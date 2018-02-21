@@ -4,7 +4,7 @@
 	<body>
 		<div class="container-fluid">
 			<div class="row">
-				@include('layouts.user_partials.sidebar')
+				@include('layouts.dashboard_partials.sidebar')
 				@yield('content')
 			</div>
 		</div>

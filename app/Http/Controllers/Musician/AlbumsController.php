@@ -17,7 +17,7 @@ class AlbumsController extends Controller
 {
     public function index()
     {
-     $args['albums'] = Album::where('user_id',Auth::user()->id)->get();        
+     $args['albums'] = Album::where('user_id',Auth::user()->id)->take(20)->get();        
      return view('dashboard.musician.album.index')->with($args);
     }
 

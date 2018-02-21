@@ -34,7 +34,7 @@ class MusicianController extends Controller
                User::where('id' ,'=', Auth::user()->id)->update([
                 'image' => $img_name
             ]);  
-        $path = asset('/dashboard/musician_image').'/'.$img_name;  
+        $path = asset('/dashboard/profile_images').'/'.$img_name;  
         return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]); 
         }else{
              return \Response()->json(['error' => "Image uploading failed", 'code' => 202]);
@@ -44,7 +44,7 @@ class MusicianController extends Controller
 
     public function UploadImage($type, $file){
         if( $type == 'image'){
-        $path = base_path() . '/public/dashboard/musician_image/';
+        $path = base_path() . '/public/dashboard/profile_images/';
         }
         $filename = md5($file->getClientOriginalName() . time()) . '.' . $file->getClientOriginalExtension();
         $file->move( $path , $filename);
@@ -107,7 +107,7 @@ class MusicianController extends Controller
         // $u->password = Input::get('password');
         $u->username = Input::get('username');
         $u->save();
-        Session::flash('status','you information is update');
+        Session::flash('status','your information is updated');
         return redirect()->route('musician_setting');            
     }
     public function update_password(Request $request,$id)
@@ -160,7 +160,7 @@ class MusicianController extends Controller
         $u->instagram = Input::get('instagram');
         $u->twitter = Input::get('twitter');
         $u->save();
-        Session::flash('link_status','you link is update');
+        Session::flash('link_status','your link is update');
         return redirect()->route('musician_setting');            
     }
 

@@ -37,13 +37,6 @@
             <img src="{{asset('/dashboard/musician/albums/images/'.$edit_album->image)}}" width="100%" class="img-thumbnail">
         </div>
       </div>
-      <!-- <div class="col-md-6 col-sm-12 col-xs-12">
-         <div class="header">
-              <h1>Lorem Ipsum</h1>
-              <h4>Web Developer</h4>
-              <span>ALBUM Count</span>
-         </div>
-      </div> -->
     </div>
     <div class="row">
       <div class="col-md-10 color_bottom">
@@ -71,9 +64,12 @@
       @foreach($all_videos as $value)
       <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="dashboard_album">
+            <a href="{{route('musicvoting_genre',['id' => $value->id])}}">
+            <video width="100%" controls>
             <video width="100%" height="160px" controls>
               <source src="{{asset('/dashboard/musician/tracks/videos/'.$value->video)}}" type="video/mp4">             
             </video>
+            </a>
             <div class="dropdownmenu">
               <div class="middle"><i class="fa fa-ellipsis-v"></i></div>
               <div class="dropdown-content">
@@ -186,7 +182,6 @@
                       <option value="{{$video->id}}">{{$video->name}}</option>
                       @endforeach                      
                   </select>
-                  <!-- <input type="text" class="form-control"> -->
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <button type="submit" name="button" class="btn btn-primary" style="width:100%">SUBMIT</button>
@@ -198,11 +193,8 @@
         </div>
       </div>
     </div>
-      <!-- Edit Video Modal -->
-    <!-- Upload Video Modal -->
     <div class="modal fade" id="UploadVideoModal" role="dialog">
       <div class="modal-dialog">
-        <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>

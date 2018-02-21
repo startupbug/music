@@ -1,17 +1,15 @@
 <?php
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\User;
 use Illuminate\Support\Facades\Input;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
 use App\User;
 use App\Role;
 use Validator;
 use Illuminate\Support\Facades\Hash;
+use Session;
 
 class RegisteredController extends Controller
 {
@@ -22,15 +20,19 @@ class RegisteredController extends Controller
       return view('dashboard.user.dashboard_overview',['tracks' => $tracks, 'albums' => $albums]);
     }
 
-    public function user_image(Request $request)
-    {     
-        $img_name = '';
+    public function user_images(Request $request)
+    {
+     
+         $img_name = '';
         if(Input::file('image')){
                 $img_name = $this->UploadImage('image', Input::file('image'));
+
+                
                User::where('id' ,'=', Auth::user()->id)->update([
                 'image' => $img_name
-            ]); 
-        $path = asset('/dashboard/user_images').'/'.$img_name;  
+            ]);  
+        $path = asset('/dashboard/profile_images').'/'.$img_name; 
+
         return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]); 
         }else{
              return \Response()->json(['error' => "Image uploading failed", 'code' => 202]);
@@ -39,7 +41,7 @@ class RegisteredController extends Controller
 
     public function UploadImage($type, $file){
         if( $type == 'image'){
-        $path = base_path() . '/public/dashboard/user_images/';
+        $path = base_path() . '/public/dashboard/profile_images/';
         }
         $filename = md5($file->getClientOriginalName() . time()) . '.' . $file->getClientOriginalExtension();
         $file->move( $path , $filename);
@@ -79,7 +81,8 @@ class RegisteredController extends Controller
         $u->email = Input::get('email');
         $u->username = Input::get('username');
         $u->save();
-        return redirect()->route('user_index');            
+        Session::flash('status','your information is updated');
+        return redirect()->route('user_setting');            
     }
 
     public function edit_links($id)
@@ -102,59 +105,25 @@ class RegisteredController extends Controller
         $u->instagram = Input::get('instagram');
         $u->twitter = Input::get('twitter');
         $u->save();
+        Session::flash('link_status','your link is update');
         return redirect()->route('user_setting');            
     }
 
-
-
-
-    public function user_images(Request $request)
-    {
-     
-         $img_name = '';
-        if(Input::file('image')){
-                $img_name = $this->UploadImage('image', Input::file('image'));
-
-                
-               User::where('id' ,'=', Auth::user()->id)->update([
-                'image' => $img_name
-            ]);  
-        $path = asset('/dashboard/user_images').'/'.$img_name; 
-
-        return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]); 
-        }else{
-             return \Response()->json(['error' => "Image uploading failed", 'code' => 202]);
-        }
-
-
-    }
-
-    public function UploadImage($type, $file){
-        if( $type == 'image'){
-        $path = base_path() . '/public/dashboard/user_images/';
-        }
-        $filename = md5($file->getClientOriginalName() . time()) . '.' . $file->getClientOriginalExtension();
-        $file->move( $path , $filename);
-        return $filename;
-    }
-
-
     public function user_update_password(Request $request)
     {
-
          $this->validate(request(),[
             'old_password' => 'required',
             'password' => 'required',
             'password_confirmation' => 'required',
         ]);
-
         if (Hash::check($request->old_password, Auth::user()->password)) {
             if($request->password === $request->password_confirmation){
                 $user = User::where('id', Auth::user()->id)->update([
                     'password' => bcrypt($request->password)
                 ]);
                 if($user){
-                   return redirect()->route('user_setting'); 
+                    Session::flash('password_status','you password is update');
+                    return redirect()->route('user_setting'); 
                 }
                 else{
                     return \Response()->json(['error' => "Profile update failed", 'code' => 202]);
@@ -168,7 +137,6 @@ class RegisteredController extends Controller
             return \Response()->json(['error' => 'Old password is incorrect, please enter valid password', 'code' => 401]);
         }
     }
-
 
      public function user_logout(Request $request) {     
       Auth::logout();

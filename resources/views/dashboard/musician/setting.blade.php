@@ -76,7 +76,7 @@
     </div>
   <hr class="line">
     <div class='form'>
-      <form>
+      <form >
         <div class='field'>
           <label for='name'>Facebook</label>
           <input id='facebook' name='facebook' type='text' value='{{$musician->facebook}}' readonly>

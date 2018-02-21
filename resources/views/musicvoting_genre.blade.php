@@ -4,12 +4,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="input-group" id="adv-search">
-     <!--    <input type="text" class="form-control" placeholder="Search artist" />
-        <div class="input-group-btn">
-          <div class="btn-group" role="group">
-            <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-          </div>
-        </div> -->
+    
       </div>
     </div>
   </div>
@@ -17,30 +12,21 @@
 <div class="container">
   <div class="tab-content custom-tab-content">
       <div>
-      <!-- Nav tabs -->
-      <!--  <ul class="nav nav-tabs custom-tab" role="tablist">
-      <li class="left_width" role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><span class="link-lable">All</span></a></li>
-      <li  class="left_width" role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><span class="link-lable">HIPHOP</span></a></li>
-      <li  class="left_width" role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"><span class="link-lable">ROCK</span></a></li>
-      <li class="left_width" role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"><span class="link-lable">POP</span></a></li>
-      <li class="left_width" role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"><span class="link-lable">ELECTRONIC</span></a></li>
-      <li class="left_width" role="presentation"><a href="#test5" aria-controls="test5" role="tab" data-toggle="tab"><span class="link-lable"> TRAP</span></a></li>
-      </ul> -->
       <div class="tab-content">
         <div role="tabpanel" class= "tab-pane fade in active" id="home">
           <div class="col-md-8">
             <div class="row">
               <div class="col-md-3">
                 <div class="genre">
-                  <img src="{{asset('assets/images/genre_image.png')}}" class="img-responsive">
+                  <img src="{{asset('dashboard/musician/tracks/images/'.$track_video->image)}}" class="img-responsive">
                 </div>
               </div>
               <div class="col-md-9">
                 <h3 class="top_heading">
-                GASOLINE
+                {{$track_video->name}} by {{$track_uploader->name}}
                 </h3>
                 <h3 class="mid_heading">
-                BY HALSEY
+                {{$track_video->description}}
                 </h3>
                 <h3 class="rating">Rating:</h3>
                 <div class="star-rating">
@@ -53,51 +39,53 @@
                 </div>
                 <div class="col-md-12">
                   <ul>
-                    <li class="social_media"><img src="{{asset('assets/images/images/instagram.png')}}"><h2 class="mid_head">1881</h2><h3 class="mid_side">FOLLOWERS</h3></li>
-                    <li class="social_media"><img src="{{asset('assets/images/facebook.png')}}"><h2 class="mid_head">2.5K</h2><h3 class="mid_like">LIKES</h3></li>
-                    <li class="social_media"><img src="{{asset('assets/images/google-plus.png')}}"><h2 class="mid_head">1200</h2><h3 class="mid_side">FOLLOWERS</h3></li>
+                    <li class="social_media"><a target = "_blank"  href="http://www.instagram.com"><img src="{{asset('assets/images/instagram.png')}}"></a><h2 class="mid_head">1881</h2><h3 class="mid_side">FOLLOWERS</h3></li>
+                    <li class="social_media"><a target = "_blank" href="http://www.facebook.com"><img src="{{asset('assets/images/facebook.png')}}"></a><h2 class="mid_head">2.5K</h2><h3 class="mid_like">LIKES</h3></li>
+                    <li class="social_media"><a target="_blank" href="http://www.google-plus.com"><img src="{{asset('assets/images/google-plus.png')}}"></a><h2 class="mid_head">1200</h2><h3 class="mid_side">FOLLOWERS</h3></li>
                   </ul>
                 </div>
               </div>
               <div class="col-md-12">
                 <video width="100%" controls style="height: auto;">
-                  <source src="mov_bbb.mp4" type="video/mp4">
-                  <source src="mov_bbb.ogg" type="video/ogg">
+                  @if(isset($track_video->video))
+                    <source src="{{asset('/dashboard/musician/tracks/videos/'.$track_video->video)}}" type="video/mp4"> 
+                  @endif
+                  <!-- <source src="mov_bbb.ogg" type="video/ogg"> -->
                   Your browser does not support HTML5 video.
                 </video>
               </div>
               <div class="col-md-12 border">
+                  <form action="{{route('insert_comments', ['id' => $track_video->id])}}" method="post">
+                    {{csrf_field()}}
                 <div class="comment-wrap">
                   <div class="photo">
-                    <!--<div class="avatar" style="background-image: url(img src="images/comment_male.png"></div>-->
                     <div class="avatar">
-                      <img src="{{asset('assets/images/comment_male.png')}}">
+                      <img src="{{asset('dashboard/profile_images/'.Auth::user()->image)}}">
                     </div>
                   </div>
                   <div class="comment-block">
-                    <form action="">
                       <textarea name="comment" id="comment" cols="30" rows="3" placeholder="Write a comment"></textarea>
-                    </form>
                   </div>
                 </div>
                 <div class="button_comment">
-                  <button type="button" class="btn">POST</button>
-                </div>
+                  <button type="submit" class="btn">POST</button>
+                </div>                
+              </form>
+              @foreach($commenting as $comment)
                 <div class="comment-wrap">
                   <div class="photo">
-                    <!--<div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg')">-->
                     <div class="avatar">
-                      <img src="{{asset('assets/images/comment_img.png')}}">
+                      <img src="{{asset('dashboard/profile_images/'.$comment->image)}}">
                     </div>
                   </div>
                   <div class="comment-block">
-                    <p class="comment-text">The best track I’ve heard in a while</p>
+                    <p class="comment-text">{{$comment->comment}}</p>
                     <p>#GoMusic #Rock</p>
                   </div>
                 </div>
+            @endforeach    
                 <div class="comment-wrap">
                   <div class="photo">
-                    <!--<div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg')">-->
                     <div class="avatar">
                         <img src="{{asset('assets/images/com_img.png')}}">
                     </div>

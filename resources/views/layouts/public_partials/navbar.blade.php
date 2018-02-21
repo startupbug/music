@@ -16,14 +16,14 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right music_navbar">
-                <li><a href="{{route('home')}}">HOME</a></li>
+                <li><a href="{{route('home1')}}">HOME</a></li>
                 <li><a href="{{route('contest')}}">CONTEST</a></li>
                 <li><a href="{{route('winner')}}">WINNER</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Genre <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{route('musicvoting_genre')}}">Genre</a></li>
+                        <li><a href="">Genre</a></li>
                         <li><a href="#">Another action</a></li>
                         <li><a href="#">Something else here</a></li>
                     </ul>
@@ -40,8 +40,26 @@
                 <li><a href="#">Free Beats</a></li>
                 <li><a href="{{route('musicvoting_search')}}"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                 <!-- <li><a href="{{url('login')}}" class="btn btn-default">log in</a></li> -->
-                <li><a href="" class="btn btn-default" data-toggle="modal" data-target="#myLoginModal">log in</a></li>
+                @if(Auth::check())
+                <li>
+                    @if(Auth::user()->role_id == 4)
+                    <a href="{{route('user_index')}}" class="btn btn-default">
+                        @elseif(Auth::user()->role_id == 3)
+                    <a href="{{route('promoterindex')}}" class="btn btn-default">
+                        @elseif(Auth::user()->role_id == 2)
+                    <a href="{{route('main_index')}}" class="btn btn-default" >
+                        @endif
+                    {{Auth::user()->name}}
+                    </a>
+                </li>
 
+                @else
+                 <li>
+                    <a href="" class="btn btn-default" data-toggle="modal" data-target="#myLoginModal">
+                    login
+                    </a>
+                </li>
+                @endif
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-->
