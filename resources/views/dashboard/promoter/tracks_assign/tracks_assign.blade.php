@@ -30,7 +30,7 @@
             @foreach($promoter_tracks as $value)
             <tr>
                 <td>{{$value->musician_name}}</td>
-                <td>{{$value->track_name}}</td>                                         
+                <td><a href="{{route('musicvoting_genre',['id' => $value->track_id])}}">{{$value->track_name}}</a></td>                                         
                 <td>
                   @if($value->status == '1')
                     <a href="{{route('disapprove-status',['id'=>$value->id])}}" title="Click To DisApprove" class="btn btn-sm btn-success">Approved</a>

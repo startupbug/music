@@ -1292,6 +1292,10 @@ button.btn-custom span {
           color: black;
 
         }
+        table tr td a:focus, table tr td a:hover {
+            color: #f80000;
+            text-decoration: none;
+        }
    /*promoter datatables for invitations*/
 /* tablet */
 @media only screen and (max-device-width : 1024px) and (min-device-width : 768px) {
@@ -1350,5 +1354,6 @@ button.btn-custom span {
       height: auto;
     }
 }
+
 
 

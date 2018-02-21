@@ -19,39 +19,46 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   public function index()
+    public function index()
     {
-
-        if(Auth::user()->role_id === 2){
-            return redirect()->route('main_index');
-        }
-        elseif(Auth::user()->role_id === 3){
-            return redirect()->route('promoterindex');
-        }
-         elseif(Auth::user()->role_id === 4){
-            return redirect()->route('user_index');
-        }
-        else{
-            return view('index');
-        }
-        
-        }
-
-    public function user_dashboard(){
-
-        if(Auth::user()->role_id === 2){
-            return redirect()->route('main_index');
-        }
-        elseif(Auth::user()->role_id === 3){
-            return redirect()->route('promoterindex');
-        }
-         elseif(Auth::user()->role_id === 4){
-            return redirect()->route('userindex');
-        }
-        else{
-            return redirect()->route('/');
-        }
+        return view('index');
     }
+
+   // public function index()
+   //  {
+
+   //      if(Auth::user()->role_id === 2){
+   //          return redirect()->route('main_index');
+   //      }
+   //      elseif(Auth::user()->role_id === 3){
+   //          return redirect()->route('promoterindex');
+   //      }
+   //       elseif(Auth::user()->role_id === 4){
+   //          return redirect()->route('user_index');
+   //      }
+   //      else{
+   //          return view('index');
+   //      }
+        
+   //  }
+
+   //  public function user_dashboard(){
+
+
+
+   //      if(Auth::user()->role_id === 2){
+   //          return redirect()->route('main_index');
+   //      }
+   //      elseif(Auth::user()->role_id === 3){
+   //          return redirect()->route('promoterindex');
+   //      }
+   //       elseif(Auth::user()->role_id === 4){
+   //          return redirect()->route('userindex');
+   //      }
+   //      else{
+   //          return redirect()->route('/');
+   //      }
+   //  }
 
     /*Testing Routes */
     public function logoutz(){

@@ -164,7 +164,7 @@ class PrmoterController extends Controller
         $promoter_tracks = DB::table('invitations')
                                 ->leftJoin('users','users.id','=','invitations.musician_id')
                                 ->leftJoin('tracks','tracks.id','=','invitations.track_id')
-                                ->select('invitations.id','users.name as musician_name','tracks.name as track_name','invitations.status')
+                                ->select('invitations.id','users.name as musician_name','tracks.id as track_id','tracks.name as track_name','invitations.status')
                                 ->where('invitations.promoter_id','=',Auth::user()->id)
                                 ->get();
         return view("dashboard.promoter.tracks_assign.tracks_assign",['promoter_tracks' => $promoter_tracks]);

@@ -11,13 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
 
-Route::get('/index', 'HomeController@public_index')->name('public_index');
+// Route::get('/index', 'HomeController@public_index')->name('public_index');
 
-Route::get('/main_index','HomeController@dashboard')->name('main_index');
+// Route::get('/main_index','HomeController@dashboard')->name('main_index');
+Route::get('/','PagesController@index')->name('home1');
 
 Route::get('/contest','PagesController@contest')->name('contest');
 

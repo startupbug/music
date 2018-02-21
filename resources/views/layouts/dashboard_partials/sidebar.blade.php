@@ -53,7 +53,7 @@ $users = User::select('name','image')->where('id',Auth::user()->id)->first();
 						</p>
 					</a>
 					@elseif(Auth::user()->role_id == 3)
-					<a href="{{route('promoterindex')}}">
+					<a href="{{route('promoterdashboard')}}">
 						<p class="side_paragraph">
 						OVERVIEW
 						</p>
