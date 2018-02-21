@@ -20,4 +20,18 @@
 <script src="{{asset('assets/js/custom.js')}}"></script>
 <script src="{{asset('assets/js/mycustom.js')}}"></script>
 
+<script src="{{asset('assets/js/jssocials.js')}}"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+	var linkurl = window.location.href;
+    $("#social").jsSocials({
+      url : linkurl,
+      showLabel: false,
+      showCount: "inside",
+      shareIn: "popup",
+      shares: ["twitter","facebook"]
+    });
+  });
+</script>
 

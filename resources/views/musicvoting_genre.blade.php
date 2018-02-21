@@ -38,14 +38,9 @@
                   <span class="fa fa-star-o" data-rating="5"></span>
                    <p class="view">View: {{$track_video->view_count}}</p>
                   <input type="hidden" name="whatever1" class="rating-value" value="2.56">
-                 
                 </div>
                 <div class="col-md-12">
-                  <ul>
-                    <li class="social_media"><a target = "_blank"  href="http://www.instagram.com"><img src="{{asset('assets/images/instagram.png')}}"></a><h2 class="mid_head">1881</h2><h3 class="mid_side">FOLLOWERS</h3></li>
-                    <li class="social_media"><a target = "_blank" href="http://www.facebook.com"><img src="{{asset('assets/images/facebook.png')}}"></a><h2 class="mid_head">2.5K</h2><h3 class="mid_like">LIKES</h3></li>
-                    <li class="social_media"><a target="_blank" href="http://www.google-plus.com"><img src="{{asset('assets/images/google-plus.png')}}"></a><h2 class="mid_head">1200</h2><h3 class="mid_side">FOLLOWERS</h3></li>
-                  </ul>
+                  <div id="social"> </div>
                 </div>
               </div>
               <div class="col-md-12">

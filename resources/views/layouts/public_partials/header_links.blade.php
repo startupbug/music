@@ -24,6 +24,11 @@
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
     <!-- Custom -->
     <link href="{{asset('assets/css/custom.css')}}" rel="stylesheet">
+
+    <link href="{{asset('assets/css/jssocials.css')}}" rel="stylesheet">   
+    
+    <link href="{{asset('assets/css/jssocials-theme-flat.css')}}" rel="stylesheet">    
+
     <!-- StyleSheet -->
     <!-- Responsive -->    
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

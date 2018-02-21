@@ -45,7 +45,7 @@
             @foreach($tracks as $value)             
                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 change_width">
                     <div class="songs_box">
-                        <a href="javascript:">
+                        <a href="{{route('musicvoting_genre',['id' => $value->track_id])}}">
                             <img src="{{asset('/dashboard/musician/tracks/images/'.$value->track_image)}}" class="img-responsive center-block"/>
                             <div class="mask">
                             <span class="play_icon">

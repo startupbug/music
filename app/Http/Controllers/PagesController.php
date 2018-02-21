@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Session;
 use App\Track;
 use App\Comment;
+use App\Category;
 class PagesController extends Controller
 {    
     // public function index()
@@ -32,7 +33,7 @@ class PagesController extends Controller
 
     public function index(){
       $args['tracks'] = Track::leftJoin('users','users.id','=','tracks.user_id')
-                                ->select('users.name as user_name','tracks.name as track_name','tracks.image as track_image')
+                                ->select('users.name as user_name','tracks.id as track_id','tracks.name as track_name','tracks.image as track_image')
                                 ->inRandomOrder()
                                 ->take(10)
                                 ->get();
@@ -98,5 +99,25 @@ class PagesController extends Controller
     public function musicvoting_search()
     {
         return view('musicvoting_search');
+    }
+
+    public function genre()
+    {
+        $categories = Category::all();
+        foreach ($categories as $value) {
+            $args['tracks'][$value->name] = DB::table('tracks')
+                                ->join('users','users.id','=','tracks.user_id')
+                                ->join('categories','categories.id','=','tracks.category_id')
+                                ->select('users.name as user_name','tracks.id as track_id','tracks.name as track_name','tracks.image as track_image','categories.name as category_name','categories.id as category_id')
+                                ->orderby('category_name')
+                                ->where('categories.name', $value->name)
+                                ->inRandomOrder()
+                                ->take(5)
+                                ->get();
+        }
+                                //dd($args['tracks']);
+        
+        
+        return view('genre')->with($args);
     }
 }

@@ -34,6 +34,8 @@ Route::get('/musicvoting_search','PagesController@musicvoting_search')->name('mu
 
 Route::post('/insert_comment/{id}','CommentController@insert_comment')->name('insert_comments');
 
+Route::get('/genre','PagesController@genre')->name('genre');
+
 Route::group(['prefix' => 'promoter', 'middleware' => 'promoter'], function () {  
 Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'Promoter\PrmoterController@promoter_image']);   
     Route::get('/promoterindex','Promoter\PrmoterController@index')->name('promoterindex');
