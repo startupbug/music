@@ -1779,3 +1779,12 @@ h3.points_rate {
     right: 61%;
 }
     }
+
+    .view {
+    position: absolute;
+    top: 0px;
+    right: -80%;
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+}

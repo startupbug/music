@@ -11,6 +11,10 @@
 |
 */
 
+
+// Route::get('/', function () {
+//     return view('index');
+// });
 Route::get('/','PagesController@index')->name('home1');
 Route::post('/submit_rating','PagesController@submit_rating')->name('submit_rating');
 

@@ -29,13 +29,16 @@
                 {{$track_video->description}}
                 </h3>
                 <h3 class="rating">Rating:</h3>
+
                 <div class="star-rating">
                   <span class="fa fa-star-o" data-rating="1"></span>
                   <span class="fa fa-star-o" data-rating="2"></span>
                   <span class="fa fa-star-o" data-rating="3"></span>
                   <span class="fa fa-star-o" data-rating="4"></span>
                   <span class="fa fa-star-o" data-rating="5"></span>
+                   <p class="view">View: {{$track_video->view_count}}</p>
                   <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+                 
                 </div>
                 <!-- <form  action="{{route('submit_rating')}}" method="post" id="rating-form">
                     <span class="rating" id="star_rating_submit">
@@ -61,15 +64,18 @@
                 </div>
               </div>
               <div class="col-md-12">
-                <video width="100%" controls style="height: auto;">
+                <video width="100%" style="height: auto;" controls >
                   @if(isset($track_video->video))
                     <source src="{{asset('/dashboard/musician/tracks/videos/'.$track_video->video)}}" type="video/mp4"> 
                   @endif
                   <!-- <source src="mov_bbb.ogg" type="video/ogg"> -->
                   Your browser does not support HTML5 video.
                 </video>
+
               </div>
-              <div class="col-md-12 border">
+              @if((Auth::check()))
+          
+                <div class="col-md-12 border">
                   <form action="{{route('insert_comments', ['id' => $track_video->id])}}" method="post">
                     {{csrf_field()}}
                 <div class="comment-wrap">
@@ -121,6 +127,8 @@
                   </div>
                 </div>
               </div>
+          
+              @endif
             </div>
           </div>
           <div class="col-md-4">
