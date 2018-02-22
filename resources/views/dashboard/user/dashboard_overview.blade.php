@@ -1,5 +1,5 @@
 @extends('layouts.user_index')
-@section('content')
+@section('content')s
 <div class="col-md-9">
     <h3 class="heading_dashboard">
         USER DASHBOARD
@@ -25,9 +25,7 @@
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="dashboard_album">
                 <a href="{{route('musicvoting_genre',['id' => $track->id])}}">
-                <!-- <img src="{{asset('/dashboard/musician/tracks/images/'.$track->image)}}" class="img-responsive"> -->
-<!--                 src="{{asset('/dashboard/musician/tracks/videos/'.$track->video)}}"
- -->                <video width="320" height="240" controls>
+                <video width="220" height="240" controls>
                         <source src="{{asset('/dashboard/musician/tracks/videos/'.$track->video)}}" type="video/mp4">  
                 </video>
                 </a>

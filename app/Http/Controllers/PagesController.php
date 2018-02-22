@@ -28,38 +28,62 @@ class PagesController extends Controller
     //     return view('dashboard.main_index');
     // }
 
+     public function profile(Request $Request, $id){
+  
+      $args['userInfo'] = User::where('id','=',$id)->first(); 
+      $args['roles'] = Role::select('roles.name')->where('roles.id','=',$args['userInfo']['role_id'])->first();   
+      $args['tracks'] = Track::where('user_id',$id)->take(12  )->get();  
+      return view('profile')->with($args);
+     }
+
      public function contest()
     {
         return view('contest');
     }
     public function index(){ 
       $args['tracks'] = Track::leftJoin('users','users.id','=','tracks.user_id')
-                                ->select('tracks.id as track_id','users.name as user_name','tracks.name as track_name','tracks.image as track_image')
+                                ->select('tracks.id as track_id','users.name as user_name','users.id as user_id','tracks.name as track_name','tracks.image as track_image')
                                 ->inRandomOrder()
                                 ->take(10)
                                 ->get();
+       $rand_num  = rand(1,10);
+       $args['abc'] = $args['tracks'][$rand_num]; 
 
-      $rand_num  = rand(1,10);
-      $args['abc'] = $args['tracks'][$rand_num]; 
+   
+        $ratings[]=0;
+        foreach ($args['tracks'] as $value) {
+            $id = Rating::where('ratings.track_id', '=' ,$value->track_id)->first();
+            if($id){
+               $ratings[$value->track_id]['totalRating'] = Rating::select('rating')
+                                ->where('ratings.track_id', $value->track_id)      
+                                ->sum('rating');
 
-      if (!empty(Auth::user()->id)) {
-      $args['def'] = Rating::select('rating')
-                            ->where('ratings.track_id', $args['abc']['track_id'])
-                            ->where('ratings.user_id',Auth::user()->id)
-                            ->first();     
-     
-      }
-      
+                $ratings[$value->track_id]['totalROws'] = Rating::select('rating')
+                                ->where('ratings.track_id', $value->track_id)      
+                                ->count();
 
-      if(Auth::check())
-        {
-          $args['def'] = Rating::select('rating')
-                                ->where('ratings.track_id', $args['abc']['track_id'])
-                                ->where('ratings.user_id',Auth::user()->id)
-                                ->first();
+                $ratings[$value->track_id]['average'] = round($ratings[$value->track_id]['totalRating']/$ratings[$value->track_id]['totalROws']);
             }
 
-      return view ('index')->with($args);
+       }
+
+       
+
+      
+      // $args['def'] = Rating::select('rating')
+      //                       ->where('ratings.track_id', $args['abc']['track_id'])      
+      //                       ->get();           
+      //   $add = 0;
+      //   $round = 0;
+      //   foreach ($args['def'] as $key => $value) {
+      //           $round++;
+      //           $sum += $value->rating;
+      //           $average = $sum/$round;
+      //           $round = round($average); 
+      //       }
+      //       print_r($round);exit;
+
+      return view ('index',['ratings'=>$ratings])->with($args);
     }
     public function submit_rating(Request $request){ 
         $data= $request->rate_id;
@@ -165,5 +189,9 @@ class PagesController extends Controller
         
         
         return view('genre')->with($args);
+    }
+
+    public function getAffiliatedID(){
+      echo Auth::User()->promoter_affiliated_id;
     }
 }

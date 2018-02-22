@@ -16,6 +16,7 @@
 //     return view('index');
 // });
 Route::get('/','PagesController@index')->name('home1');
+Route::get('/profile/{id}','PagesController@profile')->name('profile');
 Route::post('/submit_rating','PagesController@submit_rating')->name('submit_rating');
 
 // Route::get('/index', 'HomeController@public_index')->name('public_index');
@@ -120,3 +121,8 @@ Auth::routes();
 Route::get('home1', 'HomeController@user_dashboard')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
+Route::get('/getAffiliatedID', 'PagesController@getAffiliatedID')->name('getAffiliatedID');

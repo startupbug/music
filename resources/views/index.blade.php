@@ -1,6 +1,6 @@
 @extends('layouts.public_index')
 @section('content')
-  <div class="container-fluid bg_gray">
+    <div class="container-fluid bg_gray">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -19,19 +19,19 @@
                                 <p>Track Name: <span class="track_name">{{$abc->track_name}}</span></p>
                                 <p>Artist: <span class="artist">{{$abc->user_name}}</span></p>
                                 <p>Rating: 
-                                <form  action="{{route('submit_rating')}}" method="post" id="rating-form">
+                                <form  action="" method="" id="">
                                     <span class="rating" id="star_rating_submit">
-                                        <span class="fa fa-star-o" data-rating="1"></span>
-                                        <span class="fa fa-star-o" data-rating="2"></span>
-                                        <span class="fa fa-star-o" data-rating="3"></span>
-                                        <span class="fa fa-star-o" data-rating="4"></span>
-                                        <span class="fa fa-star-o" data-rating="5"></span>
-                                        @if(!empty($def->rating))
-                                        <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="{{$def['rating']}}">
+                                        <span class="fa fa-star-o" data-rating="1" ></span>
+                                        <span class="fa fa-star-o" data-rating="2" ></span>
+                                        <span class="fa fa-star-o" data-rating="3" ></span>
+                                        <span class="fa fa-star-o" data-rating="4" ></span>
+                                        <span class="fa fa-star-o" data-rating="5" ></span>
+                                        @if(!empty($ratings[$abc->track_id]['average']))
+                                        <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="{{$ratings[$abc->track_id]['average']}}">
                                         @else
                                         <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="">
                                         @endif
-                                        <input type="hidden" name="track_id" id="track_id" value="{{$abc->track_id}}">
+
                                     </span>
                                 </form>                                
                                 </p>
@@ -69,7 +69,7 @@
                             </div>
                         </a>
                         <p><a href="#">{{$value->track_name}}</a></p>
-                        <p>{{$value->user_name}}</p>
+                        <a href="{{route('profile',['id'=>$value->user_id])}}"><p>{{$value->user_name}}</p></a>
                     </div>
                 </div> 
             @endforeach             
@@ -114,32 +114,32 @@
                     <h4>upload</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pharetra at augue et
                         facilisis.</p>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                    <div class="work_box wow bounceIn" data-wow-duration="2s" data-wow-delay="0.5s"
+                    ">
+                    <img src="{{asset('assets/images/get_famous_icon.png')}}" class="img-responsive center-block"/>
+                    <h4>Get famous</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pharetra at augue et
+                        facilisis.</p>
+                    </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
-                <div class="work_box wow bounceIn" data-wow-duration="2s" data-wow-delay="0.5s"
-                ">
-                <img src="{{asset('assets/images/get_famous_icon.png')}}" class="img-responsive center-block"/>
-                <h4>Get famous</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pharetra at augue et
-                    facilisis.</p>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-center clearfix">
+                    <div class="sign_up_now">
+                        <p class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">
+                            sign up now to get your tracks featured along
+                            with many others
+                        </p>
+                        <a href="#" class="btn btn-default wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">
+                            SIGN UP now
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-center clearfix">
-            <div class="sign_up_now">
-                <p class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">
-                    sign up now to get your tracks featured along
-                    with many others
-                </p>
-                <a href="#" class="btn btn-default wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">
-                    SIGN UP now
-                </a>
-            </div>
-        </div>
-    </div>
-    </div>
     </div><!--/End How IT Work -->
     <div class="container-fluid bg_gray">
         <div class="container">
@@ -171,28 +171,28 @@
         </div>
     </div>
     <div class="container-fluid contest_bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-center clearfix">
-                        <div class="contest_box">
-                            <h2 class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">OPEN CONTEST TO SEE
-                                WHO’S THE BEST</h2>
-                            <p class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus commodo ex in sapien
-                                euismod,
-                                at suscipit lectus blandit. Nam lacinia neque vel sollicitudin ultricies.
-                            </p>
-                            <a href="#" class="btn btn-default wow flipInX" data-wow-duration="2s"
-                               data-wow-delay="0.5s">
-                                go to contests now!
-                            </a>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-center clearfix">
+                            <div class="contest_box">
+                                <h2 class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">OPEN CONTEST TO SEE
+                                    WHO’S THE BEST</h2>
+                                <p class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus commodo ex in sapien
+                                    euismod,
+                                    at suscipit lectus blandit. Nam lacinia neque vel sollicitudin ultricies.
+                                </p>
+                                <a href="#" class="btn btn-default wow flipInX" data-wow-duration="2s"
+                                   data-wow-delay="0.5s">
+                                    go to contests now!
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
