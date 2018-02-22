@@ -38,15 +38,17 @@ class PagesController extends Controller
                                 ->inRandomOrder()
                                 ->take(10)
                                 ->get();
+
       $rand_num  = rand(1,10);
       $args['abc'] = $args['tracks'][$rand_num]; 
-
+      if (!empty(Auth::user()->id)) {
       $args['def'] = Rating::select('rating')
                             ->where('ratings.track_id', $args['abc']['track_id'])
                             ->where('ratings.user_id',Auth::user()->id)
-                            ->first();
+                            ->first();     
      
- 
+      }
+      
       return view ('index')->with($args);
     }
     public function submit_rating(Request $request){ 
@@ -87,6 +89,12 @@ class PagesController extends Controller
                     ->where('track_id', $id)
                     ->get();
 
+      $args['rating'] = Rating::select('rating')
+                            ->where('ratings.track_id', $id)
+                            ->where('ratings.user_id',Auth::user()->id)
+                            ->first();  
+      
+
         //updating page count 
 
         $view_count_exist = DB::table('tracks')->where('id',$id)->first(['view_count']);            
@@ -109,7 +117,7 @@ class PagesController extends Controller
                     }
 
                     //dd(123);
-        return view('musicvoting_genre',['track_video' => $track_video , 'track_uploader' => $track_uploader , 'commenting' => $commenting]);
+        return view('musicvoting_genre',['track_video' => $track_video , 'track_uploader' => $track_uploader , 'commenting' => $commenting])->with($args);
     }
 
      public function setCookie(Request $request){
