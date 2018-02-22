@@ -28,18 +28,7 @@
                 <h3 class="mid_heading">
                 {{$track_video->description}}
                 </h3>
-                <h3 class="rating">Rating:</h3>
-<!-- 
-                <div class="star-rating">
-                  <span class="fa fa-star-o" data-rating="1"></span>
-                  <span class="fa fa-star-o" data-rating="2"></span>
-                  <span class="fa fa-star-o" data-rating="3"></span>
-                  <span class="fa fa-star-o" data-rating="4"></span>
-                  <span class="fa fa-star-o" data-rating="5"></span>
-                   <p class="view">View: {{$track_video->view_count}}</p>
-                  <input type="hidden" name="whatever1" class="rating-value" value="2.56">
-                 
-                </div> -->
+                <h3 class="rating">Rating:</h3>           
                 <form  action="{{route('submit_rating')}}" method="post" id="rating-form">
                     <span class="rating" id="star_rating_submit">
                         <span class="fa fa-star-o" data-rating="1"></span>
@@ -56,11 +45,7 @@
                     </span>
                 </form> 
                 <div class="col-md-12">
-                  <ul>
-                    <li class="social_media"><a target = "_blank"  href="http://www.instagram.com"><img src="{{asset('assets/images/instagram.png')}}"></a><h2 class="mid_head">1881</h2><h3 class="mid_side">FOLLOWERS</h3></li>
-                    <li class="social_media"><a target = "_blank" href="http://www.facebook.com"><img src="{{asset('assets/images/facebook.png')}}"></a><h2 class="mid_head">2.5K</h2><h3 class="mid_like">LIKES</h3></li>
-                    <li class="social_media"><a target="_blank" href="http://www.google-plus.com"><img src="{{asset('assets/images/google-plus.png')}}"></a><h2 class="mid_head">1200</h2><h3 class="mid_side">FOLLOWERS</h3></li>
-                  </ul>
+                  <div id="social"> </div>
                 </div>
               </div>
               <div class="col-md-12">
@@ -68,7 +53,7 @@
                   @if(isset($track_video->video))
                     <source src="{{asset('/dashboard/musician/tracks/videos/'.$track_video->video)}}" type="video/mp4"> 
                   @endif
-                  <!-- <source src="mov_bbb.ogg" type="video/ogg"> -->
+                 <source src="mov_bbb.ogg" type="video/ogg">
                   Your browser does not support HTML5 video.
                 </video>
 

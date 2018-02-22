@@ -1014,7 +1014,7 @@ h3.mid_like {
 
 .star-rating {
     position: absolute;
-    top: 37%;
+    top: 50%;
     right: 72%;
 }
 
@@ -1782,7 +1782,7 @@ h3.points_rate {
 
     .view {
     position: absolute;
-    top: 0px;
+    top: -4px;
     right: -80%;
     color: black;
     font-size: 16px;
