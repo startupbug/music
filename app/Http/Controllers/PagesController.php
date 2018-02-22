@@ -40,13 +40,12 @@ class PagesController extends Controller
                                 ->get();
       $rand_num  = rand(1,10);
       $args['abc'] = $args['tracks'][$rand_num]; 
-      if(Auth::check())
-        {
-          $args['def'] = Rating::select('rating')
-                                ->where('ratings.track_id', $args['abc']['track_id'])
-                                ->where('ratings.user_id',Auth::user()->id)
-                                ->first();
-            }
+
+      $args['def'] = Rating::select('rating')
+                            ->where('ratings.track_id', $args['abc']['track_id'])
+                            ->where('ratings.user_id',Auth::user()->id)
+                            ->first();
+     
  
       return view ('index')->with($args);
     }
