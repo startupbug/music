@@ -1,5 +1,9 @@
 @include('layouts.public_partials.footer')
 
+<script type="text/javascript">
+  var APP_URL = "{!! asset('/') !!}";
+  console.log(APP_URL);
+</script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="{{asset('assets/js/jquery-3.1.1.min.js')}}"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -24,15 +28,15 @@
 <script src="{{asset('assets/js/jssocials.js')}}"></script>
 
 <script type="text/javascript">
-  $(document).ready(function() {
-	var linkurl = window.location.href;
-    $("#social").jsSocials({
-      url : linkurl,
-      showLabel: false,
-      showCount: "inside",
-      shareIn: "popup",
-      shares: ["twitter","facebook"]
-    });
-  });
+ $(document).ready(function() {
+var linkurl = window.location.href+'/'+'hasan';
+   $("#social").jsSocials({
+     url : linkurl,
+     showLabel: false,
+     showCount: "inside",
+     shareIn: "popup",
+     shares: ["twitter","facebook"]
+   });
+ });
 </script>
 
