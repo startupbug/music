@@ -29,6 +29,8 @@
     
     <link href="{{asset('assets/css/jssocials-theme-flat.css')}}" rel="stylesheet">    
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
+
     <!-- StyleSheet -->
     <!-- Responsive -->    
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

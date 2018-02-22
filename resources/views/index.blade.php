@@ -13,16 +13,27 @@
                                 <a href="#">
                                     <img class="img-responsive" src="{{asset('/dashboard/musician/tracks/images/'.$abc->track_image)}}" alt="">
                                 </a>
-                            </div>
+                            </div>                      
                             <div class="player_body">
                                 <h4>NOW PLAYING</h4>
                                 <p>Track Name: <span class="track_name">{{$abc->track_name}}</span></p>
                                 <p>Artist: <span class="artist">{{$abc->user_name}}</span></p>
-                                <p>Rating:
-                                    <span class="rating"><?php for ($a = 1; $a <= 4; $a++) { ?>
-                                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                                        <?php } ?>
+                                <p>Rating: 
+                                <form  action="{{route('submit_rating')}}" method="post" id="rating-form">
+                                    <span class="rating" id="star_rating_submit">
+                                        <span class="fa fa-star-o" data-rating="1"></span>
+                                        <span class="fa fa-star-o" data-rating="2"></span>
+                                        <span class="fa fa-star-o" data-rating="3"></span>
+                                        <span class="fa fa-star-o" data-rating="4"></span>
+                                        <span class="fa fa-star-o" data-rating="5"></span>
+                                        @if(!empty($def->rating))
+                                        <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="{{$def['rating']}}">
+                                        @else
+                                        <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="">
+                                        @endif
+                                        <input type="hidden" name="track_id" id="track_id" value="{{$abc->track_id}}">
                                     </span>
+                                </form>                                
                                 </p>
                                 <p>Share:
                                     <span class="red_color">
@@ -33,7 +44,7 @@
                                 </p>
                             </div>
                             <div class="btn_random float-right">
-                                <a href="javascript:" class="btn btn-default">
+                                <a href="" value="Refresh Page" onClick="window.location.href=window.location.href" class="btn btn-default" id="refresh_page">
                                     <i class="fa fa-random fa-2x" aria-hidden="true"></i>
                                 </a>
                             </div>
@@ -50,8 +61,8 @@
                             <div class="mask">
                             <span class="play_icon">
                                 <i class="fa fa-play fa-5x" aria-hidden="true"></i>
-                                <span data-img="images/song_img_<?php echo $a; ?>.png"
-                                      data-Tname="Xscape <?php echo $a; ?>"
+                                <span data-img="images/song_img_.png"
+                                      data-Tname="Xscape"
                                       data-album="Insurgency" data-artis="Michael Jackson" data-rating="">
                               </span>
                           </span>

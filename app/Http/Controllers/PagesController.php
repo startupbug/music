@@ -11,8 +11,10 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
 use Session;
 use App\Track;
+use App\Rating;
 use App\Comment;
 use App\Category;
+
 class PagesController extends Controller
 {    
     // public function index()
@@ -30,18 +32,45 @@ class PagesController extends Controller
     {
         return view('contest');
     }
-
-    public function index(){
+    public function index(){ 
       $args['tracks'] = Track::leftJoin('users','users.id','=','tracks.user_id')
-                                ->select('users.name as user_name','tracks.id as track_id','tracks.name as track_name','tracks.image as track_image')
+                                ->select('tracks.id as track_id','users.name as user_name','tracks.name as track_name','tracks.image as track_image')
                                 ->inRandomOrder()
                                 ->take(10)
                                 ->get();
       $rand_num  = rand(1,10);
-      $args['abc'] = $args['tracks'][$rand_num];      
+      $args['abc'] = $args['tracks'][$rand_num]; 
+      if(Auth::check())
+        {
+          $args['def'] = Rating::select('rating')
+                                ->where('ratings.track_id', $args['abc']['track_id'])
+                                ->where('ratings.user_id',Auth::user()->id)
+                                ->first();
+            }
+ 
       return view ('index')->with($args);
     }
-
+    public function submit_rating(Request $request){ 
+        $data= $request->rate_id;
+        $data2= $request->tr_id; 
+        if(!empty(Auth::user()->id) && !empty($data) && !empty($data2)){   
+            if (Rating::where('ratings.user_id', '=', Auth::user()->id)->where('ratings.track_id','=',$data2)->exists()) {
+               DB::table('ratings')
+                    ->where('ratings.user_id', Auth::user()->id)
+                    ->where('ratings.track_id', $data2)                   
+                    ->update(['ratings.rating' =>  $data]);
+                }else{             
+                $rating = new Rating;
+                $rating->user_id = Auth::user()->id;
+                $rating->track_id =  $data2;
+                $rating->rating =  $data;
+                $rating->save();        
+            }               
+        }else{        
+        Session::flash('err_msg','error occured');
+        }
+    }
+        
     public function winner()
     {
         return view('winner');

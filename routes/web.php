@@ -16,7 +16,7 @@
 //     return view('index');
 // });
 Route::get('/','PagesController@index')->name('home1');
-
+Route::post('/submit_rating','PagesController@submit_rating')->name('submit_rating');
 
 // Route::get('/index', 'HomeController@public_index')->name('public_index');
 

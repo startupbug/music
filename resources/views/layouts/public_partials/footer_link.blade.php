@@ -19,6 +19,7 @@
 <!-- Custom-js -->
 <script src="{{asset('assets/js/custom.js')}}"></script>
 <script src="{{asset('assets/js/mycustom.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
 
 <script src="{{asset('assets/js/jssocials.js')}}"></script>
 
