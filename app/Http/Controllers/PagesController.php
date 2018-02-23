@@ -9,8 +9,10 @@ use App\Role;
 use Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Session;
 use App\Track;
+use App\Point;
 use App\Rating;
 use App\Comment;
 use App\Category;
@@ -29,31 +31,31 @@ class PagesController extends Controller
         return view('contest');
     }
     public function index(){ 
-      $args['tracks'] = Track::leftJoin('users','users.id','=','tracks.user_id')
-                                ->select('tracks.id as track_id','users.name as user_name','users.id as user_id','tracks.name as track_name','tracks.image as track_image')
-                                ->inRandomOrder()
-                                ->take(10)
-                                ->get();
-       $rand_num  = rand(1,10);
-       $args['abc'] = $args['tracks'][$rand_num];
+        $args['tracks'] = Track::leftJoin('users','users.id','=','tracks.user_id')
+                        ->select('tracks.id as track_id','users.name as user_name','users.id as user_id','tracks.name as track_name','tracks.image as track_image')
+                        ->inRandomOrder()
+                        ->take(10)
+                        ->get();
+        $rand_num  = rand(1,10);
+        $args['abc'] = $args['tracks'][$rand_num];
         $ratings[]=0;
         foreach ($args['tracks'] as $value) {
             $id = Rating::where('ratings.track_id', '=' ,$value->track_id)->first();
-            if($id){
-               $ratings[$value->track_id]['totalRating'] = Rating::select('rating')
+        if($id){
+            $ratings[$value->track_id]['totalRating'] = 
+                            Rating::select('rating')
                                 ->where('ratings.track_id', $value->track_id)      
                                 ->sum('rating');
-
-                $ratings[$value->track_id]['totalROws'] = Rating::select('rating')
+            $ratings[$value->track_id]['totalROws'] = 
+                            Rating::select('rating')
                                 ->where('ratings.track_id', $value->track_id)      
                                 ->count();
-
-                $ratings[$value->track_id]['average'] = round($ratings[$value->track_id]['totalRating']/$ratings[$value->track_id]['totalROws']);
+            $ratings[$value->track_id]['average'] = round($ratings[$value->track_id]['totalRating']/$ratings[$value->track_id]['totalROws']);
             }
-       }
-      return view ('index',['ratings'=>$ratings])->with($args);
+        }
+        return view ('index',['ratings'=>$ratings])->with($args);
     }
-    public function submit_rating(Request $request){ 
+    public function submit_rating(Request $request){
         $data= $request->rate_id;
         $data2= $request->tr_id; 
         if(!empty(Auth::user()->id) && !empty($data) && !empty($data2)){   
@@ -67,13 +69,52 @@ class PagesController extends Controller
                 $rating->user_id = Auth::user()->id;
                 $rating->track_id =  $data2;
                 $rating->rating =  $data;
-                $rating->save();        
+                $rating->save();
+                
+                $point = new Point;
+                $point->user_id = Auth::user()->id;
+                $point->track_id = $data2;
+                $point->point = '10';
+                $point->point_type = 'Rating';
+                $point->description = 'User Rated This Track';
+                $point->save();
             }               
         }else{        
         Session::flash('err_msg','error occured');
         }
     }
-        
+    public function submit_points(Request $request){
+        $user= $request->user_id;
+        $track_id= $request->tr_id; 
+        if(!empty($user) && !empty($track_id)){                       
+                $point = new Point;
+                $point->user_id = $user;
+                $point->track_id = $track_id;
+                $point->point = '10';
+                $point->point_type = 'Streaming';
+                $point->description = 'User Streamed This Track';
+                $point->save();                          
+        }else{        
+        Session::flash('err_msg','error occured');
+        }
+    }
+    public function download_file($file_name,$track_id) {    
+        $user = Auth::user()->id;        
+        $download_path = (public_path().'\dashboard\musician\tracks\videos\/' . $file_name );       
+        if($download_path && !empty($user) && !empty($track_id)){                       
+                $point = new Point;
+                $point->user_id = $user;
+                $point->track_id = $track_id;
+                $point->point = '10';
+                $point->point_type = 'Downloading';
+                $point->description = 'User Downloaded This Track';
+                $point->save();                          
+        }else{        
+        Session::flash('err_msg','error occured');
+        }
+        return( \Response::download($download_path));
+    }
+
     public function winner()
     {
         return view('winner');
@@ -88,10 +129,13 @@ class PagesController extends Controller
                     ->select('comments.*','users.*','users.image')
                     ->where('track_id', $id)
                     ->get();
+        $args['rating'] = 0;
+        if (!empty(Auth::user()->id) && Auth::user()->id) {
         $args['rating'] = Rating::select('rating')
                             ->where('ratings.track_id', $id)
                             ->where('ratings.user_id',Auth::user()->id)
                             ->first();        
+        }        
         $view_count_exist = DB::table('tracks')->where('id',$id)->first(['view_count']);            
         $view_count_exist = $view_count_exist->view_count;
 
@@ -100,7 +144,8 @@ class PagesController extends Controller
                         {
                             $view_count_exist = $view_count_exist + 1;
                             $view_count_exist = DB::table('tracks')->where('id',$id)->update(['view_count' => $view_count_exist]);
-                        }
+                        }                       
+
                     }else{                    
                         //user not loggedin 
                             $view_count_exist = $view_count_exist + 1;

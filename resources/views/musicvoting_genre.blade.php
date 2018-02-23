@@ -49,13 +49,22 @@
                 </div>
               </div>
               <div class="col-md-12">
-                <video width="100%" style="height: auto;" controls >
-                  @if(isset($track_video->video))
-                    <source src="{{asset('/dashboard/musician/tracks/videos/'.$track_video->video)}}" type="video/mp4"> 
-                  @endif
-                 <source src="mov_bbb.ogg" type="video/ogg">
-                  Your browser does not support HTML5 video.
+                <video id="videoz" width="100%" style="height: auto;" controls controlsList="nodownload">  
+                  <input type="hidden" name="user_id" id="user_id" value="{{Auth::user()->id}}">
+
+                   <input type="hidden" name="track_id" id="track_id" value="{{$track_video->id}}">             
+                    @if(isset($track_video->video))
+                      <source src="{{asset('/dashboard/musician/tracks/videos/'.$track_video->video)}}" type="video/mp4"> 
+                    @endif
+                   <source src="mov_bbb.ogg" type="video/ogg">
+                    Your browser does not support HTML5 video.
                 </video>
+                <form action="{{route('download_file',['file_name'=>$track_video->video,'track_id'=>$track_video->id])}}" method="post">                                   
+                  {{csrf_field()}}
+                <div class="button_comment pull-right">
+                  <button type="submit" class="btn">Download</button>
+                </div>
+                </form>
 
               </div>
               @if((Auth::check()))
@@ -235,3 +244,5 @@
   </div>
 </div>
 @endsection
+
+
