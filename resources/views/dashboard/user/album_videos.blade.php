@@ -15,21 +15,7 @@
           <h3 class="all_album">
               {{$album->name}}
           </h3>
-      </div>
-      <div class="col-md-2 color_bottom">
-          <div class="btn-group" style="margin-top:32px">
-            <button type="button" class="btn btn-default btn-number" data-type="minus" data-field="quant[1]">
-              <span class="glyphicon glyphicon-pencil" style="color:#fff"></span>
-            </button>
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-              Action <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              <li><a data-toggle="modal" data-target="#EditAlbumModal">Edit</a></li>
-              <li><a href="{{route('delete_album',['id'=>$album->id])}}">Delete</a></li>
-            </ul>
-          </div>
-      </div>
+      </div>      
     </div>
     <hr class="line">
     <div class="row">

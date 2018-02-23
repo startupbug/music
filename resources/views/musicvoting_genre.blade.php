@@ -4,8 +4,8 @@
   <div class="row">
     <div class="col-md-12">
       <div class="input-group" id="adv-search">
-    
       </div>
+      {{$rating = 0}}
     </div>
   </div>
 </div>
@@ -58,7 +58,7 @@
                 </video>
 
               </div>
-
+              if(Auth::check())
               <h3 class="rating">Rating:</h3>           
                 <form  action="{{route('submit_rating')}}" method="post" id="rating-form">
                     <span class="rating" id="star_rating_submit">

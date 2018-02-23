@@ -15,8 +15,8 @@ class RegisteredController extends Controller
 {
     public function index()
     {
-      $tracks = DB::table('tracks')->get();
-      $albums = DB::table('albums')->get();   
+      $tracks = DB::table('tracks')->take(8)->orderBy('id','DESC')->get();
+      $albums = DB::table('albums')->take(8)->orderBy('id','DESC')->get();         
       return view('dashboard.user.dashboard_overview',['tracks' => $tracks, 'albums' => $albums]);
     }
 

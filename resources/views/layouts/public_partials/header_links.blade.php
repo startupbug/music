@@ -10,8 +10,7 @@
     <!-- FontAwesome -->
     <link href="{{asset('assets/css/font-awesome.min.css')}}" rel="stylesheet">
 
-    <link href="{{asset('assets/css/responsive.css')}}" rel="stylesheet">
-
+    <link href="{{asset('assets/css/responsive.css')}}" rel="stylesheet">    
     <!-- Animate -->
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
     <!-- Owl Slider -->

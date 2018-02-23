@@ -47,23 +47,23 @@ $users = User::select('name','image')->where('id',Auth::user()->id)->first();
 						<img src="{{asset('/dashboard/images/side_two.png')}}" class="img-responsive">
 					</div>
 					@if(Auth::user()->role_id == 2)
-					<a href="{{route('musician_overview')}}">
-						<p class="side_paragraph">
-						OVERVIEW
-						</p>
-					</a>
-					@elseif(Auth::user()->role_id == 3)
-					<a href="{{route('promoterdashboard')}}">
-						<p class="side_paragraph">
-						OVERVIEW
-						</p>
-					</a>
-					@elseif(Auth::user()->role_id == 4)
-					<a href="{{route('user_index')}}">
-						<p class="side_paragraph">
-						OVERVIEW
-						</p>
-					</a>
+						<a href="{{route('musician_overview')}}">
+							<p class="side_paragraph">
+							OVERVIEW
+							</p>
+						</a>
+						@elseif(Auth::user()->role_id == 3)
+						<a href="{{route('promoterdashboard')}}">
+							<p class="side_paragraph">
+							OVERVIEW
+							</p>
+						</a>
+						@elseif(Auth::user()->role_id == 4)
+						<a href="{{route('user_index')}}">
+							<p class="side_paragraph">
+							OVERVIEW
+							</p>
+						</a>
 					@endif
 			</div>
 		</div>
