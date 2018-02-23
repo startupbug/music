@@ -17,25 +17,13 @@ use App\Category;
 
 class PagesController extends Controller
 {    
-    // public function index()
-    // {
-    //     return view('index');
-    // }
-
-    //  public function dashboard()
-    // {
-        
-    //     return view('dashboard.main_index');
-    // }
-
-     public function profile(Request $Request, $id){
-  
+    
+     public function profile(Request $Request, $id){  
       $args['userInfo'] = User::where('id','=',$id)->first(); 
       $args['roles'] = Role::select('roles.name')->where('roles.id','=',$args['userInfo']['role_id'])->first();   
       $args['tracks'] = Track::where('user_id',$id)->take(12  )->get();  
       return view('profile')->with($args);
      }
-
      public function contest()
     {
         return view('contest');
@@ -47,9 +35,7 @@ class PagesController extends Controller
                                 ->take(10)
                                 ->get();
        $rand_num  = rand(1,10);
-       $args['abc'] = $args['tracks'][$rand_num]; 
-
-   
+       $args['abc'] = $args['tracks'][$rand_num];
         $ratings[]=0;
         foreach ($args['tracks'] as $value) {
             $id = Rating::where('ratings.track_id', '=' ,$value->track_id)->first();
@@ -64,25 +50,7 @@ class PagesController extends Controller
 
                 $ratings[$value->track_id]['average'] = round($ratings[$value->track_id]['totalRating']/$ratings[$value->track_id]['totalROws']);
             }
-
        }
-
-       
-
-      
-      // $args['def'] = Rating::select('rating')
-      //                       ->where('ratings.track_id', $args['abc']['track_id'])      
-      //                       ->get();           
-      //   $add = 0;
-      //   $round = 0;
-      //   foreach ($args['def'] as $key => $value) {
-      //           $round++;
-      //           $sum += $value->rating;
-      //           $average = $sum/$round;
-      //           $round = round($average); 
-      //       }
-      //       print_r($round);exit;
-
       return view ('index',['ratings'=>$ratings])->with($args);
     }
     public function submit_rating(Request $request){ 
@@ -114,36 +82,25 @@ class PagesController extends Controller
     public function musicvoting_genre($id)
     {   
         $track_video = DB::table('tracks')->where('id', $id)->first();
-        $track_uploader = Db::table('users')->where('id',$track_video->user_id)->first();
-       // dd($track_video);
-        //dd($track_video->video);
+        $track_uploader = Db::table('users')->where('id',$track_video->user_id)->first();       
         $commenting = DB::table('comments')
                     ->join('users','comments.user_id','=','users.id')
                     ->select('comments.*','users.*','users.image')
                     ->where('track_id', $id)
                     ->get();
-
-      $args['rating'] = Rating::select('rating')
+        $args['rating'] = Rating::select('rating')
                             ->where('ratings.track_id', $id)
                             ->where('ratings.user_id',Auth::user()->id)
-                            ->first();  
-      
-
-        //updating page count 
-
+                            ->first();        
         $view_count_exist = DB::table('tracks')->where('id',$id)->first(['view_count']);            
         $view_count_exist = $view_count_exist->view_count;
 
                     if(Auth::check()) {
-                        //user logged in
-                        // dd($track_video->user_id);
-
                         if(Auth::user()->id != $track_video->user_id)
                         {
                             $view_count_exist = $view_count_exist + 1;
                             $view_count_exist = DB::table('tracks')->where('id',$id)->update(['view_count' => $view_count_exist]);
                         }
-
                     }else{                    
                         //user not loggedin 
                             $view_count_exist = $view_count_exist + 1;

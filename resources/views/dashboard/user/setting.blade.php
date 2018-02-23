@@ -46,11 +46,7 @@
       <div class='field'>
         <label for='email'>Email</label>
         <input id='email' name='email' type='email' value='{{($user->email)}}' readonly>        
-      </div>
-      <div class='field'>
-        <label for='email'>Phone</label>
-        <input id='email' name='phone' type='phone' value='{{($user->phone)}}' disabled>
-      </div>
+      </div>  
       <div class='field'>
         <label for='password'>Password</label>
            <input id='password' name='password' type='password' value="********" readonly> <span class="stars" disabled>
@@ -63,7 +59,7 @@
       @if(Auth::user()->role_id == 4)
        <div class='field'>
         <label for='account'>Account Type</label>
-        <input id='account' name='account' type='account' value='Registered User' readonly>
+        <input id='account' name='account' type='account' value='{{$roles->name}}' readonly>
       </div>
       @endif
     </form>
@@ -96,22 +92,7 @@
         <input id='email' name='email' type='email' value='{{$user->instagram}}' readonly>
       </div>
       </form>
-  </div>
-   <div class='form'>
-      <form>
-        <div class='field'>
-          <label for='name'>Facebook</label>
-          <input id='facebook' name='facebook' type='text' value='{{$user->facebook}}' readonly >
-        </div>
-        <div class='field'>
-          <label for='email'>Twitter</label>
-          <input id='twitter' name='twitter' type='text' value='{{$user->twitter}}' readonly> 
-        </div>
-        <div class='field'>
-          <label for='email'>Instagram</label>
-          <input id='instagram' name='instagram' type='text' value='{{$user->instagram}}' readonly>
-        </div>
-</div>
+  </div>  
 </div>
 </div>
 </div>

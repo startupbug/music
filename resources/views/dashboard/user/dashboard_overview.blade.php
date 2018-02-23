@@ -1,5 +1,5 @@
 @extends('layouts.user_index')
-@section('content')s
+@section('content')
 <div class="col-md-9">
     <h3 class="heading_dashboard">
         USER DASHBOARD
@@ -32,7 +32,10 @@
             </div>
             <h3 class="album_person_name">
                 {{$track->name}}
-            </h3>
+            </h3>            
+                <h3 class="album_person_name">
+                     <b>By</b><a href="{{route('profile',['id'=>$track->user_id])}}"> {{$track->user_name}}</a>
+                </h3>            
         </div>
         @endforeach  
     </div>
@@ -53,11 +56,14 @@
             <a href="{{route('user_album_videos',['id' => $album->id])}}">
             <div class="dashboard_album">
                 <img src="{{asset('/dashboard/musician/albums/images/'.$album->image)}}" class="img-responsive">
-            </div>
+            </div>                    
+            </a>
             <h3 class="album_person_name">
                 {{$album->name}}
-            </h3>
-            </a>
+            </h3>              
+                <h3 class="album_person_name">
+                     <b>By</b> <a href="{{route('profile',['id'=>$track->user_id])}} ">{{$album->user_name}} </a>
+                </h3>           
         </div>
         @endforeach
     </div>
