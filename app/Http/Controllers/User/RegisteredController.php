@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\Album;
 use App\Role;
+use App\Album_Video;
 use Validator;
 use Illuminate\Support\Facades\Hash;
 use Session;
@@ -15,8 +17,18 @@ class RegisteredController extends Controller
 {
     public function index()
     {
-      $tracks = DB::table('tracks')->take(8)->orderBy('id','DESC')->get();
-      $albums = DB::table('albums')->take(8)->orderBy('id','DESC')->get();         
+      $tracks = DB::table('tracks')
+                            ->leftJoin('users','users.id','=','tracks.user_id')
+                            ->select('tracks.user_id','tracks.id','tracks.name','users.name as user_name','tracks.image','tracks.video')
+                            ->take(8)
+                            ->orderBy('tracks.id','DESC')
+                            ->get();
+      $albums = DB::table('albums')
+                            ->leftJoin('users','users.id','=','albums.user_id')
+                            ->select('albums.user_id','albums.id','albums.name','users.name as user_name','albums.image')
+                            ->take(8)
+                            ->orderBy('albums.id','DESC')
+                            ->get();               
       return view('dashboard.user.dashboard_overview',['tracks' => $tracks, 'albums' => $albums]);
     }
 
@@ -48,20 +60,29 @@ class RegisteredController extends Controller
         return $filename;
     }
 
-     public function album_videos()
+     public function album_videos($id)
     {
-      $albums = DB::table('albums')->get()->first();
-      return view('dashboard.user.album_videos',['album' => $albums]);
+   
+    $args['edit_album'] = Album::find($id); 
+    $args['all_videos'] = Album_Video::leftJoin('tracks','tracks.id','=','album__videos.track_id')
+                                      ->leftJoin('albums','albums.id','=','album__videos.album_id')
+                                      ->select('tracks.name','tracks.video','tracks.id')
+                                      ->where('album__videos.album_id','=',$id)                                      
+                                      ->get();  
+      return view('dashboard.user.album_videos')->with($args);
     }
 
     public function setting()
     {
-    	 $users = DB::table('users')->where('id', Auth::user()->id)->first();
-       return view('dashboard.user.setting',['user' => $users]);
+    	$users = DB::table('users')->where('id', Auth::user()->id)->first();
+        // print_r($users->role_id);exit;
+        $roles = Role::select('roles.name')->where('roles.id','=',$users->role_id)->first();
+        return view('dashboard.user.setting',['user' => $users,'roles'=>$roles]);
     }
   
     public function edit($id)
     {
+
         $args['user'] = User::find($id);
         $args['roles'] = Role::select('roles.name')->where('roles.id','=',$args['user']['role_id'])->first();      
       return view('dashboard.user.account.edit_account')->with($args);

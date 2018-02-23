@@ -31,7 +31,7 @@
 
     var CurrentData = '';
     $.ajax({
-        url: '/getAffiliatedID',
+        url: APP_URL + '/getAffiliatedID',
         type: 'get',
         success: function(res){
           CurrentData = res;

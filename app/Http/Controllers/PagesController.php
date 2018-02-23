@@ -17,25 +17,13 @@ use App\Category;
 
 class PagesController extends Controller
 {    
-    // public function index()
-    // {
-    //     return view('index');
-    // }
-
-    //  public function dashboard()
-    // {
-        
-    //     return view('dashboard.main_index');
-    // }
-
-     public function profile(Request $Request, $id){
-  
+    
+     public function profile(Request $Request, $id){  
       $args['userInfo'] = User::where('id','=',$id)->first(); 
       $args['roles'] = Role::select('roles.name')->where('roles.id','=',$args['userInfo']['role_id'])->first();   
       $args['tracks'] = Track::where('user_id',$id)->take(12  )->get();  
       return view('profile')->with($args);
      }
-
      public function contest()
     {
         return view('contest');
@@ -47,9 +35,7 @@ class PagesController extends Controller
                                 ->take(10)
                                 ->get();
        $rand_num  = rand(1,10);
-       $args['abc'] = $args['tracks'][$rand_num]; 
-
-   
+       $args['abc'] = $args['tracks'][$rand_num];
         $ratings[]=0;
         foreach ($args['tracks'] as $value) {
             $id = Rating::where('ratings.track_id', '=' ,$value->track_id)->first();
@@ -64,7 +50,6 @@ class PagesController extends Controller
 
                 $ratings[$value->track_id]['average'] = round($ratings[$value->track_id]['totalRating']/$ratings[$value->track_id]['totalROws']);
             }
-
        }
 
       return view ('index',['ratings'=>$ratings])->with($args);
@@ -100,14 +85,13 @@ class PagesController extends Controller
     public function musicvoting_genre($id)
     {   
         $track_video = DB::table('tracks')->where('id', $id)->first();
-        $track_uploader = Db::table('users')->where('id',$track_video->user_id)->first();
-       // dd($track_video);
-        //dd($track_video->video);
+        $track_uploader = Db::table('users')->where('id',$track_video->user_id)->first();       
         $commenting = DB::table('comments')
                     ->join('users','comments.user_id','=','users.id')
                     ->select('comments.*','users.*','users.image')
                     ->where('track_id', $id)
                     ->get();
+
     $args['rating'] =0;
         if (Auth::check()) {    
             $args['rating'] = Rating::select('rating')
@@ -121,15 +105,11 @@ class PagesController extends Controller
         $view_count_exist = $view_count_exist->view_count;
 
                     if(Auth::check()) {
-                        //user logged in
-                        // dd($track_video->user_id);
-
                         if(Auth::user()->id != $track_video->user_id)
                         {
                             $view_count_exist = $view_count_exist + 1;
                             $view_count_exist = DB::table('tracks')->where('id',$id)->update(['view_count' => $view_count_exist]);
                         }
-
                     }else{                    
                         //user not loggedin 
                             $view_count_exist = $view_count_exist + 1;
@@ -177,7 +157,7 @@ class PagesController extends Controller
         return view('genre')->with($args);
     }
 
-    public function getAffiliatedID($id){
+    public function getAffiliatedID(){
         //dd(Auth::User()->promoter_affiliated_id);
       echo Auth::User()->promoter_affiliated_id;
     }
