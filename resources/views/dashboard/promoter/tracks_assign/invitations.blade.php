@@ -35,7 +35,7 @@
           </div>  
         </div>      
         <h3 class="album_person_name">
-          {{$value->name}}
+          {{$value->musician_name}}
         </h3>      
       </div>
     @endforeach

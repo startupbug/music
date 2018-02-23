@@ -52,8 +52,14 @@ class PagesController extends Controller
                                 ->count();
             $ratings[$value->track_id]['average'] = round($ratings[$value->track_id]['totalRating']/$ratings[$value->track_id]['totalROws']);
             }
+<<<<<<< HEAD
         }
         return view ('index',['ratings'=>$ratings])->with($args);
+=======
+       }
+
+      return view ('index',['ratings'=>$ratings])->with($args);
+>>>>>>> f940bacb59d14096d7548448d25e17b7e765e110
     }
     public function submit_rating(Request $request){
         $data= $request->rate_id;
@@ -64,12 +70,14 @@ class PagesController extends Controller
                     ->where('ratings.user_id', Auth::user()->id)
                     ->where('ratings.track_id', $data2)                   
                     ->update(['ratings.rating' =>  $data]);
+                    echo "Your rating has been successfully submitted";
                 }else{             
                 $rating = new Rating;
                 $rating->user_id = Auth::user()->id;
                 $rating->track_id =  $data2;
                 $rating->rating =  $data;
                 $rating->save();
+<<<<<<< HEAD
                 
                 $point = new Point;
                 $point->user_id = Auth::user()->id;
@@ -78,6 +86,9 @@ class PagesController extends Controller
                 $point->point_type = 'Rating';
                 $point->description = 'User Rated This Track';
                 $point->save();
+=======
+                echo "Your rating has been successfully submitted";        
+>>>>>>> f940bacb59d14096d7548448d25e17b7e765e110
             }               
         }else{        
         Session::flash('err_msg','error occured');
@@ -129,6 +140,7 @@ class PagesController extends Controller
                     ->select('comments.*','users.*','users.image')
                     ->where('track_id', $id)
                     ->get();
+<<<<<<< HEAD
         $args['rating'] = 0;
         if (!empty(Auth::user()->id) && Auth::user()->id) {
         $args['rating'] = Rating::select('rating')
@@ -136,6 +148,18 @@ class PagesController extends Controller
                             ->where('ratings.user_id',Auth::user()->id)
                             ->first();        
         }        
+=======
+
+    $args['rating'] =0;
+        if (Auth::check()) {    
+            $args['rating'] = Rating::select('rating')
+                ->where('ratings.track_id', $id)
+                ->where('ratings.user_id',Auth::user()->id)
+                ->first();  
+        }
+        //updating page count 
+
+>>>>>>> f940bacb59d14096d7548448d25e17b7e765e110
         $view_count_exist = DB::table('tracks')->where('id',$id)->first(['view_count']);            
         $view_count_exist = $view_count_exist->view_count;
 
@@ -194,6 +218,7 @@ class PagesController extends Controller
     }
 
     public function getAffiliatedID(){
+        //dd(Auth::User()->promoter_affiliated_id);
       echo Auth::User()->promoter_affiliated_id;
     }
 }

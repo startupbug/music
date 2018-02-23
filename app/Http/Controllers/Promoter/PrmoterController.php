@@ -175,7 +175,7 @@ class PrmoterController extends Controller
         $unapproved_invitations = DB::table('invitations')
                                 ->leftJoin('users','users.id','=','invitations.musician_id')
                                 ->leftJoin('tracks','tracks.id','=','invitations.track_id')
-                                ->select('invitations.id','users.name as musician_name','tracks.name as track_name','invitations.status')
+                                ->select('invitations.id','users.name as musician_name','tracks.name as track_name','invitations.status','tracks.image as image')
                                 ->where('invitations.promoter_id','=',Auth::user()->id)
                                 ->where('invitations.status',0)
                                 ->get();

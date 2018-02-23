@@ -71,18 +71,19 @@ $(document).ready(function() {
 }); 
 
 $("#star_rating_submit").on('click', function(e){
-      e.preventDefault();
-      var formData = new FormData(this);
+      
       var track_ID = $('#track_id').val();    
       var rating_ID = $('#rating_no').val();      
       $.ajaxSetup({
         headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
       });      
       $.ajax({
-        url:  '/submit_rating',
+        url:  APP_URL + '/submit_rating',
         type: 'post',        
         data: { 'rate_id' : rating_ID, 'tr_id' : track_ID },           
-        success: function (data){          
+        success: function (data){    
+          alert(data);
+
           console.log(data);
           if(data.success == true){
            toastr.success(data.msg);

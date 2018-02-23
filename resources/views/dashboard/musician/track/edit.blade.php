@@ -86,7 +86,7 @@
                     <input type="text" class="form-control" readonly>
                     <label class="input-group-btn label_cus">
                         <span class="btn btn-primary">SELECT IMAGE
-                          <input type="file" name="image" style="display: none;">
+                          <input type="file" name="image" style="display: none; ">
                         </span>
                     </label>
                   </div>

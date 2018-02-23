@@ -4,8 +4,8 @@
   <div class="row">
     <div class="col-md-12">
       <div class="input-group" id="adv-search">
-    
       </div>
+      {{$rating = 0}}
     </div>
   </div>
 </div>
@@ -28,7 +28,7 @@
                 <h3 class="mid_heading">
                 {{$track_video->description}}
                 </h3>
-                <h3 class="rating">Rating:</h3>           
+                <!--<h3 class="rating">Rating:</h3>           
                 <form  action="{{route('submit_rating')}}" method="post" id="rating-form">
                     <span class="rating" id="star_rating_submit">
                         <span class="fa fa-star-o" data-rating="1"></span>
@@ -43,10 +43,10 @@
                         @endif
                         <input type="hidden" name="track_id" id="track_id" value="{{$track_video->id}}">
                     </span>
-                </form> 
-                <div class="col-md-12">
+                </form> -->
+               <!-- <div class="col-md-12">
                   <div id="social"> </div>
-                </div>
+                </div>-->
               </div>
               <div class="col-md-12">
                 <video id="videoz" width="100%" style="height: auto;" controls controlsList="nodownload">  
@@ -67,8 +67,29 @@
                 </form>
 
               </div>
+              if(Auth::check())
+              <h3 class="rating">Rating:</h3>           
+                <form  action="{{route('submit_rating')}}" method="post" id="rating-form">
+                    <span class="rating" id="star_rating_submit">
+                        <span class="fa fa-star-o" data-rating="1"></span>
+                        <span class="fa fa-star-o" data-rating="2"></span>
+                        <span class="fa fa-star-o" data-rating="3"></span>
+                        <span class="fa fa-star-o" data-rating="4"></span>
+                        <span class="fa fa-star-o" data-rating="5"></span>
+                        @if(!empty($rating->rating))
+                        <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="{{$rating['rating']}}">
+                        @else
+                        <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="">
+                        @endif
+                        <input type="hidden" name="track_id" id="track_id" value="{{$track_video->id}}">
+                    </span>
+                </form> 
+                  <div class="col-md-12">
+                  <div id="social"> </div>
+                </div>
+
+
               @if((Auth::check()))
-          
                 <div class="col-md-12 border">
                   <form action="{{route('insert_comments', ['id' => $track_video->id])}}" method="post">
                     {{csrf_field()}}
