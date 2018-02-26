@@ -44,19 +44,24 @@
   </div>
   <hr class="line">
   <div class="row">
-    <div class="col-md-2 col-sm-6 col-xs-6">
-      <h4 class="font-conv">POINT SEARNED:</h4>
-      <h4 class="font-conv">POINT SREDEEMED:</h4>
-      <h4 class="font-conv">REDEEMABLE:</h4>
-    </div>
-    <div class="col-md-2 col-sm-6 col-xs-6">
-      <h4 class="font-conv">400</h4>
-      <h4 class="font-conv">200</h4>
-      <h4 class="font-conv">200</h4>
-    </div>
-    <div class="col-md-8 col-sm-12 col-xs-12">
-      <button type="button" name="button" class="btn btn-primary btn-custom"><span>REDEEM</span> REQUEST</button>
-    </div>
+    <form action="{{route('redeemed_request')}}" method="POST">
+        {{csrf_field()}}
+      <div class="col-md-3 col-sm-6 col-xs-6">
+        <h4 class="font-conv">TOTAL POINTS EARNED:</h4>
+        <h4 class="font-conv">POINTS EARNED  IN <?php  $currentMonth = date('F'); echo $currentMonth; ?>:</h4>
+        <h4 class="font-conv">TOTAL REDEEMED:</h4>
+        <h4 class="font-conv">REDEEMABLE:</h4>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-6">
+        <h4 class="font-conv">{{$total_points}}</h4>
+        <h4 class="font-conv">{{$total_points_in_this_month}}</h4>
+        <h4 class="font-conv">{{$total_redeemed_points}}</h4>
+        <h4 class="font-conv">{{$redeemable_points}}</h4>
+      </div>
+      <div class="col-md-3 col-sm-12 col-xs-12">
+        <button type="submit" name="button" class="btn btn-primary btn-custom"><span>REDEEM</span> REQUEST</button>
+      </div>
+    </form>
   </div>
 </div>
 @endsection

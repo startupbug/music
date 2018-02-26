@@ -65,8 +65,8 @@ class PagesController extends Controller
                 }else{             
                 $rating = new Rating;
                 $rating->user_id = Auth::user()->id;
-                $rating->track_id =  $data2;
-                $rating->rating =  $data;
+                $rating->track_id = $data2;
+                $rating->rating = $data;
                 $rating->save();
                 
                 $point = new Point;
@@ -76,10 +76,10 @@ class PagesController extends Controller
                 $point->point_type = 'Rating';
                 $point->description = 'User Rated This Track';
                 $point->save();
-                echo "Your rating has been successfully submitted";   
+                echo "Your rating has been successfully submitted";
             }               
-        }else{        
-        Session::flash('err_msg','error occured');
+        }else{
+            Session::flash('err_msg','error occured');
         }
     }
     public function submit_points(Request $request){
