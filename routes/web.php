@@ -21,6 +21,7 @@ Route::post('/submit_rating','PagesController@submit_rating')->name('submit_rati
 Route::post('/submit_points','PagesController@submit_points')->name('submit_points');
 Route::post('/download_file/{file_name}/{track_id}','PagesController@download_file')->name('download_file');
 
+
 // Route::get('/index', 'HomeController@public_index')->name('public_index');
 
 // Route::get('/main_index','HomeController@dashboard')->name('main_index');
@@ -81,6 +82,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is-admin'], function () {
 //Route::get('/promoterindex','PrmoterController@index')->name('promoterindex');
 
 Route::group(['prefix' => 'musician', 'middleware' => 'is-musician'], function () {
+Route::post('/redeemed_request','Musician\MusicianController@redeemed_request')->name('redeemed_request');
+
 Route::get('/index','Musician\MusicianController@index')->name('main_index');
 Route::post('ajaxImageUpload',['as'=>'musicianImageUpload','uses'=>'Musician\MusicianController@musician_image']);
 Route::get('/overview','Musician\MusicianController@overview')->name('musician_overview');

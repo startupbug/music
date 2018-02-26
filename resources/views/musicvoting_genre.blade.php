@@ -26,14 +26,12 @@
                 </h3>
                 <h3 class="mid_heading">
                   {{$track_video->description}}
-                </h3>
+                </h3>      
               </div>
-
               <div class="col-md-12">
                 <video id="videoz" width="100%" style="height: auto;" controls controlsList="nodownload">
                   @if(Auth::check())  
                   <input type="hidden" name="user_id" id="user_id" value="{{Auth::user()->id}}">
-
                   <input type="hidden" name="track_id" id="track_id" value="{{$track_video->id}}">        
                   @endif
                   @if(isset($track_video->video))
@@ -53,6 +51,9 @@
                   </div>
                   <h3 class="rating">Rating:</h3>           
                   <form  action="{{route('submit_rating')}}" method="post" id="rating-form">
+                   <source src="mov_bbb.ogg" type="video/ogg">
+                    Your browser does not support HTML5 video.
+                </video> 
                     <span class="rating" id="star_rating_submit">
                       <span class="fa fa-star-o" data-rating="1"></span>
                       <span class="fa fa-star-o" data-rating="2"></span>

@@ -77,6 +77,7 @@ class PagesController extends Controller
                     ->where('ratings.track_id', $data2)                   
                     ->update(['ratings.rating' =>  $data]);
                     echo "Your rating has been successfully submitted";
+
                 }
                 else
                 {             
@@ -100,6 +101,24 @@ class PagesController extends Controller
             {        
                 Session::flash('err_msg','error occured');
             }
+    }
+    public function submit_points(Request $request)
+    {
+        $user= $request->user_id;
+        $track_id= $request->tr_id; 
+        if(!empty($user) && !empty($track_id)){                       
+                $point = new Point;
+                $point->user_id = $user;
+                $point->track_id = $track_id;
+                $point->point = '10';
+                $point->point_type = 'Streaming';
+                $point->description = 'User Streamed This Track';
+                $point->save();                          
+        }
+        else
+        {        
+            Session::flash('err_msg','error occured');
+        }
     }
 
     public function download_file($file_name,$track_id)
