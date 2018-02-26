@@ -17,7 +17,7 @@ class TracksController extends Controller
     public function index()
     {        
         $args['tracks'] = Track::where('user_id',Auth::user()->id)->take(20)->get();
-        return view('dashboard.user.track.index')->with($args);
+        return view('dashboard.musician.track.index')->with($args);
     }
 
     public function create()
