@@ -59,3 +59,29 @@
   });
 </script>
 
+
+<script type="text/javascript">
+ // $( document ).ready(function() {
+   var vid = document.getElementById("videoz");
+   vid.onended = function() { 
+      var track_ID = $('#track_id').val();    
+      var user_ID = $('#user_id').val();      
+      $.ajaxSetup({
+        headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+      });      
+      $.ajax({
+        url:  '/submit_points',
+        type: 'post',        
+        data: { 'user_id' : user_ID, 'tr_id' : track_ID },           
+        success: function (data){          
+          console.log(data);
+          if(data.success == true){
+           toastr.success(data.msg);
+         }else if(data.success == false){
+           toastr.error(data.msg);
+         }         
+       },   
+    });
+  };
+</script>
+

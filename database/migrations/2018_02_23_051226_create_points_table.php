@@ -19,6 +19,7 @@ class CreatePointsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('track_id')->unsigned();
             $table->foreign('track_id')->references('id')->on('tracks')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('point_type');
             $table->integer('point');
             $table->string('description');
             $table->timestamps();

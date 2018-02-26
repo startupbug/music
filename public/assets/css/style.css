@@ -746,3 +746,11 @@ footer .well div.input-group input{
     width: 75%;
     display: inline;
 }
+.img_height{
+    height: 220px;      
+}
+@media only screen and (max-device-width : 767px) and (min-device-width : 320px) {
+    .img_height{
+    height: auto;      
+    }
+}

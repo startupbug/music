@@ -1,19 +1,15 @@
-<?php
-use App\User;
-$users = User::select('name','image')->where('id',Auth::user()->id)->first();
-?>
 <div class="col-md-3 color_bg">
 	<div class="dashboard_name">
 	<div class="dashboard_name">		
 		<div class="image-box">
 			@if(Auth::user()->role_id == 2)
-				<img src="{{asset('/dashboard/profile_images/'. $users->image )}}" class="img-responsive">
+				<img src="{{asset('/dashboard/profile_images/'. Auth::user()->image )}}" class="img-responsive">
 				<form action="{{route('musicianImageUpload')}}" method="post" enctype="multipart/form-data" id="change_profile">
 			@elseif(Auth::user()->role_id == 3)
-				<img src="{{asset('/dashboard/profile_images/'. $users->image )}}" class="img-responsive">
+				<img src="{{asset('/dashboard/profile_images/'. Auth::user()->image )}}" class="img-responsive">
 				<form action="{{route('promoterImageUpload')}}" method="post" enctype="multipart/form-data" id="change_profile">
 			@elseif(Auth::user()->role_id == 4)
-				<img src="{{asset('/dashboard/profile_images/'. $users->image )}}" class="img-responsive">
+				<img src="{{asset('/dashboard/profile_images/'. Auth::user()->image )}}" class="img-responsive">
 				<form action="{{route('userImageUpload')}}" method="post" enctype="multipart/form-data" id="change_profile">
 			@endif
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -25,15 +21,36 @@ $users = User::select('name','image')->where('id',Auth::user()->id)->first();
 		</div>
 	</div>
 	<h3 class="name_person">
-		{{$users->name}}
+		{{Auth::user()->name}}
 	</h3>
 	<div class="row">
-		@if(Auth::user()->role_id == 2 || Auth::user()->role_id == 3)
+		@if(Auth::user()->role_id == 2)
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
 				<div class="side_img"><img src="{{asset('/dashboard/images/side_one.png')}}" class="img-responsive"></div>
 				<p class="side_heading">
-					500
+					@if($total_points && !empty($total_points))
+					{{$total_points}}
+					@else
+					0
+					@endif
+				</p>
+				<p class="side_paragraph">
+					POINTS
+				</p>
+			</div>
+		</div>
+		@endif
+		@if(Auth::user()->role_id == 3)
+		<div class="col-md-6 col-sm-6 col-xs-12">
+			<div class="side_border">
+				<div class="side_img"><img src="{{asset('/dashboard/images/side_one.png')}}" class="img-responsive"></div>
+				<p class="side_heading">
+					@if($total_points && !empty($total_points))
+					{{$total_points}}
+					@else
+					0
+					@endif
 				</p>
 				<p class="side_paragraph">
 					POINTS

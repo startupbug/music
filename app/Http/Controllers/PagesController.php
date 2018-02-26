@@ -115,8 +115,8 @@ class PagesController extends Controller
 
                             // ->join('tracks','albums.user_id','=','tracks.user_id')
                             // ->select('albums.id as album_id','albums.name','tracks.user_id','tracks.name as track_name','tracks.id as track_id')
-                            // ->groupBy('albums.name')
-                            
+                            //{{dd(Auth::user()->id)}}{{dd(Auth::user()->id)}}{{dd(Auth::user()->id)}}{{dd(Auth::user()->id)}}{{dd(Auth::user()->id)}}{{dd(Auth::user()->id)}}{{dd(Auth::user()->id)}}{{dd(Auth::user()->id)}}{{dd(Auth::user()->id)}}{{dd(Auth::user()->id)}}{{dd(Auth::user()->id)}} ->groupBy('albums.name')
+    //hasan rating auth                        
     $args['rating'] =0;
         if (Auth::check()) {    
             $args['rating'] = Rating::select('rating')
