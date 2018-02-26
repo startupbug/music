@@ -5,7 +5,6 @@
     <div class="col-md-12">
       <div class="input-group" id="adv-search">
       </div>
-      {{$rating = 0}}
     </div>
   </div>
 </div>
@@ -28,25 +27,6 @@
                 <h3 class="mid_heading">
                 {{$track_video->description}}
                 </h3>
-                <!--<h3 class="rating">Rating:</h3>           
-                <form  action="{{route('submit_rating')}}" method="post" id="rating-form">
-                    <span class="rating" id="star_rating_submit">
-                        <span class="fa fa-star-o" data-rating="1"></span>
-                        <span class="fa fa-star-o" data-rating="2"></span>
-                        <span class="fa fa-star-o" data-rating="3"></span>
-                        <span class="fa fa-star-o" data-rating="4"></span>
-                        <span class="fa fa-star-o" data-rating="5"></span>
-                        @if(!empty($rating->rating))
-                        <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="{{$rating['rating']}}">
-                        @else
-                        <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="">
-                        @endif
-                        <input type="hidden" name="track_id" id="track_id" value="{{$track_video->id}}">
-                    </span>
-                </form> -->
-               <!-- <div class="col-md-12">
-                  <div id="social"> </div>
-                </div>-->
               </div>
               <div class="col-md-12">
                 <video width="100%" style="height: auto;" controls >
@@ -58,7 +38,6 @@
                 </video>
 
               </div>
-              if(Auth::check())
               <h3 class="rating">Rating:</h3>           
                 <form  action="{{route('submit_rating')}}" method="post" id="rating-form">
                     <span class="rating" id="star_rating_submit">
@@ -139,98 +118,21 @@
           </div>
           <div class="col-md-4">
             <h3 class="side_menu">
-            TRACKS BY KENDRICK
+            TRACKS BY {{$track_uploader->name}}
             </h3>
+            @foreach($albums_tracks as $albums => $tracks )
             <ul id="nav1">
-              <li><a href="#">MIRRORS</a>
+
+              <li><a href="#">{{$albums}}</a>
                 <ul>
-                  <li><a href="#">Stage1</a></li>
-                  <li><a href="#">Stage2</a></li>
-                  <li><a href="#">Stage3</a></li>
-                  <li><a href="#">Stage4</a></li>
-                </ul>
-              </li>
-              <li><a href="#">PARADISE</a>
-                <ul>
-                  <li><a href="#">Stage1</a></li>
-                  <li><a href="#">Stage2</a></li>
-                  <li><a href="#">Stage3</a></li>
-                  <li><a href="#">Stage4</a></li>
-                </ul>
-              </li>
-              <li><a href="#">HEAVEN</a>
-                <ul>
-                  <li><a href="#">Stage1</a></li>
-                  <li><a href="#">Stage2</a></li>
-                  <li><a href="#">Stage3</a></li>
-                  <li><a href="#">Stage4</a></li>
-                </ul>
-              </li>
-              <li><a href="#">IRIS</a>
-                <ul>
-                  <li><a href="#">Stage1</a></li>
-                  <li><a href="#">Stage2</a></li>
-                  <li><a href="#">Stage3</a></li>
-                  <li><a href="#">Stage4</a></li>
-                </ul>
-              </li>
-              <li><a href="#">COMATOSE</a>
-                <ul>
-                  <li><a href="#">Stage1</a></li>
-                  <li><a href="#">Stage2</a></li>
-                  <li><a href="#">Stage3</a></li>
-                  <li><a href="#">Stage4</a></li>
-                </ul>
-              </li>
-              <li><a href="#">OH LOVE</a>
-                <ul>
-                  <li><a href="#">Stage1</a></li>
-                  <li><a href="#">Stage2</a></li>
-                  <li><a href="#">Stage3</a></li>
-                  <li><a href="#">Stage4</a></li>
-                </ul>
-              </li>
-              <li><a href="#">MIRRORS</a>
-                <ul>
-                  <li><a href="#">Stage1</a></li>
-                  <li><a href="#">Stage2</a></li>
-                  <li><a href="#">Stage3</a></li>
-                  <li><a href="#">Stage4</a></li>
-                </ul>
-              </li>
-              <li><a href="#">PARADISE</a>
-                <ul>
-                  <li><a href="#">Stage1</a></li>
-                  <li><a href="#">Stage2</a></li>
-                  <li><a href="#">Stage3</a></li>
-                  <li><a href="#">Stage4</a></li>
-                </ul>
-              </li>
-              <li><a href="#">HEAVEN</a>
-                <ul>
-                  <li><a href="#">Stage1</a></li>
-                  <li><a href="#">Stage2</a></li>
-                  <li><a href="#">Stage3</a></li>
-                  <li><a href="#">Stage4</a></li>
-                </ul>
-              </li>
-              <li><a href="#">IRIS</a>
-                <ul>
-                  <li><a href="#">Stage1</a></li>
-                  <li><a href="#">Stage2</a></li>
-                  <li><a href="#">Stage3</a></li>
-                  <li><a href="#">Stage4</a></li>
-                </ul>
-              </li>
-              <li><a href="#">COMATOSE</a>
-                <ul>
-                  <li><a href="#">Stage1</a></li>
-                  <li><a href="#">Stage2</a></li>
-                  <li><a href="#">Stage3</a></li>
-                  <li><a href="#">Stage4</a></li>
+                  @foreach($tracks as $track)
+                    <li><a href="{{route('musicvoting_genre',['id' => $track->track_id])}}">{{$track->name}}</a></li>
+                    
+                  @endforeach
                 </ul>
               </li>
             </ul> 
+            @endforeach
           </div>
         </div>
         <div role="tabpanel" class="tab-pane fade" id="messages">

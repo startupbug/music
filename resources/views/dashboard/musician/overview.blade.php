@@ -140,10 +140,12 @@
         <a href=""> <h3 class="hover_heading">ADDSONGTOCONTEST</h3> </a>
       </span>
     </div>  
-  </div>      
+  </div> 
+  <a href="{{route('edit_track',['id'=>$value->id])}}">    
   <h3 class="album_person_name">
     {{$value->name}}
-  </h3>      
+  </h3>   
+  </a>    
 </div>
 @endforeach
 </div>
@@ -166,7 +168,9 @@
   @foreach($all_albums as $value)
   <div class="col-md-3 col-sm-6 col-xs-12">
    <div class="dashboard_album">
+    <a href="{{route('edit_album',['id'=>$value->id])}}">
     <img src="{{asset('dashboard/musician/albums/images/'.$value->image)}}" class="img-responsive custom-image-dashboard">
+    </a>
   </div>
   <h3 class="album_person_name">
    {{$value->name}}

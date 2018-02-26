@@ -134,7 +134,7 @@ class PrmoterController extends Controller
         $this->validate(request(),[
             'old_password' => 'required',
             'password' => 'required',
-            'password_confirmation' => 'required',
+            'password_confirmation' => 'required|same:password',
         ]);
 
 
@@ -156,7 +156,8 @@ class PrmoterController extends Controller
             }
         }
         else{
-            return \Response()->json(['error' => 'Old password is incorrect, please enter valid password', 'code' => 401]);
+             Session::flash('old_password','Old password is incorrect, please enter valid password');
+            return redirect()->route('edit_account');
         }
     }
 

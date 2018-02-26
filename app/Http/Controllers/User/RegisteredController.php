@@ -12,6 +12,7 @@ use App\Album_Video;
 use Validator;
 use Illuminate\Support\Facades\Hash;
 use Session;
+use App\Track;
 
 class RegisteredController extends Controller
 {
@@ -30,6 +31,12 @@ class RegisteredController extends Controller
                             ->orderBy('albums.id','DESC')
                             ->get();               
       return view('dashboard.user.dashboard_overview',['tracks' => $tracks, 'albums' => $albums]);
+    }
+
+    public function all_tracks()
+    {        
+        $args['tracks'] = DB::table('tracks')->get();
+        return view('dashboard.user.index')->with($args);
     }
 
     public function user_images(Request $request)
@@ -135,7 +142,7 @@ class RegisteredController extends Controller
          $this->validate(request(),[
             'old_password' => 'required',
             'password' => 'required',
-            'password_confirmation' => 'required',
+            'password_confirmation' => 'required|same:password',
         ]);
         if (Hash::check($request->old_password, Auth::user()->password)) {
             if($request->password === $request->password_confirmation){
@@ -155,7 +162,8 @@ class RegisteredController extends Controller
             }
         }
         else{
-            return \Response()->json(['error' => 'Old password is incorrect, please enter valid password', 'code' => 401]);
+             Session::flash('old_password','Old password is incorrect, please enter valid password');
+            return redirect()->route('edit_account');
         }
     }
 

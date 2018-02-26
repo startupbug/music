@@ -1,6 +1,17 @@
 @extends('layouts.promoter_index')
 @section('content')
       <div class="col-md-9">
+        @if(count($errors))
+        <div class="form-group">
+         <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $erroring)
+                  <li>{{$erroring}}  </li>
+                  @endforeach
+            </ul>
+          </div>
+        </div>
+        @endif
         <h3 class="heading_dashboard">
              PROMOTER DASHBOARD
         </h3>
@@ -17,7 +28,10 @@
             </div>
         </div>
         <hr class="line">
-        <div class='form'>          
+        <div class='form'>  
+         @if (Session::has('old_password'))
+            <div class="alert alert-info">{{ Session::get('old_password') }}</div>
+        @endif        
           <form action="{{route('promoter_update_account',['id'=>$promoter->id])}}" method="POST" >
             {{csrf_field()}}
             <div class='fields'>
@@ -74,17 +88,7 @@
            </div>       
           </form>
       </div>
-        @if(count($errors))
-        <div class="form-group">
-         <div class="alert alert-danger">
-            <ul>
-                @foreach($errors->all() as $erroring)
-                  <li>{{$erroring}}  </li>
-                  @endforeach
-            </ul>
-          </div>
-        </div>
-        @endif
+        
     </div>
   </div>
 </div>

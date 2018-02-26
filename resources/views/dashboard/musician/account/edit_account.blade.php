@@ -1,7 +1,19 @@
 @extends('layouts.dashboard_index')
-@section('content')      
-      <div class="col-md-9">
+@section('content')  
+        <div class="col-md-9">
+      @if(count($errors))
+          <div class="form-group">
+            <div class="alert alert-danger">
+                <ul>
+                  @foreach($errors->all() as $erroring)
+                    <li>{{$erroring}}  </li>
+                      @endforeach
+                </ul>
+            </div>
+          </div>
+      @endif 
         <h3 class="heading_dashboard">
+
              ARTIST DASHBOARD
         </h3>
         <div class="border_red">
@@ -50,7 +62,10 @@
           </form>
         </div>
         <hr class="line">
-        <div class='form'>          
+        <div class='form'> 
+        @if (Session::has('old_password'))
+            <div class="alert alert-info">{{ Session::get('old_password') }}</div>
+        @endif           
           <form action="{{route('update_password',['id'=>$musician->id])}}" method="POST">
             {{csrf_field()}}
             <div class='fields'>
@@ -67,17 +82,6 @@
             </div>                        
             <div class="field-button">
              <button type="submit" name="button" class="btn btn-default" style="width:100%">Update</button>
-             @if(count($errors))
-        <div class="form-group">
-         <div class="alert alert-danger">
-            <ul>
-                @foreach($errors->all() as $erroring)
-                  <li>{{$erroring}}  </li>
-                  @endforeach
-            </ul>
-          </div>
-        </div>
-        @endif
            </div>          
           </form>
         </div>

@@ -65,6 +65,7 @@ class AlbumsController extends Controller
       $m->track_id = $p->id;
       $m->album_id = Input::get('album_id');  
       $m->save();      
+      Session::flash('upload_video_album','new video uploaded');
       return redirect()->back();       
     }
 
@@ -135,9 +136,9 @@ class AlbumsController extends Controller
       $image=$request->file('image');
       $filename=time() . '.' . $image->getClientOriginalExtension();          
       $location=public_path('dashboard/musician/albums/images/'.$filename);
-      $p->image=$filename;         
-    }
-    $p->image = $this->UploadFiles('image', Input::file('image'));      
+      //$p->image=$filename;
+      $p->image = $this->UploadFiles('image', Input::file('image'));          
+    }      
     $p->save();
     return redirect()->route('musician_album'); 
   }

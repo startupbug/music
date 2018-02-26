@@ -17,7 +17,7 @@ class TracksController extends Controller
     public function index()
     {        
         $args['tracks'] = Track::where('user_id',Auth::user()->id)->take(20)->get();
-        return view('dashboard.musician.track.index')->with($args);
+        return view('dashboard.user.track.index')->with($args);
     }
 
     public function create()
@@ -85,20 +85,29 @@ class TracksController extends Controller
     {
         $p = Track::find($id);
         $p->name = Input::get('name');
+        
         if ($request->hasFile('video')) {        
           $video=$request->file('video');
           $filename=time() . '.' . $video->getClientOriginalExtension();          
           $location=public_path('dashboard/musician/tracks/videos/'.$filename);
-          $p->video=$filename;         
+          //$p->video=$filename;         
+          $p->video = $this->UploadFiles('video', Input::file('video'));
         }
-        $p->video = $this->UploadFiles('video', Input::file('video'));
+
+
+
+        //Upading album image        
         if ($request->hasFile('image')) {
+         
           $image=$request->file('image');
           $filename=time() . '.' . $image->getClientOriginalExtension();          
           $location=public_path('dashboard/musician/tracks/images/'.$filename);
-          $p->image=$filename;         
+          //$p->image=$filename;         
+          $p->image = $this->UploadFiles('image', Input::file('image'));        
         }
-        $p->image = $this->UploadFiles('image', Input::file('image'));             
+
+             
+       
         $p->save();
         return redirect()->route('musician_track'); 
     }

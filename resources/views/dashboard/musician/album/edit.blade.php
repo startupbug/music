@@ -1,5 +1,8 @@
 @extends('layouts.dashboard_index') 
 @section('content')
+ @if (Session::has('upload_video_album'))
+    <div class="alert alert-info">{{ Session::get('upload_video_album') }}</div>
+    @endif
   <div class="col-md-9">
     <h3 class="heading_dashboard">
         ARTIST DASHBOARD
@@ -65,7 +68,6 @@
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="dashboard_album">
               <a href="{{route('musicvoting_genre',['id' => $value->id])}}">
-              <video width="100%" controls>
               <video width="100%" height="160px" controls>
                 <source src="{{asset('/dashboard/musician/tracks/videos/'.$value->video)}}" type="video/mp4">             
               </video>
@@ -138,7 +140,7 @@
               <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <h4><b>ALBUM NAME</b></h4>
-                  <input type="text" name="name" value="{{$edit_album->name}}" class="form-control">
+                  <input type="text" name="name" value="{{$edit_album->name}}" class="form-control" required>
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <h4><b>ALBUM IMAGE</b></h4>
@@ -206,11 +208,11 @@
               <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <h4><b>TITLE</b></h4>
-                  <input type="text" name="name" class="form-control">
+                  <input type="text" name="name" class="form-control" required>
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <h4><b>DESCRIPTION</b></h4>
-                  <input type="text" name="description" class="form-control">
+                  <input type="text" name="description" class="form-control" required>
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
                       <h3>CATEGORY</h3>                         

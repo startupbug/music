@@ -115,7 +115,7 @@ class MusicianController extends Controller
         $this->validate(request(),[
             'old_password' => 'required',
             'password' => 'required',
-            'password_confirmation' => 'required',
+            'password_confirmation' => 'required|same:password',
         ]);
 
         if (Hash::check($request->old_password, Auth::user()->password)) {
@@ -136,7 +136,8 @@ class MusicianController extends Controller
             }
         }
         else{
-            return \Response()->json(['error' => 'Old password is incorrect, please enter valid password', 'code' => 401]);
+            Session::flash('old_password','Old password is incorrect, please enter valid password');
+            return redirect()->route('edit_account');
         }
 
                    

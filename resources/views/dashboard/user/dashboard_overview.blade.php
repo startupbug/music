@@ -14,9 +14,11 @@
             <h3 class="all_album">
                 TRACKS
             </h3>
+            <a href="{{route('all_tracks')}}">
             <h3 class="add_album">
                 VIEW ALL
             </h3>
+            </a>
         </div>
     </div>
     <hr class="line">

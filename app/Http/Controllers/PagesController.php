@@ -14,6 +14,8 @@ use App\Track;
 use App\Rating;
 use App\Comment;
 use App\Category;
+use App\Album;
+use App\Album_Video;
 
 class PagesController extends Controller
 {    
@@ -85,6 +87,7 @@ class PagesController extends Controller
     public function musicvoting_genre($id)
     {   
         $track_video = DB::table('tracks')->where('id', $id)->first();
+        //dd($track_video);
         $track_uploader = Db::table('users')->where('id',$track_video->user_id)->first();       
         $commenting = DB::table('comments')
                     ->join('users','comments.user_id','=','users.id')
@@ -92,6 +95,28 @@ class PagesController extends Controller
                     ->where('track_id', $id)
                     ->get();
 
+        // $users_albums['user_albums']= DB::table('albums')->select('albums.id',DB::raw("(SELECT * FROM tracks )"))->get();
+
+                            // ->leftJoin('albums','albums.id','=','album__videos.album_id')
+                            // ->leftJoin('tracks','tracks.id','=','album__videos.track_id')
+
+                            // ->where('user_id',$track_video->user_id)->get();
+
+                   $albums = Album::where('user_id', $track_video->user_id)->get(); 
+                   $albums_tracks = array();  
+                   foreach ($albums as $key => $value) {
+                             $albums_tracks[$value->name] = Album_Video::join('tracks','album__videos.track_id','=','tracks.id')->where('album__videos.album_id','=',$value->id)->get();
+                         }      
+                   // dd($albums_tracks);
+
+    // ->select(\DB::raw('a.*', '(SELECT * FROM  tracks t WHERE a.user_id=t.user_id )'))
+    // ->get();
+
+
+                            // ->join('tracks','albums.user_id','=','tracks.user_id')
+                            // ->select('albums.id as album_id','albums.name','tracks.user_id','tracks.name as track_name','tracks.id as track_id')
+                            // ->groupBy('albums.name')
+                            
     $args['rating'] =0;
         if (Auth::check()) {    
             $args['rating'] = Rating::select('rating')
@@ -117,7 +142,7 @@ class PagesController extends Controller
                     }
 
                     //dd(123);
-        return view('musicvoting_genre',['track_video' => $track_video , 'track_uploader' => $track_uploader , 'commenting' => $commenting])->with($args);
+        return view('musicvoting_genre',['track_video' => $track_video , 'track_uploader' => $track_uploader , 'commenting' => $commenting, 'albums_tracks' => $albums_tracks])->with($args);
     }
 
      public function setCookie(Request $request){
