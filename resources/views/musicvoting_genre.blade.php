@@ -51,9 +51,6 @@
                   </div>
                   <h3 class="rating">Rating:</h3>           
                   <form  action="{{route('submit_rating')}}" method="post" id="rating-form">
-                   <source src="mov_bbb.ogg" type="video/ogg">
-                    Your browser does not support HTML5 video.
-                </video> 
                     <span class="rating" id="star_rating_submit">
                       <span class="fa fa-star-o" data-rating="1"></span>
                       <span class="fa fa-star-o" data-rating="2"></span>

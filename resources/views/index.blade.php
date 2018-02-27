@@ -12,7 +12,7 @@
                         <div class="player_left_side">
                             <a href="#">
                                 @if($abc->track_image && !empty($abc->track_image))
-                                <img class="img-responsive" src="{{asset('/dashboard/musician/tracks/images/'.$abc->track_image)}}" alt="">
+                                    <img class="img-responsive" src="{{asset('/dashboard/musician/tracks/images/'.$abc->track_image)}}" alt="">
                                 @endif
                             </a>
                         </div>                      
@@ -29,11 +29,10 @@
                                     <span class="fa fa-star-o" data-rating="4" ></span>
                                     <span class="fa fa-star-o" data-rating="5" ></span>
                                     @if(!empty($ratings[$abc->track_id]['average']))
-                                    <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="{{$ratings[$abc->track_id]['average']}}">
+                                        <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="{{$ratings[$abc->track_id]['average']}}">
                                     @else
-                                    <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="">
+                                        <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="">
                                     @endif
-
                                 </span>
                             </form>                                
                             </p>

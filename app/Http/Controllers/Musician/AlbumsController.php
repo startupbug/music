@@ -105,7 +105,8 @@ class AlbumsController extends Controller
     public function edit(Request $request,$id)
     {       
      $args['categories'] = Category::get();
-     $args['edit_album'] = Album::where('user_id',Auth::user()->id)->find($id);  
+     $args['edit_album'] = Album::where('user_id',Auth::user()->id)->find($id); 
+     
      $track_ids = Album_Video::where('album__videos.album_id','=',$id)
                                ->select('album__videos.track_id')
                                ->groupBy('album__videos.track_id')

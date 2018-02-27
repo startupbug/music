@@ -71,7 +71,7 @@ class MusicianController extends Controller
     public function overview()
     {
         $args['all_tracks'] = Track::take(8)->orderBy('id','DESC')->get();
-        $args['all_albums'] = Album::take(8)->orderBy('id','DESC')->get();
+        $args['all_albums'] = Album::where('user_id', Auth::user()->id)->take(8)->orderBy('id','DESC')->get();
         return view('dashboard.musician.overview')->with($args);
     }
      public function redeem()

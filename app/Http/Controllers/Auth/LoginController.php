@@ -37,7 +37,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-     protected function authenticated($request, $user)
+     protected function authenticated( $request, $user)
     {
         if($user->role_id === 3) {
             return redirect()->intended('/promoter/promoterindex');
@@ -57,4 +57,6 @@ class LoginController extends Controller
 
         return redirect()->intended('/index');
     }
+
+    
 }

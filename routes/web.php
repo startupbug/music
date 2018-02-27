@@ -30,7 +30,7 @@ Route::get('/contest','PagesController@contest')->name('contest');
 
 Route::get('/winner','PagesController@winner')->name('winner');
 
-Route::get('/musicvoting_genre/{id}','PagesController@musicvoting_genre')->name('musicvoting_genre');
+Route::get('/musicvoting_genre/{id}/{name?}','PagesController@musicvoting_genre')->name('musicvoting_genre');
 
 Route::get('/artist_detail','PagesController@artist_detail')->name('artist_detail');
 
@@ -56,6 +56,7 @@ Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'Promoter\Prm
     Route::get('/unapproved_invitations','Promoter\PrmoterController@unapproved_invitations')->name('unapproved_invitations');
     Route::get('/approve_status/{id}/', ["as" => "approve-status", "uses" => "Promoter\PrmoterController@approve_status"]);
     Route::get('/disapprove_status/{id}/', ["as" => "disapprove-status", "uses" => "Promoter\PrmoterController@disapprove_status"]);
+    Route::get('/albums/{id}','Promoter\PrmoterController@all_albums')->name('all_albums');
     Route::get('/promoter_logout', 'Promoter\PrmoterController@promoter_logout')->name('logout_promoter');
 });
 

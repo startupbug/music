@@ -8,6 +8,7 @@
       <div class="modal-content">
         <h4 class="login-title">Login</h4>
         <div class="modal-body">
+          {{dd(123456)}}
           <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

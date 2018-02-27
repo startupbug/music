@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
@@ -26,7 +25,7 @@ class PagesController extends Controller
    {  
       $args['userInfo'] = User::where('id','=',$id)->first(); 
       $args['roles'] = Role::select('roles.name')->where('roles.id','=',$args['userInfo']['role_id'])->first();   
-      $args['tracks'] = Track::where('user_id',$id)->take(12  )->get();  
+      $args['tracks'] = Track::where('user_id',$id)->take(12)->get();  
       return view('profile')->with($args);
     }
 
@@ -147,8 +146,26 @@ class PagesController extends Controller
         return view('winner');
     }
 
-    public function musicvoting_genre($id)
+    public function musicvoting_genre($id, $name = null)
     {   
+
+        //promoter getting points for sharing url
+
+        if(!empty($name))
+        {
+            $user = User::where('promoter_affiliated_id','=',$name)->first();
+            //dd($user);
+            
+               $points = new Point;
+               $points->user_id = $user->id;
+               $points->track_id = $id;
+               $points->point = 10;
+               $points->point_type = "Sharing";
+               $points->description = "Promoter Share This Track";
+               $points->save();
+        
+
+
         //fetching data from tracks
         $track_video = DB::table('tracks')->where('id', $id)->first();
          
@@ -199,7 +216,67 @@ class PagesController extends Controller
             $view_count_exist = $view_count_exist + 1;
             $view_count_exist = DB::table('tracks')->where('id',$id)->update(['view_count' => $view_count_exist]);                    
         }
+
+         
             return view('musicvoting_genre',['track_video' => $track_video , 'track_uploader' => $track_uploader , 'commenting' => $commenting, 'albums_tracks' => $albums_tracks])->with($args);
+        }
+
+        else
+        {
+            //fetching data from tracks
+        $track_video = DB::table('tracks')->where('id', $id)->first();
+         
+         //fetching data from users where id is equal to current track id  
+        $track_uploader = Db::table('users')->where('id',$track_video->user_id)->first();
+
+        //retriving all comments on specific video       
+        $commenting = DB::table('comments')
+                        ->join('users','comments.user_id','=','users.id')
+                        ->select('comments.*','users.*','users.image')
+                        ->where('track_id', $id)
+                        ->get();
+
+        //retriving userid from album table
+        $albums = Album::where('user_id', $track_video->user_id)->get(); 
+        $albums_tracks = array();  
+        foreach ($albums as $key => $value)
+        {
+            $albums_tracks[$value->name] = Album_Video::join('tracks','album__videos.track_id','=','tracks.id')->where('album__videos.album_id','=',$value->id)->get();
+        }
+
+        //hasan rating auth                        
+        $args['rating'] = 0;
+        if (Auth::check())
+        {    
+            $args['rating'] = Rating::select('rating')
+            ->where('ratings.track_id', $id)
+            ->where('ratings.user_id',Auth::user()->id)
+            ->first();  
+        }
+            //updating page count 
+        $view_count_exist = DB::table('tracks')->where('id',$id)->first(['view_count']);            
+        $view_count_exist = $view_count_exist->view_count;
+
+
+        //condition for counting how many time video is been viewed
+        if(Auth::check())
+        {
+            if(Auth::user()->id != $track_video->user_id)
+            {
+                $view_count_exist = $view_count_exist + 1;
+                $view_count_exist = DB::table('tracks')->where('id',$id)->update(['view_count' => $view_count_exist]);
+            }
+        }
+        else
+        {                    
+                            //user not loggedin 
+            $view_count_exist = $view_count_exist + 1;
+            $view_count_exist = DB::table('tracks')->where('id',$id)->update(['view_count' => $view_count_exist]);                    
+        }
+
+         
+            return view('musicvoting_genre',['track_video' => $track_video , 'track_uploader' => $track_uploader , 'commenting' => $commenting, 'albums_tracks' => $albums_tracks])->with($args);
+        }
     }
 
     public function setCookie(Request $request)

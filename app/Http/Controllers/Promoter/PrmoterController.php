@@ -11,30 +11,45 @@ use App\Role;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
 use Session;
+use App\Album;
 class PrmoterController extends Controller
 {
     public function index()
     {
-
-    	return view('dashboard.promoter.index');
+        $all_albums = Album::take(8)->orderBy('id','DESC')->get();
+    	return view('dashboard.promoter.index',['all_albums'=>$all_albums]);   
     }
+
+    public function all_albums($id)
+    {
+        $show['albums'] = Album::where('id',$id)->get();
+        $show['album_tracks'] = Track::join('album__videos','tracks.id','=','album__videos.track_id')
+                                     // ->join('users','tracks.user_id','=','users.id')
+                                     ->where('album_id',$id)->get();
+        // dd($album_tracks);
+        return view('dashboard.promoter.all_albums')->with($show);
+    }
+
      public function promoter_image(Request $request)
     {
         $img_name = '';
         if(Input::file('image')){
-                $img_name = $this->UploadImage('image', Input::file('image'));
-               User::where('id' ,'=', Auth::user()->id)->update([
+            $img_name = $this->UploadImage('image', Input::file('image'));
+            User::where('id' ,'=', Auth::user()->id)->update([
                 'image' => $img_name
             ]);  
-        $path = asset('/dashboard/profile_images').'/'.$img_name;  
-        return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]); 
-        }else{
+            $path = asset('/dashboard/profile_images').'/'.$img_name;  
+            return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]); 
+        }
+        else
+        {
              return \Response()->json(['error' => "Image uploading failed", 'code' => 202]);
         }         
     }
        public function UploadImage($type, $file){
-        if( $type == 'image'){
-        $path = base_path() . '/public/dashboard/profile_images/';
+        if( $type == 'image')
+        {
+            $path = base_path() . '/public/dashboard/profile_images/';
         }
         $filename = md5($file->getClientOriginalName() . time()) . '.' . $file->getClientOriginalExtension();
         $file->move( $path , $filename);
@@ -83,12 +98,12 @@ class PrmoterController extends Controller
     {
         $args['promoter'] = User::find($id);
         $args['roles'] = Role::select('roles.name')->where('roles.id','=',$args['promoter']['role_id'])->first();      
-      return view('dashboard.promoter.account.edit_account')->with($args);
+        return view('dashboard.promoter.account.edit_account')->with($args);
     }
 
      public function update_account(Request $request,$id)
     {
-          $this->validate(request(),[
+        $this->validate(request(),[
             'name' => 'required',
             'phone' => 'required',
             'email' => 'required',
@@ -107,8 +122,8 @@ class PrmoterController extends Controller
 
     public function edit_links($id)
     {
-      $args['promoter'] = User::find($id);
-      return view('dashboard.promoter.account.edit_link')->with($args);
+        $args['promoter'] = User::find($id);
+        return view('dashboard.promoter.account.edit_link')->with($args);
     }
 
     public function update_links(Request $request,$id)
@@ -138,25 +153,31 @@ class PrmoterController extends Controller
         ]);
 
 
-        if (Hash::check($request->old_password, Auth::user()->password)) {
-            if($request->password === $request->password_confirmation){
+        if (Hash::check($request->old_password, Auth::user()->password))
+        {
+            if($request->password === $request->password_confirmation)
+            {
                 $user = User::where('id', Auth::user()->id)->update([
                     'password' => bcrypt($request->password)
                 ]);
-                if($user){
+                if($user)
+                {
                     Session::flash('password_status','you password is update');
-                   return redirect()->route('promotersetting'); 
+                    return redirect()->route('promotersetting'); 
                 }
-                else{
+                else
+                {
                     return \Response()->json(['error' => "Profile update failed", 'code' => 202]);
                 }
             }
-            else{
+            else
+            {
                 return \Response()->json(['error' => 'Password does not match with confirmation password', 'code' => 202]);
             }
         }
-        else{
-             Session::flash('old_password','Old password is incorrect, please enter valid password');
+        else
+        {
+            Session::flash('old_password','Old password is incorrect, please enter valid password');
             return redirect()->route('edit_account');
         }
     }
@@ -197,8 +218,9 @@ class PrmoterController extends Controller
         return redirect()->back();
     }
 
-     public function promoter_logout(Request $request) {     
-      Auth::logout();
-      return redirect('/');
+     public function promoter_logout(Request $request)
+    {     
+        Auth::logout();
+        return redirect('/');
     }
 }

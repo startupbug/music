@@ -33,10 +33,12 @@
               <h3 class="hover_heading">ADDSONGTOCONTEST</h3> 
           </span>
         </div>  
-      </div>      
+      </div>
+      <a href="{{route('musicvoting_genre',['id' => $value->track_id])}}">    
       <h3 class="album_person_name">
         {{$value->name}}
-      </h3>      
+      </h3>   
+      </a>   
     </div>
   @endforeach
 </div>

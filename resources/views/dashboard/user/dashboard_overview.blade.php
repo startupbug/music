@@ -52,8 +52,10 @@
         </div>
     </div>
     <hr class="line">
-    <div class="row">        
+    <div class="row"> 
+
         @foreach($albums as $album)
+
         <div class="col-md-3 col-sm-6 col-xs-12">
             <a href="{{route('user_album_videos',['id' => $album->id])}}">
             <div class="dashboard_album">
@@ -64,7 +66,7 @@
                 {{$album->name}}
             </h3>              
                 <h3 class="album_person_name">
-                     <b>By</b> <a href="{{route('profile',['id'=>$track->user_id])}} ">{{$album->user_name}} </a>
+                     <b>By</b> <a href="{{route('profile',['id'=>$album->user_id])}} ">{{$album->user_name}}</a>
                 </h3>           
         </div>
         @endforeach
