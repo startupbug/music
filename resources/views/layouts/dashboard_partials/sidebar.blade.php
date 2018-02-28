@@ -29,8 +29,8 @@
 			<div class="side_border">
 				<div class="side_img"><img src="{{asset('/dashboard/images/side_one.png')}}" class="img-responsive"></div>
 				<p class="side_heading">
-					@if($total_points && !empty($total_points))
-					{{$total_points}}
+					@if($redeemable_points && !empty($redeemable_points))
+					{{$redeemable_points}}
 					@else
 					0
 					@endif
@@ -46,8 +46,8 @@
 			<div class="side_border">
 				<div class="side_img"><img src="{{asset('/dashboard/images/side_one.png')}}" class="img-responsive"></div>
 				<p class="side_heading">
-					@if($total_points && !empty($total_points))
-					{{$total_points}}
+					@if($redeemable_points && !empty($redeemable_points))
+					{{$redeemable_points}}
 					@else
 					0
 					@endif

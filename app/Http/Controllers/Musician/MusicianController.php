@@ -29,14 +29,17 @@ class MusicianController extends Controller
     public function musician_image(Request $request)
     {
         $img_name = '';
-        if(Input::file('image')){
-                $img_name = $this->UploadImage('image', Input::file('image'));
-               User::where('id' ,'=', Auth::user()->id)->update([
+        if(Input::file('image'))
+        {
+            $img_name = $this->UploadImage('image', Input::file('image'));
+            User::where('id' ,'=', Auth::user()->id)->update([
                 'image' => $img_name
             ]);  
-        $path = asset('/dashboard/profile_images').'/'.$img_name;  
-        return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]); 
-        }else{
+            $path = asset('/dashboard/profile_images').'/'.$img_name;  
+            return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]); 
+        }
+        else
+        {
              return \Response()->json(['error' => "Image uploading failed", 'code' => 202]);
         }
          

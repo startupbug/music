@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Promoter;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Track;
@@ -12,8 +12,11 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
 use Session;
 use App\Album;
+use App\Point;
+use Illuminate\Support\Facades\View;
 class PrmoterController extends Controller
 {
+   
     public function index()
     {
         $all_albums = Album::take(8)->orderBy('id','DESC')->get();
@@ -84,7 +87,34 @@ class PrmoterController extends Controller
 
     public function redeempoint()
     {
-    	return view('dashboard.promoter.redeempoint');
+        if(Auth::check())
+        {
+            $promoter_points = DB::table('points')
+                            // ->leftjoin('tracks','tracks.id','=','points.track_id')
+                            // ->leftjoin('users','users.id','=','tracks.user_id')
+                            // ->select('points.point')                                
+                            ->where('user_id','=',Auth::user()->id)
+                            ->get();
+                            
+            $total_points = 0;             
+            foreach ($promoter_points as $value)
+            {
+                $total_points += $value->point;
+            }   
+       
+        }
+
+        $promoter_redeemed_points = DB::table('redeemed_points')                                                
+                        ->select('redeemed_points.redeemed_point')                                
+                        ->where('redeemed_points.user_id','=',Auth::user()->id)
+                        ->get();
+        $total_redeemed_points = 0;             
+        foreach ($promoter_redeemed_points as $value)
+        {
+            $total_redeemed_points += $value->redeemed_point;
+        }   
+        $redeemable_points = $total_points - $total_redeemed_points;
+    	return view('dashboard.promoter.redeempoint',['total_points' => $total_points, 'total_redeemed_points' => $total_redeemed_points, 'redeemable_points' => $redeemable_points]);
     }
 
     public function setting()

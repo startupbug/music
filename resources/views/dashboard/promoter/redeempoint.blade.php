@@ -1,4 +1,4 @@
-@extends('layouts.promoter_index')
+    @extends('layouts.promoter_index')
 @section('content')
  <div class="col-md-9">
         <h3 class="heading_dashboard">
@@ -41,15 +41,15 @@
      	<div class="top_redeem">
     	<ul class="redeem">
     		<li class="redeem_point_one">POINTSEARNED:</li>
-    		<li class="redeem_points">400</li>
+    		<li class="redeem_points">{{$total_points}}</li>
     	</ul>
     	<ul class="redeem">
     		<li class="redeem_point">POINTSREDEEMED:</li>
-    		<li class="redeem_point">200</li>
+    		<li class="redeem_point">{{$total_redeemed_points}}</li>
     	</ul>
     	<ul class="redeem">
     		<li class="redeem_points">REDEEMABLE:</li>
-    		<li class="redeem_points">200</li>
+    		<li class="redeem_points">{{$redeemable_points}}</li>
     	</ul>
     </div>
 </div>
