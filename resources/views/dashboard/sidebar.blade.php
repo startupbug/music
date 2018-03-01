@@ -1,12 +1,12 @@
 <div class="col-md-3 color_bg">
-	<div class="dashboard_name"><img src="{{asset('/dashboard/images/name.png')}}" class="img-responsive"></div>
+	<div class="dashboard_name"><img src="{{asset('public//dashboard/images/name.png')}}" class="img-responsive"></div>
 	<h3 class="name_person">
 		KING_LAMAR
 	</h3>
 	<div class="row">
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
-				<div class="side_img"><img src="{{asset('/dashboard/images/side_one.png')}}" class="img-responsive"></div>
+				<div class="side_img"><img src="{{asset('public//dashboard/images/side_one.png')}}" class="img-responsive"></div>
 				<p class="side_heading">
 					500
 				</p>
@@ -17,7 +17,7 @@
 		</div>
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
-				<div class="side_img"><img src="{{asset('/dashboard/images/side_two.png')}}" class="img-responsive"></div>
+				<div class="side_img"><img src="{{asset('public//dashboard/images/side_two.png')}}" class="img-responsive"></div>
 				<a href="dashboard_overview.php"><p class="side_paragraph">
 					OVERVIEW
 				</a></p>
@@ -27,7 +27,7 @@
 	<div class="row">
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
-				<div class="side_img"><img src="{{asset('/dashboard/images/side_three.png')}}" class="img-responsive"></div>
+				<div class="side_img"><img src="{{asset('public//dashboard/images/side_three.png')}}" class="img-responsive"></div>
 				<a href="index.php"><p class="side_paragraph">
 					MY ALBUMS
 				</a></p>
@@ -35,7 +35,7 @@
 		</div>
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
-				<div class="side_img"><img src="{{asset('/dashboard/images/side_four.png')}}" class="img-responsive"></div>
+				<div class="side_img"><img src="{{asset('public//dashboard/images/side_four.png')}}" class="img-responsive"></div>
 				<a href="musicvoting_tracks.php"><p class="side_paragraph">
 					MY TRACKS
 				</a></p>
@@ -45,7 +45,7 @@
 	<div class="row">
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
-				<div class="side_img"><img src="{{asset('/dashboard/images/side_five.png')}}" class="img-responsive"></div>
+				<div class="side_img"><img src="{{asset('public//dashboard/images/side_five.png')}}" class="img-responsive"></div>
 				<a href="setting.php"><p class="side_paragraph">
 					SETTINGS
 				</a></p>
@@ -53,7 +53,7 @@
 		</div>
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
-				<div class="side_img"><img src="{{asset('dashboard/images/side_six.png')}}" class="img-responsive"></div>
+				<div class="side_img"><img src="{{asset('public/dashboard/images/side_six.png')}}" class="img-responsive"></div>
 				<p class="side_paragraph">
 					REDEEMPOINTS
 				</p>

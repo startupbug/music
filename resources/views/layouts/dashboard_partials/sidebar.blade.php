@@ -3,13 +3,13 @@
 	<div class="dashboard_name">		
 		<div class="image-box">
 			@if(Auth::user()->role_id == 2)
-				<img src="{{asset('/dashboard/profile_images/'. Auth::user()->image )}}" class="img-responsive">
+				<img src="{{asset('public/dashboard/profile_images/'. Auth::user()->image )}}" class="img-responsive">
 				<form action="{{route('musicianImageUpload')}}" method="post" enctype="multipart/form-data" id="change_profile">
 			@elseif(Auth::user()->role_id == 3)
-				<img src="{{asset('/dashboard/profile_images/'. Auth::user()->image )}}" class="img-responsive">
+				<img src="{{asset('public/dashboard/profile_images/'. Auth::user()->image )}}" class="img-responsive">
 				<form action="{{route('promoterImageUpload')}}" method="post" enctype="multipart/form-data" id="change_profile">
 			@elseif(Auth::user()->role_id == 4)
-				<img src="{{asset('/dashboard/profile_images/'. Auth::user()->image )}}" class="img-responsive">
+				<img src="{{asset('public/dashboard/profile_images/'. Auth::user()->image )}}" class="img-responsive">
 				<form action="{{route('userImageUpload')}}" method="post" enctype="multipart/form-data" id="change_profile">
 			@endif
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -27,7 +27,7 @@
 		@if(Auth::user()->role_id == 2)
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
-				<div class="side_img"><img src="{{asset('/dashboard/images/side_one.png')}}" class="img-responsive"></div>
+				<div class="side_img"><img src="{{asset('public/dashboard/images/side_one.png')}}" class="img-responsive"></div>
 				<p class="side_heading">
 					@if($redeemable_points && !empty($redeemable_points))
 					{{$redeemable_points}}
@@ -44,7 +44,7 @@
 		@if(Auth::user()->role_id == 3)
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
-				<div class="side_img"><img src="{{asset('/dashboard/images/side_one.png')}}" class="img-responsive"></div>
+				<div class="side_img"><img src="{{asset('public/dashboard/images/side_one.png')}}" class="img-responsive"></div>
 				<p class="side_heading">
 					@if($redeemable_points && !empty($redeemable_points))
 					{{$redeemable_points}}
@@ -61,7 +61,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
 					<div class="side_img">
-						<img src="{{asset('/dashboard/images/side_two.png')}}" class="img-responsive">
+						<img src="{{asset('public/dashboard/images/side_two.png')}}" class="img-responsive">
 					</div>
 					@if(Auth::user()->role_id == 2)
 						<a href="{{route('musician_overview')}}">
@@ -88,7 +88,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
 				<div class="side_img">
-					<img src="{{asset('/dashboard/images/side_three.png')}}" class="img-responsive">
+					<img src="{{asset('public/dashboard/images/side_three.png')}}" class="img-responsive">
 				</div>
 				<a href="{{route('musician_album')}}">
 					<p class="side_paragraph">
@@ -101,7 +101,7 @@
 		@if(Auth::user()->role_id == 3)
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
-				<div class="side_img"><img src="{{asset('/assets/images/side_three.png')}}" class="img-responsive"></div>
+				<div class="side_img"><img src="{{asset('public/assets/images/side_three.png')}}" class="img-responsive"></div>
 				<a href="{{route('promoter_track_assign')}}">
 					<p class="side_paragraph">
 						INVITATIONS
@@ -114,7 +114,7 @@
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div class="side_border">
 					<div class="side_img">
-						<img src="{{asset('/dashboard/images/side_four.png')}}" class="img-responsive">
+						<img src="{{asset('public/dashboard/images/side_four.png')}}" class="img-responsive">
 					</div>
 					@if(Auth::user()->role_id == 2 )
 						<a href="{{route('musician_track')}}">
@@ -135,7 +135,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
 				<div class="side_img">
-					<img src="{{asset('/dashboard/images/side_five.png')}}" class="img-responsive">
+					<img src="{{asset('public/dashboard/images/side_five.png')}}" class="img-responsive">
 				</div>
 				@if(Auth::user()->role_id == 2)
 					<a href="{{route('musician_setting')}}">
@@ -162,7 +162,7 @@
 		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="side_border">
 				<div class="side_img">
-					<img src="{{asset('dashboard/images/side_six.png')}}" class="img-responsive">
+					<img src="{{asset('public/dashboard/images/side_six.png')}}" class="img-responsive">
 				</div>
 				@if(Auth::user()->role_id == 2)
 				<a href="{{route('musician_redeem')}}">

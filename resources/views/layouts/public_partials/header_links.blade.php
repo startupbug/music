@@ -6,27 +6,27 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Music Voting</title>
     <!-- Bootstrap -->
-    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('public/assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- FontAwesome -->
-    <link href="{{asset('assets/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('public/assets/css/font-awesome.min.css')}}" rel="stylesheet">
 
-    <link href="{{asset('assets/css/responsive.css')}}" rel="stylesheet">    
+    <link href="{{asset('public/assets/css/responsive.css')}}" rel="stylesheet">    
     <!-- Animate -->
-    <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
+    <link href="{{asset('public/assets/css/animate.css')}}" rel="stylesheet">
     <!-- Owl Slider -->
-    <link href="{{asset('assets/css/owl.carousel.css')}}" rel="stylesheet">
+    <link href="{{asset('public/assets/css/owl.carousel.css')}}" rel="stylesheet">
     <!-- Owl Slider Theme -->
-    <link href="{{asset('assets/css/owl.theme.css')}}" rel="stylesheet">
+    <link href="{{asset('public/assets/css/owl.theme.css')}}" rel="stylesheet">
     <!--Jquery Validation -->
-    <link href="{{asset('assets/css/validationEngine.jquery.css')}}" rel="stylesheet">
+    <link href="{{asset('public/assets/css/validationEngine.jquery.css')}}" rel="stylesheet">
 
-    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('public/assets/css/style.css')}}" rel="stylesheet">
     <!-- Custom -->
-    <link href="{{asset('assets/css/custom.css')}}" rel="stylesheet">
+    <link href="{{asset('public/assets/css/custom.css')}}" rel="stylesheet">
 
-    <link href="{{asset('assets/css/jssocials.css')}}" rel="stylesheet">   
+    <link href="{{asset('public/assets/css/jssocials.css')}}" rel="stylesheet">   
     
-    <link href="{{asset('assets/css/jssocials-theme-flat.css')}}" rel="stylesheet">    
+    <link href="{{asset('public/assets/css/jssocials-theme-flat.css')}}" rel="stylesheet">    
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
 

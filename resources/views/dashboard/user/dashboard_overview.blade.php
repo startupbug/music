@@ -28,7 +28,7 @@
             <div class="dashboard_album">
                 <a href="{{route('musicvoting_genre',['id' => $track->id])}}">
                 <video width="220" height="240" controls>
-                        <source src="{{asset('/dashboard/musician/tracks/videos/'.$track->video)}}" type="video/mp4">  
+                        <source src="{{asset('public/dashboard/musician/tracks/videos/'.$track->video)}}" type="video/mp4">  
                 </video>
                 </a>
             </div>
@@ -59,7 +59,7 @@
         <div class="col-md-3 col-sm-6 col-xs-12">
             <a href="{{route('user_album_videos',['id' => $album->id])}}">
             <div class="dashboard_album">
-                <img src="{{asset('/dashboard/musician/albums/images/'.$album->image)}}" class="img-responsive">
+                <img src="{{asset('public/dashboard/musician/albums/images/'.$album->image)}}" class="img-responsive">
             </div>                    
             </a>
             <h3 class="album_person_name">

@@ -5,7 +5,7 @@ $users = User::select('name','image')->where('id',Auth::user()->id)->first();
 <div class="col-md-3 color_bg">
 	<div class="dashboard_name">		
 		<div class="image-box">
-			<img src="{{asset('/dashboard/user_images/'. $users->image )}}" class="img-responsive">
+			<img src="{{asset('public/dashboard/user_images/'. $users->image )}}" class="img-responsive">
 			<form action="{{route('userImageUpload')}}" method="post" enctype="multipart/form-data" id="change_profile">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="camera_image">
@@ -23,7 +23,7 @@ $users = User::select('name','image')->where('id',Auth::user()->id)->first();
 	<div class="col-md-6 col-sm-6 col-xs-12">
 		<div class="side_border">
 			<div class="side_img">
-				<img src="{{asset('/dashboard/images/side_two.png')}}" class="img-responsive">
+				<img src="{{asset('public/dashboard/images/side_two.png')}}" class="img-responsive">
 			</div>
 			<a href="{{route('user_index')}}">
 				<p class="side_paragraph">
@@ -35,7 +35,7 @@ $users = User::select('name','image')->where('id',Auth::user()->id)->first();
 	<div class="col-md-6 col-sm-6 col-xs-12">
 		<div class="side_border">
 			<div class="side_img">
-				<img src="{{asset('/dashboard/images/side_five.png')}}" class="img-responsive">
+				<img src="{{asset('public/dashboard/images/side_five.png')}}" class="img-responsive">
 			</div>
 			<a href="{{route('user_setting')}}">
 				<p class="side_paragraph">

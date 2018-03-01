@@ -17,7 +17,7 @@
 		<div class="col-md-3 col-sm-6 col-xs-12">
 			<a href="{{route('musicvoting_genre',['id' => $track->id])}}">
 			<div class="box">  
-				<div class="dashboard_album"><img src="{{asset('/dashboard/musician/tracks/images/'.$track->image)}}" class="img-responsive custom-image-dashboard">
+				<div class="dashboard_album"><img src="{{asset('public/dashboard/musician/tracks/images/'.$track->image)}}" class="img-responsive custom-image-dashboard">
 				</div> 
 			</div>
 			</a>

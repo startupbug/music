@@ -15,7 +15,7 @@
 	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 change_width">
 		<div class="songs_box">
 			<a href="{{route('musicvoting_genre',['id' => $val->track_id])}}">
-				<img src="{{asset('/dashboard/musician/tracks/images/'.$val->track_image)}}" class="img-responsive center-block"/>
+				<img src="{{asset('public/dashboard/musician/tracks/images/'.$val->track_image)}}" class="img-responsive center-block"/>
 				<div class="mask">
 					<span class="play_icon">
 						<i class="fa fa-play fa-5x" aria-hidden="true"></i>

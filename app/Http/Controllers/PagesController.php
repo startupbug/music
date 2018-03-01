@@ -41,7 +41,7 @@ class PagesController extends Controller
         ->inRandomOrder()
         ->take(10)
         ->get();
-        $rand_num  = rand(1,10);
+        $rand_num  = rand(0,9);
         $args['abc'] = $args['tracks'][$rand_num];
         $ratings[]=0;
         foreach ($args['tracks'] as $value)

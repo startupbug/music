@@ -12,7 +12,7 @@
                         <div class="player_left_side">
                             <a href="#">
                                 @if($abc->track_image && !empty($abc->track_image))
-                                    <img class="img-responsive" src="{{asset('/dashboard/musician/tracks/images/'.$abc->track_image)}}" alt="">
+                                    <img class="img-responsive" src="{{asset('public/dashboard/musician/tracks/images/'.$abc->track_image)}}" alt="">
                                 @endif
                             </a>
                         </div>                      
@@ -58,7 +58,7 @@
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 change_width">
                 <div class="songs_box">
                     <a href="{{route('musicvoting_genre',['id' => $value->track_id])}}">
-                        <img src="{{asset('/dashboard/musician/tracks/images/'.$value->track_image)}}" class="img-responsive center-block"/>
+                        <img src="{{asset('public//dashboard/musician/tracks/images/'.$value->track_image)}}" class="img-responsive center-block"/>
                         <div class="mask">
                         <span class="play_icon">
                             <i class="fa fa-play fa-5x" aria-hidden="true"></i>
@@ -102,7 +102,7 @@
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                 <div class="work_box wow bounceIn" data-wow-duration="2s" data-wow-delay="0.5s">
-                    <img src="{{asset('assets/images/user_icon.png')}}" class="img-responsive center-block"/>
+                    <img src="{{asset('public/assets/images/user_icon.png')}}" class="img-responsive center-block"/>
                     <h4>register</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pharetra at augue et
                         facilisis.</p>
@@ -111,7 +111,7 @@
             <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                 <div class="work_box wow bounceIn" data-wow-duration="2s" data-wow-delay="0.5s"
                 ">
-                <img src="{{asset('assets/images/upload_icon.png')}}" class="img-responsive center-block"/>
+                <img src="{{asset('public/assets/images/upload_icon.png')}}" class="img-responsive center-block"/>
                 <h4>upload</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pharetra at augue et
                     facilisis.</p>
@@ -120,7 +120,7 @@
             <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                 <div class="work_box wow bounceIn" data-wow-duration="2s" data-wow-delay="0.5s"
                 ">
-                <img src="{{asset('assets/images/get_famous_icon.png')}}" class="img-responsive center-block"/>
+                <img src="{{asset('public/assets/images/get_famous_icon.png')}}" class="img-responsive center-block"/>
                 <h4>Get famous</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pharetra at augue et
                     facilisis.</p>
@@ -165,7 +165,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
                     <div class="laptop_picture wow fadeIn " data-wow-duration="2s" data-wow-delay="0.5s"
                     ">
-                    <img src="{{asset('assets/images/laptop_img.png')}}" class="img-responsive center-block"/>
+                    <img src="{{asset('public/assets/images/laptop_img.png')}}" class="img-responsive center-block"/>
                 </div>
             </div>
         </div>

@@ -17,7 +17,7 @@
             <div class="row">
               <div class="col-md-3">
                 <div class="genre">
-                  <img src="{{asset('dashboard/musician/tracks/images/'.$track_video->image)}}" class="img-responsive">
+                  <img src="{{asset('public/dashboard/musician/tracks/images/'.$track_video->image)}}" class="img-responsive">
                 </div>
               </div>
               <div class="col-md-9">
@@ -35,7 +35,7 @@
                   <input type="hidden" name="track_id" id="track_id" value="{{$track_video->id}}">        
                   @endif
                   @if(isset($track_video->video))
-                  <source src="{{asset('/dashboard/musician/tracks/videos/'.$track_video->video)}}" type="video/mp4"> 
+                  <source src="{{asset('public//dashboard/musician/tracks/videos/'.$track_video->video)}}" type="video/mp4"> 
                     @endif
                     <source src="mov_bbb.ogg" type="video/ogg">
                       Your browser does not support HTML5 video.
@@ -77,7 +77,7 @@
                       <div class="comment-wrap">
                         <div class="photo">
                           <div class="avatar">
-                            <img src="{{asset('dashboard/profile_images/'.Auth::user()->image)}}">
+                            <img src="{{asset('public/dashboard/profile_images/'.Auth::user()->image)}}">
                           </div>
                         </div>
                         <div class="comment-block">
@@ -92,7 +92,7 @@
                     <div class="comment-wrap">
                       <div class="photo">
                         <div class="avatar">
-                          <img src="{{asset('dashboard/profile_images/'.$comment->image)}}">
+                          <img src="{{asset('public/dashboard/profile_images/'.$comment->image)}}">
                         </div>
                       </div>
                       <div class="comment-block">
@@ -104,7 +104,7 @@
                     <div class="comment-wrap">
                       <div class="photo">
                         <div class="avatar">
-                          <img src="{{asset('assets/images/com_img.png')}}">
+                          <img src="{{asset('public/assets/images/com_img.png')}}">
                         </div>
                       </div>
                       <div class="comment-block">
@@ -114,7 +114,7 @@
                     <div class="comment-wrap">
                       <div class="photo">
                         <div class="avatar">
-                          <img src="{{asset('assets/images/comment_image.png')}}">
+                          <img src="{{asset('public/assets/images/comment_image.png')}}">
                         </div>
                       </div>
                       <div class="comment-block">

@@ -133,3 +133,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/getAffiliatedID', 'PagesController@getAffiliatedID')->name('getAffiliatedID');
+
+
+
+Route::get('redeem_points/', 'PaypalController@getCheckout')->name('redeem_points');
+Route::get('getDone/', 'PaypalController@getDone')->name('getDone');
+Route::get('getCancel/', 'PaypalController@getCancel')->name('getCancel');

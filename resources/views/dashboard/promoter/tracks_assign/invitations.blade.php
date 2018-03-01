@@ -25,7 +25,7 @@
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="box">  
           <div class="dashboard_album">
-            <img src="{{asset('dashboard/musician/tracks/images/'.$value->image)}}" class="img-responsive custom-image-dashboard" >
+            <img src="{{asset('public/dashboard/musician/tracks/images/'.$value->image)}}" class="img-responsive custom-image-dashboard" >
             <span class="caption fade-caption"> 
                 <div class="star"><span class="glyphicon glyphicon-star"></span></div>
                 <h3 class="hover_heading">MAKESONGFEATURED</h3>

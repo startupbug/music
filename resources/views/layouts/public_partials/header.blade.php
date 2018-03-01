@@ -8,7 +8,7 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="{{asset('assets/images/slider_banner_1.png')}}" class="img-responsive center-block" width="100%" alt="music voting">
+            <img src="{{asset('public/assets/images/slider_banner_1.png')}}" class="img-responsive center-block" width="100%" alt="music voting">
             <div class="carousel-caption">
                 <h2>the biggest contest is in session!</h2>
                 <p>
@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="item">
-            <img src="{{asset('assets/images/slider_banner_1.png')}}" class="img-responsive center-block" width="100%" alt="music voting">
+            <img src="{{asset('public/assets/images/slider_banner_1.png')}}" class="img-responsive center-block" width="100%" alt="music voting">
             <div class="carousel-caption">
                 <h2>the biggest contest is in session!</h2>
                 <p>

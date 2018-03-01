@@ -35,7 +35,7 @@
     <div class="row">
       <div class="col-md-3 col-sm-12 col-xs-12">
         <div class="dashboard_album">
-          <img src="{{asset('/dashboard/musician/tracks/images/'.$edit_track->image)}}" width="100%" class="img-thumbnail">
+          <img src="{{asset('public/dashboard/musician/tracks/images/'.$edit_track->image)}}" width="100%" class="img-thumbnail">
         </div>
       </div>
      <!--  <div class="col-md-5 col-sm-12 col-xs-12">
@@ -48,7 +48,7 @@
       <div class="col-md-4 col-sm-12 col-xs-12">
           <div class="dashboard_album">
             <video width="100%" controls>
-              <source src="{{asset('/dashboard/musician/tracks/videos/'.$edit_track->video)}}" type="video/mp4">              
+              <source src="{{asset('public/dashboard/musician/tracks/videos/'.$edit_track->video)}}" type="video/mp4">              
             </video>
             <div class="dropdownmenu">
               <div class="middle"><i class="fa fa-ellipsis-v"></i></div>

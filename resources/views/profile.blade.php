@@ -48,7 +48,7 @@
               </table>
           </div>
           <div class="col-md-3 col-lg-3 " align="center"> <div class="image_profile">
-            <img src="{{asset('/dashboard/profile_images/'. $userInfo->image )}}" class="img-circle img-responsive">
+            <img src="{{asset('public/dashboard/profile_images/'. $userInfo->image )}}" class="img-circle img-responsive">
           </div>
       </div>
   </div>
@@ -67,7 +67,7 @@
           <div class="box">  
             <div class="dashboard_album">        
                 <video width="100%" height="160px" controls>
-                    <source src="{{asset('/dashboard/musician/tracks/videos/'.$track->video)}}" type="video/mp4">             
+                    <source src="{{asset('public/dashboard/musician/tracks/videos/'.$track->video)}}" type="video/mp4">             
                 </video>               
             </div> 
           </div>      

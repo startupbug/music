@@ -30,7 +30,7 @@
 		<div class="col-md-3 col-sm-6 col-xs-12">
 			<div class="box">  
 				<div class="dashboard_album">
-				<img src="{{asset('/dashboard/musician/albums/images/'.$album->image)}}" class="img-responsive custom-image-dashboard" >				
+				<img src="{{asset('public/dashboard/musician/albums/images/'.$album->image)}}" class="img-responsive custom-image-dashboard" >				
 				</div>  
 			</div>
 			<a href="{{route('edit_album',['id' => $album->id])}}">

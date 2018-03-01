@@ -23,7 +23,7 @@
          @foreach($all_albums as $albums)
         <div class="col-md-3 col-sm-6 col-xs-12">
             <a href="{{route('all_albums',['id'=>$albums->id])}}">
-            <div class="dashboard_album"><img src="{{asset('/dashboard/musician/albums/images/'.$albums->image)}}" class="img-responsive"></div>
+            <div class="dashboard_album"><img src="{{asset('public/dashboard/musician/albums/images/'.$albums->image)}}" class="img-responsive"></div>
             <h3 class="album_person_name">
                 {{$albums->name}}
             </h3>

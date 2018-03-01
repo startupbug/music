@@ -10,7 +10,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                <img src="{{asset('assets/images/site_logo.png')}}" class="img-responsive center-block" width="100%"/>
+                <img src="{{asset('public/assets/images/site_logo.png')}}" class="img-responsive center-block" width="100%"/>
             </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->

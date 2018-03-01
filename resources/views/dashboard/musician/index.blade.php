@@ -26,7 +26,7 @@
         @foreach($all_albums as $value)
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="dashboard_album">
-                    <img src="{{asset('dashboard/musician/albums/images/'.$value->image)}}" width="100%" height="170px">
+                    <img src="{{asset('public/dashboard/musician/albums/images/'.$value->image)}}" width="100%" height="170px">
                     <div class="dropdownmenu">
                         <div class="middle">
                             <i class="fa fa-ellipsis-v"></i>
