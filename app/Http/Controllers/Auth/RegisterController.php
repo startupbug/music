@@ -67,6 +67,7 @@ class RegisterController extends Controller
         {
 
              $user =  User::create([
+                'suspend'=> $data['suspend'],
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
@@ -79,11 +80,14 @@ class RegisterController extends Controller
                 $update_uniqueid->promoter_affiliated_id = $user->id.Hash::make(str_random(5));
                 $update_uniqueid->save();
 
+                
+
                 return $user;
         }
         else
         {
             return User::create([
+                'suspend'=> $data['suspend'],
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
