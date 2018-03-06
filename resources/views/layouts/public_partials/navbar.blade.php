@@ -44,6 +44,8 @@
                 <li>
                     @if(Auth::user()->role_id == 4)
                     <a href="{{route('user_index')}}" class="btn btn-default">
+                        @elseif(Auth::user()->role_id == 1)
+                    <a href="{{route('is_admin')}}" class="btn btn-default">
                         @elseif(Auth::user()->role_id == 3)
                     <a href="{{route('promoterindex')}}" class="btn btn-default">
                         @elseif(Auth::user()->role_id == 2)
