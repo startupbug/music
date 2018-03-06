@@ -15,6 +15,22 @@
 // Route::get('/', function () {
 //     return view('index');
 // });
+Route::group(['prefix' => 'admin', 'middleware' => 'is-admin'], function () {
+   Route::get('/index', 'Admin\AdminController@is_admin')->name('is_admin');
+   Route::get('/profile', 'Admin\AdminController@profile_view')->name('profile_view');
+   Route::post('AdminImageUpload',['as'=>'AdminImageUpload','uses'=>'Admin\AdminController@AdminImageUpload']);
+   
+   Route::get('/edit_profile/{id}', 'Admin\AdminController@edit_admin_profile')->name('edit_admin');
+   Route::post('update_admin_profile/{id}',['as'=>'update_admin_profile','uses'=>'Admin\AdminController@update_admin_profile']);
+
+   Route::get('/users', 'Admin\AdminController@users')->name('users');
+   Route::get('/edit_user_profile/{id}', 'Admin\AdminController@edit_user_profile')->name('edit_user_profile');
+   Route::post('update_user_profile/{id}',['as'=>'update_user_profile','uses'=>'Admin\AdminController@update_user_profile']);
+   Route::get('/view_user_profile/{id}', 'Admin\AdminController@view_user_profile')->name('view_user_profile');
+
+   Route::get('/suspend_user/{id}/', ["as" => "suspend-user", "uses" => "Admin\AdminController@suspend_user"]);
+   Route::get('/unsuspend_user/{id}/', ["as" => "unsuspend-user", "uses" => "Admin\AdminController@unsuspend_user"]);
+});
 Route::get('/','PagesController@index')->name('home1');
 Route::get('/profile/{id}','PagesController@profile')->name('profile');
 Route::post('/submit_rating','PagesController@submit_rating')->name('submit_rating');
@@ -76,10 +92,6 @@ Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {
    Route::get('/user_logout', 'User\RegisteredController@user_logout')->name('logout_user');
 
 });
-
-Route::group(['prefix' => 'admin', 'middleware' => 'is-admin'], function () {
-});
-
 //Route::get('/promoterindex','PrmoterController@index')->name('promoterindex');
 
 Route::group(['prefix' => 'musician', 'middleware' => 'is-musician'], function () {

@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use PayPal;
+use Paypal;
 use Redirect;
 
 class PaypalController extends Controller
 {
-    //
-
-
+	
     private $_apiContext;
 
     public function __construct()
@@ -32,26 +30,27 @@ class PaypalController extends Controller
 
 
     public function getCheckout()
-	{
+	{		
 		$payer = PayPal::Payer();
 		$payer->setPaymentMethod('paypal');
 
 		$amount = PayPal:: Amount();
 		$amount->setCurrency('USD');
-		$amount->setTotal(5); // This is the simple way,
+		$amount->setTotal(5);
+		// This is the simple way,
 		// you can alternatively describe everything in the order separately;
 		// Reference the PayPal PHP REST SDK for details.
 
 		$transaction = PayPal::Transaction();
 		$transaction->setAmount($amount);
-		$transaction->setDescription('Feature Account Subscription');
+		$transaction->setDescription('Feature Account Subscription With Amount Of 5 USD');
 
 		$redirectUrls = PayPal:: RedirectUrls();
 		$redirectUrls->setReturnUrl(action('PaypalController@getDone'));
 		$redirectUrls->setCancelUrl(action('PaypalController@getCancel'));
 
 		$payment = PayPal::Payment();
-		$payment->setIntent('Subscription');
+		$payment->setIntent('sale');
 		$payment->setPayer($payer);
 		$payment->setRedirectUrls($redirectUrls);
 		$payment->setTransactions(array($transaction));
@@ -77,8 +76,8 @@ class PaypalController extends Controller
 	    // Clear the shopping cart, write to database, send notifications, etc.
 
 	    // Thank the user for the purchase
-		dd('done');
-		return view('checkout.done');
+		
+		return redirect()->route('musician_redeem');
 	}
 
 	public function getCancel()

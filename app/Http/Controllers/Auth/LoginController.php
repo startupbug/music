@@ -42,6 +42,9 @@ class LoginController extends Controller
         if($user->role_id === 3) {
             return redirect()->intended('/promoter/promoterindex');
         }
+        elseif($user->role_id === 1) {
+            return redirect()->intended('/admin/index');
+        }
 
         elseif($user->role_id === 2)
         {

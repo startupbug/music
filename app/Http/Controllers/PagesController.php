@@ -33,7 +33,6 @@ class PagesController extends Controller
     {
         return view('contest');
     }
-
     public function index()
     { 
         $args['tracks'] = Track::leftJoin('users','users.id','=','tracks.user_id')
@@ -41,7 +40,7 @@ class PagesController extends Controller
         ->inRandomOrder()
         ->take(10)
         ->get();
-        $rand_num  = rand(0,9);
+        $rand_num  = rand(0,9);        
         $args['abc'] = $args['tracks'][$rand_num];
         $ratings[]=0;
         foreach ($args['tracks'] as $value)

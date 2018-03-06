@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
   <div class="modal fade" id="myLoginModal" role="dialog">
@@ -7,8 +6,7 @@
       <!-- Modal content-->
       <div class="modal-content">
         <h4 class="login-title">Login</h4>
-        <div class="modal-body">
-          {{dd(123456)}}
+        <div class="modal-body">          
           <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -35,8 +33,7 @@
         <div class="login-footer">
           <a href="{{url('register')}}">Don`t have an account? Sign Up Now!</a>
         </div>
-      </div>
-
+       </div>
     </div>
   </div>
 </div>

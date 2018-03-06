@@ -11,15 +11,24 @@
                     <div class="player_box clearfix">
                         <div class="player_left_side">
                             <a href="#">
-                                @if($abc->track_image && !empty($abc->track_image))
+                                @if(!empty($abc->track_image) && $abc->track_image)
                                     <img class="img-responsive" src="{{asset('public/dashboard/musician/tracks/images/'.$abc->track_image)}}" alt="">
                                 @endif
                             </a>
                         </div>                      
                         <div class="player_body">
                             <h4>NOW PLAYING</h4>
-                            <p>Track Name: <span class="track_name">{{$abc->track_name}}</span></p>
-                            <p>Artist: <span class="artist">{{$abc->user_name}}</span></p>
+                            <p>Track Name: <span class="track_name">
+                            @if(!empty($abc->track_name))
+                                {{$abc->track_name}}
+                            @endif
+                            </span></p>
+                            <p>Artist: <span class="artist">
+                                @if(!empty($abc->track_name))
+                                {{$abc->user_name}}
+                                @endif
+                            </span>
+                            </p>
                             <p>Rating: 
                             <form  action="" method="" id="">
                                 <span class="rating" id="">
@@ -28,7 +37,7 @@
                                     <span class="fa fa-star-o" data-rating="3" ></span>
                                     <span class="fa fa-star-o" data-rating="4" ></span>
                                     <span class="fa fa-star-o" data-rating="5" ></span>
-                                    @if(!empty($ratings[$abc->track_id]['average']))
+                                    @if(isset($ratings[$abc->track_id]['average']) && $ratings[$abc->track_id]['average'] && !empty($ratings[$abc->track_id]['average']))
                                         <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="{{$ratings[$abc->track_id]['average']}}">
                                     @else
                                         <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="">
