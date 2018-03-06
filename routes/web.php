@@ -19,7 +19,7 @@ Route::get('/','PagesController@index')->name('home1');
 Route::get('/profile/{id}','PagesController@profile')->name('profile');
 Route::post('/submit_rating','PagesController@submit_rating')->name('submit_rating');
 Route::post('/submit_points','PagesController@submit_points')->name('submit_points');
-Route::post('/download_file/{file_name}/{track_id}','PagesController@download_file')->name('download_file');
+Route::post('/download_file/{file_name}/{track_id}/{name?}','PagesController@download_file')->name('download_file');
 
 
 // Route::get('/index', 'HomeController@public_index')->name('public_index');

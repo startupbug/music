@@ -41,13 +41,17 @@
                       Your browser does not support HTML5 video.
                     </video>
                     @if(Auth::check())
-                    <form action="{{route('download_file',['file_name'=>$track_video->video,'track_id'=>$track_video->id])}}" method="post">
+                    <form action="{{route('download_file',['file_name'=>$track_video->video,'track_id'=>$track_video->id ])}}" method="post">
                       {{csrf_field()}}
+                      <input type="hidden" name="promoter_id" value="@if(!empty($name)){{ $name }}@endif">
                       <div class="button_comment pull-right">
                         <button type="submit" class="btn">Download</button>
                       </div>
                     </form>
                     @endif
+                  </div>
+                  <div class="col-md-12">
+                    <div id="social"> </div>
                   </div>
                   <h3 class="rating">Rating:</h3>           
                   <form  action="{{route('submit_rating')}}" method="post" id="rating-form">
@@ -61,13 +65,14 @@
                       <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="{{$rating['rating']}}">
                       @else
                       <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="">
+                      
                       @endif
+                      <input type="hidden" name="promoter_id" class="promoter_id" id="promoter_id" value="@if(!empty($name)){{ $name }}@endif">
+                      <input type="hidden" name="musician_id" class="musician_id" id="musician_id" value="{{$track_uploader->id}}">
                       <input type="hidden" name="track_id" id="track_id" value="{{$track_video->id}}">
                     </span>
                   </form> 
-                  <div class="col-md-12">
-                    <div id="social"> </div>
-                  </div>
+                  
 
 
                   @if((Auth::check()))

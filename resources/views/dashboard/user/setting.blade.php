@@ -81,15 +81,15 @@
     <form>
       <div class='field'>
         <label for='name'>Facebook</label>
-        <input id='name' name='name' type='text' value='{{$user->facebook}}' readonly>
+        <input id='name' name='name' type='text' value='https://www.{{$user->facebook}}' readonly>
       </div>
       <div class='field'>
         <label for='email'>Twitter</label>
-        <input id='email' name='phone' type='phone' value='{{$user->twitter}}' readonly>
+        <input id='email' name='phone' type='phone' value='https://www.{{$user->twitter}}' readonly>
       </div>
       <div class='field'>
         <label for='email'>Instagram</label>
-        <input id='email' name='email' type='email' value='{{$user->instagram}}' readonly>
+        <input id='email' name='email' type='email' value='https://www.{{$user->instagram}}' readonly>
       </div>
       </form>
   </div>  
