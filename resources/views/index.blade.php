@@ -1,7 +1,11 @@
 @extends('layouts.public_index')
 @section('content')
+
 <div class="container-fluid bg_gray">
     <div class="container">
+        @if (Session::has('not_activate'))
+            <div class="alert alert-danger">{{ Session::get('not_activate') }}</div>
+        @endif
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="playing_heading">
@@ -80,6 +84,29 @@
                     </a>
                     <p><a href="#">{{$value->track_name}}</a></p>
                     <a href="{{route('profile',['id'=>$value->user_id])}}"><p>{{$value->user_name}}</p></a>
+                </div>
+            </div> 
+        @endforeach             
+        </div>
+        <h1>Albums</h1>
+        <div class="row">   
+        @foreach($albums as $value)            
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 change_width">
+                <div class="songs_box">
+                    <a href="{{route('album_view',['id' => $value->album_id])}}">
+                        <img src="{{asset('public//dashboard/musician/albums/images/'.$value->album_image)}}" class="img-responsive center-block"/>
+                        <div class="mask">
+                        <span class="play_icon">
+                            <i class="fa fa-play fa-5x" aria-hidden="true"></i>
+                            <span data-img="images/song_img_.png"
+                                  data-Tname="Xscape"
+                                  data-album="Insurgency" data-artis="Michael Jackson" data-rating="">
+                          </span>
+                      </span>
+                        </div>
+                    </a>
+                    <p><a href="#">{{$value->album_name}}</a></p>
+                    <a href="{{route('profile',['id'=>$value->album_user_id])}}"><p>{{$value->user_name}}</p></a>
                 </div>
             </div> 
         @endforeach             

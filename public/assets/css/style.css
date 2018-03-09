@@ -754,3 +754,24 @@ footer .well div.input-group input{
     height: auto;      
     }
 }
+
+hr.line {
+    color: #cf1828;
+    border: 1px solid;
+    margin-top: 0px;
+}
+h3.album_person_name {
+    FONT-SIZE: 18PX;
+    TEXT-ALIGN: CENTER;
+    COLOR: #cf1828;
+    font-family: 'Conv_Montserrat-SemiBold';
+}
+
+h3.all_album {
+    font-size: 38px;
+    color: #000000;
+    font-weight: 400;
+    float: left;
+    font-family: 'Conv_bebas';
+    margin: 20px 0 10px 0;
+}

@@ -36,7 +36,8 @@ class PagesController extends Controller
     public function index()
     { 
         $args['tracks'] = Track::leftJoin('users','users.id','=','tracks.user_id')
-        ->select('tracks.id as track_id','users.name as user_name','users.id as user_id','tracks.name as track_name','tracks.image as track_image')
+        ->join('albums','users.id','=','albums.user_id')
+        ->select('albums.id as album_id','albums.name as album_name','albums.image as album_image','albums.user_id as album_user_id','tracks.id as track_id','users.name as user_name','users.id as user_id','tracks.name as track_name','tracks.image as track_image')
         ->inRandomOrder()
         ->take(10)
         ->get();
@@ -59,6 +60,15 @@ class PagesController extends Controller
                 $ratings[$value->track_id]['average'] = round($ratings[$value->track_id]['totalRating']/$ratings[$value->track_id]['totalROws']);
             }
         }
+
+
+        $args['albums'] = Album::leftJoin('users','users.id','=','albums.user_id')
+        //->rightjoin('tracks','users.id','=','tracks.user_id')
+        ->select('albums.id as album_id','albums.name as album_name','albums.image as album_image','albums.user_id as album_user_id','users.name as user_name','users.id as user_id')
+        ->inRandomOrder()
+        ->distinct()
+        ->get();
+        //dd($args['albums']);
 
         return view ('index',['ratings'=>$ratings])->with($args);
     }
@@ -232,7 +242,6 @@ class PagesController extends Controller
     {   
 
     //promoter getting points for sharing url
-
         if(!empty($name))
         {
             $user = User::where('promoter_affiliated_id','=',$name)->first();
@@ -305,11 +314,14 @@ class PagesController extends Controller
 
         else
         {
+       // dd($id);
+
         //fetching data from tracks
             $track_video = DB::table('tracks')->where('id', $id)->first();
 
     //fetching data from users where id is equal to current track id  
             $track_uploader = Db::table('users')->where('id',$track_video->user_id)->first();
+            // dd($track_video->user_id);
 
     //retriving all comments on specific video       
             $commenting = DB::table('comments')
@@ -398,6 +410,17 @@ class PagesController extends Controller
 
 
         return view('genre')->with($args);
+    }
+
+    public function album_view($id)
+    {
+        $albums = DB::table('albums')->where('id',$id)
+        ->first();
+        $album_tracks = DB::table('album__videos')
+        ->join('albums','album__videos.album_id','=','albums.id')
+        ->select('album__videos.track_id as track_id','albums.id as album_id')->get();
+        dd($album_tracks);
+        return view('album');
     }
 
     public function getAffiliatedID()

@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'suspend','name', 'email', 'password','image','phone','role_id','promoter_affiliated_id'
+        'suspend','name', 'email', 'password','image','phone','role_id','promoter_affiliated_id','email_token',
     ];
 
     /**
@@ -26,4 +26,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function verified()
+    {
+        $this->suspend = 0;
+        $this->email_token = null;
+        return $this->save();
+    }
 }
