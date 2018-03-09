@@ -414,13 +414,16 @@ class PagesController extends Controller
 
     public function album_view($id)
     {
-        $albums = DB::table('albums')->where('id',$id)
-        ->first();
+        $albums = DB::table('albums')->where('id',$id)->first();
+        // dd($albums);
         $album_tracks = DB::table('album__videos')
         ->join('albums','album__videos.album_id','=','albums.id')
-        ->select('album__videos.track_id as track_id','albums.id as album_id')->get();
-        dd($album_tracks);
-        return view('album');
+        ->join('tracks','album__videos.track_id','=','tracks.id')
+        ->select('album__videos.track_id as track_id','albums.id as album_id','albums.image as album_image','albums.name as album_name','tracks.image as track_image','tracks.video as track_video','tracks.name as track_name')
+        ->where('albums.id','=',$id)
+        ->get();
+        // dd($album_tracks);
+        return view('album',['album_tracks' => $album_tracks, 'albums' => $albums]);
     }
 
     public function getAffiliatedID()

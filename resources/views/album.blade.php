@@ -4,12 +4,13 @@
     <div class="alert alert-info">{{ Session::get('upload_video_album') }}</div>
     @endif
 
+    
   <div class="col-md-12">
     
     <div class="row">
       <div class="col-md-10">
         <h3 class="all_album">
-            ALL VIDEOS &nbsp;
+            ALBUM &nbsp;
         </h3>
       </div>
     </div>
@@ -19,8 +20,11 @@
         <div class="row">
           <div class="col-md-3 col-sm-12 col-xs-12">
             <div class="dashboard_album">
-                <img src="http://localhost/music-a1/public/dashboard/musician/albums/images/63a98041528df5aa409919c7a3ede7ee.jpg" class="img-thumbnail" width="100%">
+                <img src="{{asset('public//dashboard/musician/albums/images/'.$albums->image)}}" class="img-thumbnail" width="100%">
             </div>
+            <h3 class="album_person_name">
+              {{$albums->name}}
+            </h3>
           </div>
         </div>
       </div>
@@ -35,78 +39,20 @@
     </div>
     <hr class="line">
     <div class="row">
+      @foreach($album_tracks as $tracks)
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="dashboard_album">
           <!-- <a href="http://localhost/music-a1/musicvoting_genre/25"> -->
           <video controls="" width="100%" height="245px">
-            <source src="http://localhost/music-a1/public/dashboard/musician/tracks/videos/0cc38ab059849037cbdde5a975832018.mp4" type="video/mp4">             
+            <source src="{{asset('public/dashboard/musician/tracks/videos/'.$tracks->track_video)}}" type="video/mp4">             
           </video>
           <!-- </a> -->
           <h3 class="album_person_name">
-            dummy
+            {{$tracks->track_name}}
           </h3>
         </div>
       </div>
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="dashboard_album">
-          <!-- <a href="http://localhost/music-a1/musicvoting_genre/36"> -->
-          <video controls="" width="100%" height="245px">
-            <source src="http://localhost/music-a1/public/dashboard/musician/tracks/videos/69b9314357ce0832027690c748e0fc22.webm" type="video/mp4">             
-          </video>
-          <!-- </a> -->
-          <h3 class="album_person_name">
-            ali
-          </h3>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="dashboard_album">
-          <!-- <a href="http://localhost/music-a1/musicvoting_genre/36"> -->
-          <video controls="" width="100%" height="245px">
-            <source src="http://localhost/music-a1/public/dashboard/musician/tracks/videos/69b9314357ce0832027690c748e0fc22.webm" type="video/mp4">             
-          </video>
-          <!-- </a> -->
-          <h3 class="album_person_name">
-            ali
-          </h3>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="dashboard_album">
-          <!-- <a href="http://localhost/music-a1/musicvoting_genre/36"> -->
-          <video controls="" width="100%" height="245px">
-            <source src="http://localhost/music-a1/public/dashboard/musician/tracks/videos/69b9314357ce0832027690c748e0fc22.webm" type="video/mp4">             
-          </video>
-          <!-- </a> -->
-          <h3 class="album_person_name">
-            ali
-          </h3>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="dashboard_album">
-          <!-- <a href="http://localhost/music-a1/musicvoting_genre/36"> -->
-          <video controls="" width="100%" height="245px">
-            <source src="http://localhost/music-a1/public/dashboard/musician/tracks/videos/69b9314357ce0832027690c748e0fc22.webm" type="video/mp4">             
-          </video>
-          <!-- </a> -->
-          <h3 class="album_person_name">
-            ali
-          </h3>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="dashboard_album">
-          <!-- <a href="http://localhost/music-a1/musicvoting_genre/36"> -->
-          <video controls="" width="100%" height="245px">
-            <source src="http://localhost/music-a1/public/dashboard/musician/tracks/videos/69b9314357ce0832027690c748e0fc22.webm" type="video/mp4">             
-          </video>
-          <!-- </a> -->
-          <h3 class="album_person_name">
-            ali
-          </h3>
-        </div>
-      </div>  
+      @endforeach
     </div>
   </div>
 
