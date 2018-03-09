@@ -16,26 +16,26 @@
           <div class="col-md-8">
             <div class="row">
               <div class="col-md-3">
-                <div class="genre">
+                <div class="genre s_genre">
                   <img src="{{asset('public/dashboard/musician/tracks/images/'.$track_video->image)}}" class="img-responsive">
                 </div>
               </div>
-              <div class="col-md-9">
+              <div class="col-md-9 s_padding_genre">
                 <h3 class="top_heading">
                   {{$track_video->name}} by {{$track_uploader->name}}
                 </h3>
                 <h3 class="mid_heading">
                   {{$track_video->description}}
-                </h3>      
+                </h3>
               </div>
               <div class="col-md-12">
                 <video id="videoz" width="100%" style="height: auto;" controls controlsList="nodownload">
-                  @if(Auth::check())  
+                  @if(Auth::check())
                   <input type="hidden" name="user_id" id="user_id" value="{{Auth::user()->id}}">
-                  <input type="hidden" name="track_id" id="track_id" value="{{$track_video->id}}">        
+                  <input type="hidden" name="track_id" id="track_id" value="{{$track_video->id}}">
                   @endif
                   @if(isset($track_video->video))
-                  <source src="{{asset('public//dashboard/musician/tracks/videos/'.$track_video->video)}}" type="video/mp4"> 
+                  <source src="{{asset('public//dashboard/musician/tracks/videos/'.$track_video->video)}}" type="video/mp4">
                     @endif
                     <source src="mov_bbb.ogg" type="video/ogg">
                       Your browser does not support HTML5 video.
@@ -53,7 +53,7 @@
                   <div class="col-md-12">
                     <div id="social"> </div>
                   </div>
-                  <h3 class="rating">Rating:</h3>           
+                  <h3 class="rating">Rating:</h3>
                   <form  action="{{route('submit_rating')}}" method="post" id="rating-form">
                     <span class="rating" id="star_rating_submit">
                       <span class="fa fa-star-o" data-rating="1"></span>
@@ -65,14 +65,14 @@
                       <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="{{$rating['rating']}}">
                       @else
                       <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="">
-                      
+
                       @endif
                       <input type="hidden" name="promoter_id" class="promoter_id" id="promoter_id" value="@if(!empty($name)){{ $name }}@endif">
                       <input type="hidden" name="musician_id" class="musician_id" id="musician_id" value="{{$track_uploader->id}}">
                       <input type="hidden" name="track_id" id="track_id" value="{{$track_video->id}}">
                     </span>
-                  </form> 
-                  
+                  </form>
+
 
 
                   @if((Auth::check()))
@@ -91,7 +91,7 @@
                       </div>
                       <div class="button_comment">
                         <button type="submit" class="btn">POST</button>
-                      </div>                
+                      </div>
                     </form>
                     @foreach($commenting as $comment)
                     <div class="comment-wrap">
@@ -105,7 +105,7 @@
                         <p>#GoMusic #Rock</p>
                       </div>
                     </div>
-                    @endforeach    
+                    @endforeach
                     <div class="comment-wrap">
                       <div class="photo">
                         <div class="avatar">
@@ -147,7 +147,7 @@
                       @endforeach
                     </ul>
                   </li>
-                </ul> 
+                </ul>
                 @endforeach
               </div>
             </div>
@@ -174,5 +174,3 @@
    </div>
  </div>
  @endsection
-
-
