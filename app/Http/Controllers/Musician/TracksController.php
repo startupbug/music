@@ -123,6 +123,7 @@ class TracksController extends Controller
         }
         $p->video = $this->UploadFiles('video', Input::file('video'));
         $p->save();
+        
         return redirect()->back();
     }
     public function UploadFiles($type, $files){

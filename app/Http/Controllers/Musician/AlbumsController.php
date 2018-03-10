@@ -31,6 +31,7 @@ class AlbumsController extends Controller
       $p->album_id = Input::get('album_id');  
       $p->track_id = Input::get('video_id');
       $p->save();
+      Session::flash('add_track','Track has been added');
       return redirect()->back();
     }
     public function upload_video(Request $request)
@@ -141,6 +142,7 @@ class AlbumsController extends Controller
       $p->image = $this->UploadFiles('image', Input::file('image'));          
     }      
     $p->save();
+    Session::flash('update_album','album has been updated');
     return redirect()->route('musician_album'); 
   }
 
@@ -159,6 +161,7 @@ class AlbumsController extends Controller
   public function destroy(Request $request,$id)
   {
     $track_delete = Album::destroy($id);
+    Session::flash('delete_album','album has been updated');
     return redirect()->route('musician_album');
   } 
   public function delete_from_album(Request $request,$album_id,$track_id)

@@ -2,9 +2,6 @@
 @section('content')
 
 <div class="col-md-9">
-    @if (Session::has('activate'))
-            <div class="alert alert-info">{{ Session::get('activate') }}</div>
-        @endif
     <h3 class="heading_dashboard">
         PROMOTER DASHBOARD
     </h3>
@@ -12,6 +9,9 @@
         <h3 class="album">
          ALBUMS
         </h3>
+        @if (Session::has('activate'))
+            <div class="alert alert-info">{{ Session::get('activate') }}</div>
+        @endif
     </div>
     <div class="row">
         <div class="col-md-12 color_bottom">

@@ -1,9 +1,6 @@
 @extends('layouts.dashboard_index')
 @section('content')
 <div class="col-md-9">
-	@if (Session::has('upload_album'))
-    	<div class="alert alert-info">{{ Session::get('upload_album') }}</div>
-    @endif
 <h3 class="heading_dashboard">
 	ARTIST DASHBOARD
 </h3>
@@ -11,6 +8,13 @@
 	<h3 class="album">
 		MY ALBUMS
 	</h3>
+	@if (Session::has('upload_album'))
+    	<div class="alert alert-info">{{ Session::get('upload_album') }}</div>
+    @elseif (Session::has('update_album'))
+    	<div class="alert alert-info">{{ Session::get('update_album') }}</div>
+    @elseif (Session::has('delete_album'))
+    	<div class="alert alert-info">{{ Session::get('delete_album') }}</div>
+    @endif
 </div>
 <div class="row">
 	<div class="col-md-12 color_bottom">

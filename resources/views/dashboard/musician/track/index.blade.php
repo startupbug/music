@@ -1,9 +1,6 @@
 @extends('layouts.dashboard_index')
 @section('content')
 <div class="col-md-9">
-	@if (Session::has('upload_track'))
-    	<div class="alert alert-info">{{ Session::get('upload_track') }}</div>
-    @endif
 	<h3 class="heading_dashboard">
 		ARTIST DASHBOARD
 	</h3>
@@ -11,6 +8,9 @@
 		<h3 class="album">
 			MY TRACKS
 		</h3>
+		@if (Session::has('upload_track'))
+	    	<div class="alert alert-info">{{ Session::get('upload_track') }}</div>
+	    @endif
 	</div>
 	<div class="row">
 		<div class="col-md-12 color_bottom">
