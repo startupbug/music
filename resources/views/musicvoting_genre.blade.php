@@ -101,7 +101,7 @@
                         </div>
                       @endif
                     </form>
-        
+
                     @foreach($commenting as $comment)
                     <div class="comment-wrap">
                       <div class="photo">
@@ -147,7 +147,7 @@
                 <ul id="nav1">
 
                   <li><a href="#">{{$albums}}</a>
-                    <ul>
+                    <ul class="s_nav_sub">
                       @foreach($tracks as $track)
                       <li><a href="{{route('musicvoting_genre',['id' => $track->track_id])}}">{{$track->name}}</a></li>
 

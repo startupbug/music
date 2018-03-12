@@ -32,7 +32,7 @@
         </div>
     </div>
     <hr class="line">
- <div class='form'>
+ <div class='form' >
     <form>
       <div class='field'>
         <label for='name'>Full name</label>
@@ -41,16 +41,16 @@
       </div>
       <div class='field'>
         <label for='email'>Phone</label>
-        <input id='email' name='phone' type='phone' value='{{($user->phone)}}' readonly> 
+        <input id='email' name='phone' type='phone' value='{{($user->phone)}}' readonly>
       </div>
       <div class='field'>
         <label for='email'>Email</label>
-        <input id='email' name='email' type='email' value='{{($user->email)}}' readonly>        
-      </div>  
+        <input id='email' name='email' type='email' value='{{($user->email)}}' readonly>
+      </div>
       <div class='field'>
         <label for='password'>Password</label>
            <input id='password' name='password' type='password' value="********" readonly> <span class="stars" disabled>
-            </span>  
+            </span>
       </div>
       <div class='field'>
         <label for='username'>Username</label>
@@ -77,7 +77,7 @@
         </div>
     </div>
     <hr class="line">
-    <div class='form'>
+    <div class='form' style="padding-bottom:  20px;">
     <form>
       <div class='field'>
         <label for='name'>Facebook</label>
@@ -92,7 +92,7 @@
         <input id='email' name='email' type='email' value='https://www.{{$user->instagram}}' readonly>
       </div>
       </form>
-  </div>  
+  </div>
 </div>
 </div>
 </div>

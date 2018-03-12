@@ -1822,3 +1822,13 @@ h3.points_rate {
 .s_account input#role_id {
     margin: 10px;
 }
+
+#nav1 li ul li a:hover {
+    background-color: #e71c2e;
+    font-family: 'Conv_Montserrat-Regular';
+}
+.s_nav_sub > li > a:hover {
+    background-color: #e71c2e;
+    border-bottom: #e71c2e;
+    COLOR: WHITE;
+}
