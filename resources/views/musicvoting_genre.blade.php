@@ -72,27 +72,36 @@
                       <input type="hidden" name="track_id" id="track_id" value="{{$track_video->id}}">
                     </span>
                   </form>
-
-
-
-                  @if((Auth::check()))
                   <div class="col-md-12 border">
                     <form action="{{route('insert_comments', ['id' => $track_video->id])}}" method="post">
                       {{csrf_field()}}
                       <div class="comment-wrap">
                         <div class="photo">
+                          @if((Auth::check()))
                           <div class="avatar">
                             <img src="{{asset('public/dashboard/profile_images/'.Auth::user()->image)}}">
                           </div>
+                          @else
+                          <div class="avatar">
+                            <img src="{{asset('public/dashboard/profile_images/default.png')}}">
+                          </div>
+                          @endif
                         </div>
                         <div class="comment-block">
                           <textarea name="comment" id="comment" cols="30" rows="3" placeholder="Write a comment"></textarea>
                         </div>
                       </div>
-                      <div class="button_comment">
-                        <button type="submit" class="btn">POST</button>
-                      </div>
+                      @if(Auth::check())
+                        <div class="button_comment">
+                          <button type="submit" class="btn">POST</button>
+                        </div>
+                      @else
+                        <div class="button_comment">
+                          <button type="submit" class="btn" data-toggle="modal" data-target="#myLoginModal">POST</button>
+                        </div>
+                      @endif
                     </form>
+        
                     @foreach($commenting as $comment)
                     <div class="comment-wrap">
                       <div class="photo">
@@ -128,8 +137,6 @@
                       </div>
                     </div>
                   </div>
-
-                  @endif
                 </div>
               </div>
               <div class="col-md-4">

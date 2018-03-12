@@ -38,6 +38,11 @@ class RegisteredController extends Controller
         $args['tracks'] = DB::table('tracks')->get();
         return view('dashboard.user.index')->with($args);
     }
+    public function all_albums()
+    {
+        $args['albums'] = DB::table('albums')->get();
+        return view('dashboard.user.all_albums')->with($args);
+    }
 
     public function user_images(Request $request)
     {
@@ -50,7 +55,7 @@ class RegisteredController extends Controller
                User::where('id' ,'=', Auth::user()->id)->update([
                 'image' => $img_name
             ]);  
-        $path = asset('/dashboard/profile_images').'/'.$img_name; 
+        $path = asset('/public/dashboard/profile_images').'/'.$img_name; 
 
         return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]); 
         }else{

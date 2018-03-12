@@ -94,6 +94,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {
    Route::post('userajaxImageUpload',['as'=>'userImageUpload','uses'=>'User\RegisteredController@user_images']);
    Route::post('/update_password/{id}','User\RegisteredController@user_update_password')->name('user_update_password');
    Route::get('/all_tracks', 'User\RegisteredController@all_tracks')->name('all_tracks');
+   Route::get('/all_albums', 'User\RegisteredController@all_albums')->name('all_albums');
    Route::get('/user_logout', 'User\RegisteredController@user_logout')->name('logout_user');
 
 });

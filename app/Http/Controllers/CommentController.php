@@ -21,14 +21,16 @@ class CommentController extends Controller
             'comment' => 'required',
         ]);
     	 
-
-    	 $insert = new Comment;
-    	 $insert->user_id = Auth::user()->id;
-    	 $insert->comment = Input::get('comment');
-    	 $insert->track_id = $id;
-    	 $insert->save();
-    	 $dispaly = Comment::where('track_id','=',$id)->get();
-    	 
-    	return redirect()->back();
+         if(Auth::check())
+        {
+        	$insert = new Comment;
+        	$insert->user_id = Auth::user()->id;
+        	$insert->comment = Input::get('comment');
+        	$insert->track_id = $id;
+        	$insert->save();
+        	$dispaly = Comment::where('track_id','=',$id)->get(); 
+        	return redirect()->back();
+        }
+        return redirect()->back();
     }
 }

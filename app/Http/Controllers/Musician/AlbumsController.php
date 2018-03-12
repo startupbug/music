@@ -131,10 +131,12 @@ class AlbumsController extends Controller
   public function update_album(Request $request, $id)
   {        
     $p = Album::find($id);
-    if(!empty(Input::get('name'))){
+    if(!empty(Input::get('name')))
+    {
       $p->name = Input::get('name');            
     }        
-    if ($request->hasFile('image')) {
+    if ($request->hasFile('image'))
+    {
       $image=$request->file('image');
       $filename=time() . '.' . $image->getClientOriginalExtension();          
       $location=public_path('dashboard/musician/albums/images/'.$filename);

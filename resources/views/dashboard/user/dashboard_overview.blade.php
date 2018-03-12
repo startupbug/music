@@ -58,7 +58,6 @@
     <div class="row"> 
 
         @foreach($albums as $album)
-
         <div class="col-md-3 col-sm-6 col-xs-12">
             <a href="{{route('user_album_videos',['id' => $album->id])}}">
             <div class="dashboard_album">

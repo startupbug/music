@@ -430,4 +430,5 @@ class PagesController extends Controller
     {
         echo Auth::User()->promoter_affiliated_id;
     }
+
 }
