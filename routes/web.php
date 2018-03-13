@@ -59,7 +59,10 @@ Route::get('/','PagesController@index')->name('home1');
 Route::get('/profile/{id}','PagesController@profile')->name('profile');
 Route::post('/submit_rating','PagesController@submit_rating')->name('submit_rating');
 Route::post('/submit_points','PagesController@submit_points')->name('submit_points');
-Route::post('/download_file/{file_name}/{track_id}','PagesController@download_file')->name('download_file');
+Route::post('/download_file/{file_name}/{track_id}/{name?}','PagesController@download_file')->name('download_file');
+
+Route::get('register/verify/{token}', 'Auth\RegisterController@verify')->name('verified_email'); 
+
 
 
 // Route::get('/index', 'HomeController@public_index')->name('public_index');
@@ -77,6 +80,8 @@ Route::get('/artist_detail','PagesController@artist_detail')->name('artist_detai
 Route::get('/musicvoting_search','PagesController@musicvoting_search')->name('musicvoting_search');
 
 Route::post('/insert_comment/{id}','CommentController@insert_comment')->name('insert_comments');
+
+Route::get('/album/{id}','PagesController@album_view')->name('album_view');
 
 Route::get('/genre','PagesController@genre')->name('genre');
 
@@ -113,6 +118,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {
    Route::post('userajaxImageUpload',['as'=>'userImageUpload','uses'=>'User\RegisteredController@user_images']);
    Route::post('/update_password/{id}','User\RegisteredController@user_update_password')->name('user_update_password');
    Route::get('/all_tracks', 'User\RegisteredController@all_tracks')->name('all_tracks');
+   Route::get('/all_albums', 'User\RegisteredController@all_albums')->name('all_albums');
    Route::get('/user_logout', 'User\RegisteredController@user_logout')->name('logout_user');
 
 });

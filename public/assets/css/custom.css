@@ -73,17 +73,17 @@ h3.last_heading {
 @media only screen and (max-device-width : 767px) and (min-device-width : 320px) {
 
  .star-rating {
-   
+
     right: 48% !important
 }
 h3.mid_side {
-   
+
     margin-left: 0px;
     font-size: 12px;
 }
 h2.mid_head {
     font-size: 14px;
-    
+
 }
 li.social_media {
     display: inline-block;
@@ -198,7 +198,7 @@ span.color {
 #faqTabs .nav-pills>li>a:hover,#faqTabs .nav-pills>li>a:focus{
 	transition:all 0.3s linear;
 	-webkit-transition:all 0.3s linear;
-	background:none; 
+	background:none;
 	color:red;
 }
 
@@ -308,7 +308,7 @@ p.content_right {
         text-align: center;
         margin: 0 auto;
         margin-top: 10px;
-    } 
+    }
 
     .button {
         margin-bottom: auto;
@@ -408,7 +408,7 @@ p.content_right {
 .btn {
 
     padding: 6px 49px;
-    
+
 }
 div#adv-search {
     width: 90%;
@@ -624,7 +624,7 @@ form.form-horizontal.validateForm {
 
 .form-control:focus {
     border-color: #cf1828;
-    
+
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(234, 9, 51, 0.6);
 }
 .checkbox label {
@@ -842,7 +842,7 @@ p.name_person {
 @media screen and (max-width: 767px) and (min-width: 320px) {
 
     .img_shape {
-  
+
     width: 100%;
 }
 
@@ -870,7 +870,7 @@ p.name_person {
 @media screen and (max-width: 1024px) and (min-width: 768px) {
 
     .img_shape {
-  
+
     width: 100%;
 }
 
@@ -925,7 +925,7 @@ border-radius: 0;
     background-color: #cf1828;
     color: white;
 }*/
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:visited {  
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:visited {
    background-color:#00bfff;
     border-top: 3px solid #00bfff;
     border-right: 1px solid #00bfff;
@@ -943,7 +943,7 @@ color:#000;
 
 
 .nav>li>a {
-    
+
     display: block;
     text-align: center;
 }
@@ -1001,7 +1001,7 @@ h3.rating {
     color: #282828;
     font-family: 'Conv_Montserrat-Regular';
     margin-top: 10px;
-   
+
 }
 h3.mid_like {
     font-size: 16px;
@@ -1191,7 +1191,7 @@ h3.side_menu {
 
 #nav1 > li > a {
     background-color: #000000;
-   
+
 }
 
 #nav1 > li > a {
@@ -1206,7 +1206,7 @@ h3.side_menu {
 }
 div ul li ul {
     background-color: #cf1828;
-   
+
 }
 #nav1 li {
     border-bottom: 1px solid #666666;
@@ -1244,7 +1244,7 @@ textarea#comment {
 
  @media screen and (max-width: 767px)
         {
-        
+
          .link-lable{
             display:none;
          }
@@ -1338,10 +1338,10 @@ h3.subscribe {
 }
 
 .well {
-   
+
     background-color: transparent;
     border: none;
-  
+
 }
 
 
@@ -1361,11 +1361,11 @@ button.btn.btn-info.btn-lg.footer {
 }
 
 .btn-info {
-    
+
     border-color: #cf1828;
 }
 .well {
-   
+
     padding: 0px;
     }
 input#email {
@@ -1516,14 +1516,14 @@ img.img-responsive.winner {
 @media only screen and (max-device-width : 767px) and (min-device-width : 320px) {
 
     h3.winner_heading {
-   
+
     font-size: 28px;
-   
+
 }
 p.winner_paragraph {
-   
+
     FONT-SIZE: 12PX;
- 
+
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -1535,15 +1535,15 @@ p.winner_paragraph {
     margin-bottom: 18px;
 }
 h3.winner_name {
-    
+
     font-size: 26px;
     text-align: center;
-    
+
 }
 p.winner_detail {
-    
+
     FONT-SIZE: 12px;
-   
+
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 30px;
@@ -1564,22 +1564,22 @@ h3.ranking {
     text-align: center;
 }
 h3.contest_subheading {
-   
+
     font-size: 30px;
-   
+
     margin-bottom: 0px;
 }
 h3.contest_heading {
     font-size: 26px;
-   
+
 }
 p.contest_paragraph {
     font-size: 12px;
-   
+
 }
 .col-md-6.border_right {
     border-right: none;
-   
+
 }
 .border_contest {
     width: 50%;
@@ -1592,17 +1592,17 @@ img.img-responsive.winner {
 }
 h3.contest_winner {
     font-size: 17px;
- 
+
     margin-top: 10px;
 }
 p.track_name {
-    
+
     text-align: center;
     margin-bottom: -2px;
 }
 p.track_name {
     font-size: 14px;
-   
+
 }
 }
 
@@ -1622,18 +1622,18 @@ p.track_name {
 
 h3.ranking {
     font-size: 20px;
-  
+
     margin-top: 0px;
     text-align: center;
 }
 p.track_name {
-   
+
     text-align: center;
 }
 h3.contest_subheading {
     text-align: center;
     font-size: 34px;
-    
+
     margin-top: 15px;
     margin-bottom: 13px;
 }
@@ -1645,20 +1645,20 @@ h3.contest_subheading {
 img.img-responsive.winner {
     margin-top: 0px;
     height: auto;
-   
+
 }
 h3.contest_heading {
     font-size: 34px;
-    
+
 }
 h3.contest_winner {
     font-size: 18px;
-   
+
     margin-top: 10px;
 }
 p.track_name {
     font-size: 12px;
-   
+
 }
 }
 
@@ -1694,17 +1694,17 @@ h3.ranking {
 
 }
 p.track_name {
-  
+
     text-align: center;
 }
 h3.ranking {
-  
+
     text-align: center;
     margin-top: 23px;
 }
 h3.contest_heading {
     font-size: 35px;
-   
+
 }
     }
 
@@ -1712,9 +1712,9 @@ h3.contest_heading {
 
 
     #faqTabs .nav-pills>li>a {
-   
+
     font-size: 9px;
-    
+
 }
 div#home p {
     font-size: 9px;
@@ -1750,16 +1750,16 @@ ul.footer_link li a:hover {
 @media only screen and (max-device-width : 767px) and (min-device-width : 320px) {
 
     h3.points {
- 
+
     left: 26%;
     top: 37%;
-    
+
 }
 h3.points_rate {
-  
+
     left: 27%;
     top: 54%;
-   
+
 }
 }
 
@@ -1767,17 +1767,17 @@ h3.points_rate {
 @media only screen and (max-device-width : 1024px) and (min-device-width : 768px) and (orientation:landscape) {
 
     h3.points {
-   
+
     left: 23%;
     }
 
     h3.points_rate {
- 
+
     left: 24%;
-  
+
 }
 .star-rating {
-   
+
     right: 61%;
 }
     }
@@ -1793,7 +1793,42 @@ h3.points_rate {
 
 .rating {
     float: left;
-    margin-left: 31px;
+    margin-left: 13px;
     margin-top: 10px;
 
+}
+
+
+.s_rating {
+    position: absolute;
+    top: 3px;
+    left: 70px;
+    margin-left: 0px;
+    margin-top: 0px;
+}
+
+.s_genre {
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+.s_padding_genre{
+
+      padding-top: 40px;
+}
+.s_row_genre{
+  margin: 0;
+  padding: 35px;
+}
+.s_account input#role_id {
+    margin: 10px;
+}
+
+#nav1 li ul li a:hover {
+    background-color: #e71c2e;
+    font-family: 'Conv_Montserrat-Regular';
+}
+.s_nav_sub > li > a:hover {
+    background-color: #e71c2e;
+    border-bottom: #e71c2e;
+    COLOR: WHITE;
 }

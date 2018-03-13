@@ -35,9 +35,12 @@ $(function() {
             processData: false,
             contentType: false,
             success: function(response){
+              console.log(response);
                 if(response.code === 200){
+
                     $('.image-box > img').attr('src', response.img);
-                    // alert(response.img);
+                    
+                     
                 }
                 if(response.code === 202){
                     // alert(response.error);
@@ -53,9 +56,6 @@ $(function() {
         });
     });
 
-     $(document).ready(function() {
-        $('#example').DataTable();
-    } );
 
 
    

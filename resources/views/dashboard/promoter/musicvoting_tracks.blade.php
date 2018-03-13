@@ -14,9 +14,6 @@
         <h3 class="all_album">
             VIEWING ALL TRACKS
         </h3>
-        <h3 class="add_album">
-            ADD TRACK
-        </h3>
     </div>
   </div>
   <hr class="line">

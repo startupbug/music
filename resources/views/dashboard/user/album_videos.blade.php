@@ -76,6 +76,5 @@
       @endforeach   
     </div>  
     <hr class="line">    
-    <div class="button_dashboard"><button type="button" class="btn">LOAD MORE</button></div>
 </div>
 @endsection

@@ -26,7 +26,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     font-size: 40px;
     font-family: fantasy;
     font-variant: ordinal;
-    font-stretch: expanded;                    
+    font-stretch: expanded;
 }
 
 * {
@@ -665,7 +665,7 @@ nav.shrink .music_navbar {
 }
 
 .rating .fa-star{color: yellow;}
- 
+
  /*Public Profile By Fareha Start*/
 
 
@@ -712,7 +712,7 @@ nav.shrink .music_navbar {
 }
 
 .panel-info {
-   
+
     margin-top: 20px;
 }
 
@@ -747,10 +747,60 @@ footer .well div.input-group input{
     display: inline;
 }
 .img_height{
-    height: 220px;      
+    height: 220px;
 }
 @media only screen and (max-device-width : 767px) and (min-device-width : 320px) {
     .img_height{
-    height: auto;      
+    height: auto;
     }
+}
+
+hr.line {
+    color: #cf1828;
+    border: 1px solid;
+    margin-top: 0px;
+}
+h3.album_person_name {
+    FONT-SIZE: 18PX;
+    TEXT-ALIGN: CENTER;
+    COLOR: #cf1828;
+    font-family: 'Conv_Montserrat-SemiBold';
+}
+
+h3.all_album {
+    font-size: 38px;
+    color: #000000;
+    font-weight: 400;
+    float: left;
+    font-family: 'Conv_bebas';
+    margin: 20px 0 10px 0;
+}
+.s_btn_random a {
+    background-color: #cf1828;
+    border: none;
+    color: #ffffff;
+}
+.player_body h2 {
+    font-family: 'Conv_bebas';
+    color: #282828;
+    font-size: 40px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+.s_player_left_side {
+    height: 262px;
+    padding: 0;
+}
+.s_player_left_side img {
+    margin: 0 auto;
+}
+.s_mask span i {
+    margin-top: 45px;
+}
+.s_rating_top {
+    font-family: 'Conv_Montserrat-Regular';
+    color: #282828;
+    font-size: 18px;
+    text-transform: capitalize;
+    position: relative;
 }

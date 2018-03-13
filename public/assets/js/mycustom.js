@@ -74,13 +74,16 @@ $("#star_rating_submit").on('click', function(e){
       
       var track_ID = $('#track_id').val();    
       var rating_ID = $('#rating_no').val();      
+      var promoter_id = $('#promoter_id').val();
+      var musician_id = $('#musician_id').val();
+      console.log(musician_id);     
       $.ajaxSetup({
         headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
       });      
       $.ajax({
         url:  APP_URL + '/submit_rating',
         type: 'post',        
-        data: { 'rate_id' : rating_ID, 'tr_id' : track_ID },           
+        data: { 'rate_id' : rating_ID, 'tr_id' : track_ID, 'promoter_id' : promoter_id, 'musician_id' : musician_id },           
         success: function (data){    
           alert(data);
 

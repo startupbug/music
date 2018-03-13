@@ -3,16 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row">
-       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 clearfix col-center signup_form">
-               
-               
-                    
-                       
+       <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 clearfix col-center signup_form">
+
+
+
+
 
                  <div class="signup_form_box">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }} " id="Sign_up_form">
                         {{ csrf_field() }}
-
+                        <input type="hidden" name="suspend" value="1">
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
 
@@ -55,15 +55,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('role_id') ? ' has-error' : '' }}">
+                        <div class="s_account form-group{{ $errors->has('role_id') ? ' has-error' : '' }}  ">
                             <label for="role_id" class="col-md-4 control-label">Account</label>
 
                             <div class="col-md-6">
-                                <input id="role_id" type="radio" class="form-control validate[required]" name="role_id" value="2">Musician
+                                <input id="role_id" type="radio" class="validate[required]" name="role_id" value="2">Musician
 
-                                <input id="role_id" type="radio" class="form-control validate[required]" name="role_id" value="3">Promoter
+                                <input id="role_id" type="radio" class="validate[required]" name="role_id" value="3">Promoter
 
-                                <input id="role_id" type="radio" class="form-control validate[required]" name="role_id" value="4">User
+                                <input id="role_id" type="radio" class="validate[required]" name="role_id" value="4">User
 
                                 @if ($errors->has('role_id'))
                                     <span class="help-block">

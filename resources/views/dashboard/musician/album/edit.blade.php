@@ -1,8 +1,5 @@
 @extends('layouts.dashboard_index') 
 @section('content')
- @if (Session::has('upload_video_album'))
-    <div class="alert alert-info">{{ Session::get('upload_video_album') }}</div>
-    @endif
   <div class="col-md-9">
     <h3 class="heading_dashboard">
         ARTIST DASHBOARD
@@ -11,6 +8,11 @@
         <h3 class="album">
             MY ALBUMS
         </h3>
+      @if (Session::has('upload_video_album'))
+        <div class="alert alert-info">{{ Session::get('upload_video_album') }}</div>
+      @elseif(Session::has('add_track'))
+        <div class="alert alert-info">{{ Session::get('add_track') }}</div>
+      @endif
     </div>
     <div class="row">
       <div class="col-md-10 color_bottom">
@@ -77,7 +79,7 @@
                 <div class="dropdown-content">
                   <input type="hidden" name="id" value="{{$value->id}}">
                   <a data-toggle="modal" data-target="#EditVideoModal{{$value->id}}">Edit</a>
-                  <a href="{{route('delete_track',['id'=>$value->id])}}">Delete</a>                               
+                  <a href="{{route('delete_track',['id'=>$value->id])}}">Delete</a>
                   <a href="{{route('delete_from_album',['album_id'=>$edit_album->id,'track_id'=>$value->id])}}">Delete From Album</a>
                 </div>
               </div>

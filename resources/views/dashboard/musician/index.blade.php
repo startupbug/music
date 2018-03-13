@@ -8,6 +8,9 @@
         <h3 class="album">
             MY ALBUMS
         </h3>
+        @if (Session::has('activate'))
+            <div class="alert alert-info">{{ Session::get('activate') }}</div>
+        @endif
     </div>
     <div class="row">
         <div class="col-md-12 color_bottom">

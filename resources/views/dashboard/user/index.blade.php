@@ -1,6 +1,7 @@
 @extends('layouts.user_index')
 @section('content')
 <div class="col-md-9">
+	
 	<h3 class="heading_dashboard">
 		USER DASHBOARD
 	</h3>
