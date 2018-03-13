@@ -113,4 +113,9 @@ class AdminController extends Controller
             ->update(['suspend' => 0]);       
         return redirect()->back();
     }
+
+    public function admin_logout(Request $request) {     
+      Auth::logout();
+      return redirect('/');
+    }
 }

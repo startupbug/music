@@ -16,21 +16,45 @@
 //     return view('index');
 // });
 Route::group(['prefix' => 'admin', 'middleware' => 'is-admin'], function () {
-   Route::get('/index', 'Admin\AdminController@is_admin')->name('is_admin');
-   Route::get('/profile', 'Admin\AdminController@profile_view')->name('profile_view');
-   Route::post('AdminImageUpload',['as'=>'AdminImageUpload','uses'=>'Admin\AdminController@AdminImageUpload']);
-   
-   Route::get('/edit_profile/{id}', 'Admin\AdminController@edit_admin_profile')->name('edit_admin');
-   Route::post('update_admin_profile/{id}',['as'=>'update_admin_profile','uses'=>'Admin\AdminController@update_admin_profile']);
+    Route::get('/index', 'Admin\AdminController@is_admin')->name('is_admin');
+    Route::post('AdminImageUpload',['as'=>'AdminImageUpload','uses'=>'Admin\AdminController@AdminImageUpload']);
+    // Admin Profile Controlling Routes
+    Route::get('/profile', 'Admin\AdminController@profile_view')->name('profile_view');
+    Route::get('/edit_profile/{id}', 'Admin\AdminController@edit_admin_profile')->name('edit_admin');
+    Route::post('update_admin_profile/{id}',['as'=>'update_admin_profile','uses'=>'Admin\AdminController@update_admin_profile']);
+    
+    // Users Controlling Routes
+    Route::get('/users', 'Admin\AdminController@users')->name('users');
+    Route::get('/edit_user_profile/{id}', 'Admin\AdminController@edit_user_profile')->name('edit_user_profile');
+    Route::post('update_user_profile/{id}',['as'=>'update_user_profile','uses'=>'Admin\AdminController@update_user_profile']);
+    Route::get('/view_user_profile/{id}', 'Admin\AdminController@view_user_profile')->name('view_user_profile');
 
-   Route::get('/users', 'Admin\AdminController@users')->name('users');
-   Route::get('/edit_user_profile/{id}', 'Admin\AdminController@edit_user_profile')->name('edit_user_profile');
-   Route::post('update_user_profile/{id}',['as'=>'update_user_profile','uses'=>'Admin\AdminController@update_user_profile']);
-   Route::get('/view_user_profile/{id}', 'Admin\AdminController@view_user_profile')->name('view_user_profile');
+    Route::get('/suspend_user/{id}/', ["as" => "suspend-user", "uses" => "Admin\AdminController@suspend_user"]);
+    Route::get('/unsuspend_user/{id}/', ["as" => "unsuspend-user", "uses" => "Admin\AdminController@unsuspend_user"]);
+    
+    // Category Controlling Routes
+    Route::get('categories', 'Admin\CategoryController@index')->name('categories');
+    Route::get('create_category', 'Admin\CategoryController@create')->name('create_category');
+    Route::post('create_new_category', 'Admin\CategoryController@store')->name('create_new_category');
+    Route::get('delete_category/{id}', 'Admin\CategoryController@destroy')->name('delete_category');
+    Route::get('edit_category/{id}', 'Admin\CategoryController@edit')->name('edit_category');
+    Route::post('update_category/{id}', 'Admin\CategoryController@update')->name('update_category');
 
-   Route::get('/suspend_user/{id}/', ["as" => "suspend-user", "uses" => "Admin\AdminController@suspend_user"]);
-   Route::get('/unsuspend_user/{id}/', ["as" => "unsuspend-user", "uses" => "Admin\AdminController@unsuspend_user"]);
+    // Tracks/Albums Controlling Routes
+    Route::get('tracks', 'Admin\MusicController@track_index')->name('tracks');
+    Route::get('albums', 'Admin\MusicController@album_index')->name('albums');
+    
+    Route::get('/featured/{id}/', ["as" => "approve-admin-featured", "uses" => "Admin\MusicController@admin_approve_featured"]);
+    Route::get('/un_featured/{id}/', ["as" => "disapprove-admin-featured", "uses" => "Admin\MusicController@admin_disapprove_featured"]);
+
+    Route::get('/block_track/{id}/', ["as" => "block-track", "uses" => "Admin\MusicController@block_track"]);
+    Route::get('/unblock_track/{id}/', ["as" => "unblock-track", "uses" => "Admin\MusicController@unblock_track"]);
+
+    
+    Route::get('/logout_admin', 'Admin\AdminController@admin_logout')->name('logout_admin');
 });
+
+
 Route::get('/','PagesController@index')->name('home1');
 Route::get('/profile/{id}','PagesController@profile')->name('profile');
 Route::post('/submit_rating','PagesController@submit_rating')->name('submit_rating');

@@ -26,15 +26,9 @@
                 <li class="social_media"><img src="{{asset('public/assets/images/facebook.png')}}"><h2 class="mid_head">2.5K</h2><h3 class="mid_like">LIKES</h3></li>
                 <li class="social_media"><img src="{{asset('public/assets/images/google-plus.png')}}"><h2 class="mid_head">1200</h2><h3 class="mid_side">FOLLOWERS</h3></li>
               </ul>
-              </div>
-            
+              </div>            
         </div>
         </div>
-
-
-
-
-
       </div>
       <!--<h3 class="last_heading">TRACKS</h3>-->
     </div>
