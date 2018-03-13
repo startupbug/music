@@ -56,7 +56,7 @@
                   <h3 class="rating">Rating:</h3>
                   <form  action="{{route('submit_rating')}}" method="post" id="rating-form">
                     <span class="rating" id="star_rating_submit">
-                      <span class="fa fa-star-o" data-rating="1"></span>
+                      <span class="fa fa-star-o" data-rating="1" ></span>
                       <span class="fa fa-star-o" data-rating="2"></span>
                       <span class="fa fa-star-o" data-rating="3"></span>
                       <span class="fa fa-star-o" data-rating="4"></span>
@@ -65,7 +65,6 @@
                       <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="{{$rating['rating']}}">
                       @else
                       <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="">
-
                       @endif
                       <input type="hidden" name="promoter_id" class="promoter_id" id="promoter_id" value="@if(!empty($name)){{ $name }}@endif">
                       <input type="hidden" name="musician_id" class="musician_id" id="musician_id" value="{{$track_uploader->id}}">
