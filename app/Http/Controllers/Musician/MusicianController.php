@@ -184,6 +184,7 @@ class MusicianController extends Controller
             $a->redeemed_point = $redeemable_points;
             $a->status = '0';
             $a->save();
+            Session::flash('redeem','request has been sent to admin for approval');
         }
         else
         {
