@@ -1,6 +1,10 @@
 <div class="col-md-3 color_bg">
 	<div class="dashboard_name">
-	<div class="dashboard_name">		
+	<div class="dashboard_name">
+
+		<a href="{{route('delete_image')}}" data-toggle="tooltip" title="Remove Profile Picture">
+			<i class="fa fa-lg fa-remove delete_image_profile"> </i>
+		</a>
 		<div class="image-box">
 			@if(Auth::user()->role_id == 2)
 				<img src="{{asset('public/dashboard/profile_images/'. Auth::user()->image )}}" class="img-responsive">
@@ -23,7 +27,6 @@
 	<h3 class="name_person">
 		{{Auth::user()->name}}
 	</h3>
-	<a href="{{route('delete_image')}}">Delete</a>
 	<div class="row">
 		@if(Auth::user()->role_id == 2)
 		<div class="col-md-6 col-sm-6 col-xs-12">
@@ -94,7 +97,7 @@
 				<a href="{{route('musician_album')}}">
 					<p class="side_paragraph">
 					MY ALBUMS
-					</p>	
+					</p>
 				</a>
 			</div>
 		</div>

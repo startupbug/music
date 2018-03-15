@@ -1832,3 +1832,6 @@ h3.points_rate {
     border-bottom: #e71c2e;
     COLOR: WHITE;
 }
+.text-white {
+    color: #fff;
+}
