@@ -18,11 +18,12 @@
 					<input type="file" name="image" id="change_profile">
 				</div>
 			</form>
-		</div>
+			</div>
 	</div>
 	<h3 class="name_person">
 		{{Auth::user()->name}}
 	</h3>
+	<a href="{{route('delete_image')}}">Delete</a>
 	<div class="row">
 		@if(Auth::user()->role_id == 2)
 		<div class="col-md-6 col-sm-6 col-xs-12">

@@ -1300,6 +1300,13 @@ button.btn-custom span {
         .img_height{
             height: 220px;      
         }
+        .s_file_upload_btn{
+            font-family: 'Conv_bebas';
+            width: 200px;
+            font-size: 17px;
+            letter-spacing: 1.5px;
+
+        }
    /*promoter datatables for invitations*/
 /* tablet */
 @media only screen and (max-device-width : 1024px) and (min-device-width : 768px) {
