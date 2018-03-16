@@ -1,6 +1,5 @@
 @extends('layouts.public_index')
 @section('content')
-
 <div class="container-fluid bg_gray">
     <div class="container">
         @if (Session::has('not_activate'))
@@ -137,8 +136,8 @@
                         sign up now to get your tracks featured along
                         with many others
                     </p>
-                    <a href="#" class="btn btn-default wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s"">
-                    SIGN UP now
+                    <a href="{{route('register')}}" class="btn btn-default wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s"">
+                    SIGN UP now 
                     </a>
                 </div>
             </div>
@@ -189,7 +188,7 @@
                         sign up now to get your tracks featured along
                         with many others
                     </p>
-                    <a href="#" class="btn btn-default wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">
+                    <a href="{{route('register')}}" class="btn btn-default wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">
                         SIGN UP now
                     </a>
                 </div>

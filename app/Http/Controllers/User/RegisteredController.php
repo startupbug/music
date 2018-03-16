@@ -73,7 +73,7 @@ class RegisteredController extends Controller
     }
     public function delete_image()
     {
-
+        
         $path = base_path() . '/public/dashboard/profile_images/'.Auth::user()->image;
         // dd(Auth::user()->image);
          if(file_exists($path))
@@ -85,7 +85,7 @@ class RegisteredController extends Controller
             ->where('id', Auth::user()->id)
             ->update(['image' => 'Default-avatar.jpg']);
             Session::flash('delete','profile image is removed');
-            return redirect()->route('main_index'); 
+            return redirect()->route('user_index'); 
     }
      public function album_videos($id)
     {

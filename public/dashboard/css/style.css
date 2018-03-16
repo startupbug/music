@@ -307,6 +307,7 @@ hr {
 }
 
 .delete_image_profile {
+    display: none;
     font-size: 1.5em;
     color: #fff;
     position: absolute;
@@ -1069,7 +1070,7 @@ label.input-group-btn.label_cus .btn {
 }
 
 button.btn.btn-primary {
-    width: 560px;
+    width: 100%;
     margin-top: 30px;
     height: 43px;
     font-family: 'Conv_bebas';
@@ -1237,7 +1238,7 @@ button.btn-custom span {
     position: relative;
     margin-top: 62px;
     }
-    .dashboard_name:hover .camera_image {
+    .dashboard_name:hover .camera_image ,.dashboard_name:hover .delete_image_profile{
         display: block;
     }
     .camera_image {

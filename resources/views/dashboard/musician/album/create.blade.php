@@ -40,7 +40,7 @@
 
 
           <div class="col-md-7 col-sm-12 col-xs-12 col-md-offset-3">
-            <div class="input-group">
+            <div class="input-group col-md-12 col-sm-12 col-xs-12">
               <button type="submit" name="button" class="btn btn-primary">UPLOAD</button>
             </div>
           </div>
