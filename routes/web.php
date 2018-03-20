@@ -159,3 +159,6 @@ Route::get('/getAffiliatedID', 'PagesController@getAffiliatedID')->name('getAffi
 Route::get('redeem_points/', 'PaypalController@getCheckout')->name('redeem_points');
 Route::get('getDone/', 'PaypalController@getDone')->name('getDone');
 Route::get('getCancel/', 'PaypalController@getCancel')->name('getCancel');
+
+
+Route::get('redirectDashboard', 'Auth\LoginController@authenticated')->name('redirectDashboard');
