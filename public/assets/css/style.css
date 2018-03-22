@@ -22,11 +22,19 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     vertical-align: baseline;
 }
 .profileName{
-    text-align: center;
+    text-align: left;
     font-size: 40px;
     font-family: fantasy;
     font-variant: ordinal;
     font-stretch: expanded;
+    font-size: 38px;
+color: #000000;
+font-weight: 400;
+border-bottom: 2px solid red;
+line-height: 66px;
+
+font-family: 'Conv_bebas';
+
 }
 
 * {
@@ -403,14 +411,14 @@ nav.shrink .music_navbar {
     margin-top: 5px;
     font-family: 'Conv_Montserrat-Regular';
     display: block;
-    color: #282828;
+    color: red;
     font-size: 18px;
 }
 
 .songs_box p a {
     font-family: 'Conv_Montserrat-Regular';
     display: block;
-    color: #282828;
+    color: red;
     font-size: 18px;
 
 }
@@ -803,4 +811,9 @@ h3.all_album {
     font-size: 18px;
     text-transform: capitalize;
     position: relative;
+}
+.bottom_name {
+    
+    margin-right: 68px;
+    margin-top: 10px;
 }

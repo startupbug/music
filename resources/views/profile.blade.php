@@ -58,9 +58,34 @@
 </div>
 </div>
 @if($userInfo->role_id == '2')
+<section class="music_album">
+  <div class="container">
+      
+        <h1 class="profileName">{{ $userInfo->name}} ALBUMS</h1>
+        @foreach($albumss as $album)
+
+          <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="box"> 
+          <a href="{{route('album_view',['id' => $album->id])}}"> 
+            <div class="dashboard_album">        
+              <div class="images_person">
+                <img src="{{asset('public/dashboard/musician/albums/images/'.$album->image)}}" class="img-responsive">
+              </div>           
+            </div>
+          </a> 
+          </div>      
+            <h3 class="album_person_name bottom_name">
+              {{$album->name}}
+            </h3>      
+          </div>
+        @endforeach 
+      
+  </div>
+</section>
+
 <section class="music_track">
   <div class="container">
-    	<div class="row">
+    	
     	  <h1 class="profileName">{{ $userInfo->name}} TRACKS</h1>
         @foreach($tracks as $track)
           <div class="col-md-3 col-sm-6 col-xs-12">
@@ -76,7 +101,7 @@
             </h3>      
           </div>
         @endforeach 
-    	</div>
+    	
   </div>
 </section>
 @endif

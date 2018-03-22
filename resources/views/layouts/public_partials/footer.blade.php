@@ -7,13 +7,13 @@
                         PAGES
                     </h3>
                     <ul class="footer_link">
-                        <li><a href="index.php"><i class="fa fa-angle-double-right"></i>
+                        <li><a href="{{route('home1')}}"><i class="fa fa-angle-double-right"></i>
                             Home
                         </a></li>
-                        <li><a href="contest.php"><i class="fa fa-angle-double-right"></i>
+                        <li><a href="{{route('contest')}}"><i class="fa fa-angle-double-right"></i>
                             Contests
                         </a></li>
-                        <li><a href="winner.php"><i class="fa fa-angle-double-right"></i>
+                        <li><a href="{{route('winner')}}"><i class="fa fa-angle-double-right"></i>
                             Winners
                         </a></li>
                         <li><i class="fa fa-angle-double-right"></i>
@@ -176,7 +176,7 @@
                 </div>
                 <h1 class="form_heading">x`sword?</h1>
 
-                <h1 class="form_heading">Don't have an account? Sign Up Now!</h1>
+                <a href="{{route('register')}}"><h1 class="form_heading">Don't have an account? Sign Up Now!</h1></a>
             </form>
         </div>
 

@@ -208,7 +208,7 @@
                         feugiat urna, at facilisis purus elementum a. Aenean condimentum arcu iaculis egestas rutrum.
                         Quisque tempus commodo dolor, a commodo arcu luctus vel.
                     </p>
-                    <a href="#" class="btn btn-default">
+                    <a href="{{route('register')}}" class="btn btn-default">
                         <span>SIGN UP now</span>
                         and earn with the best!
                     </a>

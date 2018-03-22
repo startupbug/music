@@ -149,7 +149,7 @@ Route::get('home1', 'HomeController@user_dashboard')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+Route::post('/search_result','PagesController@search_result')->name('search_result');
 
 
 Route::get('/getAffiliatedID', 'PagesController@getAffiliatedID')->name('getAffiliatedID');

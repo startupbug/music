@@ -25,7 +25,8 @@ class PagesController extends Controller
     {  
       $args['userInfo'] = User::where('id','=',$id)->first(); 
       $args['roles'] = Role::select('roles.name')->where('roles.id','=',$args['userInfo']['role_id'])->first();   
-      $args['tracks'] = Track::where('user_id',$id)->take(12)->get();  
+      $args['tracks'] = Track::where('user_id',$id)->take(12)->get();
+      $args['albumss'] = Album::where('user_id',$id)->get();  
       return view('profile')->with($args);
     }
 
@@ -388,7 +389,61 @@ class PagesController extends Controller
 
     public function musicvoting_search()
     {
-        return view('musicvoting_search');
+        $tracks = DB::table('tracks')
+            ->join('users','tracks.user_id','=','users.id')
+            ->select('tracks.*','users.name as user_name')
+            ->inRandomOrder()
+            ->take(5)
+            ->get();
+        // dd($tracks);
+            $artists = DB::table('users')
+            ->where('role_id','=',2)
+            ->inRandomOrder()
+            ->take(5)
+            ->get();
+            // dd($artists);
+            $categories = Category::all();
+            // dd($categories);
+        return view('musicvoting_search',['tracks'=>$tracks, 'artists'=>$artists,   'categories'=> $categories]);
+    }
+
+    public function search_result()
+    {
+        $search_item = Input::get('search_item');
+
+        // dd($search_item);
+        $genre = Input::get('genre');
+        // dd($genre);
+        $data[] = "";
+        //if($search_item != null)
+        //{ 
+            
+            // $data['searching_genre'] = DB::table('tracks')
+            // ->where('tracks.category_id','=',$genre)
+         
+
+            // ->get();
+            //dd($data['searching_genre']);
+
+            $data['searching_tracks'] = DB::table('tracks')
+            ->where('name','LIKE','%'.$search_item.'%');
+
+            if($genre != ""){
+               $data['searching_tracks']->where('tracks.category_id','=',$genre);
+            }
+
+            $data['searching_tracks'] = $data['searching_tracks']->get();
+
+            // dd($data['searching_tracks']);
+            $data['searching_users'] = DB::table('users')
+            ->where('name','LIKE','%'.$search_item.'%')->get();
+            $data['searching_albums'] = DB::table('albums')
+            ->where('name','LIKE','%'.$search_item.'%')->get();
+
+            
+        
+        
+        return view('search_result')->with($data);
     }
 
     public function genre()
