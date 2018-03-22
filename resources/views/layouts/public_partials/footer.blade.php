@@ -7,13 +7,13 @@
                         PAGES
                     </h3>
                     <ul class="footer_link">
-                        <li><a href="index.php"><i class="fa fa-angle-double-right"></i>
+                        <li><a href="{{route('home1')}}"><i class="fa fa-angle-double-right"></i>
                             Home
                         </a></li>
-                        <li><a href="contest.php"><i class="fa fa-angle-double-right"></i>
+                        <li><a href="{{route('contest')}}"><i class="fa fa-angle-double-right"></i>
                             Contests
                         </a></li>
-                        <li><a href="winner.php"><i class="fa fa-angle-double-right"></i>
+                        <li><a href="{{route('winner')}}"><i class="fa fa-angle-double-right"></i>
                             Winners
                         </a></li>
                         <li><i class="fa fa-angle-double-right"></i>
@@ -99,26 +99,25 @@
       <div class="modal-content">
         <h4 class="login-title">Login</h4>
         <div class="modal-body">
-          <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+          <form class="form-horizontal" method="POST" action="{{ route('login') }}" id="loginForm">
                         {{ csrf_field() }}
-            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-              <input type="email" name="email" class="form-control red-color" id="email" placeholder="Email">
-                    @if ($errors->has('email'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </span>
-                    @endif
+            <div class="form-group validationEmail">
+              <input type="email" name="email" class="form-control red-color" id="loginemail" placeholder="Email">
+                    
+                <span class="help-block validationEmail">
+                    <strong id="display_error"></strong>
+                </span>
             </div>
-            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+            <div class="form-group validationPassword">
               <input type="password" name="password" class="form-control red-color" id="pwd" placeholder="Password">
-                    @if ($errors->has('password'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
-                    @endif
+                   
+                    <span class="help-block validationPassword">
+                        <strong id="display_error"></strong>
+                    </span>
+                    
             </div>
             <div class="form-group">
-              <button type="submit" class="btn btn-default" style="width:100%">Submit</button>
+              <input type="submit" class="btn btn-default" style="width:100%" id="submit_login" name="submit" value="Submit">
             </div>
           </form>
         </div>
@@ -177,7 +176,7 @@
                 </div>
                 <h1 class="form_heading">x`sword?</h1>
 
-                <h1 class="form_heading">Don't have an account? Sign Up Now!</h1>
+                <a href="{{route('register')}}"><h1 class="form_heading">Don't have an account? Sign Up Now!</h1></a>
             </form>
         </div>
 

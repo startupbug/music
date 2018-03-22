@@ -1,7 +1,7 @@
 @include('layouts.public_partials.footer')
 
 <script type="text/javascript">
-  var APP_URL = "{!! asset('public/') !!}";
+  var APP_URL = "{!! asset('') !!}";
   console.log(APP_URL);
 </script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -55,8 +55,44 @@
             shares: ["twitter","facebook"]
           });
         }
-      });	 
+      });  
   });
+$(document).ready(function(){
+
+
+  $("#loginForm").submit(function(e){
+    e.preventDefault();
+    var form = $(this).serialize();
+    var APP_URL = "{!! asset('') !!}";
+  
+    console.log(form);
+
+    //validation error handling
+    $('span.validationEmail').hide();
+    $('span.validationPassword').hide();
+    
+    $.ajax({
+      url: $(this).attr('action'),
+      type: $(this).attr('method'),
+      data: form,
+      success: function(r){
+        console.log(r);
+        window.location = APP_URL + "redirectDashboard";
+      },
+      error: function(e){
+        var error = e.responseJSON;
+        if(error.email){
+          $('span.validationEmail').show();
+          $('span.validationEmail strong').text(error.email);
+        }
+        if(error.password){
+          $('span.validationPassword').show();
+          $('span.validationPassword strong').text(error.password);
+        }
+      }
+    })
+  });
+});
 </script>
 
 
@@ -84,4 +120,6 @@
     });
   };
 </script>
+
+
 

@@ -35,7 +35,7 @@ class MusicianController extends Controller
             User::where('id' ,'=', Auth::user()->id)->update([
                 'image' => $img_name
             ]);  
-            $path = asset('/dashboard/profile_images').'/'.$img_name;  
+            $path = asset('/public/dashboard/profile_images').'/'.$img_name;  
             return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]); 
         }
         else
@@ -52,6 +52,24 @@ class MusicianController extends Controller
         $file->move( $path , $filename);
         return $filename;
     }
+
+    public function delete_image()
+    {
+
+        $path = base_path() . '/public/dashboard/profile_images/'.Auth::user()->image;
+        // dd(Auth::user()->image);
+         if(file_exists($path))
+        {
+            @unlink($path);
+        }
+            \File::delete(Auth::user()->image);
+            DB::table('users')
+            ->where('id', Auth::user()->id)
+            ->update(['image' => 'Default-avatar.jpg']);
+            Session::flash('delete','profile image is removed');
+            return redirect()->route('main_index'); 
+    }
+
      public function disapprove_featured($id)
     {
         DB::table('tracks')
@@ -78,15 +96,15 @@ class MusicianController extends Controller
         return view('dashboard.musician.overview')->with($args);
     }
      public function redeem()
-    {
-
+    {   
     if(Auth::check()){
         $musician_points = DB::table('points')
                         ->leftjoin('tracks','tracks.id','=','points.track_id')
                         ->leftjoin('users','users.id','=','tracks.user_id')
-                        ->select('points.point')                                
-                        ->where('users.id','=',Auth::user()->id)
+                        ->select('points.point','points.user_id','tracks.id','users.role_id','tracks.user_id as tracks._user_id')
+                        ->where('points.user_id','=',Auth::user()->id)
                         ->get();
+                        // dd($musician_points);
         $total_points = 0;             
         foreach ($musician_points as $value){
             $total_points += $value->point;
@@ -103,8 +121,9 @@ class MusicianController extends Controller
                             ->leftjoin('tracks','tracks.id','=','points.track_id')
                             ->leftjoin('users','users.id','=','tracks.user_id')
                             ->select('points.point')                                
-                            ->where('users.id','=',Auth::user()->id)
+                            ->where('points.user_id','=',Auth::user()->id)
                             ->get();
+                            //dd($musician_points_in_this_month);
             $total_points_in_this_month = 0;             
         foreach ($musician_points_in_this_month as $value) {                                         
             $total_points_in_this_month += $value->point;
@@ -129,44 +148,50 @@ class MusicianController extends Controller
 
     return view('dashboard.musician.redeem',['total_points'=>$total_points,'total_points_in_this_month'=>$total_points_in_this_month,'total_redeemed_points'=>$total_redeemed_points,'redeemable_points'=>$redeemable_points]);
     }
-    public function redeemed_request(){
-             $musician_points = DB::table('points')
-                            ->leftjoin('tracks','tracks.id','=','points.track_id')
-                            ->leftjoin('users','users.id','=','tracks.user_id')
-                            ->select('points.point')                                
-                            ->where('users.id','=',Auth::user()->id)
-                            ->get();
-            $total_points = 0;             
-            foreach ($musician_points as $value){
-                $total_points += $value->point;
-            }   
+    public function redeemed_request()
+    {
+         $musician_points = DB::table('points')
+                        ->leftjoin('tracks','tracks.id','=','points.track_id')
+                        ->leftjoin('users','users.id','=','tracks.user_id')
+                        ->select('points.point')                                
+                        ->where('points.user_id','=',Auth::user()->id)
+                        ->get();
+        $total_points = 0;             
+        foreach ($musician_points as $value){
+            $total_points += $value->point;
+        }   
 
-            //redeemed points
-            $musician_redeemed_points = DB::table('redeemed_points')                                                
-                            ->select('redeemed_points.redeemed_point')                                
-                            ->where('redeemed_points.user_id','=',Auth::user()->id)
-                            ->get();
-            $total_redeemed_points = 0;             
-            foreach ($musician_redeemed_points as $value){
-                $total_redeemed_points += $value->redeemed_point;
-            }           
-            //redeemed points
+        //redeemed points
+        $musician_redeemed_points = DB::table('redeemed_points')                                                
+                        ->select('redeemed_points.redeemed_point')                                
+                        ->where('redeemed_points.user_id','=',Auth::user()->id)
+                        ->get();
+        $total_redeemed_points = 0;             
+        foreach ($musician_redeemed_points as $value){
+            $total_redeemed_points += $value->redeemed_point;
+        }           
+        //redeemed points
 
-            //redeemable points
-            $redeemable_points = $total_points-$total_redeemed_points;     
-            //redeemable points  
-            if (!empty($redeemed_points) && $redeemable_points != '0') {             
-                $user_id = Auth::user()->id;            
-                $a = new RedeemedPoint;
-                $a->user_id = $user_id;
-                $a->redeemed_point = $redeemable_points;
-                $a->status = '0';
-                $a->save();
-            }else{
-                Session::flash('err_msg','You dont have sufficient Points to process this request');
-                return redirect()->back();
-            }
-            return redirect()->back();        
+        //redeemable points
+        $redeemable_points = $total_points-$total_redeemed_points;
+        //dd($redeemable_points);     
+        //redeemable points  
+        if ($redeemable_points != '0')
+        {        
+            $user_id = Auth::user()->id;            
+            $a = new RedeemedPoint;
+            $a->user_id = $user_id;
+            $a->redeemed_point = $redeemable_points;
+            $a->status = '0';
+            $a->save();
+            Session::flash('redeem','request has been sent to admin for approval');
+        }
+        else
+        {
+            Session::flash('err_msg','You dont have sufficient Points to process this request');
+            return redirect()->back();
+        }
+        return redirect()->back();        
     }
     public function edit_account($id)
     {   

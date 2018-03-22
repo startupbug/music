@@ -11,6 +11,9 @@
         @if (Session::has('activate'))
             <div class="alert alert-info">{{ Session::get('activate') }}</div>
         @endif
+        @if (Session::has('delete'))
+            <div class="alert alert-info">{{ Session::get('delete') }}</div>
+        @endif
     </div>
     <div class="row">
         <div class="col-md-12 color_bottom">

@@ -102,6 +102,7 @@ Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'Promoter\Prm
     Route::get('/approve_status/{id}/', ["as" => "approve-status", "uses" => "Promoter\PrmoterController@approve_status"]);
     Route::get('/disapprove_status/{id}/', ["as" => "disapprove-status", "uses" => "Promoter\PrmoterController@disapprove_status"]);
     Route::get('/albums/{id}','Promoter\PrmoterController@all_albums')->name('all_albums');
+    Route::get('delete_image','Promoter\PrmoterController@delete_image')->name('delete_image2');
     Route::get('/promoter_logout', 'Promoter\PrmoterController@promoter_logout')->name('logout_promoter');
 });
 
@@ -119,6 +120,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {
    Route::post('/update_password/{id}','User\RegisteredController@user_update_password')->name('user_update_password');
    Route::get('/all_tracks', 'User\RegisteredController@all_tracks')->name('all_tracks');
    Route::get('/all_albums', 'User\RegisteredController@all_albums')->name('all_albums');
+   Route::get('delete_image','User\RegisteredController@delete_image')->name('delete_image3');
    Route::get('/user_logout', 'User\RegisteredController@user_logout')->name('logout_user');
 
 });
@@ -160,7 +162,7 @@ Route::post('/update_links/{id}','Musician\MusicianController@update_links')->na
 Route::get('/approve_featured/{id}/', ["as" => "approve-featured", "uses" => "Musician\MusicianController@approve_featured"]);
 Route::get('/disapprove_featured/{id}/', ["as" => "disapprove-featured", "uses" => "Musician\MusicianController@disapprove_featured"]);
 Route::get('/redeem','Musician\MusicianController@redeem')->name('musician_redeem');
-
+Route::get('delete_image','Musician\MusicianController@delete_image')->name('delete_image1');
 Route::get('/musician_logout', 'Musician\MusicianController@musician_logout')->name('logout_musician');
 
 });
@@ -171,7 +173,7 @@ Route::get('home1', 'HomeController@user_dashboard')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+Route::post('/search_result','PagesController@search_result')->name('search_result');
 
 
 Route::get('/getAffiliatedID', 'PagesController@getAffiliatedID')->name('getAffiliatedID');
@@ -181,3 +183,6 @@ Route::get('/getAffiliatedID', 'PagesController@getAffiliatedID')->name('getAffi
 Route::get('redeem_points/', 'PaypalController@getCheckout')->name('redeem_points');
 Route::get('getDone/', 'PaypalController@getDone')->name('getDone');
 Route::get('getCancel/', 'PaypalController@getCancel')->name('getCancel');
+
+
+Route::get('redirectDashboard', 'Auth\LoginController@authenticated')->name('redirectDashboard');

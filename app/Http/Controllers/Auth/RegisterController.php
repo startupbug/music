@@ -79,9 +79,9 @@ class RegisterController extends Controller
                 'password' => bcrypt($data['password']),
                 'role_id' => $data['role_id'],
                 'email_token' => str_random(10),
-                ]);   
+                ]);
 
-                
+
                 //Updating unique id of User
                 $update_uniqueid = User::find($user->id);
                 $update_uniqueid->promoter_affiliated_id = $user->id.Hash::make(str_random(5));
@@ -101,12 +101,12 @@ class RegisterController extends Controller
                 'password' => bcrypt($data['password']),
                 'role_id' => $data['role_id'],
                 'email_token' => str_random(10),
-                ]);  
+                ]);
             // Mail::to($data['email'])->send(new EmailVerification($user));
             // auth()->login($user);
             return $user;
         }
-        
+
 
     }
 
@@ -119,7 +119,7 @@ class RegisterController extends Controller
     //dd($token)
     $user = User::where('email_token',$token)->first();
     // dd($user);
-    
+
     if(isset($user)){
         $result = User::where('email_token',$token)->update(['suspend'=> 0, 'email_token'=> null]);
         auth()->login($user);
@@ -128,7 +128,7 @@ class RegisterController extends Controller
         //return $this->save();
 
         //$verify = User::where('email_token',$token)->verified();
-        
+
         if(Auth::user()->role_id === 2){
             Session::flash('activate','your account is activated');
             return redirect()->route('main_index');
@@ -141,13 +141,13 @@ class RegisterController extends Controller
             Session::flash('activate','your account is activated');
             return redirect()->route('user_index');
         }
-        //Redirect Login with Message 
+        //Redirect Login with Message
 
     }else{
-        //Redirect kisi aur apge with Message 
+        //Redirect kisi aur apge with Message
 
     }
-    
+
     //dd($result);
 
     return redirect('login');

@@ -34,11 +34,11 @@
 					<div class="star"><span class="glyphicon glyphicon-star"></span></div>
 					 @if($track->featured == '1')
 			        <a href="{{route('disapprove-featured',['id'=>$track->id])}}" title="Click To UnFeatured">
-			          <h3 class="hover_heading">MAKESONGUNFEATURED</h3>
+			          <h3 class="hover_heading">SONG IS FEATURED <br> UN FEATURE SONG</h3>
 			        </a>
 			        @else
 			        <a href="{{route('approve-featured',['id'=>$track->id])}}" title="Click To Featured">
-			          <h3 class="hover_heading">MAKESONGFEATURED</h3>
+			          <h3 class="hover_heading">FEATURE THIS SONG</h3>
 			        </a>
 			        @endif 
 					<div class="trophy"><i class="fa fa-trophy" style="font-size:24px"></i></div>

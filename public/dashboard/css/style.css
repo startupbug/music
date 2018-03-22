@@ -306,9 +306,17 @@ hr {
     margin-top: 0px;
 }
 
-
-
-
+.delete_image_profile {
+    display: none;
+    font-size: 1.5em;
+    color: #fff;
+    position: absolute;
+    right: 60px;
+    top: 10px;
+}
+.delete_image_profile:hover {
+    color: #cf1828;
+}
 @media only screen and (max-device-width : 767px) and (min-device-width : 320px) {
 
 
@@ -965,7 +973,7 @@ h3.last_redeem_content {
 @media only screen and (max-device-width : 767px) and (min-device-width : 320px) {
 
     .box .caption {
-    
+
         width: 100%;
         height: 195px;
         top: 0px;
@@ -1062,7 +1070,7 @@ label.input-group-btn.label_cus .btn {
 }
 
 button.btn.btn-primary {
-    width: 560px;
+    width: 100%;
     margin-top: 30px;
     height: 43px;
     font-family: 'Conv_bebas';
@@ -1225,12 +1233,12 @@ button.btn-custom span {
    }
 
    /* Start Side bar Image By Sheheryar*/
-   
+
    .dashboard_name {
     position: relative;
     margin-top: 62px;
     }
-    .dashboard_name:hover .camera_image {
+    .dashboard_name:hover .camera_image ,.dashboard_name:hover .delete_image_profile{
         display: block;
     }
     .camera_image {
@@ -1250,7 +1258,7 @@ button.btn-custom span {
         position: absolute;
         bottom: 20px;
     }
-    .image-box{    
+    .image-box{
         width: 198px;
                height: 198px;
         margin: auto;
@@ -1298,7 +1306,14 @@ button.btn-custom span {
         }
 
         .img_height{
-            height: 220px;      
+            height: 220px;
+        }
+        .s_file_upload_btn{
+            font-family: 'Conv_bebas';
+            width: 200px;
+            font-size: 17px;
+            letter-spacing: 1.5px;
+
         }
    /*promoter datatables for invitations*/
 /* tablet */
@@ -1321,7 +1336,7 @@ button.btn-custom span {
 
 
         .img_height{
-            height: auto;      
+            height: auto;
         }
     .btn-group, .btn-group-vertical {
       left: 30%;
@@ -1361,4 +1376,3 @@ button.btn-custom span {
       height: auto;
     }
 }
-

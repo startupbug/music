@@ -141,6 +141,6 @@ class TracksController extends Controller
     public function destroy(Request $request,$id)
     {
         $track_delete = Track::destroy($id);
-        return redirect()->back();
+        return redirect()->route('musician_track');
     }
 }

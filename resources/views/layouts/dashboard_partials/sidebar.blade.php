@@ -1,6 +1,20 @@
 <div class="col-md-3 color_bg">
 	<div class="dashboard_name">
-	<div class="dashboard_name">		
+	<div class="dashboard_name">
+
+		@if(Auth::user()->role_id == 2)
+		<a href="{{route('delete_image1')}}" data-toggle="tooltip" title="Remove Profile Picture">
+			<i class="fa fa-lg fa-remove delete_image_profile"> </i>
+		</a>
+		@elseif(Auth::user()->role_id == 3)
+		<a href="{{route('delete_image2')}}" data-toggle="tooltip" title="Remove Profile Picture">
+			<i class="fa fa-lg fa-remove delete_image_profile"> </i>
+		</a>
+		@elseif(Auth::user()->role_id == 4)
+		<a href="{{route('delete_image3')}}" data-toggle="tooltip" title="Remove Profile Picture">
+			<i class="fa fa-lg fa-remove delete_image_profile"> </i>
+		</a>
+		@endif
 		<div class="image-box">
 			@if(Auth::user()->role_id == 2)
 				<img src="{{asset('public/dashboard/profile_images/'. Auth::user()->image )}}" class="img-responsive">
@@ -18,7 +32,7 @@
 					<input type="file" name="image" id="change_profile">
 				</div>
 			</form>
-		</div>
+			</div>
 	</div>
 	<h3 class="name_person">
 		{{Auth::user()->name}}
@@ -93,7 +107,7 @@
 				<a href="{{route('musician_album')}}">
 					<p class="side_paragraph">
 					MY ALBUMS
-					</p>	
+					</p>
 				</a>
 			</div>
 		</div>
