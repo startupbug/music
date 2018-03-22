@@ -15,7 +15,7 @@
 // Route::get('/', function () {
 //     return view('index');
 // });
-Route::group(['prefix' => 'admin', 'middleware' => 'is-admin'], function () {
+Route::group(['prefix' => 'admin','middleware' => 'is-admin'], function () {
     Route::get('/index', 'Admin\AdminController@is_admin')->name('is_admin');
     Route::post('AdminImageUpload',['as'=>'AdminImageUpload','uses'=>'Admin\AdminController@AdminImageUpload']);
     // Admin Profile Controlling Routes
