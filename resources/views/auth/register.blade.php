@@ -59,7 +59,9 @@
                             <label for="role_id" class="col-md-4 control-label">Account</label>
 
                             <div class="col-md-6">
-                                <input id="role_id" type="radio" class="validate[required]" name="role_id" value="2">Musician
+                                <input id="role_id" type="radio" class="validate[required]" name="role_id" value="2">   
+
+                                Musician
 
                                 <input id="role_id" type="radio" class="validate[required]" name="role_id" value="3">Promoter
 

@@ -1,6 +1,5 @@
-<?php include('header.php'); ?>
-
-
+@extends('layouts.public_index')
+@section('content')
     <div class="container">
        <div class="row" id="faqTabs">
             <div class="col-xs-6 col-xs-6 col-xs-6 col-xs-6">
@@ -83,8 +82,4 @@
 
 </div>
 </div>
-
-
-
-
-<?php include('footer.php'); ?>
+@endsection
