@@ -24,8 +24,10 @@
                        aria-expanded="false">Genre <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{route('genre')}}">Genre</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#">Country</a></li>
+                        <li><a href="#">Hip Hop</a></li>
+                        <li><a href="#">Jazz</a></li>
+                        <li><a href="#">Metallic</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

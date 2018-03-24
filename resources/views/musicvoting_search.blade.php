@@ -87,12 +87,7 @@
 <div class="container">
   <div class="row border">
     <div class="col-md-6">
-
       <h1 class="left_heading">TRACKS</h1>
-    </div>
-    <div class="col-md-6">
-
-      <h1 class="right_heading">SEE MORE</h1>
     </div>
   </div>
 </div>
@@ -102,7 +97,7 @@
             @foreach($tracks as $track)
             <div class="col-xs-12 col-sm-6 col-md-2 change_width">
                 <div class="songs_box">
-                    <a href="javascript:">
+                    <a href="{{route('musicvoting_genre',['id' => $track->id])}}">
                         <img src="{{asset('public/dashboard/musician/tracks/images/'.$track->image)}}" class="img-responsive center-block"/>
                         <div class="mask">
                             <span class="play_icon">
@@ -128,10 +123,6 @@
 
       <h1 class="left_heading">ARTISTS</h1>
     </div>
-    <div class="col-md-6">
-
-      <h1 class="right_heading">SEE MORE</h1>
-    </div>
   </div>
 </div>
 
@@ -139,14 +130,17 @@
   <div class="row">
     @foreach($artists as $artist)
     <div class="col-md-2 col-md-6 col-md-12 width_change">
-      @if($artist->image == null || $artist->image == 0)
-      <div class="images_person"><img src="{{asset('public/dashboard/profile_images/Default-avatar.jpg')}}" class="img-responsive"></div>
-      @elseif($artist->image != null)
-      <div class="images_person"><img src="{{asset('public/dashboard/profile_images/'.$artist->image)}}" class="img-responsive"></div>
-      @endif
+      <a href="{{route('profile',['id'=>$artist->id])}}">
+        @if($artist->image == null || $artist->image == 0)
+          <div class="images_person"><img src="{{asset('public/dashboard/profile_images/Default-avatar.jpg')}}" class="img-responsive"></div>
+        @elseif($artist->image != null)
+          <div class="images_person"><img src="{{asset('public/dashboard/profile_images/'.$artist->image)}}" class="img-responsive"></div>
+        @endif
+      </a>
       <h3 class="artist">
         {{$artist->name}}
       </h3>
+
     </div>
     @endforeach
   </div>

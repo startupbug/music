@@ -145,7 +145,7 @@
                 @foreach($albums_tracks as $albums => $tracks )
                 <ul id="nav1">
 
-                  <li><a href="#">{{$albums}}</a>
+                  <li><a class="s_pointer">{{$albums}}</a>
                     <ul class="s_nav_sub">
                       @foreach($tracks as $track)
                       <li><a href="{{route('musicvoting_genre',['id' => $track->track_id])}}">{{$track->name}}</a></li>

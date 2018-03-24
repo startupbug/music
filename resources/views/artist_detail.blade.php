@@ -7,14 +7,16 @@
         <div class="col-md-4">
            <div class="img-side"><img src="{{asset('public/assets/images/man.png')}}" class="img-responsive"/></div>
         </div>
+        {{dd($musician_details)}}
+        @foreach($musician_details as $musician_detail)
         <div class="col-md-8">
           <h1 class="side_heading">
-            KING_LAMAR
+            {{$musician_details->username}}
           </h1>
           <h2 class="sub_heading">
-            KENDRICK LAMAR
+            {{$musician_details->name}}
           </h2>
-          <img src="{{asset('public/assets/images/trophee.png')}}" class="img-responsive"> 
+          <img src="{{asset('public/dashboard/profile_images/'.$musician_detail->image)}}" class="img-responsive"> 
           <h3 class="points">500</h3>
           <h3 class="points_rate">POINTS</h3>
           <div class="row">
