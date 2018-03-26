@@ -44,10 +44,20 @@ Route::get('register/verify/{token}', 'Auth\RegisterController@verify')->name('v
 // Route::get('/index', 'HomeController@public_index')->name('public_index');
 
 // Route::get('/main_index','HomeController@dashboard')->name('main_index');
+// songs categories
+Route::get('/country','PagesController@country_songs')->name('country_songs');
+Route::get('/jazz_songs','PagesController@jazz_songs')->name('jazz_songs');
+Route::get('/hiphop_songs','PagesController@hiphop_songs')->name('hiphop_songs');
+Route::get('/metallic_songs','PagesController@metallic_songs')->name('metallic_songs');
+
 
 Route::get('/contest','PagesController@contest')->name('contest');
 
 Route::get('/winner','PagesController@winner')->name('winner');
+
+Route::get('/faq','PagesController@faq')->name('faq');
+
+Route::get('/how_it_works','PagesController@how_it_works')->name('how_it_works');
 
 Route::get('/musicvoting_genre/{id}/{name?}','PagesController@musicvoting_genre')->name('musicvoting_genre');
 

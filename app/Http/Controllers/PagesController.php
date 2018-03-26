@@ -40,9 +40,9 @@ class PagesController extends Controller
         ->join('albums','users.id','=','albums.user_id')
         ->select('albums.id as album_id','albums.name as album_name','albums.image as album_image','albums.user_id as album_user_id','tracks.id as track_id','users.name as user_name','users.id as user_id','tracks.name as track_name','tracks.image as track_image')
         ->inRandomOrder()
-        ->take(10)
+        ->take(12)
         ->get();
-        $rand_num  = rand(0,9);        
+        $rand_num  = rand(0,11);        
         $args['abc'] = $args['tracks'][$rand_num];
         $ratings[]=0;
         foreach ($args['tracks'] as $value)
@@ -81,6 +81,7 @@ class PagesController extends Controller
         $musician = Track::where('id', '=',$data2)->first();
         $promoter_affiliated_id =  $request->promoter_id;  
         $promoter_user =  User::where('promoter_affiliated_id','=',$promoter_affiliated_id)->first();
+        
         if(!empty(Auth::user()->id) && !empty($data) && !empty($data2))
         {   
             if (Rating::where('ratings.user_id', '=', Auth::user()->id)->where('ratings.track_id','=',$data2)->exists())
@@ -89,7 +90,14 @@ class PagesController extends Controller
                 ->where('ratings.user_id', Auth::user()->id)
                 ->where('ratings.track_id', $data2)                   
                 ->update(['ratings.rating' =>  $data]);
+                if(Auth::check())
+                {
                 echo "Your rating has been successfully updated";
+                }
+                else
+                {
+                    echo "login to rate this video";
+                }
                 // if(!empty($promoter_affiliated_id))
                 // {
                 //     $point = new Point;
@@ -122,9 +130,9 @@ class PagesController extends Controller
                 //     echo "hellow how are you";   
                 // }
 
-            }
-            else
-            {             
+        }
+        else
+        {             
                 $rating = new Rating;
                 $rating->user_id = Auth::user()->id;
                 $rating->track_id =  $data2;
@@ -148,7 +156,14 @@ class PagesController extends Controller
                         $point->point_type = 'Rating';
                         $point->description = 'User Rated This Track';
                         $point->save();
-                        echo "Your rating has been successfully submitted"; 
+                        if(Auth::check())
+                        {
+                            echo "Your rating has been successfully submitted"; 
+                        }
+                        else
+                        {
+                            echo "you have to login to rate this vedio";
+                        }
                     }        
                 }
                 else
@@ -160,12 +175,25 @@ class PagesController extends Controller
                     $point->point_type = 'Rating';
                     $point->description = 'User Rated This Track';
                     $point->save();
-                    echo "Your rating has been successfully submitted";   
+                    if(Auth::check())
+                    {
+                        echo "Your rating has been successfully submitted"; 
+                    }
+                    else
+                    {
+                        echo "you have to login to rate this vedio";
+                    }   
                 }
             }               
         }
         else
         {        
+
+            //Check if User is Logged in,
+         if(!Auth::check()){
+              echo "login to rate this video";
+          }
+
             Session::flash('err_msg','error occured');
         }
     }
@@ -238,6 +266,16 @@ class PagesController extends Controller
     {
         return view('winner');
     }   
+
+    public function faq()
+    {
+        return view('faq');
+    }
+
+    public function how_it_works()
+    {
+        return view('how_it_works');
+    }    
 
     public function musicvoting_genre($id, $name = null)
     {   
@@ -384,7 +422,22 @@ class PagesController extends Controller
 
     public function artist_detail()
     {
-        return view('artist_detail');
+        $musician_details = DB::table('users')->where('role_id','=',2)->paginate(10);
+        // dd($musician_details);
+        // $albums_details = Album::join('tracks','albums.user_id','=','tracks.user_id')->select('albums.id as album_id','albums.name as album_name','tracks.id as track_id','tracks.name as track_name')->get();
+        $albums = Album::join('users','albums.user_id','=','users.id')->select('albums.id as album_id','albums.name as album_name','users.id as user_id','users.name as name_user')->get();
+        // dd($albums);
+            $albums_tracks = array();  
+            foreach ($albums as $key => $value)
+            {
+                // dd($value);
+                $albums_tracks[$value->album_name] = Album_Video::join('tracks','album__videos.track_id','=','tracks.id')->where('album__videos.album_id','=',$value->album_id)->get();
+                dd($albums_tracks[$value->album_name]);
+            }
+
+        // dd(albums_details); 
+           
+        return view('artist_detail',['musician_details'=> $musician_details, 'albums_details' => $albums_details]);
     }
 
     public function musicvoting_search()
@@ -484,6 +537,31 @@ class PagesController extends Controller
     public function getAffiliatedID()
     {
         echo Auth::User()->promoter_affiliated_id;
+    }
+
+    public function country_songs()
+    {
+        $country_songs = DB::table('tracks')->where('category_id','=',1)->get();
+        //dd($country_songs);
+        return view('country',['country_songs'=>$country_songs]);
+    }
+
+    public function jazz_songs()
+    {
+        $jazz_songs = DB::table('tracks')->where('category_id','=',2)->get();
+        return view('jazz',['jazz_songs'=>$jazz_songs]);
+    }
+
+    public function hiphop_songs()
+    {
+        $hiphop_songs = DB::table('tracks')->where('category_id','=',3)->get();
+        return view('hiphop',['hiphop_songs'=> $hiphop_songs]);
+    }
+
+    public function metallic_songs()
+    {
+        $metallic_songs = DB::table('tracks')->where('category_id','=',4)->get();
+        return view('metallic',['metallic_songs'=> $metallic_songs]);
     }
 
 }

@@ -41,31 +41,30 @@
               			  <td><a href="facebook.com">{{$userInfo->facebook}}</a></td>
               			</tr>              			
               			<tr>
-              			<td>Phone Number</td>
-              			<td>{{$userInfo->phone}}</td>
-              		</tr>
-              	</tbody>
-              </table>
+              			 <td>Phone Number</td>
+              			 <td>{{$userInfo->phone}}</td>
+              		  </tr>
+              	  </tbody>
+                </table>
+              </div>
+            <div class="col-md-3 col-lg-3 " align="center">
+              <div class="image_profile">
+                <img src="{{asset('public/dashboard/profile_images/'. $userInfo->image )}}" class="img-circle img-responsive">
+              </div>
+            </div>
           </div>
-          <div class="col-md-3 col-lg-3 " align="center"> <div class="image_profile">
-            <img src="{{asset('public/dashboard/profile_images/'. $userInfo->image )}}" class="img-circle img-responsive">
-          </div>
+        </div>
       </div>
+    </div>
   </div>
-</div>
-</div>
-</div>
-</div>
 </div>
 @if($userInfo->role_id == '2')
 <section class="music_album">
   <div class="container">
-      
-        <h1 class="profileName">{{ $userInfo->name}} ALBUMS</h1>
-        @foreach($albumss as $album)
-
-          <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="box"> 
+    <h1 class="profileName">{{ $userInfo->name}} ALBUMS</h1>
+    @foreach($albumss as $album)
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="box"> 
           <a href="{{route('album_view',['id' => $album->id])}}"> 
             <div class="dashboard_album">        
               <div class="images_person">
@@ -73,35 +72,33 @@
               </div>           
             </div>
           </a> 
-          </div>      
-            <h3 class="album_person_name bottom_name">
-              {{$album->name}}
-            </h3>      
-          </div>
-        @endforeach 
-      
+        </div>      
+        <h3 class="album_person_name bottom_name">
+          {{$album->name}}
+        </h3>      
+      </div>
+    @endforeach 
   </div>
 </section>
-
 <section class="music_track">
   <div class="container">
-    	
-    	  <h1 class="profileName">{{ $userInfo->name}} TRACKS</h1>
-        @foreach($tracks as $track)
-          <div class="col-md-3 col-sm-6 col-xs-12">
+	  <h1 class="profileName">{{ $userInfo->name}} TRACKS</h1>
+    @foreach($tracks as $track)
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <a href="{{route('musicvoting_genre',['id' => $track->id])}}">
           <div class="box">  
             <div class="dashboard_album">        
-                <video width="100%" height="160px" controls>
-                    <source src="{{asset('public/dashboard/musician/tracks/videos/'.$track->video)}}" type="video/mp4">             
-                </video>               
+              <video width="100%" height="160px" controls>
+                <source src="{{asset('public/dashboard/musician/tracks/videos/'.$track->video)}}" type="video/mp4">             
+              </video>               
             </div> 
-          </div>      
-            <h3 class="album_person_name">
-              {{$track->name}}
-            </h3>      
-          </div>
-        @endforeach 
-    	
+          </div>  
+        </a>    
+        <h3 class="album_person_name">
+          {{$track->name}}
+        </h3>      
+      </div>
+    @endforeach 	
   </div>
 </section>
 @endif

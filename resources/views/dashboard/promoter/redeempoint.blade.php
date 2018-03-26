@@ -1,4 +1,4 @@
-    @extends('layouts.promoter_index')
+@extends('layouts.promoter_index')
 @section('content')
  <div class="col-md-9">
         <h3 class="heading_dashboard">

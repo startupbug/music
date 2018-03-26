@@ -16,10 +16,6 @@
                         <li><a href="{{route('winner')}}"><i class="fa fa-angle-double-right"></i>
                             Winners
                         </a></li>
-                        <li><i class="fa fa-angle-double-right"></i>
-                            Free Beats
-                        </li>
-
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
@@ -33,10 +29,10 @@
                         <li><a href="musicvoting_terms.php"><i class="fa fa-angle-double-right"></i>
                             Terms
                         </a></li>
-                        <li><a href="faq.php"><i class="fa fa-angle-double-right"></i>
+                        <li><a href="{{route('faq')}}"><i class="fa fa-angle-double-right"></i>
                             FAQ
                         </a></li>
-                        <li><a href="howitworks.php"><i class="fa fa-angle-double-right"></i>
+                        <li><a href="{{route('how_it_works')}}"><i class="fa fa-angle-double-right"></i>
                             How It Works
                         </a></li>
 
@@ -47,10 +43,10 @@
                      QUICK LINKS
                  </h3>
                      <ul class="footer_link">
-                        <li><a href="signup.php"><i class="fa fa-angle-double-right"></i>
+                        <li><a href="{{url('register')}}"><i class="fa fa-angle-double-right"></i>
                             Sign Up Now
                         </a></li>
-                        <li><a href="contest.php"><i class="fa fa-angle-double-right"></i>
+                        <li><a href="{{route('contest')}}"><i class="fa fa-angle-double-right"></i>
                             Contests
                         </a></li>
                         <li><i class="fa fa-angle-double-right"></i>
