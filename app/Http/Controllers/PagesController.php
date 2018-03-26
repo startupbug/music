@@ -423,16 +423,6 @@ class PagesController extends Controller
     public function artist_detail()
     {
         $musician_details = DB::table('users')->where('role_id','=',2)->get();
-        $points = [] ;
-        $musician_points = DB::table('points')->get();
-        foreach($musician_details as $musician_detail)
-        {
-            // dd($musician_detail->id)
-            //$musician_points = DB::table('points')->where('user_id','=',$musician_detail->id)->get();
-            $musician_points = DB::table('points')->get();
-            
-        }
-
         return view('artist_detail',['musician_details'=> $musician_details]);
     }
 

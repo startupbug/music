@@ -16,22 +16,24 @@
             </div>
           </div>
           <div class="col-md-8">
+            <a href="{{route('profile',['id'=>$musician_detail->id])}}">
             <h1 class="side_heading">
               {{$musician_detail->username}}
             </h1>
+            </a>
             <h2 class="sub_heading">
               {{$musician_detail->name}}
             </h2>
             <div class="row">
               <div class="col-md-12">
                 <ul>
-                  <a href="">
+                  <a href="https://www.instagram.com/" target="_blank">
                     <li class="social_media"><img src="{{asset('public/assets/images/instagram.png')}}"><h2 class="mid_head">1881</h2><h3 class="mid_side">FOLLOWERS</h3></li>
                   </a>
-                  <a href="">
+                  <a href="https://www.facebook.com" target="_blank">
                     <li class="social_media"><img src="{{asset('public/assets/images/facebook.png')}}"><h2 class="mid_head">2.5K</h2><h3 class="mid_like">LIKES</h3></li>
                   </a>
-                  <a href="">
+                  <a href="www.twitter.com/" target="_blank">
                     <li class="social_media"><img src="{{asset('public/assets/images/google-plus.png')}}"><h2 class="mid_head">1200</h2><h3 class="mid_side">FOLLOWERS</h3></li>
                   </a>
                 </ul>
