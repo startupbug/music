@@ -4,8 +4,8 @@
   <div class="row">
     <div class="col-md-8">
 
-      @foreach($musician_details as $musician_detail) 
-        <div class="row">     
+      @foreach($musician_details as $musician_detail)
+        <div class="row">
           <div class="col-md-4">
             <div class="img-side">
               @if($musician_detail->image == 0)
@@ -41,36 +41,39 @@
             </div>
           </div>
         </div>
-      @endforeach 
+      @endforeach
       <!--<h3 class="last_heading">TRACKS</h3>-->
       {{ $musician_details->links() }}
     </div>
 
-    
-      
-      <div class="col-md-4">
+<br>
+
+  <div class="col-md-4">
 
       <h3 class="side_menu">
         ALL ALBUMS
       </h3>
-  
 
-  <ul id="nav1">
-    @foreach($albums_details as $album_detail)
-    <li><a href="#">{{$album_detail->album_name}}</a>
-    <ul>
-      <li><a href="#">{{$album_detail->track_name}}</a></li>
+
+  <ul class="nav1">
+
+    <li><a class="s_pointer">albums</a>
+    <ul class="s_nav_sub">
+      <li><a href="#">hello</a></li>
+      <li><a href="#">hello</a></li>
+      <li><a href="#">hello</a></li>
+      <li><a href="#">hello</a></li>
     </ul>
     </li>
-    @endforeach
-</ul> 
+
+</ul>
 </div>
-    
 
 
 
 
-    
+
+
   </div>
 </div>
 

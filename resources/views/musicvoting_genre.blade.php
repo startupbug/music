@@ -142,8 +142,9 @@
                 <h3 class="side_menu">
                   TRACKS BY {{$track_uploader->name}}
                 </h3>
+  
                 @foreach($albums_tracks as $albums => $tracks )
-                <ul id="nav1">
+                <ul class="nav1">
 
                   <li><a class="s_pointer">{{$albums}}</a>
                     <ul class="s_nav_sub">

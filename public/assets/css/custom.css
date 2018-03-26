@@ -1147,12 +1147,12 @@ a {
   margin: 0px;
 }
 
-#nav1 a {
+.nav1 a {
   color: #FFFFFF;
   font-family: 'Conv_Montserrat-Regular';
 }
 
-#nav1 li ul li a:hover {
+.nav1 li ul li a:hover {
   background-color: #394963;
 }
 
@@ -1161,7 +1161,7 @@ div ul li ul {
   list-style: none
 }
 
-#nav1 > li > a {
+.nav1 > li > a {
   background-color: #343434;
   padding: 16px 18px;
   text-decoration: none;
@@ -1170,7 +1170,7 @@ div ul li ul {
   background: linear-gradient(top, #343434, #111111);
 }
 
-#nav1 li ul li a {
+.nav1 li ul li a {
   padding: 10px 0;
   padding-left: 30px;
   text-decoration: none;
@@ -1179,7 +1179,7 @@ div ul li ul {
 
 
 /* Hide Dropdowns by Default */
-#nav1 li ul {
+.nav1 li ul {
   display: none;
 }
 
@@ -1193,18 +1193,18 @@ h3.side_menu {
     font-family: 'Conv_bebas';
 }
 
-#nav1 > li > a {
+.nav1 > li > a {
     background-color: #000000;
 
 }
 
-#nav1 > li > a {
+.nav1 > li > a {
     background-color: #000000;
     font-size: 18px;
     font-family: 'Conv_Montserrat-Regular';
     color: #d5d5d5;
 }
-#nav1 li ul li a:hover {
+.nav1 li ul li a:hover {
     background-color: #cf1828;
     font-family: 'Conv_Montserrat-Regular';
 }
@@ -1212,7 +1212,7 @@ div ul li ul {
     background-color: #cf1828;
 
 }
-#nav1 li {
+.nav1 li {
     border-bottom: 1px solid #666666;
 }
 button.btn.btn-info.btn-lg.footer {
@@ -1234,7 +1234,7 @@ button.btn {
     text-decoration: none;
 }
 
-#nav1 > li > a:hover {
+.nav1 > li > a:hover {
     background-color: #cf1828;
     /* border-bottom: #cf1828; */
     COLOR: WHITE;
@@ -1827,7 +1827,7 @@ h3.points_rate {
     margin: 10px;
 }
 
-#nav1 li ul li a:hover {
+.nav1 li ul li a:hover {
     background-color: #e71c2e;
     font-family: 'Conv_Montserrat-Regular';
 }
