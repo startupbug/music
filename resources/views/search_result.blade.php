@@ -51,7 +51,11 @@
       <div class="col-md-2 col-md-6 col-md-12 width_change">
         <a href="{{route('profile',['id'=>$searching_user->id])}}">
         <div class="images_person">
+          @if($searching_user->image == null || $searching_user->image == 0)
+          <img src="{{asset('public/dashboard/profile_images/Default-avatar.jpg')}}" class="img-responsive">
+          @else
           <img src="{{asset('public/dashboard/profile_images/'.$searching_user->image)}}" class="img-responsive">
+          @endif
         </div>
       </a>
       <h3 class="artist">{{$searching_user->name}}

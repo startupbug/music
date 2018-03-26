@@ -4,8 +4,10 @@
   <div class="row">
     <div class="col-md-11 col-md-offset-1">
             <div class="input-group" id="adv-search">
+
               <form action="{{route('search_result')}}" method="POST">
                 {{csrf_field()}}
+                
                 <input type="text" class="form-control form_control" placeholder="Search artist" name="search_item" />
                 <div class="select select_volvo">
                 <select name="genre">
@@ -15,15 +17,13 @@
                   @endforeach
                 </select>
                 </div>
-              <br>
- 
-  <div class="button_submit"><input type="submit"></div>
-
-
-               
-
-
+                <br>
+   
+                <div class="button_submit"><input type="submit"></div>
               </form>
+
+
+
               
               <!--<div class="input-group-btn">
                     <div class="btn-group" role="group">
@@ -37,7 +37,7 @@
       <li><a href="#">JavaScript</a></li>
     </ul>
   </div>
-                        <!--<div class="dropdown dropdown-lg">
+                <div class="dropdown dropdown-lg">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span><span class="search">Genre</span></button>
                             <div class="dropdown-menu dropdown-menu-right" role="menu">
                               <ul class="dropdown-menu">
@@ -45,11 +45,11 @@
       <li><a href="#">CSS</a></li>
       <li><a href="#">JavaScript</a></li>
     </ul>
-                                <!--<form action="{{route('search_result')}}" method="POST" class="form-horizontal" role="form">
+                            <form action="{{route('search_result')}}" method="POST" class="form-horizontal" role="form">
                                   {{csrf_field()}}
-                                  <!--<div class="form-group">
+                           <div class="form-group">
                                     <label for="filter">Filter by</label>
-                                   <!-- <select class="form-control">
+                                   <select class="form-control">
                                         <option value="0" selected>All Snippets</option>
                                         <option value="1">Featured</option>
                                         <option value="2">Most popular</option>
