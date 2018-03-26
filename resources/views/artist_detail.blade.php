@@ -43,6 +43,7 @@
         </div>
       @endforeach 
       <!--<h3 class="last_heading">TRACKS</h3>-->
+      {{ $musician_details->links() }}
     </div>
 
     
@@ -50,99 +51,18 @@
       <div class="col-md-4">
 
       <h3 class="side_menu">
-        TRACKS BY KENDRICK
+        ALL ALBUMS
       </h3>
   
 
   <ul id="nav1">
-    <li><a href="#">Menu Heading 1</a>
+    @foreach($albums_details as $album_detail)
+    <li><a href="#">{{$album_detail->album_name}}</a>
     <ul>
-      <li><a href="#">Stage1</a></li>
-      <li><a href="#">Stage2</a></li>
-      <li><a href="#">Stage3</a></li>
-      <li><a href="#">Stage4</a></li>
+      <li><a href="#">{{$album_detail->track_name}}</a></li>
     </ul>
     </li>
-    <li><a href="#">Menu Heading 2</a>
-      <ul>
-      <li><a href="#">Stage1</a></li>
-      <li><a href="#">Stage2</a></li>
-      <li><a href="#">Stage3</a></li>
-      <li><a href="#">Stage4</a></li>
-    </ul>
-    </li>
-    <li><a href="#">Menu Heading 3</a>
-    <ul>
-      <li><a href="#">Stage1</a></li>
-      <li><a href="#">Stage2</a></li>
-      <li><a href="#">Stage3</a></li>
-      <li><a href="#">Stage4</a></li>
-    </ul>
-    </li>
-     <li><a href="#">Menu Heading 2</a>
-      <ul>
-      <li><a href="#">Stage1</a></li>
-      <li><a href="#">Stage2</a></li>
-      <li><a href="#">Stage3</a></li>
-      <li><a href="#">Stage4</a></li>
-    </ul>
-    </li>
-     <li><a href="#">Menu Heading 2</a>
-      <ul>
-      <li><a href="#">Stage1</a></li>
-      <li><a href="#">Stage2</a></li>
-      <li><a href="#">Stage3</a></li>
-      <li><a href="#">Stage4</a></li>
-    </ul>
-    </li>
-     <li><a href="#">Menu Heading 2</a>
-      <ul>
-      <li><a href="#">Stage1</a></li>
-      <li><a href="#">Stage2</a></li>
-      <li><a href="#">Stage3</a></li>
-      <li><a href="#">Stage4</a></li>
-    </ul>
-    </li>
-     <li><a href="#">Menu Heading 2</a>
-      <ul>
-      <li><a href="#">Stage1</a></li>
-      <li><a href="#">Stage2</a></li>
-      <li><a href="#">Stage3</a></li>
-      <li><a href="#">Stage4</a></li>
-    </ul>
-    </li>
-     <li><a href="#">Menu Heading 2</a>
-      <ul>
-      <li><a href="#">Stage1</a></li>
-      <li><a href="#">Stage2</a></li>
-      <li><a href="#">Stage3</a></li>
-      <li><a href="#">Stage4</a></li>
-    </ul>
-    </li>
-     <li><a href="#">Menu Heading 2</a>
-      <ul>
-      <li><a href="#">Stage1</a></li>
-      <li><a href="#">Stage2</a></li>
-      <li><a href="#">Stage3</a></li>
-      <li><a href="#">Stage4</a></li>
-    </ul>
-    </li>
-     <li><a href="#">Menu Heading 2</a>
-      <ul>
-      <li><a href="#">Stage1</a></li>
-      <li><a href="#">Stage2</a></li>
-      <li><a href="#">Stage3</a></li>
-      <li><a href="#">Stage4</a></li>
-    </ul>
-    </li>
-     <li><a href="#">Menu Heading 2</a>
-      <ul>
-      <li><a href="#">Stage1</a></li>
-      <li><a href="#">Stage2</a></li>
-      <li><a href="#">Stage3</a></li>
-      <li><a href="#">Stage4</a></li>
-    </ul>
-    </li>
+    @endforeach
 </ul> 
 </div>
     
