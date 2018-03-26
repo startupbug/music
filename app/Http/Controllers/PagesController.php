@@ -315,6 +315,7 @@ class PagesController extends Controller
             foreach ($albums as $key => $value)
             {
                 $albums_tracks[$value->name] = Album_Video::join('tracks','album__videos.track_id','=','tracks.id')->where('album__videos.album_id','=',$value->id)->get();
+                // dd($albums_tracks[$value->name]);
             }
 
                 //hasan rating auth                        
@@ -424,20 +425,18 @@ class PagesController extends Controller
     {
         $musician_details = DB::table('users')->where('role_id','=',2)->paginate(10);
         // dd($musician_details);
-        // $albums_details = Album::join('tracks','albums.user_id','=','tracks.user_id')->select('albums.id as album_id','albums.name as album_name','tracks.id as track_id','tracks.name as track_name')->get();
-        $albums = Album::join('users','albums.user_id','=','users.id')->select('albums.id as album_id','albums.name as album_name','users.id as user_id','users.name as name_user')->get();
-        // dd($albums);
+             //retriving userid from album table
+            $albums = Album::get(); 
             $albums_tracks = array();  
             foreach ($albums as $key => $value)
             {
-                // dd($value);
-                $albums_tracks[$value->album_name] = Album_Video::join('tracks','album__videos.track_id','=','tracks.id')->where('album__videos.album_id','=',$value->album_id)->get();
-                dd($albums_tracks[$value->album_name]);
+                $albums_tracks[$value->name] = Album_Video::join('tracks','album__videos.track_id','=','tracks.id')->where('album__videos.album_id','=',$value->id)->get();
+                // dd($albums_tracks[$value->name]);
             }
 
-        // dd(albums_details); 
+        // dd($albums_tracks); 
            
-        return view('artist_detail',['musician_details'=> $musician_details, 'albums_details' => $albums_details]);
+        return view('artist_detail',['musician_details'=> $musician_details, 'albums_tracks' => $albums_tracks]);
     }
 
     public function musicvoting_search()

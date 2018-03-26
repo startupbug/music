@@ -47,7 +47,7 @@
     </div>
 
     
-      
+      <br>
       <div class="col-md-4">
 
       <h3 class="side_menu">
@@ -56,10 +56,12 @@
   
 
   <ul id="nav1">
-    @foreach($albums_details as $album_detail)
-    <li><a href="#">{{$album_detail->album_name}}</a>
+    @foreach($albums_tracks as $album_tracks => $tracks)
+    <li><a class="s_pointer">{{$album_tracks}}</a>
     <ul>
-      <li><a href="#">{{$album_detail->track_name}}</a></li>
+      @foreach($tracks as $track)
+      <li><a href="{{route('musicvoting_genre',['id' => $track->track_id])}}">{{$track->name}}</a></li>
+      @endforeach
     </ul>
     </li>
     @endforeach
