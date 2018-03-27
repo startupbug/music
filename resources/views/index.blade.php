@@ -2,11 +2,14 @@
 @section('content')
 <div class="container-fluid bg_gray">
     <div class="container">
-        @if (Session::has('not_activate'))
-            <div class="alert alert-danger">{{ Session::get('not_activate') }}</div>
-        @endif
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                @if (Session::has('not_activate'))
+                    <div class="alert alert-danger">{{ Session::get('not_activate') }}</div>
+                @endif
+                 @if (Session::has('subscribe'))
+                    <div class="alert alert-success">{{ Session::get('subscribe') }}</div>
+                @endif
                 <div class="playing_heading">
                     <h2 class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">TRENDING TRACKS</h2>
                 </div>

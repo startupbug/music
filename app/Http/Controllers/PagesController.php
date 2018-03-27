@@ -17,16 +17,17 @@ use App\Category;
 use App\Album;
 use App\Album_Video;
 use App\Point;
+use App\Subscriber;
 
 class PagesController extends Controller
-{    
+{
 
     public function profile(Request $Request, $id)
-    {  
-      $args['userInfo'] = User::where('id','=',$id)->first(); 
-      $args['roles'] = Role::select('roles.name')->where('roles.id','=',$args['userInfo']['role_id'])->first();   
+    {
+      $args['userInfo'] = User::where('id','=',$id)->first();
+      $args['roles'] = Role::select('roles.name')->where('roles.id','=',$args['userInfo']['role_id'])->first();
       $args['tracks'] = Track::where('user_id',$id)->take(12)->get();
-      $args['albumss'] = Album::where('user_id',$id)->get();  
+      $args['albumss'] = Album::where('user_id',$id)->get();
       return view('profile')->with($args);
     }
 
@@ -35,14 +36,14 @@ class PagesController extends Controller
         return view('contest');
     }
     public function index()
-    { 
+    {
         $args['tracks'] = Track::leftJoin('users','users.id','=','tracks.user_id')
         ->join('albums','users.id','=','albums.user_id')
         ->select('albums.id as album_id','albums.name as album_name','albums.image as album_image','albums.user_id as album_user_id','tracks.id as track_id','users.name as user_name','users.id as user_id','tracks.name as track_name','tracks.image as track_image')
         ->inRandomOrder()
         ->take(12)
         ->get();
-        $rand_num  = rand(0,11);        
+        $rand_num  = rand(0,11);
         $args['abc'] = $args['tracks'][$rand_num];
         $ratings[]=0;
         foreach ($args['tracks'] as $value)
@@ -51,11 +52,11 @@ class PagesController extends Controller
             if($id)
             {
                 $ratings[$value->track_id]['totalRating'] = Rating::select('rating')
-                ->where('ratings.track_id', $value->track_id)      
+                ->where('ratings.track_id', $value->track_id)
                 ->sum('rating');
 
                 $ratings[$value->track_id]['totalROws'] = Rating::select('rating')
-                ->where('ratings.track_id', $value->track_id)      
+                ->where('ratings.track_id', $value->track_id)
                 ->count();
 
                 $ratings[$value->track_id]['average'] = round($ratings[$value->track_id]['totalRating']/$ratings[$value->track_id]['totalROws']);
@@ -75,20 +76,20 @@ class PagesController extends Controller
     }
 
     public function submit_rating(Request $request)
-    { 
+    {
         $data= $request->rate_id;
-        $data2= $request->tr_id; 
+        $data2= $request->tr_id;
         $musician = Track::where('id', '=',$data2)->first();
-        $promoter_affiliated_id =  $request->promoter_id;  
+        $promoter_affiliated_id =  $request->promoter_id;
         $promoter_user =  User::where('promoter_affiliated_id','=',$promoter_affiliated_id)->first();
-        
+
         if(!empty(Auth::user()->id) && !empty($data) && !empty($data2))
-        {   
+        {
             if (Rating::where('ratings.user_id', '=', Auth::user()->id)->where('ratings.track_id','=',$data2)->exists())
             {
                 DB::table('ratings')
                 ->where('ratings.user_id', Auth::user()->id)
-                ->where('ratings.track_id', $data2)                   
+                ->where('ratings.track_id', $data2)
                 ->update(['ratings.rating' =>  $data]);
                 if(Auth::check())
                 {
@@ -107,7 +108,7 @@ class PagesController extends Controller
                 //     $point->point_type = 'Rating';
                 //     $point->description = 'User Rated This Track';
                 //     $point->save();
-                
+
                 //     $point = new Point;
                 //     $point->user_id = $musician->user_id;
                 //     $point->track_id = $data2;
@@ -115,8 +116,8 @@ class PagesController extends Controller
                 //     $point->point_type = 'Rating';
                 //     $point->description = 'User Rated This Track';
                 //     $point->save();
-                //     echo "Your rating has been successfully submitted"; 
-                        
+                //     echo "Your rating has been successfully submitted";
+
                 // }
                 // else
                 // {
@@ -127,12 +128,12 @@ class PagesController extends Controller
                 //     $point->point_type = 'Rating';
                 //     $point->description = 'User Rated This Track';
                 //     $point->save();
-                //     echo "hellow how are you";   
+                //     echo "hellow how are you";
                 // }
 
         }
         else
-        {             
+        {
                 $rating = new Rating;
                 $rating->user_id = Auth::user()->id;
                 $rating->track_id =  $data2;
@@ -158,13 +159,13 @@ class PagesController extends Controller
                         $point->save();
                         if(Auth::check())
                         {
-                            echo "Your rating has been successfully submitted"; 
+                            echo "Your rating has been successfully submitted";
                         }
                         else
                         {
                             echo "you have to login to rate this vedio";
                         }
-                    }        
+                    }
                 }
                 else
                 {
@@ -177,17 +178,17 @@ class PagesController extends Controller
                     $point->save();
                     if(Auth::check())
                     {
-                        echo "Your rating has been successfully submitted"; 
+                        echo "Your rating has been successfully submitted";
                     }
                     else
                     {
                         echo "you have to login to rate this vedio";
-                    }   
+                    }
                 }
-            }               
+            }
         }
         else
-        {        
+        {
 
             //Check if User is Logged in,
          if(!Auth::check()){
@@ -200,19 +201,19 @@ class PagesController extends Controller
     public function submit_points(Request $request)
     {
         $user= $request->user_id;
-        $track_id= $request->tr_id; 
+        $track_id= $request->tr_id;
         if(!empty($user) && !empty($track_id))
-        {                       
+        {
             $point = new Point;
             $point->user_id = $user;
             $point->track_id = $track_id;
             $point->point = '10';
             $point->point_type = 'Streaming';
             $point->description = 'User Streamed This Track';
-            $point->save();                          
+            $point->save();
         }
         else
-        {        
+        {
             Session::flash('err_msg','error occured');
         }
     }
@@ -220,12 +221,12 @@ class PagesController extends Controller
     public function download_file(Request $request, $file_name,$track_id)
     {    //dd($request->promoter_id);
         $user = Auth::user()->id;
-        $promoter_user = User::where('promoter_affiliated_id','=',$request->promoter_id)->first();  
-        $musician = Track::where('id', '=',$track_id)->first();      
+        $promoter_user = User::where('promoter_affiliated_id','=',$request->promoter_id)->first();
+        $musician = Track::where('id', '=',$track_id)->first();
         $download_path = (public_path().'\dashboard\musician\tracks\videos\/' . $file_name );
-        //dd($musician->user_id);     
+        //dd($musician->user_id);
         if($download_path && !empty($user) && !empty($track_id) && !empty($request->promoter_id))
-        {   
+        {
 
             $point = new Point;
             $point->user_id = $promoter_user->id;
@@ -233,7 +234,7 @@ class PagesController extends Controller
             $point->point = '3';
             $point->point_type = 'Downloading';
             $point->description = 'User Downloaded This Track';
-            $point->save(); 
+            $point->save();
             if($download_path && !empty($user) && !empty($track_id))
             {
                 $point = new Point;
@@ -242,8 +243,8 @@ class PagesController extends Controller
                 $point->point = '7';
                 $point->point_type = 'Downloading';
                 $point->description = 'User Downloaded This Track';
-                $point->save(); 
-            }       
+                $point->save();
+            }
 
         }
         elseif ($download_path && !empty($user) && !empty($track_id)) {
@@ -253,10 +254,10 @@ class PagesController extends Controller
            $point->point = '10';
            $point->point_type = 'Downloading';
            $point->description = 'User Downloaded This Track';
-           $point->save();    
+           $point->save();
        }
        else
-       {        
+       {
         Session::flash('err_msg','error occured');
     }
     return( \Response::download($download_path));
@@ -265,7 +266,7 @@ class PagesController extends Controller
     public function winner()
     {
         return view('winner');
-    }   
+    }
 
     public function faq()
     {
@@ -275,10 +276,10 @@ class PagesController extends Controller
     public function how_it_works()
     {
         return view('how_it_works');
-    }    
+    }
 
     public function musicvoting_genre($id, $name = null)
-    {   
+    {
 
     //promoter getting points for sharing url
         if(!empty($name))
@@ -299,10 +300,10 @@ class PagesController extends Controller
                 //fetching data from tracks
             $track_video = DB::table('tracks')->where('id', $id)->first();
 
-                //fetching data from users where id is equal to current track id  
+                //fetching data from users where id is equal to current track id
             $track_uploader = Db::table('users')->where('id',$track_video->user_id)->first();
 
-                //retriving all comments on specific video       
+                //retriving all comments on specific video
             $commenting = DB::table('comments')
             ->join('users','comments.user_id','=','users.id')
             ->select('comments.*','users.*','users.image')
@@ -310,25 +311,25 @@ class PagesController extends Controller
             ->get();
 
                 //retriving userid from album table
-            $albums = Album::where('user_id', $track_video->user_id)->get(); 
-            $albums_tracks = array();  
+            $albums = Album::where('user_id', $track_video->user_id)->get();
+            $albums_tracks = array();
             foreach ($albums as $key => $value)
             {
                 $albums_tracks[$value->name] = Album_Video::join('tracks','album__videos.track_id','=','tracks.id')->where('album__videos.album_id','=',$value->id)->get();
                 // dd($albums_tracks[$value->name]);
             }
 
-                //hasan rating auth                        
+                //hasan rating auth
             $args['rating'] = 0;
             if (Auth::check())
-                {    
+                {
                     $args['rating'] = Rating::select('rating')
                     ->where('ratings.track_id', $id)
                     ->where('ratings.user_id',Auth::user()->id)
-                    ->first();  
+                    ->first();
                 }
-                    //updating page count 
-            $view_count_exist = DB::table('tracks')->where('id',$id)->first(['view_count']);            
+                    //updating page count
+            $view_count_exist = DB::table('tracks')->where('id',$id)->first(['view_count']);
             $view_count_exist = $view_count_exist->view_count;
 
 
@@ -342,10 +343,10 @@ class PagesController extends Controller
                         }
                     }
                     else
-                    {                    
-                        //user not loggedin 
+                    {
+                        //user not loggedin
                         $view_count_exist = $view_count_exist + 1;
-                        $view_count_exist = DB::table('tracks')->where('id',$id)->update(['view_count' => $view_count_exist]);                    
+                        $view_count_exist = DB::table('tracks')->where('id',$id)->update(['view_count' => $view_count_exist]);
                     }
 
 
@@ -359,11 +360,11 @@ class PagesController extends Controller
         //fetching data from tracks
             $track_video = DB::table('tracks')->where('id', $id)->first();
 
-    //fetching data from users where id is equal to current track id  
+    //fetching data from users where id is equal to current track id
             $track_uploader = Db::table('users')->where('id',$track_video->user_id)->first();
             // dd($track_video->user_id);
 
-    //retriving all comments on specific video       
+    //retriving all comments on specific video
             $commenting = DB::table('comments')
             ->join('users','comments.user_id','=','users.id')
             ->select('comments.*','users.*','users.image')
@@ -371,24 +372,24 @@ class PagesController extends Controller
             ->get();
 
     //retriving userid from album table
-            $albums = Album::where('user_id', $track_video->user_id)->get(); 
-            $albums_tracks = array();  
+            $albums = Album::where('user_id', $track_video->user_id)->get();
+            $albums_tracks = array();
             foreach ($albums as $key => $value)
             {
                 $albums_tracks[$value->name] = Album_Video::join('tracks','album__videos.track_id','=','tracks.id')->where('album__videos.album_id','=',$value->id)->get();
             }
 
-    //hasan rating auth                        
+    //hasan rating auth
             $args['rating'] = 0;
             if (Auth::check())
-            {    
+            {
                 $args['rating'] = Rating::select('rating')
                 ->where('ratings.track_id', $id)
                 ->where('ratings.user_id',Auth::user()->id)
-                ->first();  
+                ->first();
             }
-    //updating page count 
-            $view_count_exist = DB::table('tracks')->where('id',$id)->first(['view_count']);            
+    //updating page count
+            $view_count_exist = DB::table('tracks')->where('id',$id)->first(['view_count']);
             $view_count_exist = $view_count_exist->view_count;
 
 
@@ -402,16 +403,16 @@ class PagesController extends Controller
                 }
             }
             else
-            {                    
-            //user not loggedin 
+            {
+            //user not loggedin
                 $view_count_exist = $view_count_exist + 1;
-                $view_count_exist = DB::table('tracks')->where('id',$id)->update(['view_count' => $view_count_exist]);                    
+                $view_count_exist = DB::table('tracks')->where('id',$id)->update(['view_count' => $view_count_exist]);
             }
 
 
                 return view('musicvoting_genre',['track_video' => $track_video , 'track_uploader' => $track_uploader , 'commenting' => $commenting, 'albums_tracks' => $albums_tracks, 'name' => $name])->with($args);
         }
-    }   
+    }
 
     public function setCookie(Request $request)
     {
@@ -423,7 +424,7 @@ class PagesController extends Controller
 
     public function artist_detail()
     {
-        $musician_details = DB::table('users')->where('role_id','=',2)->paginate(10);
+        $musician_details = DB::table('users')->where('role_id','=',2)->orderBy('name', 'desc')->paginate(10);
         // dd($musician_details);
              //retriving userid from album table
             $albums = Album::get(); 
@@ -433,9 +434,7 @@ class PagesController extends Controller
                 $albums_tracks[$value->name] = Album_Video::join('tracks','album__videos.track_id','=','tracks.id')->where('album__videos.album_id','=',$value->id)->get();
                 // dd($albums_tracks[$value->name]);
             }
-
         // dd($albums_tracks); 
-           
         return view('artist_detail',['musician_details'=> $musician_details, 'albums_tracks' => $albums_tracks]);
     }
 
@@ -467,16 +466,6 @@ class PagesController extends Controller
         $genre = Input::get('genre');
         // dd($genre);
         $data[] = "";
-        //if($search_item != null)
-        //{ 
-            
-            // $data['searching_genre'] = DB::table('tracks')
-            // ->where('tracks.category_id','=',$genre)
-         
-
-            // ->get();
-            //dd($data['searching_genre']);
-
             $data['searching_tracks'] = DB::table('tracks')
             ->where('name','LIKE','%'.$search_item.'%');
 
@@ -492,9 +481,9 @@ class PagesController extends Controller
             $data['searching_albums'] = DB::table('albums')
             ->where('name','LIKE','%'.$search_item.'%')->get();
 
-            
-        
-        
+
+
+
         return view('search_result')->with($data);
     }
 
@@ -561,6 +550,15 @@ class PagesController extends Controller
     {
         $metallic_songs = DB::table('tracks')->where('category_id','=',4)->get();
         return view('metallic',['metallic_songs'=> $metallic_songs]);
+    }
+
+    public function subscribe(Request $request)
+    {
+        $subscriber = new Subscriber;
+        $subscriber->email = Input::get('myemail');
+        $subscriber->save();
+        Session::flash('subscribe','Email has been subscribed');
+        return redirect()->back();
     }
 
 }

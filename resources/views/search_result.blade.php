@@ -43,7 +43,6 @@
 </div>
 <div class="container">
   <div class="row">
-
     @if(count($searching_users) == 0)
       <h1>No track available with this name</h1>
     @else
@@ -91,5 +90,4 @@
     @endif
   </div>
 </div>
-
 @endsection

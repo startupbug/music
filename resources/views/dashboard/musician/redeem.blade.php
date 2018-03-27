@@ -62,6 +62,9 @@
         <h4 class="font-conv">{{$redeemable_points}}</h4>
       </div>
       <div class="col-md-3 col-sm-12 col-xs-12">
+        <a href="{{ route('redeem_points',['flag' => 'redeem']) }}">
+          redeem
+        </a>
         <button type="submit" name="button" class="btn btn-primary btn-custom"><span>REDEEM</span> REQUEST</button>
       </div>
     </form>

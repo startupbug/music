@@ -220,15 +220,19 @@
 			</div>
 		</div>
 	</div>
+	@if(Auth::user()->role_id == 2)
 	<div class="row">
 		<div class="col-md-12">
 			<div class="last_feature">
+				<a href="{{ route('redeem_points',['flag' => 'featured']) }}">
 				<p class="account">GET MY ACCOUNT</p>
 				<p class="feature">FEATURED</p>
+				</a>
 			</div>
 			<span class="glyphicon glyphicon-play"></span>
 		</div>
 	</div>
+	@endif
 </div>
 </form>
 </form>

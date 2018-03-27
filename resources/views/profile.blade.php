@@ -49,7 +49,11 @@
               </div>
             <div class="col-md-3 col-lg-3 " align="center">
               <div class="image_profile">
+                @if($userInfo->image == null)
+                <img src="{{asset('public/dashboard/profile_images/Default-avatar.jpg')}}" class="img-circle img-responsive">
+                @else
                 <img src="{{asset('public/dashboard/profile_images/'. $userInfo->image )}}" class="img-circle img-responsive">
+                @endif
               </div>
             </div>
           </div>

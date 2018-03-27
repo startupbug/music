@@ -50,6 +50,7 @@ Route::get('/jazz_songs','PagesController@jazz_songs')->name('jazz_songs');
 Route::get('/hiphop_songs','PagesController@hiphop_songs')->name('hiphop_songs');
 Route::get('/metallic_songs','PagesController@metallic_songs')->name('metallic_songs');
 
+Route::post('/subscribe','PagesController@subscribe')->name('subscribe');
 
 Route::get('/contest','PagesController@contest')->name('contest');
 
@@ -166,7 +167,7 @@ Route::get('/getAffiliatedID', 'PagesController@getAffiliatedID')->name('getAffi
 
 
 
-Route::get('redeem_points/', 'PaypalController@getCheckout')->name('redeem_points');
+Route::get('redeem_points/{flag}', 'PaypalController@getCheckout')->name('redeem_points');
 Route::get('getDone/', 'PaypalController@getDone')->name('getDone');
 Route::get('getCancel/', 'PaypalController@getCancel')->name('getCancel');
 

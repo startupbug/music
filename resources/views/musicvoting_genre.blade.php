@@ -143,17 +143,15 @@
                   TRACKS BY {{$track_uploader->name}}
                 </h3>
                 @foreach($albums_tracks as $albums => $tracks )
-                <ul id="nav1">
-
-                  <li><a class="s_pointer">{{$albums}}</a>
-                    <ul class="s_nav_sub">
-                      @foreach($tracks as $track)
-                      <li><a href="{{route('musicvoting_genre',['id' => $track->track_id])}}">{{$track->name}}</a></li>
-
-                      @endforeach
-                    </ul>
-                  </li>
-                </ul>
+                  <ul class="nav1">
+                    <li><a class="s_pointer">{{$albums}}</a>
+                      <ul class="s_nav_sub">
+                        @foreach($tracks as $track)
+                        <li><a href="{{route('musicvoting_genre',['id' => $track->track_id])}}">{{$track->name}}</a></li>
+                        @endforeach
+                      </ul>
+                    </li>
+                  </ul>
                 @endforeach
               </div>
             </div>

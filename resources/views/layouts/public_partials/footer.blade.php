@@ -64,9 +64,10 @@
                          SUBSCRIBE TO OUR NEWSLETTER!
                      </h3>
                     <div class="well">
-                       <form action="#">
+                       <form action="{{route('subscribe')}}" method="POST">
+                        {!! csrf_field() !!}
                           <div class="input-group">
-                           <input class="btn btn-lg footer" name="myemail" id="myemail" type="email" placeholder="Email Address" required>
+                           <input class="btn btn-lg footer text-dark form-control" name="myemail" id="myemail" type="email" placeholder="Email Address" style="color:black" required>
                            <button class="btn btn-info btn-lg footer" type="submit">SUBSCRIBE</button>
                        </div>
                        </form>
