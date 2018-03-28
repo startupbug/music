@@ -2,11 +2,11 @@
 @section('content') 
 	<div class="col-md-9">
   <h3 class="heading_dashboard">
-      Promoter DASHBOARD
+      PROMOTER &nbsp; DASHBOARD
   </h3>
   <div class="border_red">
       <h3 class="album">
-          MY INVITATIONS
+          MY &nbsp; INVITATIONS
       </h3>
   </div>
   <div class="row">

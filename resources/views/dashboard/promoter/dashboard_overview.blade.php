@@ -2,7 +2,7 @@
 @section('content')
 <div class="col-md-9">
     <h3 class="heading_dashboard">
-         PROMOTER DASHBOARD
+         PROMOTER &nbsp; DASHBOARD
     </h3>
     <div class="border_red">
        <h3 class="album">
@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-12 color_bottom">
             <h3 class="all_album">
-               EARNED POINTS
+               EARNED &nbsp; POINTS
             </h3>
              <div class="btn-group">
            <button type="button" class="btn btn-default btn-number" data-type="minus" data-field="quant[1]">
@@ -31,7 +31,7 @@
     <div class="row">
         <div class="col-md-12 color_bottom">
             <h3 class="all_album">
-                APPROVED TRACKS
+                APPROVED &nbsp; TRACKS
             </h3>
             <a href="{{route('promotermusicvoting_tracks')}}">
                 <h3 class="add_album">
@@ -64,7 +64,7 @@
     <div class="row">
         <div class="col-md-12 color_bottom">
             <h3 class="all_album">
-                RECENT ASSIGNED TRACKS
+                RECENT &nbsp; ASSIGNED &nbsp; TRACKS
             </h3>
             <a href="{{route('unapproved_invitations')}}">
               <h3 class="add_album">

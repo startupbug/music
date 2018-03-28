@@ -2,7 +2,7 @@
 @section('content')
  <div class="col-md-9">
         <h3 class="heading_dashboard">
-         PROMOTER DASHBOARD
+         PROMOTER &nbsp; DASHBOARD
      </h3>
      <div class="border_red">
         <h3 class="album">
@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-12 color_bottom">
             <h3 class="all_album">
-               EARNED POINTS
+               EARNED &nbsp; POINTS
             </h3>
              <div class="btn-group">
            <button type="button" class="btn btn-default btn-number" data-type="minus" data-field="quant[1]">
@@ -31,7 +31,7 @@
  <div class="row">
         <div class="col-md-12 color_bottom">
             <h3 class="all_album">
-                POINTS REDEEMED
+                POINTS &nbsp; REDEEMED
             </h3>
       </div>
     </div>
@@ -55,11 +55,9 @@
 </div>
 <div class="col-md-6">
 	<div class="redeem_border">
-	<h3 class="first_redeem_content">
-		REDEEM
-	</h3>
+	
 	<h3 class="last_redeem_content">
-		REQUEST
+		REDEEM &nbsp; REQUEST
 	</h3>
 </div>
 </div>

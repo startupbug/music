@@ -43,9 +43,10 @@ h3.points_rate {
 
 li.social_media {
     display: inline-block;
-    margin-left: 17px;
+    margin-left: 20px;
     margin-right: 58px;
     margin-top: 13px;
+    margin:0 15px 0 0;
 }
 
 h2.mid_head {
@@ -1913,4 +1914,11 @@ button, input, optgroup, select, textarea {
 }
 .album_available {
     margin-bottom: 73px;
+}
+a:hover h1 {
+    text-decoration: none;
+    color: #892831;
+}
+a:hover {
+    text-decoration: none;
 }

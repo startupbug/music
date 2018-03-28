@@ -2,11 +2,11 @@
 @section('content')
   <div class="col-md-9">
     <h3 class="heading_dashboard">
-        ARTIST DASHBOARD
+        ARTIST &nbsp; DASHBOARD
     </h3>
     <div class="border_red">
         <h3 class="album">
-            MY ALBUMS
+            MY &nbsp; ALBUMS
         </h3>
       @if (Session::has('upload_video_album'))
         <div class="alert alert-info">{{ Session::get('upload_video_album') }}</div>
@@ -46,7 +46,7 @@
     <div class="row">
       <div class="col-md-10 color_bottom">
         <h3 class="all_album">
-            ALL VIDEOS &nbsp
+            ALL &nbsp; VIDEOS
         </h3>
       </div>
       <div class="col-md-2 color_bottom">
@@ -94,7 +94,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><b>ADD VIDEO</b></h4>
+                <h4 class="modal-title"><b>ADD &nbsp; VIDEO</b></h4>
               </div>
               <div class="modal-body">
                 <form action="{{route('update_video',['id'=>$value->id])}}" enctype="multipart/form-data" method="post" >   
@@ -124,7 +124,6 @@
         </div>    
       @endforeach   
     </div>  
-    <div class="button_dashboard"><button type="button" class="btn">LOAD MORE</button></div>
   </div>
   <div class="container">
     <!-- Edit Album Modal -->

@@ -3,7 +3,7 @@
 <div class="col-md-9">
 	
 	<h3 class="heading_dashboard">
-		USER DASHBOARD
+		USER &nbsp; DASHBOARD
 	</h3>
 	<div class="row">
 		<div class="col-md-12 color_bottom">

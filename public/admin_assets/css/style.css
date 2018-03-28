@@ -27,4 +27,8 @@
     position: absolute;
     bottom: 20px;
   }
+
+  .pagination a {
+    color:red;
+  }
 /*Profile Picture Camera Icon*/

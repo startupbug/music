@@ -25,8 +25,12 @@
                       <td><a href="mailto:info@support.com">{{$userInfo->email}}</a></td>
                     </tr>
                     <tr>
-                      <td>Account Type</td>
-                      <td>{{$roles->name}}</a></td>
+                      <td>No of Albums</td>
+                      <td>{{count($albumss)}}</a></td>
+                    </tr>
+                    <tr>
+                      <td>No of Tracks</td>
+                      <td>{{count($tracks)}}</a></td>
                     </tr>
                     <tr>
                       <td>Instagram</td>                      
@@ -66,6 +70,9 @@
 <section class="music_album">
   <div class="container">
     <h1 class="profileName">{{ $userInfo->name}} ALBUMS</h1>
+    @if(empty($albums))
+    <h1>There is no album to display</h1>
+    @endif
     @foreach($albumss as $album)
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="box"> 
@@ -87,6 +94,9 @@
 <section class="music_track">
   <div class="container">
 	  <h1 class="profileName">{{ $userInfo->name}} TRACKS</h1>
+    @if(empty($albums))
+    <h1>There is no Track to display</h1>
+    @endif
     @foreach($tracks as $track)
       <div class="col-md-3 col-sm-6 col-xs-12">
         <a href="{{route('musicvoting_genre',['id' => $track->id])}}">

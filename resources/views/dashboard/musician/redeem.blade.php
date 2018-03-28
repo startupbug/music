@@ -2,7 +2,7 @@
 @section('content')
 <div class="col-md-9">
   <h3 class="heading_dashboard">
-    ARTIST DASHBOARD
+    ARTIST &nbsp; DASHBOARD
   </h3>
   <div class="border_red">
     <h3 class="album">
@@ -15,7 +15,7 @@
   <div class="row">
     <div class="col-md-12 color_bottom">
       <h3 class="all_album">
-        EARNED POINTS
+        EARNED &nbsp; POINTS
       </h3>
       <div class="btn-group">
         <button type="button" class="btn btn-default btn-number" data-type="minus" data-field="quant[1]">
@@ -41,7 +41,7 @@
   <div class="row">
     <div class="col-md-12 color_bottom">
       <h3 class="all_album">
-        POINTS REDEEMED
+        POINTS &nbsp; REDEEMED
       </h3>
     </div>
   </div>
@@ -50,9 +50,9 @@
     <form action="{{route('redeemed_request')}}" method="POST">
         {{csrf_field()}}
       <div class="col-md-3 col-sm-6 col-xs-6">
-        <h4 class="font-conv">TOTAL POINTS EARNED:</h4>
-        <h4 class="font-conv">POINTS EARNED  IN <?php  $currentMonth = date('F'); echo $currentMonth; ?>:</h4>
-        <h4 class="font-conv">TOTAL REDEEMED:</h4>
+        <h4 class="font-conv">TOTAL &nbsp; POINTS &nbsp; EARNED:</h4>
+        <h4 class="font-conv">POINTS &nbsp; EARNED &nbsp; IN <?php  $currentMonth = date('F'); echo $currentMonth; ?>:</h4>
+        <h4 class="font-conv">TOTAL &nbsp; REDEEMED:</h4>
         <h4 class="font-conv">REDEEMABLE:</h4>
       </div>
       <div class="col-md-3 col-sm-6 col-xs-6">
@@ -62,9 +62,9 @@
         <h4 class="font-conv">{{$redeemable_points}}</h4>
       </div>
       <div class="col-md-3 col-sm-12 col-xs-12">
-        <a href="{{ route('redeem_points',['flag' => 'redeem']) }}">
+        <!-- <a href="route('redeem_points',['flag' => 'redeem'])">
           redeem
-        </a>
+        </a> -->
         <button type="submit" name="button" class="btn btn-primary btn-custom"><span>REDEEM</span> REQUEST</button>
       </div>
     </form>

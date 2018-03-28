@@ -35,6 +35,17 @@ class PagesController extends Controller
     {
         return view('contest');
     }
+
+    public function terms()
+    {
+        return view('musicvoting_terms');
+    }
+
+    public function privacy()
+    {
+        return view('musicvoting_privacy');
+    }
+
     public function index()
     {
         $args['tracks'] = Track::leftJoin('users','users.id','=','tracks.user_id')
@@ -275,7 +286,7 @@ class PagesController extends Controller
 
     public function how_it_works()
     {
-        return view('how_it_works');
+        return view('howitworks');
     }
 
     public function musicvoting_genre($id, $name = null)
@@ -424,9 +435,35 @@ class PagesController extends Controller
 
     public function artist_detail()
     {
-        $musician_details = DB::table('users')->where('role_id','=',2)->orderBy('name', 'desc')->paginate(10);
-        // dd($musician_details);
-             //retriving userid from album table
+        
+
+        $musician_details = DB::table("users")->where('role_id','=',2)
+
+          ->select("users.*",
+
+                    DB::raw("(SELECT COUNT(albums.name) FROM albums
+                                WHERE albums.user_id = users.id
+                                GROUP BY users.id) as albums_no"),
+
+                    DB::raw("(SELECT COUNT(tracks.name) FROM tracks
+                                WHERE tracks.user_id = users.id
+                                GROUP BY users.id) as tracks_no")
+                )
+
+          ->paginate(10);
+
+          //dd($musician_details);
+
+        // $musician_details = User::select('users.*', \DB::raw('count(albums.id) as albums_no'),
+        //                             \DB::raw('count(tracks.id) as tracks_no'))
+        //                       ->where('role_id','=',2)             
+        //                       ->leftjoin('albums', 'users.id', '=', 'albums.user_id')
+        //                       ->leftjoin('tracks','users.id','=','tracks.user_id')
+        //                       ->groupBy('users.id')                                                     
+        //                       ->paginate(10);
+
+
+        //   dd($musician_details);
             $albums = Album::get(); 
             $albums_tracks = array();  
             foreach ($albums as $key => $value)
@@ -558,7 +595,7 @@ class PagesController extends Controller
         $subscriber->email = Input::get('myemail');
         $subscriber->save();
         Session::flash('subscribe','Email has been subscribed');
-        return redirect()->back();
+        return redirect('/');
     }
 
 }

@@ -35,8 +35,6 @@
                        aria-expanded="false">artist <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{route('artist_detail')}}">Artist</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
                     </ul>
                 </li>
                 <li><a href="{{route('musicvoting_search')}}"><i class="fa fa-search text-white" aria-hidden="true"></i></a></li>

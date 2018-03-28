@@ -3,15 +3,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-
       @foreach($musician_details as $musician_detail)
         <div class="row">
           <div class="col-md-4">
             <div class="img-side">
               @if($musician_detail->image == 0)
-                <img src="{{asset('public/dashboard/profile_images/Default-avatar.jpg')}}" class="img-responsive" style="width: 100%; height: 215px;"/>
+                <img src="{{asset('public/dashboard/profile_images/Default-avatar.jpg')}}" class="img-responsive" style="width: 100%; height: 175px;"/>
               @else
-                <img src="{{asset('public/dashboard/profile_images/'.$musician_detail->image)}}" class="img-responsive" style="width: 100%; height: 215px;"/>
+                <img src="{{asset('public/dashboard/profile_images/'.$musician_detail->image)}}" class="img-responsive" style="width: 100%; height: 175px;"/>
               @endif
             </div>
           </div>
@@ -24,17 +23,31 @@
             <h2 class="sub_heading">
               {{$musician_detail->name}}
             </h2>
+            <h2 class="sub_heading">
+              @if($musician_detail->albums_no == null)
+                No. Of Albums: &nbsp;0
+              @else
+                No. Of Albums: &nbsp;{{$musician_detail->albums_no}}
+              @endif
+            </h2>
+            <h2 class="sub_heading">
+              @if($musician_detail->tracks_no == null)
+                No. Of Tracks: &nbsp; 0
+              @else
+                No. Of Tracks: &nbsp;{{$musician_detail->tracks_no}}
+              @endif
+            </h2>
             <div class="row">
               <div class="col-md-12">
                 <ul>
                   <a href="https://www.instagram.com/" target="_blank">
-                    <li class="social_media"><img src="{{asset('public/assets/images/instagram.png')}}"><h2 class="mid_head">1881</h2><h3 class="mid_side">FOLLOWERS</h3></li>
+                    <li class="social_media"><img src="{{asset('public/assets/images/instagram.png')}}"></li>
                   </a>
                   <a href="https://www.facebook.com" target="_blank">
-                    <li class="social_media"><img src="{{asset('public/assets/images/facebook.png')}}"><h2 class="mid_head">2.5K</h2><h3 class="mid_like">LIKES</h3></li>
+                    <li class="social_media"><img src="{{asset('public/assets/images/facebook.png')}}"></li>
                   </a>
                   <a href="www.twitter.com/" target="_blank">
-                    <li class="social_media"><img src="{{asset('public/assets/images/google-plus.png')}}"><h2 class="mid_head">1200</h2><h3 class="mid_side">FOLLOWERS</h3></li>
+                    <li class="social_media"><img src="{{asset('public/assets/images/google-plus.png')}}"></li>
                   </a>
                 </ul>
               </div>
@@ -43,7 +56,7 @@
         </div>
       @endforeach
       <!--<h3 class="last_heading">TRACKS</h3>-->
-      {{ $musician_details->links() }}
+        {{ $musician_details->links() }}
     </div>
     <br>
     <div class="col-md-4">

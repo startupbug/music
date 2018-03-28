@@ -3,7 +3,7 @@
 
 <div class="col-md-9">
     <h3 class="heading_dashboard">
-        PROMOTER DASHBOARD
+        PROMOTER &nbsp; DASHBOARD
     </h3>
     <div class="border_red">
         <h3 class="album">
@@ -19,7 +19,7 @@
     <div class="row">
         <div class="col-md-12 color_bottom">
             <h3 class="all_album">
-                VIEWING ALL ALBUMS
+                VIEWING &nbsp; ALL &nbsp; ALBUMS
             </h3>
         </div>
     </div>
@@ -39,6 +39,5 @@
         </div>
         @endforeach
     </div>
-    <div class="button_dashboard"><button type="button" class="btn">LOAD MORE</button></div>
 </div>
 @endsection

@@ -11,7 +11,7 @@
                     <div class="alert alert-success">{{ Session::get('subscribe') }}</div>
                 @endif
                 <div class="playing_heading">
-                    <h2 class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">TRENDING TRACKS</h2>
+                    <h2 class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">TRENDING &nbsp; TRACKS</h2>
                 </div>
                 <div class="player_audio">
                     <div class="player_box clearfix">
@@ -23,7 +23,7 @@
                             </a>
                         </div>
                         <div class="player_body  col-md-8 col-xs-12 col-sm-12">
-                            <h2>NOW PLAYING</h2>
+                            <h2>NOW &nbsp; PLAYING</h2>
                             <p>Track Name: <span class="track_name">
                             @if(!empty($abc->track_name))
                                 {{$abc->track_name}}
@@ -140,7 +140,7 @@
                         with many others
                     </p>
                     <a href="{{route('register')}}" class="btn btn-default wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s"">
-                    SIGN UP now 
+                    SIGN UP NOW 
                     </a>
                 </div>
             </div>
@@ -152,7 +152,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="heading_two">
-                    <h2 class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">HOW IT WORKS</h2>
+                    <h2 class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">HOW &nbsp; IT &nbsp; WORKS</h2>
                 </div>
             </div>
         </div>
@@ -192,7 +192,7 @@
                         with many others
                     </p>
                     <a href="{{route('register')}}" class="btn btn-default wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">
-                        SIGN UP now
+                        SIGN UP NOW
                     </a>
                 </div>
             </div>
@@ -235,8 +235,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-center clearfix">
                         <div class="contest_box">
-                            <h2 class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">OPEN CONTEST TO SEE
-                                WHO’S THE BEST</h2>
+                            <h2 class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">OPEN &nbsp; CONTEST &nbsp; TO &nbsp; SEE &nbsp; WHO’S &nbsp; THE &nbsp; BEST</h2>
                             <p class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus commodo ex in sapien
                                 euismod,

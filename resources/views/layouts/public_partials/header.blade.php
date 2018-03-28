@@ -10,7 +10,7 @@
         <div class="item active">
             <img src="{{asset('public/assets/images/slider_banner_1.png')}}" class="img-responsive center-block" width="100%" alt="music voting">
             <div class="carousel-caption">
-                <h2>the biggest contest is in session!</h2>
+                <h2>the &nbsp; biggest &nbsp; contest &nbsp; is &nbsp; in &nbsp; session!</h2>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pharetra at augue et facilisis.
                     Phasellus varius velit ut turpis dapibus,
@@ -24,7 +24,7 @@
         <div class="item">
             <img src="{{asset('public/assets/images/slider_banner_1.png')}}" class="img-responsive center-block" width="100%" alt="music voting">
             <div class="carousel-caption">
-                <h2>the biggest contest is in session!</h2>
+                <h2>the &nbsp; biggest &nbsp; contest &nbsp; is &nbsp; in &nbsp; session!</h2>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pharetra at augue et facilisis.
                     Phasellus varius velit ut turpis dapibus,

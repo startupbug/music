@@ -72,6 +72,10 @@ Route::get('/album/{id}','PagesController@album_view')->name('album_view');
 
 Route::get('/genre','PagesController@genre')->name('genre');
 
+Route::get('/terms','PagesController@terms')->name('terms');
+
+Route::get('/privacy','PagesController@privacy')->name('privacy');
+
 Route::group(['prefix' => 'promoter', 'middleware' => 'promoter'], function () {  
 Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'Promoter\PrmoterController@promoter_image']);   
     Route::get('/promoterindex','Promoter\PrmoterController@index')->name('promoterindex');

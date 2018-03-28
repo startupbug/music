@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h3 class="winner_heading" ">
-				THOSE WHO ROCKED US
+				THOSE &nbsp; WHO &nbsp; ROCKED &nbsp; US
 			</h3>
 			<p class="winner_paragraph">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed odio est, dapibus at purus at, porta egestas mauris. Nam molestie, neque elementum posuere tincidunt, metus enim molestie velit, eu elementum mauris quam id arcu. Quisque tristique ligula dui, finibus aliquam diam convallis et. In eu facilisis nulla. Ut bibendum at erat et feugiat. Cras congue ornare fringilla. Sed a euismod metus. Donec bibendum velit eu ante interdum lacinia. Aenean id semper lectus. Proin a nunc at sapien malesuada maximus a ac velit. Suspendisse ut diam erat. Proin lorem mauris, malesuada id molestie malesuada, pretium eget lorem. Suspendisse euismod velit id aliquam vehicula.
@@ -20,7 +20,7 @@
 	</div>
 		<div class="col-md-8">
 			<h3 class="winner_name">
-				JOHN DOE
+				JOHN &nbsp; DOE
 			</h3>
 			<p class="winner_detail">
 				Winner of the 2017 annual contests, out classed
@@ -36,7 +36,7 @@
 	</div>
 		<div class="col-md-8">
 			<h3 class="winner_name">
-				JOHN DOE
+				JOHN &nbsp; DOE
 			</h3>
 			<p class="winner_detail">
 				Winner of the 2017 annual contests, out classed
@@ -53,7 +53,7 @@
 	</div>
 		<div class="col-md-8">
 			<h3 class="winner_name">
-				JOHN DOE
+				JOHN &nbsp; DOE
 			</h3>
 			<p class="winner_detail">
 				Winner of the 2017 annual contests, out classed

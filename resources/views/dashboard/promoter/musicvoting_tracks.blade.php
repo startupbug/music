@@ -2,7 +2,7 @@
 @section('content')
 <div class="col-md-9">
   <h3 class="heading_dashboard">
-   PROMOTER DASHBOARD
+   PROMOTER &nbsp; DASHBOARD
   </h3>
   <div class="border_red">
     <h3 class="album">
@@ -12,7 +12,7 @@
   <div class="row">
     <div class="col-md-12 color_bottom">
         <h3 class="all_album">
-            VIEWING ALL TRACKS
+            VIEWING &nbsp; ALL &nbsp; TRACKS
         </h3>
     </div>
   </div>
@@ -25,9 +25,9 @@
           <img src="{{asset('public/dashboard/musician/tracks/images/'.$value->image)}}" class="img-responsive custom-image-dashboard" >
           <span class="caption fade-caption"> 
               <div class="star"><span class="glyphicon glyphicon-star"></span></div>
-              <h3 class="hover_heading">MAKESONGFEATURED</h3>
+              <h3 class="hover_heading">MAKE &nbsp; SONG &nbsp; FEATURED</h3>
               <div class="trophy"><i class="fa fa-trophy" style="font-size:24px"></i></div>
-              <h3 class="hover_heading">ADDSONGTOCONTEST</h3> 
+              <h3 class="hover_heading">ADD &nbsp; SONG &nbsp;TO &nbsp; CONTEST</h3> 
           </span>
         </div>  
       </div>
@@ -40,7 +40,6 @@
   @endforeach
 </div>
   <div class="button_dashboard">
-    <button type="button" class="btn">LOAD MORE</button>
   </div>
 </div>
 @endsection
