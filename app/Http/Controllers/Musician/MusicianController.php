@@ -188,7 +188,7 @@ class MusicianController extends Controller
         }
         else
         {
-            Session::flash('err_msg','You dont have sufficient Points to process this request');
+            Session::flash('not_redeem','You dont have sufficient Points to process this request');
             return redirect()->back();
         }
         return redirect()->back();        

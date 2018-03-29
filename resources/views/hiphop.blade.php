@@ -29,6 +29,7 @@
 		</div>
 	</div>
 	@endforeach
+	{{ $hiphop_songs->links() }}
 </div>
 
 @endsection

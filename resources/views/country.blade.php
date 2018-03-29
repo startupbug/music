@@ -29,6 +29,7 @@
 		</div>
 	</div>
 	@endforeach
+	{{ $country_songs->links() }}
 </div>
 
 @endsection

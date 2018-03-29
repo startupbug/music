@@ -29,5 +29,6 @@
 		</div>
 	</div>
 	@endforeach
+	{{ $jazz_songs->links() }}
 </div>
 @endsection

@@ -29,5 +29,6 @@
 		</div>
 	</div>
 	@endforeach
+	{{ $metallic_songs->links() }}
 </div>
 @endsection

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Session;
 use App\Album;
 use App\Point;
+use App\RedeemedPoint;
 use Illuminate\Support\Facades\View;
 class PrmoterController extends Controller
 {
@@ -131,6 +132,21 @@ class PrmoterController extends Controller
             $total_redeemed_points += $value->redeemed_point;
         }   
         $redeemable_points = $total_points - $total_redeemed_points;
+        if ($redeemable_points != '0')
+        {        
+            $user_id = Auth::user()->id;            
+            $a = new RedeemedPoint;
+            $a->user_id = $user_id;
+            $a->redeemed_point = $redeemable_points;
+            $a->status = '0';
+            $a->save();
+            Session::flash('redeem','request has been sent to admin for approval');
+        }
+        else
+        {
+            Session::flash('not_redeem','You dont have sufficient Points to process this request');
+            return redirect()->back();
+        }
     	return view('dashboard.promoter.redeempoint',['total_points' => $total_points, 'total_redeemed_points' => $total_redeemed_points, 'redeemable_points' => $redeemable_points]);
     }
 

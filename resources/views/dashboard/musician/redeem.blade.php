@@ -11,6 +11,9 @@
     @if (Session::has('redeem'))
             <div class="alert alert-info">{{ Session::get('redeem') }}</div>
         @endif
+    @if (Session::has('not_redeem'))
+        <div class="alert alert-danger">{{ Session::get('not_redeem') }}</div>
+    @endif
   </div>
   <div class="row">
     <div class="col-md-12 color_bottom">

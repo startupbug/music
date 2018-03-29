@@ -8,7 +8,7 @@
                     <div class="alert alert-danger">{{ Session::get('not_activate') }}</div>
                 @endif
                  @if (Session::has('subscribe'))
-                    <div class="alert alert-success">{{ Session::get('subscribe') }}</div>
+                    <div class="alert alert-success"><strong style="font-size: 20px;">{{ Session::get('subscribe') }}</strong></div>
                 @endif
                 <div class="playing_heading">
                     <h2 class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">TRENDING &nbsp; TRACKS</h2>
@@ -52,13 +52,6 @@
                                   </span>
                               </form>
                             </div>
-                            <p>Share:
-                                <span class="red_color">
-                                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
-                                </span>
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -97,8 +90,7 @@
                         </div>
                     </a>
 
-                    <p>
-                      <a href="#"><b> {{$value->track_name}}</b></a></p>
+                    <a href="#"><p> <b> {{$value->track_name}}</b></p></a>
                     <a href="{{route('profile',['id'=>$value->user_id])}}"><p>{{$value->user_name}}</p></a>
                 </div>
             </div>

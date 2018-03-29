@@ -449,7 +449,7 @@ class PagesController extends Controller
                                 WHERE tracks.user_id = users.id
                                 GROUP BY users.id) as tracks_no")
                 )
-
+          ->orderBy('username','asc')
           ->paginate(10);
 
           //dd($musician_details);
@@ -566,26 +566,26 @@ class PagesController extends Controller
 
     public function country_songs()
     {
-        $country_songs = DB::table('tracks')->where('category_id','=',1)->get();
+        $country_songs = DB::table('tracks')->where('category_id','=',1)->paginate(10);
         //dd($country_songs);
         return view('country',['country_songs'=>$country_songs]);
     }
 
     public function jazz_songs()
     {
-        $jazz_songs = DB::table('tracks')->where('category_id','=',2)->get();
+        $jazz_songs = DB::table('tracks')->where('category_id','=',2)->paginate(10);
         return view('jazz',['jazz_songs'=>$jazz_songs]);
     }
 
     public function hiphop_songs()
     {
-        $hiphop_songs = DB::table('tracks')->where('category_id','=',3)->get();
+        $hiphop_songs = DB::table('tracks')->where('category_id','=',3)->paginate(10);
         return view('hiphop',['hiphop_songs'=> $hiphop_songs]);
     }
 
     public function metallic_songs()
     {
-        $metallic_songs = DB::table('tracks')->where('category_id','=',4)->get();
+        $metallic_songs = DB::table('tracks')->where('category_id','=',4)->paginate(10);
         return view('metallic',['metallic_songs'=> $metallic_songs]);
     }
 

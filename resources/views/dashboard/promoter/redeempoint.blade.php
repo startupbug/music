@@ -9,6 +9,12 @@
             OVERVIEW
         </h3>
     </div>
+    @if (Session::has('redeem'))
+            <div class="alert alert-info">{{ Session::get('redeem') }}</div>
+        @endif
+    @if (Session::has('not_redeem'))
+        <div class="alert alert-danger">{{ Session::get('not_redeem') }}</div>
+    @endif
     <div class="row">
         <div class="col-md-12 color_bottom">
             <h3 class="all_album">
@@ -40,11 +46,11 @@
      <div class="col-md-6">
      	<div class="top_redeem">
     	<ul class="redeem">
-    		<li class="redeem_point_one">POINTSEARNED:</li>
+    		<li class="redeem_point_one">POINTS &nbsp; EARNED:</li>
     		<li class="redeem_points">{{$total_points}}</li>
     	</ul>
     	<ul class="redeem">
-    		<li class="redeem_point">POINTSREDEEMED:</li>
+    		<li class="redeem_point">POINTS &nbsp; REDEEMED:</li>
     		<li class="redeem_point">{{$total_redeemed_points}}</li>
     	</ul>
     	<ul class="redeem">
@@ -54,11 +60,11 @@
     </div>
 </div>
 <div class="col-md-6">
-	<div class="redeem_border">
-	
-	<h3 class="last_redeem_content">
-		REDEEM &nbsp; REQUEST
-	</h3>
+	<div class="">
+	<form action="{{route('promoterredeempoint')}}" method="post">
+	       {{csrf_field()}}
+        <button type="submit" name="button" class="btn btn-primary btn-custom"><span>REDEEM</span> REQUEST</button>
+    </form>
 </div>
 </div>
    </div>

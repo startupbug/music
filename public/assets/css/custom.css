@@ -1369,10 +1369,9 @@ button.btn.btn-info.btn-lg.footer {
 
     border-color: #cf1828;
 }
-.well {
-
-    padding: 0px;
-    }
+/*.well {
+    padding: 0px !important;
+}   */
 input#email {
     font-size: 14px;
     text-align: left;
