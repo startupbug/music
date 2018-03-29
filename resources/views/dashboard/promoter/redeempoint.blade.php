@@ -61,7 +61,7 @@
 </div>
 <div class="col-md-6">
 	<div class="">
-	<form action="{{route('promoterredeempoint')}}" method="post">
+	<form action="{{route('promoter_redeemed_request')}}" method="post">
 	       {{csrf_field()}}
         <button type="submit" name="button" class="btn btn-primary btn-custom"><span>REDEEM</span> REQUEST</button>
     </form>

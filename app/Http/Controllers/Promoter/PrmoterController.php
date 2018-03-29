@@ -105,6 +105,7 @@ class PrmoterController extends Controller
 
     public function redeempoint()
     {
+
         if(Auth::check())
         {
             $promoter_points = DB::table('points')
@@ -132,6 +133,39 @@ class PrmoterController extends Controller
             $total_redeemed_points += $value->redeemed_point;
         }   
         $redeemable_points = $total_points - $total_redeemed_points;
+    	return view('dashboard.promoter.redeempoint',['total_points' => $total_points, 'total_redeemed_points' => $total_redeemed_points, 'redeemable_points' => $redeemable_points]);
+    }
+
+
+    public function promoter_redeemed_request()
+    {
+         $promoter_points = DB::table('points')                              
+                            ->where('user_id','=',Auth::user()->id)
+                            ->get();
+                        // dd($promoter_points);
+        $total_points = 0;             
+        foreach ($promoter_points as $value){
+            $total_points += $value->point;
+            // dd($total_points);
+        }   
+
+        //redeemed points
+        $promoter_redeemed_points = DB::table('redeemed_points')                                                
+                        ->select('redeemed_points.redeemed_point')                                
+                        ->where('redeemed_points.user_id','=',Auth::user()->id)
+                        ->get();
+                        // dd($promoter_redeemed_points);
+        $total_redeemed_points = 0;             
+        foreach ($promoter_redeemed_points as $value){
+            $total_redeemed_points += $value->redeemed_point;
+            // dd($total_redeemed_points);
+        }           
+        //redeemed points
+
+        //redeemable points
+        $redeemable_points = $total_points-$total_redeemed_points;
+        // dd($redeemable_points);     
+        //redeemable points  
         if ($redeemable_points != '0')
         {        
             $user_id = Auth::user()->id;            
@@ -147,8 +181,9 @@ class PrmoterController extends Controller
             Session::flash('not_redeem','You dont have sufficient Points to process this request');
             return redirect()->back();
         }
-    	return view('dashboard.promoter.redeempoint',['total_points' => $total_points, 'total_redeemed_points' => $total_redeemed_points, 'redeemable_points' => $redeemable_points]);
+        return redirect()->back();        
     }
+
 
     public function setting()
     {   

@@ -95,6 +95,8 @@ Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'Promoter\Prm
     Route::get('/albums/{id}','Promoter\PrmoterController@all_albums')->name('all_albums');
     Route::get('delete_image','Promoter\PrmoterController@delete_image')->name('delete_image2');
     Route::get('/promoter_logout', 'Promoter\PrmoterController@promoter_logout')->name('logout_promoter');
+    //promoter_redeemed_request
+    Route::post('/promoterredeempoint','Promoter\PrmoterController@promoter_redeemed_request')->name('promoter_redeemed_request');
 });
 
 
