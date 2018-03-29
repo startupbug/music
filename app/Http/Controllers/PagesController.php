@@ -48,6 +48,7 @@ class PagesController extends Controller
 
     public function index()
     {
+
         $args['tracks'] = Track::leftJoin('users','users.id','=','tracks.user_id')
         ->join('albums','users.id','=','albums.user_id')
         ->select('albums.id as album_id','albums.name as album_name','albums.image as album_image','albums.user_id as album_user_id','tracks.id as track_id','users.name as user_name','users.id as user_id','tracks.name as track_name','tracks.image as track_image')
@@ -55,7 +56,13 @@ class PagesController extends Controller
         ->take(12)
         ->get();
         $rand_num  = rand(0,11);
-        $args['abc'] = $args['tracks'][$rand_num];
+        //dd($args['tracks']);
+        if(count($args['tracks']) != 0)
+        {
+            $args['abc'] = $args['tracks'][$rand_num];
+        }
+        
+        // dd(1234);
         $ratings[]=0;
         foreach ($args['tracks'] as $value)
         {

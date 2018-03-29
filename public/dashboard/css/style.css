@@ -85,6 +85,7 @@
     top: 0;
     height: calc(100vh + 10%);
     position: -webkit-sticky;
+    height: 1000px;
 }
 .dashboard_name img.img-responsive {
     text-align: center;

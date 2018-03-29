@@ -28,16 +28,15 @@ class PrmoterController extends Controller
     {
         $show['albums'] = Album::where('id',$id)->get();
         $show['album_tracks'] = Track::join('album__videos','tracks.id','=','album__videos.track_id')
-                                     // ->join('users','tracks.user_id','=','users.id')
-                                     ->where('album_id',$id)->get();
-        // dd($album_tracks);
+                                ->where('album_id',$id)->get();
         return view('dashboard.promoter.all_albums')->with($show);
     }
 
-     public function promoter_image(Request $request)
+    public function promoter_image(Request $request)
     {
         $img_name = '';
-        if(Input::file('image')){
+        if(Input::file('image'))
+        {
             $img_name = $this->UploadImage('image', Input::file('image'));
             User::where('id' ,'=', Auth::user()->id)->update([
                 'image' => $img_name
@@ -47,10 +46,10 @@ class PrmoterController extends Controller
         }
         else
         {
-             return \Response()->json(['error' => "Image uploading failed", 'code' => 202]);
+            return \Response()->json(['error' => "Image uploading failed", 'code' => 202]);
         }         
     }
-       public function UploadImage($type, $file){
+    public function UploadImage($type, $file){
         if( $type == 'image')
         {
             $path = base_path() . '/public/dashboard/profile_images/';
@@ -62,44 +61,43 @@ class PrmoterController extends Controller
 
     public function delete_image()
     {
-
         $path = base_path() . '/public/dashboard/profile_images/'.Auth::user()->image;
         // dd(Auth::user()->image);
          if(file_exists($path))
         {
             @unlink($path);
         }
-            \File::delete(Auth::user()->image);
-            DB::table('users')
-            ->where('id', Auth::user()->id)
-            ->update(['image' => 'Default-avatar.jpg']);
-            Session::flash('delete','profile image is removed');
-            return redirect()->route('main_index'); 
+        \File::delete(Auth::user()->image);
+        DB::table('users')
+        ->where('id', Auth::user()->id)
+        ->update(['image' => 'Default-avatar.jpg']);
+        Session::flash('delete','profile image is removed');
+        return redirect()->route('main_index'); 
     }
 
     public function dashboard_overview()
     {
         $args['all_tracks'] = Track::leftJoin('invitations','invitations.track_id','=','tracks.id')
-                                    ->where('invitations.promoter_id',Auth::user()->id)
-                                    ->where('invitations.status',1)
-                                    ->take(4)
-                                    ->get();  
+                            ->where('invitations.promoter_id',Auth::user()->id)
+                            ->where('invitations.status',1)
+                            ->take(4)
+                            ->get();  
         $args['invitations'] = DB::table('invitations')
-                                ->leftJoin('users','users.id','=','invitations.musician_id')
-                                ->leftJoin('tracks','tracks.id','=','invitations.track_id')
-                                ->select('invitations.id','users.name as musician_name','tracks.name as track_name','invitations.status','tracks.image')
-                                ->where('invitations.promoter_id','=',Auth::user()->id)
-                                ->where('invitations.status','=',0)
-                                ->get();      
+                            ->leftJoin('users','users.id','=','invitations.musician_id')
+                            ->leftJoin('tracks','tracks.id','=','invitations.track_id')
+                            ->select('invitations.id','users.name as musician_name','tracks.name as track_name','invitations.status','tracks.image')
+                            ->where('invitations.promoter_id','=',Auth::user()->id)
+                            ->where('invitations.status','=',0)
+                            ->get();      
     	return view('dashboard.promoter.dashboard_overview')->with($args);
     }
 
     public function musicvoting_tracks()
     {
         $args['all_tracks'] = Track::leftJoin('invitations','invitations.track_id','=','tracks.id')
-                                    ->where('invitations.promoter_id',Auth::user()->id)
-                                    ->where('invitations.status',1)                                   
-                                    ->get();  
+                            ->where('invitations.promoter_id',Auth::user()->id)
+                            ->where('invitations.status',1)                                   
+                            ->get();  
     	return view('dashboard.promoter.musicvoting_tracks')->with($args);
     }
 
@@ -108,25 +106,20 @@ class PrmoterController extends Controller
 
         if(Auth::check())
         {
-            $promoter_points = DB::table('points')
-                            // ->leftjoin('tracks','tracks.id','=','points.track_id')
-                            // ->leftjoin('users','users.id','=','tracks.user_id')
-                            // ->select('points.point')                                
+            $promoter_points = DB::table('points')                              
                             ->where('user_id','=',Auth::user()->id)
-                            ->get();
-                            
+                            ->get();                            
             $total_points = 0;             
             foreach ($promoter_points as $value)
             {
                 $total_points += $value->point;
             }   
-       
         }
 
         $promoter_redeemed_points = DB::table('redeemed_points')                                                
-                        ->select('redeemed_points.redeemed_point')                                
-                        ->where('redeemed_points.user_id','=',Auth::user()->id)
-                        ->get();
+                                    ->select('redeemed_points.redeemed_point')                                
+                                    ->where('redeemed_points.user_id','=',Auth::user()->id)
+                                    ->get();
         $total_redeemed_points = 0;             
         foreach ($promoter_redeemed_points as $value)
         {
@@ -139,33 +132,25 @@ class PrmoterController extends Controller
 
     public function promoter_redeemed_request()
     {
-         $promoter_points = DB::table('points')                              
-                            ->where('user_id','=',Auth::user()->id)
-                            ->get();
-                        // dd($promoter_points);
+        $promoter_points = DB::table('points')                              
+                        ->where('user_id','=',Auth::user()->id)
+                        ->get();
         $total_points = 0;             
-        foreach ($promoter_points as $value){
+        foreach ($promoter_points as $value)
+        {
             $total_points += $value->point;
-            // dd($total_points);
         }   
 
-        //redeemed points
-        $promoter_redeemed_points = DB::table('redeemed_points')                                                
-                        ->select('redeemed_points.redeemed_point')                                
-                        ->where('redeemed_points.user_id','=',Auth::user()->id)
-                        ->get();
-                        // dd($promoter_redeemed_points);
+       $promoter_redeemed_points = DB::table('redeemed_points')                                                
+                                ->select('redeemed_points.redeemed_point')                                
+                                ->where('redeemed_points.user_id','=',Auth::user()->id)
+                                ->get();
         $total_redeemed_points = 0;             
-        foreach ($promoter_redeemed_points as $value){
+        foreach ($promoter_redeemed_points as $value)
+        {
             $total_redeemed_points += $value->redeemed_point;
-            // dd($total_redeemed_points);
         }           
-        //redeemed points
-
-        //redeemable points
-        $redeemable_points = $total_points-$total_redeemed_points;
-        // dd($redeemable_points);     
-        //redeemable points  
+        $redeemable_points = $total_points-$total_redeemed_points;  
         if ($redeemable_points != '0')
         {        
             $user_id = Auth::user()->id;            
@@ -195,7 +180,7 @@ class PrmoterController extends Controller
     public function edit($id)
     {
         $args['promoter'] = User::find($id);
-        $args['roles'] = Role::select('roles.name')->where('roles.id','=',$args['promoter']['role_id'])->first();      
+        $args['roles'] = Role::select('roles.name')->where('roles.id','=',$args['promoter']['role_id'])->first();
         return view('dashboard.promoter.account.edit_account')->with($args);
     }
 
@@ -207,7 +192,6 @@ class PrmoterController extends Controller
             'email' => 'required',
             'username' => 'required'
         ]);
-
         $u = User::find($id);
         $u->name = Input::get('name');
         $u->phone = Input::get('phone');
@@ -231,8 +215,6 @@ class PrmoterController extends Controller
             'instagram'=> 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
             'twitter' => 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
         ]);
-
-
         $u = User::find($id);
         $u->facebook = Input::get('facebook');
         $u->instagram = Input::get('instagram');
@@ -249,8 +231,6 @@ class PrmoterController extends Controller
             'password' => 'required',
             'password_confirmation' => 'required|same:password',
         ]);
-
-
         if (Hash::check($request->old_password, Auth::user()->password))
         {
             if($request->password === $request->password_confirmation)
@@ -283,11 +263,11 @@ class PrmoterController extends Controller
     public function promoter_track_assign()
     {
         $promoter_tracks = DB::table('invitations')
-                                ->leftJoin('users','users.id','=','invitations.musician_id')
-                                ->leftJoin('tracks','tracks.id','=','invitations.track_id')
-                                ->select('invitations.id','users.name as musician_name','tracks.id as track_id','tracks.name as track_name','invitations.status')
-                                ->where('invitations.promoter_id','=',Auth::user()->id)
-                                ->get();
+                        ->leftJoin('users','users.id','=','invitations.musician_id')
+                        ->leftJoin('tracks','tracks.id','=','invitations.track_id')
+                        ->select('invitations.id','users.name as musician_name','tracks.id as track_id','tracks.name as track_name','invitations.status')
+                        ->where('invitations.promoter_id','=',Auth::user()->id)
+                        ->get();
         return view("dashboard.promoter.tracks_assign.tracks_assign",['promoter_tracks' => $promoter_tracks]);
     }
       public function unapproved_invitations()

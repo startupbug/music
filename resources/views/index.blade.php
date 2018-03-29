@@ -15,30 +15,36 @@
                 </div>
                 <div class="player_audio">
                     <div class="player_box clearfix">
-                        <div class="s_player_left_side col-md-3 col-xs-12 col-sm-12">
-                            <a href="#">
-                                @if(!empty($abc->track_image) && $abc->track_image)
+                        @if( count($tracks) != 0 && !empty($abc->track_image) && $abc->track_image)
+                            <div class="s_player_left_side col-md-3 col-xs-12 col-sm-12">
+                                <a href="#">
                                     <img class="img-responsive" src="{{asset('public/dashboard/musician/tracks/images/'.$abc->track_image)}}" alt="" style="height: 260px;">
-                                @endif
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                         @else
+                            <h1>No Tracks has been upoaded yet</h1>
+                        @endif
+
+
+
+                        @if( count($tracks) != 0)
                         <div class="player_body  col-md-8 col-xs-12 col-sm-12">
                             <h2>NOW &nbsp; PLAYING</h2>
                             <p>Track Name: <span class="track_name">
-                            @if(!empty($abc->track_name))
-                                {{$abc->track_name}}
-                            @endif
+                                @if(!empty($abc->track_name))
+                                    {{$abc->track_name}}
+                                @endif
                             </span></p>
                             <p>Artist: <span class="artist">
                                 @if(!empty($abc->track_name))
-                                {{$abc->user_name}}
+                                    {{$abc->user_name}}
                                 @endif
                             </span>
                             </p>
                             <div class="s_rating_top">
                               Rating:
                               <form  action="" method="" id="">
-                                  <span class="rating s_rating" id="">
+                                  <span class="rating s_rating " id="">
                                       <span class="fa fa-star-o" data-rating="1" ></span>
                                       <span class="fa fa-star-o" data-rating="2" ></span>
                                       <span class="fa fa-star-o" data-rating="3" ></span>
@@ -53,6 +59,7 @@
                               </form>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -74,6 +81,7 @@
         </div>
         <hr class="line">
         <div class="row">
+        @if( count($tracks) != 0)
         @foreach($tracks as $value)
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                 <div class="songs_box">
@@ -95,6 +103,9 @@
                 </div>
             </div>
         @endforeach
+        @else
+            <h1>No tracks has been uploaded yet </h1>
+        @endif
         </div>
         <div class="row">
           <div class="col-md-10 col-xs-7 col-sm-7">
@@ -112,6 +123,7 @@
         </div>
         <hr class="line">
         <div class="row">
+        @if( count($tracks) != 0)
         @foreach($albums as $value)
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                 <div class="songs_box">
@@ -123,6 +135,9 @@
                 </div>
             </div>
         @endforeach
+        @else
+            <h1>No album has been uploaded yet</h1>
+        @endif
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-center clearfix">
