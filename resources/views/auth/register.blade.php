@@ -12,7 +12,6 @@
                  <div class="signup_form_box">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }} " id="Sign_up_form">
                         {{ csrf_field() }}
-                        <input type="hidden" name="suspend" value="1">
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
 
