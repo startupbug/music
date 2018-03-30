@@ -15,10 +15,10 @@
                 </div>
                 <div class="player_audio">
                     <div class="player_box clearfix">
-                        @if( count($tracks) != 0 && !empty($abc->track_image) && $abc->track_image)
+                        @if( count($tracks) != 0 && !empty($abc[0]->track_image))
                             <div class="s_player_left_side col-md-3 col-xs-12 col-sm-12">
                                 <a href="#">
-                                    <img class="img-responsive" src="{{asset('public/dashboard/musician/tracks/images/'.$abc->track_image)}}" alt="" style="height: 260px;">
+                                    <img class="img-responsive" src="{{asset('public/dashboard/musician/tracks/images/'.$abc[0]->track_image)}}" alt="" style="height: 260px;">
                                 </a>
                             </div>
                          @else
@@ -50,7 +50,7 @@
                                       <span class="fa fa-star-o" data-rating="3" ></span>
                                       <span class="fa fa-star-o" data-rating="4" ></span>
                                       <span class="fa fa-star-o" data-rating="5" ></span>
-                                      @if(isset($ratings[$abc->track_id]['average']) && $ratings[$abc->track_id]['average'] && !empty($ratings[$abc->track_id]['average']))
+                                      @if( !empty($ratings[0]) && isset($ratings[$abc->track_id]['average'])  && $ratings[$abc->track_id]['average'] && !empty($ratings[$abc->track_id]['average']))
                                           <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="{{$ratings[$abc->track_id]['average']}}">
                                       @else
                                           <input type="hidden" name="rating_no" id="rating_no" class="rating-value" value="">
