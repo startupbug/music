@@ -6,10 +6,10 @@
 </head>
  
 <body>
-<h2>Welcome to the site {{$user['name']}}</h2>
+<h2>Hi <b>{{$user['name']}}</b></h2>
 <br/>
-Click on link to verify your account 
-<a href="{{route('verified_email',['email_token' => $user['email_token']])}}">Click Me</a>
+	By verifying your email address {{$user['email']}} help us secure your Music Voting account.
+<a href="{{route('verified_email',['email_token' => $user['email_token']])}}">Verify email address</a>
 </body>
  
 </html>
