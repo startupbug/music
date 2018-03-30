@@ -44,9 +44,11 @@ class MusicianController extends Controller
         }
          
     }
-    public function UploadImage($type, $file){
-        if( $type == 'image'){
-        $path = base_path() . '/public/dashboard/profile_images/';
+    public function UploadImage($type, $file)
+    {
+        if( $type == 'image')
+        {
+            $path = base_path() . '/public/dashboard/profile_images/';
         }
         $filename = md5($file->getClientOriginalName() . time()) . '.' . $file->getClientOriginalExtension();
         $file->move( $path , $filename);
@@ -57,26 +59,26 @@ class MusicianController extends Controller
     {
 
         $path = base_path() . '/public/dashboard/profile_images/'.Auth::user()->image;
-        // dd(Auth::user()->image);
-         if(file_exists($path))
+        if(file_exists($path))
         {
             @unlink($path);
         }
-            \File::delete(Auth::user()->image);
-            DB::table('users')
-            ->where('id', Auth::user()->id)
-            ->update(['image' => 'Default-avatar.jpg']);
-            Session::flash('delete','profile image is removed');
-            return redirect()->route('main_index'); 
+        \File::delete(Auth::user()->image);
+        DB::table('users')
+        ->where('id', Auth::user()->id)
+        ->update(['image' => 'Default-avatar.jpg']);
+        Session::flash('delete','profile image is removed');
+        return redirect()->route('main_index'); 
     }
 
-     public function disapprove_featured($id)
+    public function disapprove_featured($id)
     {
         DB::table('tracks')
             ->where('id', $id)
             ->update(['featured' => 0]);         
         return redirect()->back();
     }
+
     public function approve_featured($id)
     { 
         DB::table('tracks')
@@ -97,56 +99,59 @@ class MusicianController extends Controller
     }
      public function redeem()
     {   
-    if(Auth::check()){
-        $musician_points = DB::table('points')
-                        ->leftjoin('tracks','tracks.id','=','points.track_id')
-                        ->leftjoin('users','users.id','=','tracks.user_id')
-                        ->select('points.point','points.user_id','tracks.id','users.role_id','tracks.user_id as tracks._user_id')
-                        ->where('points.user_id','=',Auth::user()->id)
-                        ->get();
-                        // dd($musician_points);
-        $total_points = 0;             
-        foreach ($musician_points as $value){
-            $total_points += $value->point;
-        }   
-    }
-
-    //current month points gained
-    $currentMonth = date('m');
-    $data = DB::table("points")
-                ->whereRaw('MONTH(created_at) = ?',[$currentMonth])
-                ->get();
-    foreach ($data as $value) {
-        $musician_points_in_this_month = DB::table('points')
+        if(Auth::check())
+        {
+            $musician_points = DB::table('points')
                             ->leftjoin('tracks','tracks.id','=','points.track_id')
                             ->leftjoin('users','users.id','=','tracks.user_id')
-                            ->select('points.point')                                
+                            ->select('points.point','points.user_id','tracks.id','users.role_id','tracks.user_id as tracks._user_id')
                             ->where('points.user_id','=',Auth::user()->id)
                             ->get();
-                            //dd($musician_points_in_this_month);
-            $total_points_in_this_month = 0;             
-        foreach ($musician_points_in_this_month as $value) {                                         
-            $total_points_in_this_month += $value->point;
-        }   
-    }
-    //current month points gained
+            $total_points = 0;             
+            foreach ($musician_points as $value)
+            {
+                $total_points += $value->point;
+            }   
+        }
 
-    //redeemed points
+        //current month points gained
+        $currentMonth = date('m');
+        $data = DB::table("points")
+                    ->whereRaw('MONTH(created_at) = ?',[$currentMonth])
+                    ->get();
+        foreach ($data as $value)
+        {
+            $musician_points_in_this_month = DB::table('points')
+                                            ->leftjoin('tracks','tracks.id','=','points.track_id')
+                                            ->leftjoin('users','users.id','=','tracks.user_id')
+                                            ->select('points.point')                                
+                                            ->where('points.user_id','=',Auth::user()->id)
+                                            ->get();
+            $total_points_in_this_month = 0;             
+            foreach ($musician_points_in_this_month as $value)
+            {                                         
+                $total_points_in_this_month += $value->point;
+            }   
+        }
+        //current month points gained
+
+        //redeemed points
         $musician_redeemed_points = DB::table('redeemed_points')                                                
-                        ->select('redeemed_points.redeemed_point')                                
-                        ->where('redeemed_points.user_id','=',Auth::user()->id)
-                        ->get();
+                                    ->select('redeemed_points.redeemed_point')                                
+                                    ->where('redeemed_points.user_id','=',Auth::user()->id)
+                                    ->get();
         $total_redeemed_points = 0;             
-        foreach ($musician_redeemed_points as $value){
+        foreach ($musician_redeemed_points as $value)
+        {
             $total_redeemed_points += $value->redeemed_point;
         }           
-    //redeemed points
+        //redeemed points
 
-    //redeemable points
-    $redeemable_points = $total_points-$total_redeemed_points;     
-    //redeemable points  
+        //redeemable points
+        $redeemable_points = $total_points-$total_redeemed_points;     
+        //redeemable points  
 
-    return view('dashboard.musician.redeem',['total_points'=>$total_points,'total_points_in_this_month'=>$total_points_in_this_month,'total_redeemed_points'=>$total_redeemed_points,'redeemable_points'=>$redeemable_points]);
+        return view('dashboard.musician.redeem',['total_points'=>$total_points,'total_points_in_this_month'=>$total_points_in_this_month,'total_redeemed_points'=>$total_redeemed_points,'redeemable_points'=>$redeemable_points]);
     }
     public function redeemed_request()
     {
@@ -157,7 +162,8 @@ class MusicianController extends Controller
                         ->where('points.user_id','=',Auth::user()->id)
                         ->get();
         $total_points = 0;             
-        foreach ($musician_points as $value){
+        foreach ($musician_points as $value)
+        {
             $total_points += $value->point;
         }   
 
@@ -167,7 +173,8 @@ class MusicianController extends Controller
                         ->where('redeemed_points.user_id','=',Auth::user()->id)
                         ->get();
         $total_redeemed_points = 0;             
-        foreach ($musician_redeemed_points as $value){
+        foreach ($musician_redeemed_points as $value)
+        {
             $total_redeemed_points += $value->redeemed_point;
         }           
         //redeemed points
@@ -188,16 +195,16 @@ class MusicianController extends Controller
         }
         else
         {
-            Session::flash('err_msg','You dont have sufficient Points to process this request');
+            Session::flash('not_redeem','You dont have sufficient Points to process this request');
             return redirect()->back();
         }
         return redirect()->back();        
     }
     public function edit_account($id)
     {   
-      $args['musician'] = User::find($id);
-      $args['roles'] = Role::select('roles.name')->where('roles.id','=',$args['musician']['role_id'])->first();      
-      return view('dashboard.musician.account.edit_account')->with($args);
+        $args['musician'] = User::find($id);
+        $args['roles'] = Role::select('roles.name')->where('roles.id','=',$args['musician']['role_id'])->first();
+        return view('dashboard.musician.account.edit_account')->with($args);
     }
 
     public function update_account(Request $request,$id)
@@ -209,7 +216,6 @@ class MusicianController extends Controller
             'email' => 'required',
             'username' => 'required'
         ]);
-
         $u = User::find($id);
         $u->name = Input::get('name');
         $u->phone = Input::get('phone');
@@ -227,25 +233,30 @@ class MusicianController extends Controller
             'password' => 'required',
             'password_confirmation' => 'required|same:password',
         ]);
-
-        if (Hash::check($request->old_password, Auth::user()->password)) {
-            if($request->password === $request->password_confirmation){
+        if (Hash::check($request->old_password, Auth::user()->password))
+        {
+            if($request->password === $request->password_confirmation)
+            {
                 $user = User::where('id', Auth::user()->id)->update([
                     'password' => bcrypt($request->password)
                 ]);
-                if($user){
+                if($user)
+                {
                     Session::flash('password_status','you password is update');
-                   return redirect()->route('musician_setting'); 
+                    return redirect()->route('musician_setting'); 
                 }
-                else{
+                else
+                {
                     return \Response()->json(['error' => "Profile update failed", 'code' => 202]);
                 }
             }
-            else{
+            else
+            {
                 return \Response()->json(['error' => 'Password does not match with confirmation password', 'code' => 202]);
             }
         }
-        else{
+        else
+        {
             Session::flash('old_password','Old password is incorrect, please enter valid password');
             return redirect()->route('edit_account');
         }
@@ -254,8 +265,8 @@ class MusicianController extends Controller
     }
      public function edit_links($id)
     {
-      $args['musician'] = User::find($id);
-      return view('dashboard.musician.account.edit_links')->with($args);
+        $args['musician'] = User::find($id);
+        return view('dashboard.musician.account.edit_links')->with($args);
     }
     
     public function update_links(Request $request,$id)
@@ -265,7 +276,6 @@ class MusicianController extends Controller
             'instagram'=> 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
             'twitter' => 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
         ]);
-
         $u = User::find($id);
         $u->facebook = Input::get('facebook');
         $u->instagram = Input::get('instagram');
@@ -278,14 +288,14 @@ class MusicianController extends Controller
     public function setting()
     {
         $args['musician'] = User::where('users.id',Auth::user()->id)->first(); 
-        $args['roles'] = Role::select('roles.name')->where('roles.id','=',$args['musician']['role_id'])->first();                
+        $args['roles'] = Role::select('roles.name')->where('roles.id','=',$args['musician']['role_id'])->first();
         return view('dashboard.musician.setting')->with($args);
     }
 
 
     public function musician_logout(Request $request) {     
-      Auth::logout();
-      return redirect('/');
+        Auth::logout();
+        return redirect('/');
     }
 
     /**

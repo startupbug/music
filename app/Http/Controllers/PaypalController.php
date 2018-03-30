@@ -29,8 +29,9 @@ class PaypalController extends Controller
     }
 
 
-    public function getCheckout()
+    public function getCheckout($flag = null)
 	{		
+		
 		$payer = PayPal::Payer();
 		$payer->setPaymentMethod('paypal');
 
@@ -43,7 +44,14 @@ class PaypalController extends Controller
 
 		$transaction = PayPal::Transaction();
 		$transaction->setAmount($amount);
-		$transaction->setDescription('Feature Account Subscription With Amount Of 5 USD');
+		if(isset($flag) && $flag == 'redeem')
+		{
+			$transaction->setDescription('Feature Account Subscription With Amount Of 5 USD');			
+		}
+		elseif(isset($flag) && $flag == 'featured')
+		{
+			$transaction->setDescription('Feature Account Subscription With Amount Of 10 USD');	
+		}
 
 		$redirectUrls = PayPal:: RedirectUrls();
 		$redirectUrls->setReturnUrl(action('PaypalController@getDone'));

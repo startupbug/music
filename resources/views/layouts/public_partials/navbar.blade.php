@@ -24,8 +24,10 @@
                        aria-expanded="false">Genre <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{route('genre')}}">Genre</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
+                        <li><a href="{{route('country_songs')}}">Country</a></li>
+                        <li><a href="{{route('hiphop_songs')}}">Hip Hop</a></li>
+                        <li><a href="{{route('jazz_songs')}}">Jazz</a></li>
+                        <li><a href="{{route('metallic_songs')}}">Metallic</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -33,11 +35,8 @@
                        aria-expanded="false">artist <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{route('artist_detail')}}">Artist</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Free Beats</a></li>
                 <li><a href="{{route('musicvoting_search')}}"><i class="fa fa-search text-white" aria-hidden="true"></i></a></li>
                 <!-- <li><a href="{{url('login')}}" class="btn btn-default">log in</a></li> -->
                 @if(Auth::check())

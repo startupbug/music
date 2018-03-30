@@ -50,6 +50,9 @@ Route::group(['prefix' => 'admin','middleware' => 'is-admin'], function () {
     Route::get('/block_track/{id}/', ["as" => "block-track", "uses" => "Admin\MusicController@block_track"]);
     Route::get('/unblock_track/{id}/', ["as" => "unblock-track", "uses" => "Admin\MusicController@unblock_track"]);
 
+    Route::get('/redeem','Admin\AdminController@redeem_index')->name('redeem_index');
+    Route::get('/accept_redeem_request/{id}/', ["as" => "accept-redeem-request", "uses" => "Admin\AdminController@accept_redeem_request"]);
+    Route::get('/reject_redeem_request/{id}/', ["as" => "reject-redeem-request", "uses" => "Admin\AdminController@reject_redeem_request"]);
     
     Route::get('/logout_admin', 'Admin\AdminController@admin_logout')->name('logout_admin');
 });
@@ -68,10 +71,21 @@ Route::get('register/verify/{token}', 'Auth\RegisterController@verify')->name('v
 // Route::get('/index', 'HomeController@public_index')->name('public_index');
 
 // Route::get('/main_index','HomeController@dashboard')->name('main_index');
+// songs categories
+Route::get('/country','PagesController@country_songs')->name('country_songs');
+Route::get('/jazz_songs','PagesController@jazz_songs')->name('jazz_songs');
+Route::get('/hiphop_songs','PagesController@hiphop_songs')->name('hiphop_songs');
+Route::get('/metallic_songs','PagesController@metallic_songs')->name('metallic_songs');
+
+Route::post('/subscribe','PagesController@subscribe')->name('subscribe');
 
 Route::get('/contest','PagesController@contest')->name('contest');
 
 Route::get('/winner','PagesController@winner')->name('winner');
+
+Route::get('/faq','PagesController@faq')->name('faq');
+
+Route::get('/how_it_works','PagesController@how_it_works')->name('how_it_works');
 
 Route::get('/musicvoting_genre/{id}/{name?}','PagesController@musicvoting_genre')->name('musicvoting_genre');
 
@@ -84,6 +98,10 @@ Route::post('/insert_comment/{id}','CommentController@insert_comment')->name('in
 Route::get('/album/{id}','PagesController@album_view')->name('album_view');
 
 Route::get('/genre','PagesController@genre')->name('genre');
+
+Route::get('/terms','PagesController@terms')->name('terms');
+
+Route::get('/privacy','PagesController@privacy')->name('privacy');
 
 Route::group(['prefix' => 'promoter', 'middleware' => 'promoter'], function () {  
 Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'Promoter\PrmoterController@promoter_image']);   
@@ -104,6 +122,8 @@ Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'Promoter\Prm
     Route::get('/albums/{id}','Promoter\PrmoterController@all_albums')->name('all_albums');
     Route::get('delete_image','Promoter\PrmoterController@delete_image')->name('delete_image2');
     Route::get('/promoter_logout', 'Promoter\PrmoterController@promoter_logout')->name('logout_promoter');
+    //promoter_redeemed_request
+    Route::post('/promoterredeempoint','Promoter\PrmoterController@promoter_redeemed_request')->name('promoter_redeemed_request');
 });
 
 
@@ -180,7 +200,7 @@ Route::get('/getAffiliatedID', 'PagesController@getAffiliatedID')->name('getAffi
 
 
 
-Route::get('redeem_points/', 'PaypalController@getCheckout')->name('redeem_points');
+Route::get('redeem_points/{flag}', 'PaypalController@getCheckout')->name('redeem_points');
 Route::get('getDone/', 'PaypalController@getDone')->name('getDone');
 Route::get('getCancel/', 'PaypalController@getCancel')->name('getCancel');
 

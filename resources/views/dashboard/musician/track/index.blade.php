@@ -2,11 +2,11 @@
 @section('content')
 <div class="col-md-9">
 	<h3 class="heading_dashboard">
-		ARTIST DASHBOARD
+		ARTIST &nbsp; DASHBOARD
 	</h3>
 	<div class="border_red">
 		<h3 class="album">
-			MY TRACKS
+			MY &nbsp; TRACKS
 		</h3>
 		@if (Session::has('upload_track'))
 	    	<div class="alert alert-info">{{ Session::get('upload_track') }}</div>
@@ -15,11 +15,11 @@
 	<div class="row">
 		<div class="col-md-12 color_bottom">
 			<h3 class="all_album">
-				VIEWING ALL TRACKS
+				VIEWING &nbsp; ALL &nbsp; TRACKS
 			</h3>
 			<a href="{{route('create_track')}}">
 				<h3 class="add_album">
-					ADD TRACK
+					ADD &nbsp; TRACK
 				</h3>
 			</a>
 		</div>
@@ -54,6 +54,5 @@
 		</div>
 		@endforeach	
 	</div>
-	<div class="button_dashboard"><button type="button" class="btn">LOAD MORE</button></div>
 </div>
 @endsection

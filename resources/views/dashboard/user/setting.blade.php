@@ -11,7 +11,7 @@
           @if (Session::has('link_status'))
             <div class="alert alert-info">{{ Session::get('link_status') }}</div>
           @endif
-          USER  DASHBOARD
+          USER &nbsp; DASHBOARD
      </h3>
      <div class="border_red">
         <h3 class="album">

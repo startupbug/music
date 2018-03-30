@@ -8,7 +8,7 @@
 	<div class="row">
 		<div class="col-md-12 color_bottom">
 			<h3 class="all_album">
-				VIEWING ALL TRACKS
+				VIEWING &nbsp; ALL &nbsp; TRACKS
 			</h3>
 		</div>
 	</div>

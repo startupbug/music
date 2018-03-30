@@ -2,7 +2,7 @@
 @section('content')
 <div class="col-md-9">
   <h3 class="heading_dashboard">
-   ARTIST DASHBOARD
+   ARTIST &nbsp; DASHBOARD
  </h3>
  <div class="border_red">
   <h3 class="album">
@@ -14,7 +14,7 @@
 
 
     <h3 class="all_album">
-     EARNED POINTS
+     EARNED &nbsp; POINTS
    </h3>
 
 
@@ -109,7 +109,7 @@
 <div class="row">
   <div class="col-md-12 color_bottom">
     <h3 class="all_album">
-     MY TRACKS
+     MY &nbsp; TRACKS
    </h3>
    <a href="{{route('musician_track')}}">
      <h3 class="add_album">
@@ -129,15 +129,15 @@
         <div class="star"><span class="glyphicon glyphicon-star"></span></div>
         @if($value->featured == '1')
         <a href="{{route('disapprove-featured',['id'=>$value->id])}}" title="Click To UnFeatured">
-          <h3 class="hover_heading">SONG IS FEATURED <br>UN FEATURE SONG</h3>
+          <h3 class="hover_heading">SONG &nbsp; IS &nbsp; FEATURED <br>UN &nbsp; FEATURE &nbsp; SONG</h3>
         </a>
         @else
         <a href="{{route('approve-featured',['id'=>$value->id])}}" title="Click To Featured">
-          <h3 class="hover_heading">FEATURE THIS SONG</h3>
+          <h3 class="hover_heading">FEATURE &nbsp; THIS &nbsp; SONG</h3>
         </a>
         @endif        
         <div class="trophy"><i class="fa fa-trophy" style="font-size:24px"></i></div>
-        <a href=""> <h3 class="hover_heading">ADDSONGTOCONTEST</h3> </a>
+        <a href=""> <h3 class="hover_heading">ADD &nbsp; SONG &nbsp; TO &nbsp; CONTEST</h3> </a>
       </span>
     </div>  
   </div> 

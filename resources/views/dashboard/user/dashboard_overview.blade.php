@@ -2,11 +2,11 @@
 @section('content')
 <div class="col-md-9">
     <h3 class="heading_dashboard">
-        USER DASHBOARD
+        USER &nbsp; DASHBOARD
     </h3>
     <div class="border_red">
         <h3 class="album">
-            OVERVIEW
+            OVER &nbsp; VIEW
         </h3>
         @if (Session::has('activate'))
             <div class="alert alert-info">{{ Session::get('activate') }}</div>

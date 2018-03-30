@@ -2,7 +2,7 @@
 @section('content')
 <div class="col-md-9">
   <h3 class="heading_dashboard">
-   PROMOTER DASHBOARD
+   PROMOTER &nbsp; DASHBOARD
   </h3>
   <div class="border_red">
     <h3 class="album">
@@ -12,7 +12,7 @@
   <div class="row">
     <div class="col-md-12 color_bottom">
         <h3 class="all_album">
-            VIEWING ALL UNAPPROVED TRACKS
+            VIEWING &nbsp; ALL &nbsp; UNAPPROVED &nbsp; TRACKS
         </h3>
         <h3 class="add_album">
             
@@ -41,7 +41,6 @@
     @endforeach
   </div>
   <div class="button_dashboard">
-    <button type="button" class="btn">LOAD MORE</button>
   </div>
 </div>
 @endsection

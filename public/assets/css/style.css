@@ -817,3 +817,25 @@ h3.all_album {
     margin-right: 68px;
     margin-top: 10px;
 }
+
+ .pagination > .active > span{
+    color: #e1dddd;
+    background-color: #000;
+    border-color: #000;
+ }
+.pagination > li > a:focus, .pagination > li > a:hover , .pagination > .active > span{
+    color: #eee;
+    background-color: #f00;
+    border-color: #eee;
+
+}
+.pagination > li > a, .pagination > li > span{
+    color: #cf1828;
+}
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+    z-index: 3;
+    color: #eee;
+    cursor: default;
+    background-color: #cf1828;
+    border-color: #eee;
+}

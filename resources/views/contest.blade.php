@@ -19,7 +19,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h3 class="contest_subheading">
-				TOP RANKINGS
+				TOP &nbsp; RANKINGS
 			</h3>
 		</div>
 	</div>
@@ -268,7 +268,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h3 class="contest_subheading">
-				PREVIOUS CONTEST
+				PREVIOUS &nbsp; CONTEST
 			</h3>
 		</div>
 	</div>

@@ -16,10 +16,6 @@
                         <li><a href="{{route('winner')}}"><i class="fa fa-angle-double-right"></i>
                             Winners
                         </a></li>
-                        <li><i class="fa fa-angle-double-right"></i>
-                            Free Beats
-                        </li>
-
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
@@ -27,19 +23,15 @@
                         SUPPORT
                     </h3>
                     <ul class="footer_link">
-                        <li><a href="musicvoting_privacy.php"><i class="fa fa-angle-double-right"></i>
+                        <li><a href="{{route('privacy')}}"><i class="fa fa-angle-double-right"></i>
                             Privacy
                         </a></li>
-                        <li><a href="musicvoting_terms.php"><i class="fa fa-angle-double-right"></i>
+                        <li><a href="{{route('terms')}}"><i class="fa fa-angle-double-right"></i>
                             Terms
                         </a></li>
-                        <li><a href="faq.php"><i class="fa fa-angle-double-right"></i>
+                        <li><a href="{{route('faq')}}"><i class="fa fa-angle-double-right"></i>
                             FAQ
                         </a></li>
-                        <li><a href="howitworks.php"><i class="fa fa-angle-double-right"></i>
-                            How It Works
-                        </a></li>
-
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
@@ -47,30 +39,31 @@
                      QUICK LINKS
                  </h3>
                      <ul class="footer_link">
-                        <li><a href="signup.php"><i class="fa fa-angle-double-right"></i>
+                        <li><a href="{{url('register')}}"><i class="fa fa-angle-double-right"></i>
                             Sign Up Now
                         </a></li>
-                        <li><a href="contest.php"><i class="fa fa-angle-double-right"></i>
+                        <li><a href="{{route('contest')}}"><i class="fa fa-angle-double-right"></i>
                             Contests
                         </a></li>
-                        <li><i class="fa fa-angle-double-right"></i>
-                            Promote
-                        </li>
+                        <li><a href="{{route('how_it_works')}}"><i class="fa fa-angle-double-right"></i>
+                            How It Works
+                        </a></li>
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                     <ul class="social_icon_footer">
-                            <li><i class="fa fa-facebook-square" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-twitter-square" aria-hidden="true"></i></li>
-                            <li><i class="fa fa-google-plus-square" aria-hidden="true"></i></li>
+                            <li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></a></i></li>
+                            <li><a href="https://twitter.com/"  target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></a></i></li>
+                            <li><a href="https://plus.google.com"  target="_blank"><i class="fa fa-google-plus-square" aria-hidden="true"></a></i></li>
                         </ul>
                         <h3 class="subscribe">
                          SUBSCRIBE TO OUR NEWSLETTER!
                      </h3>
                     <div class="well">
-                       <form action="#">
+                       <form action="{{route('subscribe')}}" method="POST">
+                        {!! csrf_field() !!}
                           <div class="input-group">
-                           <input class="btn btn-lg footer" name="myemail" id="myemail" type="email" placeholder="Email Address" required>
+                           <input class="btn btn-lg footer text-dark form-control" name="myemail" id="myemail" type="email" placeholder="Email Address" style="color:black" required>
                            <button class="btn btn-info btn-lg footer" type="submit">SUBSCRIBE</button>
                        </div>
                        </form>

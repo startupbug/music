@@ -2,11 +2,11 @@
 @section('content')
   <div class="col-md-9">
     <h3 class="heading_dashboard">
-        ARTIST DASHBOARD
+        ARTIST &nbsp; DASHBOARD
     </h3>
     <div class="border_red">
         <h3 class="album">
-            MY ALBUMS
+            MY &nbsp; ALBUMS
         </h3>
     </div>
     <div class="row">
@@ -70,18 +70,18 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><b>UPDATE TRACk</b></h4>
+            <h4 class="modal-title"><b>UPDATE &nbsp; TRACk</b></h4>
           </div>
           <div class="modal-body">
             <form class="" action="{{route('update_track',['id'=>$edit_track->id])}}" enctype="multipart/form-data" method="POST">
               {{csrf_field()}}
               <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                  <h4><b>TRACK NAME</b></h4>
+                  <h4><b>TRACK &nbsp; NAME</b></h4>
                   <input type="text" name="name" value="{{$edit_track->name}}" class="form-control">
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                  <h4><b>Select IMAGE</b></h4>
+                  <h4><b>Select &nbsp; IMAGE</b></h4>
                   <div class="input-group">
                     <input type="text" class="form-control" readonly>
                     <label class="input-group-btn label_cus">
@@ -119,7 +119,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><b>UPDATE TRACk</b></h4>
+            <h4 class="modal-title"><b>UPDATE &nbsp; TRACk</b></h4>
           </div>
           <div class="modal-body">
             <form class="" action="{{route('assign_promoter')}}" method="POST">

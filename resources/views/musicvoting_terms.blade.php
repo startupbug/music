@@ -1,5 +1,5 @@
-<?php include('header.php'); ?>
-
+@extends('layouts.public_index')
+@section('content')
 <div class="container-fluid">
     <div class="container">
         <div class="row">
@@ -48,14 +48,4 @@
     </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-<?php include('footer.php'); ?>
+@endsection

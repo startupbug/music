@@ -1,3 +1,7 @@
+
+.s_pointer{
+  cursor: pointer;
+}
 h1.side_heading {
     font-size: 40px;
     font-weight: 400;
@@ -39,9 +43,10 @@ h3.points_rate {
 
 li.social_media {
     display: inline-block;
-    margin-left: 17px;
+    margin-left: 20px;
     margin-right: 58px;
     margin-top: 13px;
+    margin:0 15px 0 0;
 }
 
 h2.mid_head {
@@ -619,7 +624,7 @@ form.form-horizontal.validateForm {
     color: #bbbbbb;
     font-weight: 400;
     font-family: 'Conv_Montserrat-Regular';
-    line-height: 24px;
+    line-height: 44px;
 }
 
 .form-control:focus {
@@ -628,7 +633,7 @@ form.form-horizontal.validateForm {
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(234, 9, 51, 0.6);
 }
 .checkbox label {
-    font-size: 16px;
+    font-size: 15px;
     color: #282828;
     font-weight: 400;
     font-family: 'Conv_Montserrat-Regular';
@@ -1143,12 +1148,12 @@ a {
   margin: 0px;
 }
 
-#nav1 a {
+.nav1 a {
   color: #FFFFFF;
   font-family: 'Conv_Montserrat-Regular';
 }
 
-#nav1 li ul li a:hover {
+.nav1 li ul li a:hover {
   background-color: #394963;
 }
 
@@ -1157,7 +1162,7 @@ div ul li ul {
   list-style: none
 }
 
-#nav1 > li > a {
+.nav1 > li > a {
   background-color: #343434;
   padding: 16px 18px;
   text-decoration: none;
@@ -1166,7 +1171,7 @@ div ul li ul {
   background: linear-gradient(top, #343434, #111111);
 }
 
-#nav1 li ul li a {
+.nav1 li ul li a {
   padding: 10px 0;
   padding-left: 30px;
   text-decoration: none;
@@ -1175,7 +1180,7 @@ div ul li ul {
 
 
 /* Hide Dropdowns by Default */
-#nav1 li ul {
+.nav1 li ul {
   display: none;
 }
 
@@ -1189,18 +1194,18 @@ h3.side_menu {
     font-family: 'Conv_bebas';
 }
 
-#nav1 > li > a {
+.nav1 > li > a {
     background-color: #000000;
 
 }
 
-#nav1 > li > a {
+.nav1 > li > a {
     background-color: #000000;
     font-size: 18px;
     font-family: 'Conv_Montserrat-Regular';
-    color: #666666;
+    color: #d5d5d5;
 }
-#nav1 li ul li a:hover {
+.nav1 li ul li a:hover {
     background-color: #cf1828;
     font-family: 'Conv_Montserrat-Regular';
 }
@@ -1208,7 +1213,7 @@ div ul li ul {
     background-color: #cf1828;
 
 }
-#nav1 li {
+.nav1 li {
     border-bottom: 1px solid #666666;
 }
 button.btn.btn-info.btn-lg.footer {
@@ -1230,9 +1235,9 @@ button.btn {
     text-decoration: none;
 }
 
-#nav1 > li > a:hover {
+.nav1 > li > a:hover {
     background-color: #cf1828;
-    border-bottom: #cf1828;
+    /* border-bottom: #cf1828; */
     COLOR: WHITE;
 }
 
@@ -1364,10 +1369,9 @@ button.btn.btn-info.btn-lg.footer {
 
     border-color: #cf1828;
 }
-.well {
-
-    padding: 0px;
-    }
+/*.well {
+    padding: 0px !important;
+}   */
 input#email {
     font-size: 14px;
     text-align: left;
@@ -1823,7 +1827,7 @@ h3.points_rate {
     margin: 10px;
 }
 
-#nav1 li ul li a:hover {
+.nav1 li ul li a:hover {
     background-color: #e71c2e;
     font-family: 'Conv_Montserrat-Regular';
 }
@@ -1836,7 +1840,7 @@ h3.points_rate {
     color: #fff;
 }
 .btn-group {
-    
+
     margin-top: 16px;
 }
 
@@ -1853,9 +1857,9 @@ h3.points_rate {
 }
 
 .dropdown-menu {
-   
+
     min-width: 100%;
-   
+
 }
 .btn.btn-primary.dropdown-toggle {
     width: 79%;
@@ -1882,7 +1886,7 @@ text-align: center;
 
 
 .form_control {
-    width: 75% !important;
+    width: 68% !important;
 }
 button, input, optgroup, select, textarea {
     margin: 9px;
@@ -1895,7 +1899,7 @@ button, input, optgroup, select, textarea {
     margin-top: 15px !important;
     padding-top: 13px;
     padding-bottom: 5px;
-    margin-left: -9px !important;
+    /*margin-left: -9px !important;*/
 }
 .button_submit {
     position: absolute;
@@ -1903,10 +1907,17 @@ button, input, optgroup, select, textarea {
     right: 76px;
 }
 .button_submit input {
-   
+
     padding-top: 10px;
     margin-top: 17px !important;
 }
 .album_available {
     margin-bottom: 73px;
+}
+a:hover h1 {
+    text-decoration: none;
+    color: #892831;
+}
+a:hover {
+    text-decoration: none;
 }

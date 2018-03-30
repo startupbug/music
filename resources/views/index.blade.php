@@ -2,40 +2,49 @@
 @section('content')
 <div class="container-fluid bg_gray">
     <div class="container">
-        @if (Session::has('not_activate'))
-            <div class="alert alert-danger">{{ Session::get('not_activate') }}</div>
-        @endif
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                @if (Session::has('not_activate'))
+                    <div class="alert alert-danger">{{ Session::get('not_activate') }}</div>
+                @endif
+                 @if (Session::has('subscribe'))
+                    <div class="alert alert-success"><strong style="font-size: 20px;">{{ Session::get('subscribe') }}</strong></div>
+                @endif
                 <div class="playing_heading">
-                    <h2 class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">TRENDING TRACKS</h2>
+                    <h2 class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">TRENDING &nbsp; TRACKS</h2>
                 </div>
                 <div class="player_audio">
                     <div class="player_box clearfix">
-                        <div class="s_player_left_side col-md-3 col-xs-12 col-sm-12">
-                            <a href="#">
-                                @if(!empty($abc->track_image) && $abc->track_image)
+                        @if( count($tracks) != 0 && !empty($abc->track_image) && $abc->track_image)
+                            <div class="s_player_left_side col-md-3 col-xs-12 col-sm-12">
+                                <a href="#">
                                     <img class="img-responsive" src="{{asset('public/dashboard/musician/tracks/images/'.$abc->track_image)}}" alt="" style="height: 260px;">
-                                @endif
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                         @else
+                            <h1>No Tracks has been upoaded yet</h1>
+                        @endif
+
+
+
+                        @if( count($tracks) != 0)
                         <div class="player_body  col-md-8 col-xs-12 col-sm-12">
-                            <h2>NOW PLAYING</h2>
+                            <h2>NOW &nbsp; PLAYING</h2>
                             <p>Track Name: <span class="track_name">
-                            @if(!empty($abc->track_name))
-                                {{$abc->track_name}}
-                            @endif
+                                @if(!empty($abc->track_name))
+                                    {{$abc->track_name}}
+                                @endif
                             </span></p>
                             <p>Artist: <span class="artist">
                                 @if(!empty($abc->track_name))
-                                {{$abc->user_name}}
+                                    {{$abc->user_name}}
                                 @endif
                             </span>
                             </p>
                             <div class="s_rating_top">
                               Rating:
                               <form  action="" method="" id="">
-                                  <span class="rating s_rating" id="">
+                                  <span class="rating s_rating " id="">
                                       <span class="fa fa-star-o" data-rating="1" ></span>
                                       <span class="fa fa-star-o" data-rating="2" ></span>
                                       <span class="fa fa-star-o" data-rating="3" ></span>
@@ -49,14 +58,8 @@
                                   </span>
                               </form>
                             </div>
-                            <p>Share:
-                                <span class="red_color">
-                                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
-                                </span>
-                            </p>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -78,6 +81,7 @@
         </div>
         <hr class="line">
         <div class="row">
+        @if( count($tracks) != 0)
         @foreach($tracks as $value)
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                 <div class="songs_box">
@@ -94,12 +98,14 @@
                         </div>
                     </a>
 
-                    <p>
-                      <a href="#"><b> {{$value->track_name}}</b></a></p>
+                    <a href="#"><p> <b> {{$value->track_name}}</b></p></a>
                     <a href="{{route('profile',['id'=>$value->user_id])}}"><p>{{$value->user_name}}</p></a>
                 </div>
             </div>
         @endforeach
+        @else
+            <h1>No tracks has been uploaded yet </h1>
+        @endif
         </div>
         <div class="row">
           <div class="col-md-10 col-xs-7 col-sm-7">
@@ -117,6 +123,7 @@
         </div>
         <hr class="line">
         <div class="row">
+        @if( count($tracks) != 0)
         @foreach($albums as $value)
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                 <div class="songs_box">
@@ -128,6 +135,9 @@
                 </div>
             </div>
         @endforeach
+        @else
+            <h1>No album has been uploaded yet</h1>
+        @endif
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-center clearfix">
@@ -137,7 +147,7 @@
                         with many others
                     </p>
                     <a href="{{route('register')}}" class="btn btn-default wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s"">
-                    SIGN UP now 
+                    SIGN UP NOW 
                     </a>
                 </div>
             </div>
@@ -149,7 +159,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="heading_two">
-                    <h2 class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">HOW IT WORKS</h2>
+                    <h2 class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">HOW &nbsp; IT &nbsp; WORKS</h2>
                 </div>
             </div>
         </div>
@@ -189,7 +199,7 @@
                         with many others
                     </p>
                     <a href="{{route('register')}}" class="btn btn-default wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">
-                        SIGN UP now
+                        SIGN UP NOW
                     </a>
                 </div>
             </div>
@@ -232,8 +242,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-center clearfix">
                         <div class="contest_box">
-                            <h2 class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">OPEN CONTEST TO SEE
-                                WHO’S THE BEST</h2>
+                            <h2 class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">OPEN &nbsp; CONTEST &nbsp; TO &nbsp; SEE &nbsp; WHO’S &nbsp; THE &nbsp; BEST</h2>
                             <p class="wow flipInX" data-wow-duration="2s" data-wow-delay="0.5s">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus commodo ex in sapien
                                 euismod,

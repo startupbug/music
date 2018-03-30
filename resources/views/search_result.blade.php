@@ -43,15 +43,18 @@
 </div>
 <div class="container">
   <div class="row">
-
     @if(count($searching_users) == 0)
-      <h1>No track available with this name</h1>
+      <h1>No Artist available with this name</h1>
     @else
     @foreach($searching_users as $searching_user)
       <div class="col-md-2 col-md-6 col-md-12 width_change">
         <a href="{{route('profile',['id'=>$searching_user->id])}}">
         <div class="images_person">
+          @if($searching_user->image == null || $searching_user->image == 0)
+          <img src="{{asset('public/dashboard/profile_images/Default-avatar.jpg')}}" class="img-responsive">
+          @else
           <img src="{{asset('public/dashboard/profile_images/'.$searching_user->image)}}" class="img-responsive">
+          @endif
         </div>
       </a>
       <h3 class="artist">{{$searching_user->name}}
@@ -87,5 +90,4 @@
     @endif
   </div>
 </div>
-
 @endsection
