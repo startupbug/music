@@ -27,6 +27,9 @@ class HomeController extends Controller
       if(Auth::user()->role_id === 2){
             return redirect()->route('main_index');
         }
+        elseif(Auth::user()->role_id === 1){
+            return redirect()->route('is_admin');
+        }
         elseif(Auth::user()->role_id === 3){
             return redirect()->route('promoterindex');
         }

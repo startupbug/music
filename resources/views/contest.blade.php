@@ -1,6 +1,5 @@
 @extends('layouts.public_index')
 @section('content')
-
 <div class="container">
 	<div class="row">
 		<div class="col-md-6">
@@ -16,12 +15,6 @@
 		</div>
 	</div>
 </div>
-
-
-
-
-
-
  <div class="container">
 	<div class="row">
 		<div class="col-md-12">
@@ -31,7 +24,6 @@
 		</div>
 	</div>
 </div>
-
 <div class="container-fluid border_bottom">
 	<div class="container">
 	<div class="row">
@@ -80,8 +72,6 @@
 	</div>
 </div>
 </div>
-
-
 <div class="container-fluid border_bottom">
 	<div class="container">
      <div class="row">
@@ -130,10 +120,6 @@
 	</div>
 </div>
 </div>
-
-
-
-
 <div class="container-fluid border_bottom">
 	<div class="container">
      <div class="row">
@@ -182,8 +168,6 @@
 	</div>
 </div>
 </div>
-
-
 <div class="container-fluid border_bottom">
 	<div class="container">
      <div class="row">
@@ -232,8 +216,6 @@
 	</div>
 </div>
 </div>
-
-
 <div class="container-fluid">
 	<div class="container">
      <div class="row">
@@ -282,9 +264,6 @@
 	</div>
 </div>
 </div>
-
-
-
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
