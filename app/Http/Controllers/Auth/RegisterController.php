@@ -73,9 +73,10 @@ class RegisterController extends Controller
         {
 
              $user =  User::create([
-                'suspend'=> $data['suspend'],
+                'suspend'=> 1,
                 'name' => $data['name'],
                 'email' => $data['email'],
+                'image'=>'default-avatar.png',
                 'password' => bcrypt($data['password']),
                 'role_id' => $data['role_id'],
                 'email_token' => str_random(10),
@@ -89,21 +90,30 @@ class RegisterController extends Controller
 
                 // Mail::to($data['email'])->send(new EmailVerification($user));
                 // auth()->login($user);
+                $email = new EmailVerification(new User(['email_token' => $user->email_token, 'name' => $user->name, 'email'=> $user->email]));
+            Mail::to($user->email)->send($email);
+            DB::commit();
+            Session::flash('message', 'We have sent you a verification email!');
 
                 return $user;
         }
         else
         {
             $user =  User::create([
-                'suspend'=> $data['suspend'],
+                'suspend'=> 1,
                 'name' => $data['name'],
                 'email' => $data['email'],
+                'image'=>'default-avatar.png',
                 'password' => bcrypt($data['password']),
                 'role_id' => $data['role_id'],
                 'email_token' => str_random(10),
                 ]);
             // Mail::to($data['email'])->send(new EmailVerification($user));
             // auth()->login($user);
+            $email = new EmailVerification(new User(['email_token' => $user->email_token, 'name' => $user->name, 'email'=> $user->email]));
+            Mail::to($user->email)->send($email);
+            DB::commit();
+            Session::flash('message', 'We have sent you a verification email!');
             return $user;
         }
 
