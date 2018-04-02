@@ -6,6 +6,7 @@
             <div class="box-header">
                 <h3 class="box-title">Users List</h3>
             </div>
+            @include('general_partials.error_section')
             <!-- /.box-header -->
             <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -15,10 +16,7 @@
                             <th>User Name</th>
                             <th>Email</th>
                             <th>Phone</th>
-                            <th>User Type</th>
-                            <th>Facebook</th>
-                            <th>Instagram</th>
-                            <th>Twitter</th>
+                            <th>User Type</th>                          
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -30,10 +28,7 @@
                             <td>{{$value->username}}</td>
                             <td>{{$value->email}}</td>
                             <td>{{$value->phone}}</td>
-                            <td>{{$value->role_name}}</td>
-                            <td>{{$value->facebook}}</td>
-                            <td>{{$value->instagram}}</td>
-                            <td>{{$value->twitter}}</td>
+                            <td>{{$value->role_name}}</td>                           
                             <td>
                                 @if($value->suspend == '0')
                                 <a class="btn-xs btn-success" href="{{route('suspend-user',['id'=>$value->id])}}" title="Suspend This User">Suspend</a>

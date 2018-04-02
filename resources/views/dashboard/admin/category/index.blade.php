@@ -6,6 +6,7 @@
             <div class="box-header">
                 <h3 class="box-title">Users List</h3>
             </div>
+            @include('general_partials.error_section')
             <!-- /.box-header -->            
             <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped">

@@ -24,15 +24,15 @@ class CategoryController extends Controller
     	return view('dashboard.admin.category.create');
     }
 
-    public function store(Request $Request){
+    public function store(Request $request){
     	$category = new Category;
     	$category->name = $request->name;
     	$category->description = $request->description;
     	if ($category->save()) {
-    		Session::flash('success_msg','You Have Succesfully Created Category');
+            $this->set_session('You Have Succesfully Created Category', true);    		
     		return redirect()->route('categories');
     	}else{
-    		Session::flash('err_msg','Failed To Create Category');
+            $this->set_session('Failed To Create Category', false);    		
     		return redirect()->route('categories');
     	}
     }
@@ -47,18 +47,21 @@ class CategoryController extends Controller
     	$category->name = $request->name;
     	$category->description = $request->description;
     	if ($category->save()) {
-    		Session::flash('success_msg','You Have Succesfully Updated Category');
+            $this->set_session('You Have Succesfully Updated Category', true);    		
     		return redirect()->route('categories');
     	}else{
-    		Session::flash('err_msg','Failed To Update Category');
+            $this->set_session('Failed To Update Category', false);    		
     		return redirect()->route('categories');
     	}
     }
     
     public function destroy(Request $request,$id){
-    	$destroy = Category::find($id);
-    	$destroy->delete();    	
-    	Session::flash('success_msg','You Have Succesfully Deleted Category');
+    	$destroy = Category::find($id);    	
+        if ($destroy->delete()) {
+           $this->set_session('You Have Succesfully Deleted Category', true); 
+        }else{
+            $this->set_session('Something Went Wrong, Try Again Please', false); 
+        }    	
     	return redirect()->route('categories');
     }
 }
