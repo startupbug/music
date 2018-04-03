@@ -1,3 +1,25 @@
+//
+// $(".image_thumbnail").click(function(){
+//     var audio = $(this).siblings();
+//     var audioplayer = "."+audio[0].className;
+//     console.log(audioplayer);
+//     if ($(audioplayer)[0].paused == false) {
+//        $(audioplayer)[0].pause();
+//      } else {
+//         $(audioplayer)[0].play();
+//      }
+// })
+
+
+  $(".image_thumbnail").click(function(){
+      if ($(this).siblings()[0].paused == false) {
+         $(this).siblings()[0].pause();
+       } else {
+          $(this).siblings()[0].play();
+       }
+  })
+
+
 $(document).ready(function () {
     new WOW().init();
     $(window).scroll(function () {

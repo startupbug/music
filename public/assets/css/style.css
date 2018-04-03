@@ -813,7 +813,7 @@ h3.all_album {
     position: relative;
 }
 .bottom_name {
-    
+
     margin-right: 68px;
     margin-top: 10px;
 }
@@ -838,4 +838,16 @@ h3.all_album {
     cursor: default;
     background-color: #cf1828;
     border-color: #eee;
+}
+
+.image_thumbnail {
+    text-align: center;
+    height: 100%;
+    margin-bottom: 0px;
+}
+.image_thumbnail a .s_mask span i {
+    margin-top: 30%;
+}
+.custom_thumbnail{
+  margin-top: 15px; 
 }
