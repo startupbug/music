@@ -101,7 +101,7 @@ class RegisteredController extends Controller
 
     public function setting()
     {
-    	$users = DB::table('users')->where('id', Auth::user()->id)->first();
+        $users = DB::table('users')->where('id', Auth::user()->id)->first();
         // print_r($users->role_id);exit;
         $roles = Role::select('roles.name')->where('roles.id','=',$users->role_id)->first();
         return view('dashboard.user.setting',['user' => $users,'roles'=>$roles]);

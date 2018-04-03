@@ -61,6 +61,17 @@
           </div>
       </div>
     </div>
+     @if(count($errors))
+        <div class="form-group">
+         <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $erroring)
+                  <li>{{$erroring}}  </li>
+                  @endforeach
+            </ul>
+          </div>
+        </div>
+        @endif 
   </div>
   <div class="container">
     <!-- Edit Album Modal -->

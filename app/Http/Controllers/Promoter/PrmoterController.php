@@ -21,7 +21,7 @@ class PrmoterController extends Controller
     public function index()
     {
         $all_albums = Album::take(8)->orderBy('id','DESC')->get();
-    	return view('dashboard.promoter.index',['all_albums'=>$all_albums]);   
+        return view('dashboard.promoter.index',['all_albums'=>$all_albums]);   
     }
 
     public function all_albums($id)
@@ -89,7 +89,7 @@ class PrmoterController extends Controller
                             ->where('invitations.promoter_id','=',Auth::user()->id)
                             ->where('invitations.status','=',0)
                             ->get();      
-    	return view('dashboard.promoter.dashboard_overview')->with($args);
+        return view('dashboard.promoter.dashboard_overview')->with($args);
     }
 
     public function musicvoting_tracks()
@@ -98,7 +98,7 @@ class PrmoterController extends Controller
                             ->where('invitations.promoter_id',Auth::user()->id)
                             ->where('invitations.status',1)                                   
                             ->get();  
-    	return view('dashboard.promoter.musicvoting_tracks')->with($args);
+        return view('dashboard.promoter.musicvoting_tracks')->with($args);
     }
 
     public function redeempoint()
@@ -126,7 +126,7 @@ class PrmoterController extends Controller
             $total_redeemed_points += $value->redeemed_point;
         }   
         $redeemable_points = $total_points - $total_redeemed_points;
-    	return view('dashboard.promoter.redeempoint',['total_points' => $total_points, 'total_redeemed_points' => $total_redeemed_points, 'redeemable_points' => $redeemable_points]);
+        return view('dashboard.promoter.redeempoint',['total_points' => $total_points, 'total_redeemed_points' => $total_redeemed_points, 'redeemable_points' => $redeemable_points]);
     }
 
 
@@ -174,7 +174,7 @@ class PrmoterController extends Controller
     {   
         $args['user'] = DB::table('users')->where('id', Auth::user()->id)->first();
         $args['roles'] = DB::table('roles')->where('id',$args['user']->role_id)->select('roles.name')->first();
-    	return view('dashboard.promoter.setting')->with($args);
+        return view('dashboard.promoter.setting')->with($args);
     }
 
     public function edit($id)

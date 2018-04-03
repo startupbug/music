@@ -1,6 +1,4 @@
 <?php
-
-
 namespace App\Http\Controllers\Musician;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
@@ -32,8 +30,8 @@ class TracksController extends Controller
         ini_set('memory_limit','256M');      
         $this->validate($request, [         
             'name'=> 'required|min:3|max:40|regex:/^[(a-zA-Z\s)]{3,25}+[a-z0-9A-Z ]*/',            
-            'image' => 'required',
-            'video' => 'required'           
+            'image' => 'required|mimes:jpeg,JPEG,jpg,bmp,png',
+            'video' => 'required|mimetypes:video/avi,video/mpeg,video/mp4,mp4,video/quicktime'           
         ]);
         $p = new Track;
         $p->name = Input::get('name');
@@ -83,6 +81,11 @@ class TracksController extends Controller
 
     public function update_track(Request $request, $id)
     {
+         $this->validate($request, [         
+            'name'=> 'required|min:3|max:40|regex:/^[(a-zA-Z\s)]{3,25}+[a-z0-9A-Z ]*/',            
+            'image' => 'required|mimes:jpeg,JPEG,jpg,bmp,png',
+            'video' => 'required|mimetypes:video/avi,video/mpeg,video/mp4,mp4,video/quicktime'           
+        ]);
         $p = Track::find($id);
         $p->name = Input::get('name');
         
@@ -114,6 +117,10 @@ class TracksController extends Controller
 
      public function update_video(Request $request,$id)
     {
+        $this->validate($request, [         
+            'video' => 'required|mimetypes:video/avi,video/mpeg,video/mp4,mp4,video/quicktime'           
+        ]);
+
         $p = Track::find($id);
         if ($request->hasFile('video')) {
           $video=$request->file('video');
@@ -123,7 +130,6 @@ class TracksController extends Controller
         }
         $p->video = $this->UploadFiles('video', Input::file('video'));
         $p->save();
-        
         return redirect()->back();
     }
     public function UploadFiles($type, $files){
