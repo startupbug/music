@@ -60,6 +60,9 @@ Route::group(['prefix' => 'admin','middleware' => 'is-admin'], function () {
     Route::get('delete_contest/{id}', 'Admin\ContestController@destroy')->name('delete_contest');
     Route::get('edit_contest/{id}', 'Admin\ContestController@edit')->name('edit_contest');
     Route::post('update_contest/{id}', 'Admin\ContestController@update')->name('update_contest');
+    Route::get('contest_participant/{id}', 'Admin\ContestController@contest_participant')->name('contest_participant');
+    Route::get('/accept_request/{id}/', ["as" => "accept-request", "uses" => "Admin\ContestController@accept_request"]);
+    Route::get('/reject_request/{id}/', ["as" => "reject-request", "uses" => "Admin\ContestController@reject_request"]);
     
     Route::get('/logout_admin', 'Admin\AdminController@admin_logout')->name('logout_admin');
 });

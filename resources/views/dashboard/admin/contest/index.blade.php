@@ -20,6 +20,8 @@
                             <th>Name</th>
                             <th>Contest Type</th>                           
                             <th>Description</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -29,6 +31,8 @@
                             <td>{{$value->name}}</td>
                             <td>{{$value->contest_type}}</td>
                             <td>{{$value->description}}</td>                           
+                            <td>{{ date('d-m-Y', strtotime($value->start_date)) }}</td>                           
+                            <td>{{ date('d-m-Y', strtotime($value->end_date)) }}</td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Action
@@ -36,12 +40,13 @@
                                       <ul class="dropdown-menu">
                                         <li><a href="{{route('edit_contest',['id'=>$value->id])}}">Edit</a></li>
                                         <li><a href="{{route('delete_contest',['id'=>$value->id])}}">Delete</a></li>
+                                        <li><a href="{{route('contest_participant',['id'=>$value->id])}}">Participants</a></li>
                                     </ul>
                                 </div>
                             </td>
                         </tr>
                         @endforeach                           
-                    </tbody>
+                    </tbody>    
                 </table>
                 <div class="s_button">
                     <a class="btn btn-primary" href="{{route('create_contest')}}">Create</a>

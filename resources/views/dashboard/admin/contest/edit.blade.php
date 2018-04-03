@@ -24,6 +24,19 @@
                 <input type="text" name="description" value="{{$edit->description}}" class="form-control"  placeholder="Description">
               </div>
             </div>  
+
+            <div class="form-group">
+              <label for="inputName" class="col-sm-2 control-label">Start Date</label>
+              <div class="col-sm-10">
+                <input type="date" name="start_date" class="form-control" placeholder="Start Date"  value="{{ date('Y-m-d', strtotime($edit->start_date))}}"> 
+              </div>
+            </div>  
+            <div class="form-group">
+              <label for="inputName" class="col-sm-2 control-label">End Date</label>
+              <div class="col-sm-10">
+                <input type="date" name="end_date" value="{{ date('Y-m-d', strtotime($edit->end_date)) }}" class="form-control"  placeholder="End Date">
+              </div>
+            </div>  
             <div class="form-group">
               <label for="inputName" class="col-sm-2 control-label">Contest Title</label>
               <div class="col-sm-10">
