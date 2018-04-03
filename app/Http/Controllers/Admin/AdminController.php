@@ -14,6 +14,7 @@ use Session;
 use App\Track;
 use App\Rating;
 use App\Comment;
+use App\RedeemedPoint;
 use App\Category;
 use App\Album;
 use App\Album_Video;
@@ -108,9 +109,35 @@ class AdminController extends Controller
     }
 
     public function unsuspend_user(Request $request, $id){
-            DB::table('users')
+            DB::table('redeemed_points')
             ->where('id', $id)
             ->update(['suspend' => 0]);       
         return redirect()->back();
+    }
+
+    public function redeem_index(){
+        $args['redeemed_points'] = RedeemedPoint::leftJoin('users','users.id','=','redeemed_points.user_id')->select('users.name','users.email','users.phone','users.username','redeemed_points.id','redeemed_points.redeemed_point','redeemed_points.status')->orderBy('redeemed_points.id' ,'DESC')->get();
+        return view('dashboard.admin.redeem.index')->with($args);
+    }
+
+    public function accept_redeem_request(Request $request, $id){
+        // dd('123');
+        DB::table('redeemed_points')
+            ->where('id', $id)
+            ->update(['status' => 1]);       
+        return redirect()->back();
+    }
+
+    public function reject_redeem_request(Request $request, $id){
+        // dd('456');
+        DB::table('redeemed_points')
+            ->where('id', $id)
+            ->update(['status' => 0]);       
+        return redirect()->back();
+    }
+
+    public function admin_logout(Request $request) {     
+      Auth::logout();
+      return redirect('/');
     }
 }

@@ -55,12 +55,10 @@ class PagesController extends Controller
         ->inRandomOrder()
         ->take(12)
         ->get();
-        $rand_num  = rand(0,11);
-        //dd($args['tracks']);
-        if(count($args['tracks']) != 0)
-        {
-            $args['abc'] = $args['tracks'][$rand_num];
-        }
+
+        
+        $args['abc'] = $args['tracks'];
+        
         
         // dd(1234);
         $ratings[]=0;

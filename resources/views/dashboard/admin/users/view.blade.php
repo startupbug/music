@@ -59,7 +59,7 @@
                   <div class="form-group">
                     <label for="inputStatus" class="col-sm-2 control-label">Status</label>
                     <div class="col-sm-10">
-                     <p>Admin</p>
+                     <p>{{$roles->name}}</p>
                     </div>
                   </div>                 
                    <div class="form-group">

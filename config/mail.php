@@ -55,10 +55,14 @@ return [
     |
     */
 
-    'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
-    ],
+    'from' => ['address' => 'hasan.aimviz@gmail.com', 'name' => 'Music Voting'],
+
+    // 'from' => [
+    //     'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+    //     'name' => env('MAIL_FROM_NAME', 'Music Voting'),
+    // ],
+
+    // 'from' => array('address' => 'application@whatever.com', 'name' => '< Music Voting >'),
 
     /*
     |--------------------------------------------------------------------------

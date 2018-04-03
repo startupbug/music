@@ -154,7 +154,7 @@ class RegisterController extends Controller
         //Redirect Login with Message
 
     }else{
-        //Redirect kisi aur apge with Message
+        //Redirect kisi aur apge with Message\
 
     }
 

@@ -60,7 +60,7 @@
       </div>
       <div class="col-md-3 col-sm-6 col-xs-6">
         <h4 class="font-conv">{{$total_points}}</h4>
-        <h4 class="font-conv">{{$total_points_in_this_month}}</h4>
+        @if(isset($total_points_in_this_month))<h4 class="font-conv">{{$total_points_in_this_month}}</h4>@endif
         <h4 class="font-conv">{{$total_redeemed_points}}</h4>
         <h4 class="font-conv">{{$redeemable_points}}</h4>
       </div>

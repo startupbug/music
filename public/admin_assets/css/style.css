@@ -27,8 +27,27 @@
     position: absolute;
     bottom: 20px;
   }
+<<<<<<< HEAD
+/*Profile Picture Camera Icon*/
+
+/*Create Button Css On Category Page Started*/
+  .s_button{
+    position: absolute;
+    top: 48px;
+    right: 60px;
+  }
+  @media only screen and (min-width: 320px) and (max-width: 767px) {
+      .s_button{
+      position: absolute;
+      top: 143px;
+      right: 12px;
+    }
+  }
+/*Create Button Css On Category Page Ended*/
+=======
 
   .pagination a {
     color:red;
   }
 /*Profile Picture Camera Icon*/
+>>>>>>> e5f7b1bcc6f9756c369f18ce6c391689cb058581
