@@ -3,7 +3,7 @@
 
 <div class="col-md-9">
     <h3 class="heading_dashboard">
-        PROMOTER &nbsp; DASHBOARD
+        PROMOTER &nbsp; DASHBOARD 
     </h3>
     <div class="border_red">
         <h3 class="album">
@@ -28,7 +28,7 @@
     <div class="row">
          @foreach($all_albums as $albums)
         <div class="col-md-3 col-sm-6 col-xs-12">
-            <a href="{{route('all_albums',['id'=>$albums->id])}}">
+            <a href="{{route('promoter_all_albums',['id'=>$albums->id])}}">
             <div class="dashboard_album">
               <img src="{{asset('public/dashboard/musician/albums/images/'.$albums->image)}}" class="img-responsive" style="height: 170px; width: 100%;">
             </div>

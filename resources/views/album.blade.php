@@ -6,7 +6,6 @@
 
     
   <div class="col-md-12">
-    
     <div class="row">
       <div class="col-md-10">
         <h3 class="all_album">
@@ -53,6 +52,9 @@
         </div>
       </div>
       @endforeach
+      @if(count($album_tracks) == 0)
+        <h1>There is no tracks to display</h1>
+    @endif
     </div>
   </div>
 

@@ -36,9 +36,6 @@
     <div class="col-md-6">
       <h1 class="left_heading">ARTIST</h1>
     </div>
-    <div class="col-md-6">
-      <h1 class="right_heading">SEE MORE</h1>
-    </div>
   </div>
 </div>
 <div class="container">

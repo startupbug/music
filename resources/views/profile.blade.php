@@ -54,7 +54,7 @@
             <div class="col-md-3 col-lg-3 " align="center">
               <div class="image_profile">
                 @if($userInfo->image == null)
-                  <img src="{{asset('public/dashboard/profile_images/Default-avatar.jpg')}}" class="img-circle img-responsive">
+                  <img src="{{asset('public/dashboard/profile_images/default-avatar.png')}}" class="img-circle img-responsive">
                 @else
                   <img src="{{asset('public/dashboard/profile_images/'. $userInfo->image )}}" class="img-circle img-responsive">
                 @endif
@@ -71,9 +71,7 @@
   <div class="container">
     <h1 class="profileName">{{ $userInfo->name}} ALBUMS</h1>
     @foreach($albumss as $album)
-      @if(empty($album))
-        <h1>There is no album to display</h1>
-      @endif
+      
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="box"> 
           <a href="{{route('album_view',['id' => $album->id])}}"> 
@@ -95,9 +93,6 @@
   <div class="container">
 	  <h1 class="profileName">{{ $userInfo->name}} TRACKS</h1>
     @foreach($tracks as $track)
-      @if(empty($track))
-        <h1>There is no Track to display</h1>
-      @endif
       <div class="col-md-3 col-sm-6 col-xs-12">
         <a href="{{route('musicvoting_genre',['id' => $track->id])}}">
           <div class="box">  
@@ -112,7 +107,10 @@
           {{$track->name}}
         </h3>      
       </div>
-    @endforeach 	
+    @endforeach
+    @if(count($tracks) == 0)
+      <h1>There is no Track to display</h1>
+    @endif 	
   </div>
 </section>
 @endif

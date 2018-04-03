@@ -126,7 +126,7 @@ Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'Promoter\Prm
     Route::get('/unapproved_invitations','Promoter\PrmoterController@unapproved_invitations')->name('unapproved_invitations');
     Route::get('/approve_status/{id}/', ["as" => "approve-status", "uses" => "Promoter\PrmoterController@approve_status"]);
     Route::get('/disapprove_status/{id}/', ["as" => "disapprove-status", "uses" => "Promoter\PrmoterController@disapprove_status"]);
-    Route::get('/albums/{id}','Promoter\PrmoterController@all_albums')->name('all_albums');
+    Route::get('/all_albums/{id}/','Promoter\PrmoterController@all_albums')->name('promoter_all_albums');
     Route::get('delete_image','Promoter\PrmoterController@delete_image')->name('delete_image2');
     Route::get('/promoter_logout', 'Promoter\PrmoterController@promoter_logout')->name('logout_promoter');
     //promoter_redeemed_request
@@ -200,7 +200,7 @@ Route::get('home1', 'HomeController@user_dashboard')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/search_result','PagesController@search_result')->name('search_result');
+Route::get('/search_result','PagesController@search_result')->name('search_result');
 
 
 Route::get('/getAffiliatedID', 'PagesController@getAffiliatedID')->name('getAffiliatedID');

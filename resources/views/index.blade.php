@@ -130,7 +130,7 @@
                     <a href="{{route('album_view',['id' => $value->album_id])}}">
                         <img src="{{asset('public//dashboard/musician/albums/images/'.$value->album_image)}}" class="img-responsive center-block" style="height:150px;"/>
                     </a>
-                    <p><a href="#"><b>{{$value->album_name}}</b></a></p>
+                    <p><a href="{{route('album_view',['id'=>$value->album_id])}}"><b>{{$value->album_name}}</b></a></p>
                     <a href="{{route('profile',['id'=>$value->album_user_id])}}"><p>{{$value->user_name}}</p></a>
                 </div>
             </div>

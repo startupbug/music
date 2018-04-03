@@ -33,6 +33,9 @@ class PagesController extends Controller
 
     public function contest()
     {
+        // $contest = DB::table('contests')->get();
+        // dd($contest);
+    
         return view('contest');
     }
 
@@ -357,18 +360,17 @@ class PagesController extends Controller
                             $view_count_exist = $view_count_exist + 1;
                             $view_count_exist = DB::table('tracks')->where('id',$id)->update(['view_count' => $view_count_exist]);
                         }
-                    }
-                    else
-                    {
-                        //user not loggedin
-                        $view_count_exist = $view_count_exist + 1;
-                        $view_count_exist = DB::table('tracks')->where('id',$id)->update(['view_count' => $view_count_exist]);
-                    }
+                }
+                else
+                {
+                    //user not loggedin
+                    $view_count_exist = $view_count_exist + 1;
+                    $view_count_exist = DB::table('tracks')->where('id',$id)->update(['view_count' => $view_count_exist]);
+                }
 
 
             return view('musicvoting_genre',['track_video' => $track_video , 'track_uploader' => $track_uploader , 'commenting' => $commenting, 'albums_tracks' => $albums_tracks, 'name' => $name])->with($args);
         }
-
         else
         {
        // dd($id);

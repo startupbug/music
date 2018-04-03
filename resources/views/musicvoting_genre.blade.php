@@ -82,7 +82,7 @@
                           </div>
                           @else
                           <div class="avatar">
-                            <img src="{{asset('public/dashboard/profile_images/Default-avatar.jpg')}}">
+                            <img src="{{asset('public/dashboard/profile_images/default-avatar.png')}}">
                           </div>
                           @endif
                         </div>

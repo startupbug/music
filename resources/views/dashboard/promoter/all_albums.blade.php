@@ -30,7 +30,6 @@
     </div>
       @endforeach
     </div>
-    <hr class="line">
     <div class="row">
       <div class="col-md-10 color_bottom">
         <h3 class="all_album">
