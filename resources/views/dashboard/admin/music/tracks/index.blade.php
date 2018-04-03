@@ -6,6 +6,7 @@
             <div class="box-header">
                 <h3 class="box-title">Tracks List</h3>
             </div>
+            @include('general_partials.error_section')
             <!-- /.box-header -->
             <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -18,14 +19,14 @@
                             <th>Views</th>
                             <th>Status</th>
                             <th>Featured</th>
-                            <th>Contest</th>
+                            <th>Contest Participation</th>
                             <!-- <th style="text-align: center;">Action</th>                           -->
                         </tr>
                     </thead>
                     <tbody>                       
                         @foreach($index as $value)
                             <tr>
-                                <td>{{$value->track_name}}</td>                                                 
+                                <td> <a href="{{route('musicvoting_genre',['id'=>$value->id])}}">{{$value->track_name}} </a></td>                                                 
                                 <td>{{$value->user_name}}</td>                                                 
                                 <td>{{$value->category_name}}</td>                                                 
                                 <td>{{$value->description}}</td>  
@@ -46,9 +47,9 @@
                                 </td>                                                 
                                 <td style="width: 140px;">
                                     @if($value->contest == '0')
-                                    <a class="btn-xs btn-danger" href="">Not Participated</a>
+                                    <a class="btn-xs btn-danger" href="">Rejected</a>
                                     @else
-                                    <a class="btn-xs btn-success" href="">Participated</a>
+                                    <a class="btn-xs btn-success" href="">Accepted</a>
                                     @endif
                                 </td>                                               
                                <!--  <td style="text-align: center;">

@@ -67,7 +67,7 @@ class AdminController extends Controller
         $u->twitter = Input::get('twitter');
         $u->instagram = Input::get('instagram');
         $u->save();
-        Session::flash('status','your information is updated');
+        $this->set_session('Your information is updated', true);
         return redirect()->route('profile_view');  
     }
 
@@ -91,7 +91,7 @@ class AdminController extends Controller
         $u->twitter = Input::get('twitter');
         $u->instagram = Input::get('instagram');
         $u->save();
-        Session::flash('status','your information is updated');
+        $this->set_session('Your information is updated', true);       
         return redirect()->route('users');  
     }
 
@@ -104,14 +104,16 @@ class AdminController extends Controller
     public function suspend_user(Request $request, $id){
         DB::table('users')
             ->where('id', $id)
-            ->update(['suspend' => 1]);       
+            ->update(['suspend' => 1]); 
+        $this->set_session('You Have Successfully Suspended User ', true);      
         return redirect()->back();
     }
 
     public function unsuspend_user(Request $request, $id){
-            DB::table('redeemed_points')
+            DB::table('users')
             ->where('id', $id)
-            ->update(['suspend' => 0]);       
+            ->update(['suspend' => 0]); 
+        $this->set_session('You Have Successfully UnSuspended User ', true);      
         return redirect()->back();
     }
 
@@ -124,7 +126,8 @@ class AdminController extends Controller
         // dd('123');
         DB::table('redeemed_points')
             ->where('id', $id)
-            ->update(['status' => 1]);       
+            ->update(['status' => 1]);  
+        $this->set_session('You Have Successfully Accepted Points Redeem Request ', true);      
         return redirect()->back();
     }
 
@@ -132,7 +135,8 @@ class AdminController extends Controller
         // dd('456');
         DB::table('redeemed_points')
             ->where('id', $id)
-            ->update(['status' => 0]);       
+            ->update(['status' => 0]);   
+        $this->set_session('You Have Successfully Rejected Points Redeem Request ', true);     
         return redirect()->back();
     }
 
