@@ -52,14 +52,14 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                     <ul class="social_icon_footer">
-                            <li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></a></i></li>
-                            <li><a href="https://twitter.com/"  target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></a></i></li>
-                            <li><a href="https://plus.google.com"  target="_blank"><i class="fa fa-google-plus-square" aria-hidden="true"></a></i></li>
-                        </ul>
-                        <h3 class="subscribe">
-                         SUBSCRIBE TO OUR NEWSLETTER!
-                     </h3>
-                    <div class="well">
+                        <li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></a></i></li>
+                        <li><a href="https://twitter.com/"  target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></a></i></li>
+                        <li><a href="https://plus.google.com"  target="_blank"><i class="fa fa-google-plus-square" aria-hidden="true"></a></i></li>
+                    </ul>
+                    <h3 class="subscribe">
+                     SUBSCRIBE TO OUR NEWSLETTER!
+                    </h3>
+                    <!-- <div class="well">
                        <form action="{{route('subscribe')}}" method="POST">
                         {!! csrf_field() !!}
                           <div class="input-group">
@@ -67,7 +67,16 @@
                            <button class="btn btn-info btn-lg footer" type="submit">SUBSCRIBE</button>
                        </div>
                        </form>
-                    </div>
+                    </div> -->
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 col-md-offset-8">
+                  <form action="{{route('subscribe')}}" method="POST">
+                   {!! csrf_field() !!}
+                     <div class="input-group">
+                        <input class="s_footer_text footer text-dark" name="myemail" id="myemail" type="email" placeholder="Email Address" style="color:black" required>
+                        <button class="btn btn-info btn-lg footer" type="submit">SUBSCRIBE</button>
+                     </div>
+                  </form>
                 </div>
             </div>
         </div>
@@ -96,18 +105,18 @@
                         {{ csrf_field() }}
             <div class="form-group validationEmail">
               <input type="email" name="email" class="form-control red-color" id="loginemail" placeholder="Email">
-                    
+
                 <span class="help-block validationEmail">
                     <strong id="display_error"></strong>
                 </span>
             </div>
             <div class="form-group validationPassword">
               <input type="password" name="password" class="form-control red-color" id="pwd" placeholder="Password">
-                   
+
                     <span class="help-block validationPassword">
                         <strong id="display_error"></strong>
                     </span>
-                    
+
             </div>
             <div class="form-group">
               <input type="submit" class="btn btn-default" style="width:100%" id="submit_login" name="submit" value="Submit">
@@ -176,5 +185,3 @@
     </div>
 </div>
 </div>
-
-
