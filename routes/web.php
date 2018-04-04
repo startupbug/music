@@ -18,6 +18,7 @@
 Route::group(['prefix' => 'admin','middleware' => 'is-admin'], function () {
     Route::get('/index', 'Admin\AdminController@is_admin')->name('is_admin');
     Route::post('AdminImageUpload',['as'=>'AdminImageUpload','uses'=>'Admin\AdminController@AdminImageUpload']);
+    Route::post('admin_update_password', 'Admin\AdminController@admin_update_password')->name('admin_update_password');
     // Admin Profile Controlling Routes
     Route::get('/profile', 'Admin\AdminController@profile_view')->name('profile_view');
     Route::get('/edit_profile/{id}', 'Admin\AdminController@edit_admin_profile')->name('edit_admin');
@@ -31,7 +32,7 @@ Route::group(['prefix' => 'admin','middleware' => 'is-admin'], function () {
 
     Route::get('/suspend_user/{id}/', ["as" => "suspend-user", "uses" => "Admin\AdminController@suspend_user"]);
     Route::get('/unsuspend_user/{id}/', ["as" => "unsuspend-user", "uses" => "Admin\AdminController@unsuspend_user"]);
-    
+
     // Category Controlling Routes
     Route::get('categories', 'Admin\CategoryController@index')->name('categories');
     Route::get('create_category', 'Admin\CategoryController@create')->name('create_category');
@@ -43,7 +44,7 @@ Route::group(['prefix' => 'admin','middleware' => 'is-admin'], function () {
     // Tracks/Albums Controlling Routes
     Route::get('tracks', 'Admin\MusicController@track_index')->name('tracks');
     Route::get('albums', 'Admin\MusicController@album_index')->name('albums');
-    
+
     Route::get('/featured/{id}/', ["as" => "approve-admin-featured", "uses" => "Admin\MusicController@admin_approve_featured"]);
     Route::get('/un_featured/{id}/', ["as" => "disapprove-admin-featured", "uses" => "Admin\MusicController@admin_disapprove_featured"]);
 
@@ -53,7 +54,7 @@ Route::group(['prefix' => 'admin','middleware' => 'is-admin'], function () {
     Route::get('/redeem','Admin\AdminController@redeem_index')->name('redeem_index');
     Route::get('/accept_redeem_request/{id}/', ["as" => "accept-redeem-request", "uses" => "Admin\AdminController@accept_redeem_request"]);
     Route::get('/reject_redeem_request/{id}/', ["as" => "reject-redeem-request", "uses" => "Admin\AdminController@reject_redeem_request"]);
-  
+
     Route::get('/contest','Admin\ContestController@contest_index')->name('contest_index');
     Route::get('create_contest', 'Admin\ContestController@create')->name('create_contest');
     Route::post('create_new_contest', 'Admin\ContestController@store')->name('create_new_contest');
@@ -61,21 +62,23 @@ Route::group(['prefix' => 'admin','middleware' => 'is-admin'], function () {
     Route::get('edit_contest/{id}', 'Admin\ContestController@edit')->name('edit_contest');
     Route::get('view_contest/{id}', 'Admin\ContestController@view_contest')->name('view_contest');
     Route::post('update_contest/{id}', 'Admin\ContestController@update')->name('update_contest');
+
+
     Route::get('contest_participant/{id}', 'Admin\ContestController@contest_participant')->name('contest_participant');
     Route::get('/accept_request/{id}/', ["as" => "accept-request", "uses" => "Admin\ContestController@accept_request"]);
     Route::get('/reject_request/{id}/', ["as" => "reject-request", "uses" => "Admin\ContestController@reject_request"]);
-    
+
     Route::get('/logout_admin', 'Admin\AdminController@admin_logout')->name('logout_admin');
 });
 
-
+Route::get('/contest_listing','PagesController@contest_listing')->name('contest_listing');
 Route::get('/','PagesController@index')->name('home1');
 Route::get('/profile/{id}','PagesController@profile')->name('profile');
 Route::post('/submit_rating','PagesController@submit_rating')->name('submit_rating');
 Route::post('/submit_points','PagesController@submit_points')->name('submit_points');
 Route::post('/download_file/{file_name}/{track_id}/{name?}','PagesController@download_file')->name('download_file');
 
-Route::get('register/verify/{token}', 'Auth\RegisterController@verify')->name('verified_email'); 
+Route::get('register/verify/{token}', 'Auth\RegisterController@verify')->name('verified_email');
 
 
 
@@ -114,8 +117,8 @@ Route::get('/terms','PagesController@terms')->name('terms');
 
 Route::get('/privacy','PagesController@privacy')->name('privacy');
 
-Route::group(['prefix' => 'promoter', 'middleware' => 'promoter'], function () {  
-Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'Promoter\PrmoterController@promoter_image']);   
+Route::group(['prefix' => 'promoter', 'middleware' => 'promoter'], function () {
+Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'Promoter\PrmoterController@promoter_image']);
     Route::get('/promoterindex','Promoter\PrmoterController@index')->name('promoterindex');
     Route::get('/promoterdashboard','Promoter\PrmoterController@dashboard_overview')->name('promoterdashboard');
     Route::get('/musicvoting_tracks','Promoter\PrmoterController@musicvoting_tracks')->name('promotermusicvoting_tracks');
@@ -138,7 +141,7 @@ Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'Promoter\Prm
 });
 
 
-Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {  
+Route::group(['prefix' => 'user', 'middleware' => 'is-user'], function () {
    Route::post('userImageUpload',['as'=>'userImageUpload','uses'=>'User\RegisteredController@user_image']);
    Route::get('/index','User\RegisteredController@index')->name('user_index');
    Route::get('/setting','User\RegisteredController@setting')->name('user_setting');
