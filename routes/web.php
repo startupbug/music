@@ -62,6 +62,9 @@ Route::group(['prefix' => 'admin','middleware' => 'is-admin'], function () {
     Route::post('update_contest/{id}', 'Admin\ContestController@update')->name('update_contest');
 
 
+    Route::get('contest_participant/{id}', 'Admin\ContestController@contest_participant')->name('contest_participant');
+    Route::get('/accept_request/{id}/', ["as" => "accept-request", "uses" => "Admin\ContestController@accept_request"]);
+    Route::get('/reject_request/{id}/', ["as" => "reject-request", "uses" => "Admin\ContestController@reject_request"]);
 
     Route::get('/logout_admin', 'Admin\AdminController@admin_logout')->name('logout_admin');
 });
