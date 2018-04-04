@@ -79,7 +79,7 @@ class ContestController extends Controller
                         ->leftJoin('contests','contests.id','=','request_contest.contest_id')
                         ->leftJoin('users','users.id','=','request_contest.user_id')
                         ->leftJoin('tracks','tracks.id','=','request_contest.track_id')
-                        ->select('request_contest.id','request_contest.status','contests.name as contest_name','users.name as user_name','tracks.name as track_name')
+                        ->select('request_contest.id','users.id as user_id','tracks.id as track_id','request_contest.status','contests.name as contest_name','users.name as user_name','tracks.name as track_name')
                         ->get();
         return view('dashboard.admin.contest.request',['participants'=>$participants]);
                                 

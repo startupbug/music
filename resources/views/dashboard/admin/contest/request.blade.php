@@ -22,8 +22,8 @@
                         @foreach($participants as $value)
                         <tr>
                             <td>{{$value->contest_name}}</td>
-                            <td>{{$value->user_name}}</td>
-                            <td>{{$value->track_name}}</td> 
+                            <td> <a href="{{route('view_user_profile',['id'=>$value->user_id])}}">{{$value->user_name}}</a></td>
+                            <td> <a href="{{route('musicvoting_genre',['id'=>$value->track_id])}}">{{$value->track_name}}</a></td>                            
                             <td>
                                 @if($value->status == '0')
                                     <a class="btn-xs btn-danger" href="{{route('accept-request',['id'=>$value->id])}}" title="Accept This Request">Rejected</a>
@@ -34,10 +34,7 @@
                         </tr>
                         @endforeach                           
                     </tbody>
-                </table>
-                <div class="s_button">
-                    <a class="btn btn-primary" href="{{route('create_contest')}}">Create</a>
-                </div>
+                </table> 
             </div>
             <!-- /.box-body -->
         </div>
