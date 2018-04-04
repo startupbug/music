@@ -30,6 +30,12 @@ class ContestController extends Controller
     public function create(){
     	return view('dashboard.admin.contest.create');
     }
+    public function view_contest(Request $request,$id){
+        $view = Contest::leftJoin('contest_types','contest_types.id','=','contests.contest_type')
+                                    ->select('contest_types.name as contest_type','contests.name','contests.contest_image','contests.start_date','contests.end_date','contests.id','contests.description')
+                                    ->find($id);
+        return view('dashboard.admin.contest.view',['view'=>$view]);
+    }
     public function store(Request $request){
     	$store = new Contest;
     	$store->name = $request->name;
@@ -37,6 +43,14 @@ class ContestController extends Controller
         $store->end_date = $request->end_date;
     	$store->start_date = $request->start_date;
     	$store->description = $request->description;
+        //updating file if Present
+        if ($request->hasFile('contest_image')) {
+              $image=$request->file('contest_image');
+              $filename= $request->file('contest_image') . '.' .time() . '.' . $image->getClientOriginalExtension();          
+              $location=public_path('public/storage/contest_images/'.$filename);
+              $store->contest_image=$filename;         
+        }
+        $store->contest_image = $this->UploadImage('contest_image', Input::file('contest_image'));  
     	if ($store->save()) {
     		Session::flash('success_msg','You have successfully saved the contest');
     		return redirect()->route('contest_index');
@@ -58,6 +72,14 @@ class ContestController extends Controller
         $category->contest_type = $request->contest_type;
         $category->end_date = $request->end_date;
         $category->start_date = $request->start_date;
+        //updating file if Present
+        if ($request->hasFile('contest_image')) {
+              $image=$request->file('contest_image');
+              $filename= $request->file('contest_image') . '.' .time() . '.' . $image->getClientOriginalExtension();          
+              $location=public_path('public/storage/contest_images/'.$filename);
+              $category->contest_image=$filename;         
+        }
+        $category->contest_image = $this->UploadImage('contest_image', Input::file('contest_image')); 
         if ($category->save()) {
             Session::flash('success_msg','You Have Succesfully Updated Contest');
             return redirect()->route('contest_index');
@@ -65,6 +87,15 @@ class ContestController extends Controller
             Session::flash('err_msg','Failed To Update Contest');
             return redirect()->route('contest_index');
         }
+    }
+
+    public function UploadImage($type, $file){
+        if( $type == 'contest_image'){
+        $path = 'public/storage/contest_images/';
+        }
+        $filename = md5($file->getClientOriginalName() . time()) . '.' . $file->getClientOriginalExtension();
+        $file->move( $path , $filename);
+        return $filename;
     }
     
     public function destroy(Request $request,$id){

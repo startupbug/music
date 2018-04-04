@@ -59,6 +59,7 @@ Route::group(['prefix' => 'admin','middleware' => 'is-admin'], function () {
     Route::post('create_new_contest', 'Admin\ContestController@store')->name('create_new_contest');
     Route::get('delete_contest/{id}', 'Admin\ContestController@destroy')->name('delete_contest');
     Route::get('edit_contest/{id}', 'Admin\ContestController@edit')->name('edit_contest');
+    Route::get('view_contest/{id}', 'Admin\ContestController@view_contest')->name('view_contest');
     Route::post('update_contest/{id}', 'Admin\ContestController@update')->name('update_contest');
     Route::get('contest_participant/{id}', 'Admin\ContestController@contest_participant')->name('contest_participant');
     Route::get('/accept_request/{id}/', ["as" => "accept-request", "uses" => "Admin\ContestController@accept_request"]);
