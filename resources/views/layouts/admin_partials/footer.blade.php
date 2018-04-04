@@ -1,10 +1,8 @@
 <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
+    <div class="pull-right hidden-xs">      
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-    reserved.
+    <strong><a href="#">Music Voting Admin Panel 2018 </a>.</strong>
   </footer>
 <!-- jQuery 3 -->
   <script src="{{asset('public/admin_assets/bower_components/jquery/dist/jquery.min.js')}}"></script>

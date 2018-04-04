@@ -10,7 +10,7 @@
       <div class="tab-content">       
         <!-- /.tab-pane -->
         <div class="tab-pane active" id="settings">
-          <form class="form-horizontal" action="{{route('create_new_contest')}}" method="post">
+          <form class="form-horizontal" action="{{route('create_new_contest')}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="form-group">
               <label for="inputName" class="col-sm-2 control-label">Contest Title</label>
@@ -37,7 +37,7 @@
               </div>
             </div>                      
             <div class="form-group">
-              <label for="inputName" class="col-sm-2 control-label">Contest Title</label>
+              <label for="inputName" class="col-sm-2 control-label">Contest Type</label>
               <div class="col-sm-10">
                 <select name="contest_type" class="form-control">
                   <option disabled="" selected="">Select Contest Type</option>
@@ -46,6 +46,24 @@
                   <option value="3">Monthly</option>
                 </select>
               </div>
+            </div>
+            <div class="form-group">
+                <label for="inputCountry" class="col-sm-2 control-label">Contest Image</label>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input type="file" name="contest_image" class="filePath" data-class="img1">
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="" class="img1" download>
+                                <img src="" class="img1" width="50px"/>
+                                <span class="img1" style="display:none; color:#FF0000;">
+                                File Download
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">

@@ -18,11 +18,12 @@
 Route::group(['prefix' => 'admin','middleware' => 'is-admin'], function () {
     Route::get('/index', 'Admin\AdminController@is_admin')->name('is_admin');
     Route::post('AdminImageUpload',['as'=>'AdminImageUpload','uses'=>'Admin\AdminController@AdminImageUpload']);
+    Route::post('admin_update_password', 'Admin\AdminController@admin_update_password')->name('admin_update_password');
     // Admin Profile Controlling Routes
     Route::get('/profile', 'Admin\AdminController@profile_view')->name('profile_view');
     Route::get('/edit_profile/{id}', 'Admin\AdminController@edit_admin_profile')->name('edit_admin');
     Route::post('update_admin_profile/{id}',['as'=>'update_admin_profile','uses'=>'Admin\AdminController@update_admin_profile']);
-
+    
     // Users Controlling Routes
     Route::get('/users', 'Admin\AdminController@users')->name('users');
     Route::get('/edit_user_profile/{id}', 'Admin\AdminController@edit_user_profile')->name('edit_user_profile');
@@ -59,6 +60,7 @@ Route::group(['prefix' => 'admin','middleware' => 'is-admin'], function () {
     Route::post('create_new_contest', 'Admin\ContestController@store')->name('create_new_contest');
     Route::get('delete_contest/{id}', 'Admin\ContestController@destroy')->name('delete_contest');
     Route::get('edit_contest/{id}', 'Admin\ContestController@edit')->name('edit_contest');
+    Route::get('view_contest/{id}', 'Admin\ContestController@view_contest')->name('view_contest');
     Route::post('update_contest/{id}', 'Admin\ContestController@update')->name('update_contest');
 
 

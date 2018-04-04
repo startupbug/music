@@ -17,7 +17,7 @@
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>Name</th>                            
                             <th>Contest Type</th>                           
                             <th>Description</th>
                             <th>Start Date</th>
@@ -38,6 +38,7 @@
                                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Action
                                       <span class="caret"></span></button>
                                       <ul class="dropdown-menu">
+                                        <li><a href="{{route('view_contest',['id'=>$value->id])}}">View</a></li>
                                         <li><a href="{{route('edit_contest',['id'=>$value->id])}}">Edit</a></li>
                                         <li><a href="{{route('delete_contest',['id'=>$value->id])}}">Delete</a></li>
                                         <li><a href="{{route('contest_participant',['id'=>$value->id])}}">Participants</a></li>
