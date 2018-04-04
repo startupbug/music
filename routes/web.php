@@ -53,6 +53,13 @@ Route::group(['prefix' => 'admin','middleware' => 'is-admin'], function () {
     Route::get('/redeem','Admin\AdminController@redeem_index')->name('redeem_index');
     Route::get('/accept_redeem_request/{id}/', ["as" => "accept-redeem-request", "uses" => "Admin\AdminController@accept_redeem_request"]);
     Route::get('/reject_redeem_request/{id}/', ["as" => "reject-redeem-request", "uses" => "Admin\AdminController@reject_redeem_request"]);
+  
+    Route::get('/contest','Admin\ContestController@contest_index')->name('contest_index');
+    Route::get('create_contest', 'Admin\ContestController@create')->name('create_contest');
+    Route::post('create_new_contest', 'Admin\ContestController@store')->name('create_new_contest');
+    Route::get('delete_contest/{id}', 'Admin\ContestController@destroy')->name('delete_contest');
+    Route::get('edit_contest/{id}', 'Admin\ContestController@edit')->name('edit_contest');
+    Route::post('update_contest/{id}', 'Admin\ContestController@update')->name('update_contest');
     
     Route::get('/logout_admin', 'Admin\AdminController@admin_logout')->name('logout_admin');
 });

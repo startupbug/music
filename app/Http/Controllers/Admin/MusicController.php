@@ -13,6 +13,7 @@ use App\User;
 use App\Role;
 use App\Track;
 use App\Album;
+use App\Album_Video;
 use Auth;
 
 class MusicController extends Controller
@@ -26,9 +27,14 @@ class MusicController extends Controller
     }
 
     public function album_index(){
-        $args['index'] = Album::leftJoin('users','users.id','=','albums.user_id')                                
-                                ->select('users.name as user_name','albums.id','albums.name as album_name')
+        $args['index'] = Album::leftJoin('users','users.id','=','albums.user_id')    
+                                ->select('users.name as user_name','albums.id','albums.created_at','albums.name as album_name')
                                 ->get();
+        $total_tracks = 0;
+        foreach ($args['index'] as $value) {
+            $args['total_tracks'][$value->id] = Album_Video::where('album_id',$value->id)->count();
+        }
+                                
         return view('dashboard.admin.music.albums.index')->with($args);
     }
 
@@ -37,7 +43,8 @@ class MusicController extends Controller
     {
         DB::table('tracks')
             ->where('id', $id)
-            ->update(['featured' => 0]);         
+            ->update(['featured' => 0]);
+        $this->set_session('You Have Successfully Unfeatured This Track ', true);         
         return redirect()->back();
     }
     public function admin_approve_featured($id)
@@ -45,6 +52,7 @@ class MusicController extends Controller
         DB::table('tracks')
             ->where('id', $id)
             ->update(['featured' => 1]);        
+        $this->set_session('You Have Successfully featured This Track ', true);         
         return redirect()->back();
     }
 
@@ -53,6 +61,7 @@ class MusicController extends Controller
         DB::table('tracks')
             ->where('id', $id)
             ->update(['status' => 0]);         
+        $this->set_session('You Have Successfully Unblock This Track ', true);         
         return redirect()->back();
     }
     public function block_track($id)
@@ -61,6 +70,7 @@ class MusicController extends Controller
         DB::table('tracks')
             ->where('id', $id)
             ->update(['status' => 1]);        
+        $this->set_session('You Have Successfully Block This Track ', true);         
         return redirect()->back();
     }
 }
