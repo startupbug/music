@@ -32,10 +32,30 @@
         @foreach($tracks as $track)
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="dashboard_album">
+              <!-- Start Audio Tag -->
+              <div class="custom_thumbnail">
+                <div class="songs_box image_thumbnail">
+                  <a>
+                    <img class="" src="https://www.w3schools.com/howto/img_forest.jpg" class="img-responsive center-block" width="100%" height="180px" >
+                    <div class="mask s_mask">
+                      <span class="play_icon">
+                        <i class="fa fa-play fa-5x" aria-hidden="true" style="margin-top: 30%;"></i>
+                      </span>
+                    </div>
+                  </a>
+                </div>
+                <audio  class="audio_thumbnail" style="width:100%; padding:0px;" controls>
+                    <source src="horse.ogg" type="audio/ogg">
+                    <source src="http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
+              </div>
+              <!-- End Audio Tag -->
                 <a href="{{route('musicvoting_genre',['id' => $track->id])}}">
-                <video width="220" height="240" controls>
+                  <img class="" src="https://www.w3schools.com/howto/img_forest.jpg" class="img-responsive center-block" width="100%" height="180" >
+                  <audio controls class="col-md-12" style="padding:0px;">
                         <source src="{{asset('public/dashboard/musician/tracks/videos/'.$track->video)}}" type="video/mp4">
-                </video>
+                  </audio>
                 </a>
             </div>
             <h3 class="album_person_name">

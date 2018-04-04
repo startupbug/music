@@ -1,4 +1,4 @@
-@extends('layouts.dashboard_index') 
+@extends('layouts.dashboard_index')
 @section('content')
   <div class="col-md-9">
     <h3 class="heading_dashboard">
@@ -70,9 +70,10 @@
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="dashboard_album">
               <a href="{{route('musicvoting_genre',['id' => $value->id])}}">
-              <video width="100%" height="160px" controls>
-                <source src="{{asset('public/dashboard/musician/tracks/videos/'.$value->video)}}" type="video/mp4">             
-              </video>
+                <img class="" src="https://www.w3schools.com/howto/img_forest.jpg" class="img-responsive center-block" width="100%" height="140px" >
+                <audio controls class="col-md-12" style="padding:0px;">
+                  <source src="{{asset('public/dashboard/musician/tracks/videos/'.$value->video)}}" type="audio/mpeg">
+                </audio>
               </a>
               <div class="dropdownmenu">
                 <div class="middle"><i class="fa fa-ellipsis-v"></i></div>
@@ -97,8 +98,8 @@
                 <h4 class="modal-title"><b>ADD &nbsp; VIDEO</b></h4>
               </div>
               <div class="modal-body">
-                <form action="{{route('update_video',['id'=>$value->id])}}" enctype="multipart/form-data" method="post" >   
-                {{csrf_field()}}       
+                <form action="{{route('update_video',['id'=>$value->id])}}" enctype="multipart/form-data" method="post" >
+                {{csrf_field()}}
                   <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                       <input type="hidden" name="track_id" value="{{$value->id}}">
@@ -111,7 +112,7 @@
                             </span>
                         </label>
                       </div>
-                    </div>  
+                    </div>
                     <div class="col-md-12 col-sm-12 col-xs-12">
                       <button type="submit" name="button" class="btn btn-primary" style="width:100%">SUBMIT</button>
                     </div>
@@ -135,7 +136,7 @@
           </div>
         </div>
         @endif 
-  </div>
+    </div>
   <div class="container">
     <!-- Edit Album Modal -->
     <div class="modal fade" id="EditAlbumModal" role="dialog">
@@ -194,7 +195,7 @@
                   <select name="video_id" id="example-getting-started" class="form-control">
                       @foreach($videos as $video)
                       <option value="{{$video->id}}">{{$video->name}}</option>
-                      @endforeach                      
+                      @endforeach
                   </select>
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -227,12 +228,12 @@
                   <input type="text" name="description" class="form-control" required>
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                      <h3>CATEGORY</h3>                         
+                      <h3>CATEGORY</h3>
                        <select class="form-control" name="category">
                          @foreach($categories as $category)
-                         <option value="{{$category->id}}">{{$category->name}}</option>     
+                         <option value="{{$category->id}}">{{$category->name}}</option>
                          @endforeach
-                       </select>      
+                       </select>
                   </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <h4><b>VIDEO</b></h4>
@@ -244,7 +245,7 @@
                         </span>
                     </label>
                   </div>
-                </div>                
+                </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <h4><b>IMAGE</b></h4>
                   <div class="input-group">

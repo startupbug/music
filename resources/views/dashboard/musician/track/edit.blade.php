@@ -24,9 +24,9 @@
               Action <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
-              <li><a data-toggle="modal" data-target="#EditTrackModal">Edit</a></li>  
+              <li><a data-toggle="modal" data-target="#EditTrackModal">Edit</a></li>
               <li><a href="{{route('delete_track',['id' => $edit_track->id])}}">Delete</a></li>
-              <li><a data-toggle="modal" data-target="#selectPromoter">Assign Promoter</a></li>  
+              <li><a data-toggle="modal" data-target="#selectPromoter">Assign Promoter</a></li>
             </ul>
           </div>
       </div>
@@ -47,9 +47,10 @@
       </div> -->
       <div class="col-md-4 col-sm-12 col-xs-12">
           <div class="dashboard_album">
-            <video width="100%" controls>
-              <source src="{{asset('public/dashboard/musician/tracks/videos/'.$edit_track->video)}}" type="video/mp4">              
-            </video>
+            <img class="" src="https://www.w3schools.com/howto/img_forest.jpg" class="img-responsive center-block" width="100%" height="180px" >
+            <audio width="100%" controls class="col-md-12" style="padding:0px;"> 
+              <source src="{{asset('public/dashboard/musician/tracks/videos/'.$edit_track->video)}}" type="video/mp4">
+            </audio>
             <div class="dropdownmenu">
               <div class="middle"><i class="fa fa-ellipsis-v"></i></div>
               <div class="dropdown-content">
@@ -142,11 +143,11 @@
                <input list="browsers" name="promoter_email" class="form-control">
                 <datalist id="browsers">
                   @foreach($users as $user)
-                  <option value="{{$user->email}}"></option>                  
+                  <option value="{{$user->email}}"></option>
                   @endforeach
-                </datalist>  
+                </datalist>
                   <!-- <input type="text" class="form-control"> -->
-                </div>                          
+                </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <button type="submit" name="button" class="btn btn-primary" style="width:100%">SUBMIT</button>
                 </div>
