@@ -18,7 +18,7 @@ use App\Album_Video;
 use Auth;
 
 class ContestController extends Controller
-{    
+{
     public function contest_index(){
     	$args['contest'] = Contest::leftJoin('contest_types','contest_types.id','=','contests.contest_type')
                                     ->select('contest_types.name as contest_type','contests.name','contests.start_date','contests.end_date','contests.id','contests.description')
@@ -66,10 +66,10 @@ class ContestController extends Controller
             return redirect()->route('contest_index');
         }
     }
-    
+
     public function destroy(Request $request,$id){
         $destroy = Contest::find($id);
-        $destroy->delete();     
+        $destroy->delete();
         Session::flash('success_msg','You Have Succesfully Deleted Contest');
         return redirect()->route('contest_index');
     }
@@ -100,5 +100,7 @@ class ContestController extends Controller
         $this->set_session('You Have Successfully Rejected Request ', true);     
         return redirect()->back();
     }
+
+
 
 }

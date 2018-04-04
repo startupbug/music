@@ -59,10 +59,10 @@ class PagesController extends Controller
         ->take(12)
         ->get();
 
-        
+
         $args['abc'] = $args['tracks'];
-        
-        
+
+
         // dd(1234);
         $ratings[]=0;
         foreach ($args['tracks'] as $value)
@@ -442,7 +442,7 @@ class PagesController extends Controller
 
     public function artist_detail()
     {
-        
+
 
         $musician_details = DB::table("users")->where('role_id','=',2)
 
@@ -463,22 +463,22 @@ class PagesController extends Controller
 
         // $musician_details = User::select('users.*', \DB::raw('count(albums.id) as albums_no'),
         //                             \DB::raw('count(tracks.id) as tracks_no'))
-        //                       ->where('role_id','=',2)             
+        //                       ->where('role_id','=',2)
         //                       ->leftjoin('albums', 'users.id', '=', 'albums.user_id')
         //                       ->leftjoin('tracks','users.id','=','tracks.user_id')
-        //                       ->groupBy('users.id')                                                     
+        //                       ->groupBy('users.id')
         //                       ->paginate(10);
 
 
         //   dd($musician_details);
-            $albums = Album::get(); 
-            $albums_tracks = array();  
+            $albums = Album::get();
+            $albums_tracks = array();
             foreach ($albums as $key => $value)
             {
                 $albums_tracks[$value->name] = Album_Video::join('tracks','album__videos.track_id','=','tracks.id')->where('album__videos.album_id','=',$value->id)->get();
                 // dd($albums_tracks[$value->name]);
             }
-        // dd($albums_tracks); 
+        // dd($albums_tracks);
         return view('artist_detail',['musician_details'=> $musician_details, 'albums_tracks' => $albums_tracks]);
     }
 
@@ -603,6 +603,11 @@ class PagesController extends Controller
         $subscriber->save();
         Session::flash('subscribe','Email has been subscribed');
         return redirect('/');
+    }
+
+    public function contest_listing(){
+    
+      return view('contest_listing');
     }
 
 }
