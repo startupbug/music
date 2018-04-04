@@ -4,9 +4,9 @@
     <div class="alert alert-info">{{ Session::get('upload_video_album') }}</div>
     @endif
 
-    
+
   <div class="col-md-12">
-    
+
     <div class="row">
       <div class="col-md-10">
         <h3 class="all_album">
@@ -42,9 +42,30 @@
       @foreach($album_tracks as $tracks)
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="dashboard_album">
+          <!-- Start Audio Tag -->
+          <div class="custom_thumbnail">
+            <div class="songs_box image_thumbnail">
+              <a>
+                <img class="" src="https://www.w3schools.com/howto/img_forest.jpg" class="img-responsive center-block" width="100%" >
+                <div class="mask s_mask">
+                  <span class="play_icon">
+                    <i class="fa fa-play fa-5x" aria-hidden="true" style="margin-top: 18%;"></i>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <audio  class="audio_thumbnail" controls>
+                <source src="horse.ogg" type="audio/ogg">
+                <source src="http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+          <!-- End Audio Tag -->
+
+
           <!-- <a href="http://localhost/music-a1/musicvoting_genre/25"> -->
           <video controls="" width="100%" height="245px">
-            <source src="{{asset('public/dashboard/musician/tracks/videos/'.$tracks->track_video)}}" type="video/mp4">             
+            <source src="{{asset('public/dashboard/musician/tracks/videos/'.$tracks->track_video)}}" type="video/mp4">
           </video>
           <!-- </a> -->
           <h3 class="album_person_name">
@@ -56,7 +77,7 @@
     </div>
   </div>
 
-  <br>  
+  <br>
   <div class="container">
     <!-- Edit Album Modal -->
     <div class="modal fade" id="EditAlbumModal" role="dialog">
@@ -148,12 +169,12 @@
                   <input type="text" name="description" class="form-control" required>
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                      <h3>CATEGORY</h3>                         
+                      <h3>CATEGORY</h3>
                        <select class="form-control" name="category">
                          <!-- foreach -->
-                         <option value=""><!-- category name --> </option>     
+                         <option value=""><!-- category name --> </option>
                          <!-- endforeach -->
-                       </select>      
+                       </select>
                   </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <h4><b>VIDEO</b></h4>
@@ -165,7 +186,7 @@
                         </span>
                     </label>
                   </div>
-                </div>                
+                </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <h4><b>IMAGE</b></h4>
                   <div class="input-group">

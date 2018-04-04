@@ -29,6 +29,27 @@
                 </h3>
               </div>
               <div class="col-md-12">
+
+                <!-- Start Audio Tag -->
+                <div class="custom_thumbnail">
+                  <div class="songs_box image_thumbnail">
+                    <a>
+                      <img class="" src="https://www.w3schools.com/howto/img_forest.jpg" class="img-responsive center-block" width="100%" >
+                      <div class="mask s_mask">
+                        <span class="play_icon">
+                          <i class="fa fa-play fa-5x" aria-hidden="true"></i>
+                        </span>
+                      </div>
+                    </a>
+                  </div>
+                  <audio  class="audio_thumbnail" controls>
+                      <source src="horse.ogg" type="audio/ogg">
+                      <source src="http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                  </audio>
+                </div>
+                <!-- End Audio Tag -->
+
                 <video id="videoz" width="100%" style="height: auto;" controls controlsList="nodownload">
                   @if(Auth::check())
                   <input type="hidden" name="user_id" id="user_id" value="{{Auth::user()->id}}">

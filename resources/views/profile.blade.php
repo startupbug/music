@@ -2,14 +2,14 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="col-md-12">      
+		<div class="col-md-12">
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<h3 class="panel-title">Musician Profile</h3>
 				</div>
 				<div class="panel-body">
 					<div class="row">
-              <div class="col-md-9 col-lg-9"> 
+              <div class="col-md-9 col-lg-9">
               	<table class="table table-user-information">
               		<tbody>
               			<tr>
@@ -33,17 +33,17 @@
                       <td>{{count($tracks)}}</a></td>
                     </tr>
                     <tr>
-                      <td>Instagram</td>                      
+                      <td>Instagram</td>
                       <td><a href="instagram.com">{{$userInfo->instagram}}</a></td>
-                    </tr>    
+                    </tr>
                     <tr>
                       <td>Twitter</td>
                       <td><a href="twitter.com">{{$userInfo->twitter}}</a></td>
-                    </tr> 
+                    </tr>
                     <tr>
               				<td>Facebook</td>
               			  <td><a href="facebook.com">{{$userInfo->facebook}}</a></td>
-              			</tr>              			
+              			</tr>
               			<tr>
               			 <td>Phone Number</td>
               			 <td>{{$userInfo->phone}}</td>
@@ -75,20 +75,20 @@
     @endif
     @foreach($albumss as $album)
       <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="box"> 
-          <a href="{{route('album_view',['id' => $album->id])}}"> 
-            <div class="dashboard_album">        
+        <div class="box">
+          <a href="{{route('album_view',['id' => $album->id])}}">
+            <div class="dashboard_album">
               <div class="images_person">
                 <img src="{{asset('public/dashboard/musician/albums/images/'.$album->image)}}" class="img-responsive">
-              </div>           
+              </div>
             </div>
-          </a> 
-        </div>      
+          </a>
+        </div>
         <h3 class="album_person_name bottom_name">
           {{$album->name}}
-        </h3>      
+        </h3>
       </div>
-    @endforeach 
+    @endforeach
   </div>
 </section>
 <section class="music_track">
@@ -99,20 +99,43 @@
     @endif
     @foreach($tracks as $track)
       <div class="col-md-3 col-sm-6 col-xs-12">
+
+				<!-- Start Audio Tag -->
+				<div class="custom_thumbnail">
+					<div class="songs_box image_thumbnail">
+						<a>
+							<img class="" src="https://www.w3schools.com/howto/img_forest.jpg" class="img-responsive center-block" width="100%" >
+							<div class="mask s_mask">
+								<span class="play_icon">
+									<i class="fa fa-play fa-5x" aria-hidden="true" style="margin-top: 18%;"></i>
+								</span>
+							</div>
+						</a>
+					</div>
+					<audio  class="audio_thumbnail" controls>
+							<source src="horse.ogg" type="audio/ogg">
+							<source src="http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a" type="audio/mpeg">
+						Your browser does not support the audio element.
+					</audio>
+				</div>
+				<!-- End Audio Tag -->
+
+
+
         <a href="{{route('musicvoting_genre',['id' => $track->id])}}">
-          <div class="box">  
-            <div class="dashboard_album">        
+          <div class="box">
+            <div class="dashboard_album">
               <video width="100%" height="160px" controls>
-                <source src="{{asset('public/dashboard/musician/tracks/videos/'.$track->video)}}" type="video/mp4">             
-              </video>               
-            </div> 
-          </div>  
-        </a>    
+                <source src="{{asset('public/dashboard/musician/tracks/videos/'.$track->video)}}" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </a>
         <h3 class="album_person_name">
           {{$track->name}}
-        </h3>      
+        </h3>
       </div>
-    @endforeach 	
+    @endforeach
   </div>
 </section>
 @endif

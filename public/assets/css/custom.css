@@ -1041,10 +1041,10 @@ span.fa.fa-star-o {
 
 
 
-
+/*
 audio {
     margin-top: 40px;
-}
+} */
 
 
 
@@ -1920,4 +1920,73 @@ a:hover h1 {
 }
 a:hover {
     text-decoration: none;
+}
+.s_footer_text{
+  color: black;
+  font-family: 'Conv_Montserrat-Regular';
+  padding-left: 10px;
+  border-radius: 6px 0px 0px 6px;
+  margin-right: 0px;
+
+}
+
+/* contes Page Css */
+.contest_image {
+    position: relative;
+}
+.contest_image img{
+    height: 225px !important;
+    width: 100% !important;
+}
+.image_date_model {
+    position: absolute;
+    top: 5%;
+    right: 4%;
+    text-align: center;
+    background: #fff;
+    padding: 3px 6px;
+}
+.image_month , .image_date {
+    font-family: Conv_bebas;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.image_all_date {
+    font-family: Conv_bebas;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 9px;
+    letter-spacing: 1px;
+    border-top: 0.5px solid;
+}
+.contest_header {
+    font-family: Conv_bebas;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 22px;
+    word-spacing: 3px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #9f9a9a;
+}
+.contest_date {
+    font-family: Conv_Montserrat-Regular;
+    font-size: 13px;
+    word-spacing: 1px;
+    padding: 5px 0px 2px 0px;
+}
+.contest_head {
+    font-family: Conv_Montserrat-Regular;
+    font-size: 15px;
+    font-weight: 600;
+}
+.contest_description {
+    font-family: Conv_Montserrat-Regular;
+    font-size: 13px;
+    padding: 8px 0px 2px 0px;
+}
+.contest_button{
+  margin: 0px;
+}
+.contest_padding{
+  padding: 25px 0px;
 }

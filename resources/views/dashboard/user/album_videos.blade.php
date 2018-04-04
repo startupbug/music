@@ -1,4 +1,4 @@
-@extends('layouts.dashboard_index') 
+@extends('layouts.dashboard_index')
 @section('content')
 <div class="col-md-9">
     <h3 class="heading_dashboard">
@@ -14,26 +14,46 @@
           <h3 class="all_album">
               {{$edit_album->name}}
           </h3>
-      </div>      
+      </div>
     </div>
     <hr class="line">
     <div class="row">
       <div class="col-md-3 col-sm-12 col-xs-12">
-        <div class="dashboard_album">        
-            <img src="{{asset('public/dashboard/musician/albums/images/'.$edit_album->image)}}" width="100%" class="img-thumbnail">        
+        <div class="dashboard_album">
+            <img src="{{asset('public/dashboard/musician/albums/images/'.$edit_album->image)}}" width="100%" class="img-thumbnail">
         </div>
       </div>
-    </div> 
+    </div>
     <div class="row">
       @foreach($all_videos as $value)
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="dashboard_album">
+              <!-- Start Audio Tag -->
+              <div class="custom_thumbnail">
+                <div class="songs_box image_thumbnail">
+                  <a>
+                    <img class="" src="https://www.w3schools.com/howto/img_forest.jpg" class="img-responsive center-block" width="100%" >
+                    <div class="mask s_mask">
+                      <span class="play_icon">
+                        <i class="fa fa-play fa-5x" aria-hidden="true" style="margin-top: 18%;"></i>
+                      </span>
+                    </div>
+                  </a>
+                </div>
+                <audio  class="audio_thumbnail" style="width:100%; padding:0px;" controls>
+                    <source src="horse.ogg" type="audio/ogg">
+                    <source src="http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
+              </div>
+              <!-- End Audio Tag -->
               <a href="{{route('musicvoting_genre',['id' => $value->id])}}">
-             
+
+
               <video width="100%" height="160px" controls>
-                <source src="{{asset('public/dashboard/musician/tracks/videos/'.$value->video)}}" type="video/mp4">             
+                <source src="{{asset('public/dashboard/musician/tracks/videos/'.$value->video)}}" type="video/mp4">
               </video>
-              </a>              
+              </a>
               <h3 class="album_person_name">
                 {{$value->name}}
               </h3>
@@ -48,8 +68,8 @@
                 <h4 class="modal-title"><b>ADD VIDEO</b></h4>
               </div>
               <div class="modal-body">
-                <form action="{{route('update_video',['id'=>$value->id])}}" enctype="multipart/form-data" method="post" >   
-                {{csrf_field()}}       
+                <form action="{{route('update_video',['id'=>$value->id])}}" enctype="multipart/form-data" method="post" >
+                {{csrf_field()}}
                   <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                       <input type="hidden" name="track_id" value="{{$value->id}}">
@@ -62,7 +82,7 @@
                             </span>
                         </label>
                       </div>
-                    </div>  
+                    </div>
                     <div class="col-md-12 col-sm-12 col-xs-12">
                       <button type="submit" name="button" class="btn btn-primary" style="width:100%">SUBMIT</button>
                     </div>
@@ -72,9 +92,9 @@
               </div>
             </div>
           </div>
-        </div>    
-      @endforeach   
-    </div>  
-    <hr class="line">    
+        </div>
+      @endforeach
+    </div>
+    <hr class="line">
 </div>
 @endsection
