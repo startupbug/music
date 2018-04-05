@@ -1487,7 +1487,7 @@ p.track_name {
 }
 
 .top_ranking {
-    margin-top: 16px;
+    margin-top: 40px;
 }
 
 .border_contest img.img-responsive {
@@ -1989,4 +1989,83 @@ a:hover {
 }
 .contest_padding{
   padding: 25px 0px;
+}
+
+.contest_date_s {
+    font-family: Conv_Montserrat-Regular;
+    font-size: 17px;
+    word-spacing: 1px;
+    padding: 30px 0px 10px 0px;
+    font-weight: 500;
+}
+.s_text_color{
+    color: #cf1828 !important;
+    font-size: 50px !important;
+    margin-bottom: 15px;
+}
+h4.contest_heading{
+    font-size: 25px;
+    font-family: 'Conv_bebas';
+    color: #454545;
+    margin-top: 20px;
+    word-spacing: 7px;
+    letter-spacing: -1px;
+}
+h4.contest_heading span {
+    font-size: 25px;
+    font-family: 'Conv_bebas';
+    color: #cf1828;
+    margin-top: 20px;
+    letter-spacing: 1px;
+}
+.s-btn-info {
+    margin-left: 0px;
+    background-color: #cf1828 !important;
+    border-color: #cf1828 !important;
+}
+.s-btn-info:active:hover{
+    color: #fff !important;
+    background-color: #cf1828 !important;
+    border-color: #cf1828 !important;
+}
+.s-form-control{
+    color: #7a7979 !important;
+    margin-left: 0;
+}
+.s-form-group label {
+    FONT-SIZE: 16px;
+    color: #727272;
+}
+
+.s-modal-title{
+    font-size: 20px;
+    font-family: Conv_Montserrat-Regular;
+    margin-top: 18px;
+    color: #76767a;
+}
+
+.top_ranking_button{
+  padding: 6px 10px !important;
+  margin-left: 0px !important;
+}
+.top_ranking_play{
+  position: fixed;
+  bottom: 0;
+  z-index: 9;
+}
+
+.s-form-group .form-control {
+    margin: 0px 0px !important;
+}
+.s-form-group {
+    margin: 16px 0px;
+}
+
+.not_display_data{
+  font-size: 25px;
+  text-align: center;
+  padding: 15px 0px 60px 0px;
+  font-family: 'Conv_bebas';
+  word-spacing: 6px;
+  letter-spacing: 1px;
 }

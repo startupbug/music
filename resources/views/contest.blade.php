@@ -2,6 +2,11 @@
 @section('content')
 <div class="container">
 	<div class="row">
+		<div class="col-md-12 text-center s_text_color">
+			<h3 class="contest_heading s_text_color">
+				ABOUT THE CONTEST
+			</h3>
+		</div>
 		<div class="col-md-6">
 			<h3 class="contest_heading">
 				ABOUT THE CONTEST
@@ -9,11 +14,96 @@
 			<p class="contest_paragraph">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lorem sem, eleifend et urna at, pharetra venenatis ipsum. Nunc sodales nisl vel placerat rutrum. Nam tincidunt, nulla at vehicula ultrices, odio quam consequat nunc, vel imperdiet ante ante in tortor. Aenean blandit vel lectus maximus congue. Sed at eros commodo, malesuada justo non, tincidunt purus. Nam euismod, libero id semper mollis, nulla quam mattis odio, ut pretium nulla libero ac ipsum. Donec aliquam vehicula ipsum, ullamcorper vestibulum elit accumsan vel. Maecenas varius ex at est tristique ultrices. Sed magna nisl.
 			</p>
+
+			<h4 class="contest_heading">
+				CONTEST TYPE : <span>Daily</span>
+			</h4>
+			<p class="contest_date_s">
+				<i class="fa fa-calendar fa-lg"> </i> Fir, Mar 16, 3:00 Pm Fir, Mar 16, 3:00 Pm
+			</p>
+			<button class="btn btn-info s-btn-info" type="button" data-toggle="modal" data-target="#myModal">JOIN CONTEST</button>
+
 		</div>
 		<div class="col-md-6">
-			<div class="img_video"><img src="{{asset('public/assets/images/contest_video.png')}}" class="img-responsive"></div>
+			<div class="img_video">
+				<img src="{{asset('public/assets/images/contest_video.png')}}" class="img-responsive">
+			</div>
 		</div>
 	</div>
+	<!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+	    <div class="modal-dialog">
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="s-modal-title">Join Contest</h4>
+	        </div>
+	        <div class="modal-body">
+						<form action="/action_page.php">
+							<div class="form-group">
+								<div class="radio" style="display: inline;">
+								  <label>
+										<input type="radio" name="optradio_contest" value="select" checked>Select Song
+									</label>
+								</div>
+								<div class="radio" style="display: inline; margin-left:5px">
+								  <label>
+										<input type="radio" name="optradio_contest" value="file"> Upload Song
+									</label>
+								</div>
+							</div>
+						  <div class="form-group s-form-group" id="combox_song">
+						    <label for="songs">Select Song :</label>
+								<select class="form-control s-form-control" name="song_list" id="song_list">
+									<option selected disabled>Select Song</option>
+									<option>Song 1</option>
+									<option>Song 1</option>
+									<option>Song 1</option>
+									<option>Song 1</option>
+									<option>Song 1</option>
+								</select>
+						  </div>
+							<div id="file_song" style="display:none">
+								<div class="form-group s-form-group">
+									<label for="name">Title :</label>
+									<input type="text" class="form-control s-form-control" name="track" id="name" disabled>
+								</div>
+								<div class="form-group s-form-group">
+									<label for="description">Description :</label>
+									<input type="text" class="form-control s-form-control" name="description" id="description" disabled>
+								</div>
+								<div class="form-group s-form-group">
+									<label for="category_list">Category :</label>
+									<select class="form-control s-form-control" name="category_list" id="category_list" disabled>
+										<option selected disabled>Select Category</option>
+										<option>Song 1</option>
+										<option>Song 1</option>
+										<option>Song 1</option>
+										<option>Song 1</option>
+										<option>Song 1</option>
+									</select>
+								</div>
+								<div class="form-group s-form-group">
+									<label for="upload_song">Select Track :</label>
+									<input type="file" class="form-control s-form-control" name="upload_song" id="upload_song" disabled style="line-height: 1;">
+								</div>
+								<div class="form-group s-form-group">
+									<label for="upload_image">Select Track Art :</label>
+									<input type="file" class="form-control s-form-control" name="upload_image" id="upload_image" disabled style="line-height: 1;">
+								</div>
+							</div>
+
+							<div class="form-group text-right">
+							  <button type="submit" class="btn btn-default">Submit</button>
+							</div>
+						</form>
+	        </div>
+	      </div>
+
+	    </div>
+	  </div>
+
 </div>
  <div class="container">
 	<div class="row">
@@ -26,51 +116,57 @@
 </div>
 <div class="container-fluid border_bottom">
 	<div class="container">
-	<div class="row">
-		<div class="col-md-6 col-sm-6 col-xs-12 border_right">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="top_ranking"><img src="{{asset('public/assets/images/contest_1.png')}}" class="img-responsive"></div>
-				</div>
-				<div class="col-md-8">
-					<h3 class="ranking">
-						IST
-					</h3>
-					<p class="track_name">
-						Track Name: Insurgency
-					</p>
-					<p class="track_name">
-						lbum Name: Insurgency
-					</p>
-					<p class="track_name">
-						Artist: John Doe
-					</p>
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12 border_right">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="top_ranking"><img src="{{asset('public/assets/images/contest_1.png')}}" class="img-responsive"></div>
+					</div>
+					<div class="col-md-8">
+						<h3 class="ranking">
+							IST
+						</h3>
+						<p class="track_name">
+							Track Name: Insurgency
+						</p>
+						<p class="track_name">
+							Artist: John Doe
+						</p>
+						<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+							Play
+						</button>
+						<button class="btn btn-default top_ranking_button col-md-3" type="button">
+							Vote
+						</button>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-md-6 col-sm-6 col-xs-12">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="top_ranking"><img src="{{asset('public/assets/images/contest_2.png')}}" class="img-responsive"></div>
-				</div>
-				<div class="col-md-8">
-					<h3 class="ranking">
-						2ND
-					</h3>
-					<p class="track_name">
-						Track Name: Xscape
-					</p>
-					<p class="track_name">
-						lbum Name: Xscape
-					</p>
-					<p class="track_name">
-						Artist: Michael Jackson
-					</p>
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="top_ranking"><img src="{{asset('public/assets/images/contest_2.png')}}" class="img-responsive"></div>
+					</div>
+					<div class="col-md-8">
+						<h3 class="ranking">
+							2ND
+						</h3>
+						<p class="track_name">
+							Track Name: Xscape
+						</p>
+						<p class="track_name">
+							Artist: Michael Jackson
+						</p>
+						<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+							Play
+						</button>
+						<button class="btn btn-default top_ranking_button col-md-3" type="button">
+							Vote
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 </div>
 <div class="container-fluid border_bottom">
 	<div class="container">
@@ -88,11 +184,14 @@
 						Track Name: All Apologees
 					</p>
 					<p class="track_name">
-						Album Name: Nevermind
-					</p>
-					<p class="track_name">
 						Artist: Nirvana
 					</p>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+						Play
+					</button>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button">
+						Vote
+					</button>
 				</div>
 			</div>
 		</div>
@@ -109,11 +208,14 @@
 						Track Name: American Idiot
 					</p>
 					<p class="track_name">
-						Album Name: American Idiot
-					</p>
-					<p class="track_name">
 						Artist: Green Day
 					</p>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+						Play
+					</button>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button">
+						Vote
+					</button>
 				</div>
 			</div>
 		</div>
@@ -136,11 +238,14 @@
 						Track Name: Hey You
 					</p>
 					<p class="track_name">
-						Album Name: Dark Side of the Moon
-					</p>
-					<p class="track_name">
 						Artist: Pink Floyd
 					</p>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+						Play
+					</button>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button">
+						Vote
+					</button>
 				</div>
 			</div>
 		</div>
@@ -157,11 +262,14 @@
 						Track Name: Arabella
 					</p>
 					<p class="track_name">
-						Album Name: Do I wanna Know
-					</p>
-					<p class="track_name">
 						Artist: Arctic Monkeys
 					</p>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+						Play
+					</button>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button">
+						Vote
+					</button>
 				</div>
 			</div>
 		</div>
@@ -184,11 +292,14 @@
 						Track Name: 99 Problems
 					</p>
 					<p class="track_name">
-						Album Name: The Black Album
-					</p>
-					<p class="track_name">
 						Artist: Jay-Z
 					</p>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+						Play
+					</button>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button">
+						Vote
+					</button>
 				</div>
 			</div>
 		</div>
@@ -205,11 +316,14 @@
 						Artist: Jay-Z
 					</p>
 					<p class="track_name">
-						Album Name: Badlands
-					</p>
-					<p class="track_name">
 						Artist: Halsey
 					</p>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+						Play
+					</button>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button">
+						Vote
+					</button>
 				</div>
 			</div>
 		</div>
@@ -232,11 +346,14 @@
 						rack Name: Stairway To Heaven
 					</p>
 					<p class="track_name">
-						Album Name: Kashmir
-					</p>
-					<p class="track_name">
 						Artist: Led Zepplin
 					</p>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+						Play
+					</button>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button">
+						Vote
+					</button>
 				</div>
 			</div>
 		</div>
@@ -253,17 +370,24 @@
 						Track Name: Beautiful
 					</p>
 					<p class="track_name">
-						Album Name: Recovery
-					</p>
-					<p class="track_name">
 						Artist: Eminem
 					</p>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+						Play
+					</button>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button">
+						Vote
+					</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 </div>
+<audio controls class="top_ranking_play" id="song_play" controlsList="nodownload" style="display:none">
+	<source src="" type="audio/mpeg">
+	Your browser does not support the audio element.
+</audio>
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
