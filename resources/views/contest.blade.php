@@ -37,7 +37,7 @@
 	      <div class="modal-content">
 	        <div class="modal-header">
 	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	          <h4 class="s-modal-title">Modal Header</h4>
+	          <h4 class="s-modal-title">Join Contest</h4>
 	        </div>
 	        <div class="modal-body">
 						<form action="/action_page.php">
@@ -55,7 +55,7 @@
 							</div>
 						  <div class="form-group s-form-group" id="combox_song">
 						    <label for="songs">Select Song :</label>
-								<select class="form-control s-form-control" name="" id="songs">
+								<select class="form-control s-form-control" name="song_list" id="song_list">
 									<option selected disabled>Select Song</option>
 									<option>Song 1</option>
 									<option>Song 1</option>
@@ -66,7 +66,7 @@
 						  </div>
 							<div class="form-group s-form-group" id="file_song" style="display:none">
 						    <label for="songs">Upload Song :</label>
-								<input type="file" class="form-control s-form-control" name="" value="" style="line-height: 1;">
+								<input type="file" class="form-control s-form-control" name="upload_song" value="" id="upload_song" disabled style="line-height: 1;">
 						  </div>
 							<div class="form-group text-right">
 							  <button type="submit" class="btn btn-default">Submit</button>

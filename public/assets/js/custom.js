@@ -16,10 +16,16 @@ var $radios = $('input[name=optradio_contest]').change(function () {
     if (value == "select") {
       $("#combox_song").css("display", "block");
       $("#file_song").css("display", "none");
+
+      $("#upload_song").prop('disabled', true);
+      $("#song_list").prop('disabled', false);
     }
     else if(value == "file") {
       $("#combox_song").css("display", "none");
       $("#file_song").css("display", "block");
+
+      $("#upload_song").prop('disabled', false);
+      $("#song_list").prop('disabled', true);
     }
 });
 
