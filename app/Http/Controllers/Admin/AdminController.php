@@ -18,6 +18,7 @@ use App\RedeemedPoint;
 use App\Category;
 use App\Album;
 use App\Album_Video;
+use App\Subscriber;
 use App\Point;
 
 class AdminController extends Controller
@@ -178,6 +179,11 @@ class AdminController extends Controller
         }
 
                    
+    }
+    public function subscribers(Request $request) {
+        $subscribers = Subscriber::get();
+        // dd($subscribers);
+        return view('dashboard.admin.subscribe.index')->with('subscribers',$subscribers);
     }
     public function admin_logout(Request $request) {     
       Auth::logout();

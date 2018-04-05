@@ -41,6 +41,7 @@
       <li><a href="{{route('tracks')}}"><i class="fa fa-user text-aqua"></i> <span>Tracks</span></a></li>
       <li><a href="{{route('albums')}}"><i class="fa fa-user text-aqua"></i> <span>Albums</span></a></li>
       <li><a href="{{route('contest_index')}}"><i class="fa fa-user text-aqua"></i> <span>Contest</span></a></li>
+      <li><a href="{{route('subscribers')}}"><i class="fa fa-user text-aqua"></i> <span>Subscribers</span></a></li>
     </ul>
   </section>
   <!-- /.sidebar -->
