@@ -64,10 +64,36 @@
 									<option>Song 1</option>
 								</select>
 						  </div>
-							<div class="form-group s-form-group" id="file_song" style="display:none">
-						    <label for="songs">Upload Song :</label>
-								<input type="file" class="form-control s-form-control" name="upload_song" value="" id="upload_song" disabled style="line-height: 1;">
-						  </div>
+							<div id="file_song" style="display:none">
+								<div class="form-group s-form-group">
+									<label for="name">Title :</label>
+									<input type="text" class="form-control s-form-control" name="track" id="name" disabled>
+								</div>
+								<div class="form-group s-form-group">
+									<label for="description">Description :</label>
+									<input type="text" class="form-control s-form-control" name="description" id="description" disabled>
+								</div>
+								<div class="form-group s-form-group">
+									<label for="category_list">Category :</label>
+									<select class="form-control s-form-control" name="category_list" id="category_list" disabled>
+										<option selected disabled>Select Category</option>
+										<option>Song 1</option>
+										<option>Song 1</option>
+										<option>Song 1</option>
+										<option>Song 1</option>
+										<option>Song 1</option>
+									</select>
+								</div>
+								<div class="form-group s-form-group">
+									<label for="upload_song">Select Track :</label>
+									<input type="file" class="form-control s-form-control" name="upload_song" id="upload_song" disabled style="line-height: 1;">
+								</div>
+								<div class="form-group s-form-group">
+									<label for="upload_image">Select Track Art :</label>
+									<input type="file" class="form-control s-form-control" name="upload_image" id="upload_image" disabled style="line-height: 1;">
+								</div>
+							</div>
+
 							<div class="form-group text-right">
 							  <button type="submit" class="btn btn-default">Submit</button>
 							</div>
@@ -90,51 +116,57 @@
 </div>
 <div class="container-fluid border_bottom">
 	<div class="container">
-	<div class="row">
-		<div class="col-md-6 col-sm-6 col-xs-12 border_right">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="top_ranking"><img src="{{asset('public/assets/images/contest_1.png')}}" class="img-responsive"></div>
-				</div>
-				<div class="col-md-8">
-					<h3 class="ranking">
-						IST
-					</h3>
-					<p class="track_name">
-						Track Name: Insurgency
-					</p>
-					<p class="track_name">
-						lbum Name: Insurgency
-					</p>
-					<p class="track_name">
-						Artist: John Doe
-					</p>
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12 border_right">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="top_ranking"><img src="{{asset('public/assets/images/contest_1.png')}}" class="img-responsive"></div>
+					</div>
+					<div class="col-md-8">
+						<h3 class="ranking">
+							IST
+						</h3>
+						<p class="track_name">
+							Track Name: Insurgency
+						</p>
+						<p class="track_name">
+							Artist: John Doe
+						</p>
+						<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+							Play
+						</button>
+						<button class="btn btn-default top_ranking_button col-md-3" type="button">
+							Vote
+						</button>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-md-6 col-sm-6 col-xs-12">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="top_ranking"><img src="{{asset('public/assets/images/contest_2.png')}}" class="img-responsive"></div>
-				</div>
-				<div class="col-md-8">
-					<h3 class="ranking">
-						2ND
-					</h3>
-					<p class="track_name">
-						Track Name: Xscape
-					</p>
-					<p class="track_name">
-						lbum Name: Xscape
-					</p>
-					<p class="track_name">
-						Artist: Michael Jackson
-					</p>
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="top_ranking"><img src="{{asset('public/assets/images/contest_2.png')}}" class="img-responsive"></div>
+					</div>
+					<div class="col-md-8">
+						<h3 class="ranking">
+							2ND
+						</h3>
+						<p class="track_name">
+							Track Name: Xscape
+						</p>
+						<p class="track_name">
+							Artist: Michael Jackson
+						</p>
+						<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+							Play
+						</button>
+						<button class="btn btn-default top_ranking_button col-md-3" type="button">
+							Vote
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 </div>
 <div class="container-fluid border_bottom">
 	<div class="container">
@@ -152,11 +184,14 @@
 						Track Name: All Apologees
 					</p>
 					<p class="track_name">
-						Album Name: Nevermind
-					</p>
-					<p class="track_name">
 						Artist: Nirvana
 					</p>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+						Play
+					</button>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button">
+						Vote
+					</button>
 				</div>
 			</div>
 		</div>
@@ -173,11 +208,14 @@
 						Track Name: American Idiot
 					</p>
 					<p class="track_name">
-						Album Name: American Idiot
-					</p>
-					<p class="track_name">
 						Artist: Green Day
 					</p>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+						Play
+					</button>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button">
+						Vote
+					</button>
 				</div>
 			</div>
 		</div>
@@ -200,11 +238,14 @@
 						Track Name: Hey You
 					</p>
 					<p class="track_name">
-						Album Name: Dark Side of the Moon
-					</p>
-					<p class="track_name">
 						Artist: Pink Floyd
 					</p>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+						Play
+					</button>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button">
+						Vote
+					</button>
 				</div>
 			</div>
 		</div>
@@ -221,11 +262,14 @@
 						Track Name: Arabella
 					</p>
 					<p class="track_name">
-						Album Name: Do I wanna Know
-					</p>
-					<p class="track_name">
 						Artist: Arctic Monkeys
 					</p>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+						Play
+					</button>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button">
+						Vote
+					</button>
 				</div>
 			</div>
 		</div>
@@ -248,11 +292,14 @@
 						Track Name: 99 Problems
 					</p>
 					<p class="track_name">
-						Album Name: The Black Album
-					</p>
-					<p class="track_name">
 						Artist: Jay-Z
 					</p>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+						Play
+					</button>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button">
+						Vote
+					</button>
 				</div>
 			</div>
 		</div>
@@ -269,11 +316,14 @@
 						Artist: Jay-Z
 					</p>
 					<p class="track_name">
-						Album Name: Badlands
-					</p>
-					<p class="track_name">
 						Artist: Halsey
 					</p>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+						Play
+					</button>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button">
+						Vote
+					</button>
 				</div>
 			</div>
 		</div>
@@ -296,11 +346,14 @@
 						rack Name: Stairway To Heaven
 					</p>
 					<p class="track_name">
-						Album Name: Kashmir
-					</p>
-					<p class="track_name">
 						Artist: Led Zepplin
 					</p>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+						Play
+					</button>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button">
+						Vote
+					</button>
 				</div>
 			</div>
 		</div>
@@ -317,17 +370,24 @@
 						Track Name: Beautiful
 					</p>
 					<p class="track_name">
-						Album Name: Recovery
-					</p>
-					<p class="track_name">
 						Artist: Eminem
 					</p>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+						Play
+					</button>
+					<button class="btn btn-default top_ranking_button col-md-3" type="button">
+						Vote
+					</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 </div>
+<audio controls class="top_ranking_play" id="song_play" controlsList="nodownload" style="display:none">
+	<source src="" type="audio/mpeg">
+	Your browser does not support the audio element.
+</audio>
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
