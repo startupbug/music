@@ -38,13 +38,6 @@
           <img src="{{asset('public/dashboard/musician/tracks/images/'.$edit_track->image)}}" width="100%" class="img-thumbnail">
         </div>
       </div>
-     <!--  <div class="col-md-5 col-sm-12 col-xs-12">
-         <div class="header">
-              <h1>Lorem Ipsum</h1>
-              <h4>Web Developer</h4>
-              <span>ALBUM Count</span>
-         </div>
-      </div> -->
       <div class="col-md-4 col-sm-12 col-xs-12">
           <div class="dashboard_album">
             <img class="" src="https://www.w3schools.com/howto/img_forest.jpg" class="img-responsive center-block" width="100%" height="180px" >

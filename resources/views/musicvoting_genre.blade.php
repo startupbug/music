@@ -42,24 +42,19 @@
                     </a>
                   </div>
                   <audio  class="audio_thumbnail" controls>
-                      <source src="horse.ogg" type="audio/ogg">
-                      <source src="http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a" type="audio/mpeg">
-                    Your browser does not support the audio element.
+                    @if(Auth::check())
+                      <input type="hidden" name="user_id" id="user_id" value="{{Auth::user()->id}}">
+                      <input type="hidden" name="track_id" id="track_id" value="{{$track_video->id}}">
+                    @endif
+                    @if(isset($track_video->video))
+                      <source src="{{asset('public//dashboard/musician/tracks/videos/'.$track_video->video)}}" type="audio/mpeg">
+                    @endif 
+                    <source src="horse.ogg" type="audio/ogg">
+                      Your browser does not support the audio element.
                   </audio>
                 </div>
                 <!-- End Audio Tag -->
 
-                <video id="videoz" width="100%" style="height: auto;" controls controlsList="nodownload">
-                  @if(Auth::check())
-                  <input type="hidden" name="user_id" id="user_id" value="{{Auth::user()->id}}">
-                  <input type="hidden" name="track_id" id="track_id" value="{{$track_video->id}}">
-                  @endif
-                  @if(isset($track_video->video))
-                  <source src="{{asset('public//dashboard/musician/tracks/videos/'.$track_video->video)}}" type="video/mp4">
-                    @endif
-                    <source src="mov_bbb.ogg" type="video/ogg">
-                      Your browser does not support HTML5 video.
-                    </video>
                     @if(Auth::check())
                     <form action="{{route('download_file',['file_name'=>$track_video->video,'track_id'=>$track_video->id ])}}" method="post">
                       {{csrf_field()}}
@@ -120,7 +115,9 @@
                         </div>
                       @endif
                     </form>
-
+                    @if(count($commenting) == 0 )
+                      <p>No comments has been post</p>
+                    @else
                     @foreach($commenting as $comment)
                     <div class="comment-wrap">
                       <div class="photo">
@@ -134,27 +131,7 @@
                       </div>
                     </div>
                     @endforeach
-                    <div class="comment-wrap">
-                      <div class="photo">
-                        <div class="avatar">
-                          <img src="{{asset('public/assets/images/com_img.png')}}">
-                        </div>
-                      </div>
-                      <div class="comment-block">
-                        <p class="comment-text">Okayish... Heard Better</p>
-                      </div>
-                    </div>
-                    <div class="comment-wrap">
-                      <div class="photo">
-                        <div class="avatar">
-                          <img src="{{asset('public/assets/images/comment_image.png')}}">
-                        </div>
-                      </div>
-                      <div class="comment-block">
-                        <p class="comment-text">Wow! Blown away, Strong performance
-                        welldone!</p>
-                      </div>
-                    </div>
+                    @endif
                   </div>
                 </div>
               </div>

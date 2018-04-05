@@ -71,7 +71,6 @@
   <div class="container">
     <h1 class="profileName">{{ $userInfo->name}} ALBUMS</h1>
     @foreach($albumss as $album)
-      
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="box">
           <a href="{{route('album_view',['id' => $album->id])}}">
@@ -87,6 +86,9 @@
         </h3>
       </div>
     @endforeach
+     @if(count($albumss) == 0)
+      <h1>There is no Albums to display</h1>
+    @endif 
   </div>
 </section>
 <section class="music_track">
@@ -106,25 +108,22 @@
 							</div>
 						</a>
 					</div>
-					<audio  class="audio_thumbnail" controls>
-							<source src="horse.ogg" type="audio/ogg">
-							<source src="http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a" type="audio/mpeg">
-						Your browser does not support the audio element.
-					</audio>
-				</div>
-				<!-- End Audio Tag -->
-        <a href="{{route('musicvoting_genre',['id' => $track->id])}}">
+					 <a href="{{route('musicvoting_genre',['id' => $track->id])}}">
           <div class="box">
             <div class="dashboard_album">
-              <video width="100%" height="160px" controls>
-                <source src="{{asset('public/dashboard/musician/tracks/videos/'.$track->video)}}" type="video/mp4">
-              </video>
+            <audio  class="audio_thumbnail" controls>
+              <source src="horse.ogg" type="audio/ogg">
+              <source src="{{asset('public/dashboard/musician/tracks/videos/'.$track->video)}}" type="audio/mpeg">
+            Your browser does not support the audio element.
+            </audio>
             </div>
           </div>
         </a>
         <h3 class="album_person_name">
           {{$track->name}}
         </h3>
+				</div>
+				<!-- End Audio Tag -->
       </div>
     @endforeach
     @if(count($tracks) == 0)

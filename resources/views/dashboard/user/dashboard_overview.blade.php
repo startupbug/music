@@ -44,19 +44,16 @@
                     </div>
                   </a>
                 </div>
-                <audio  class="audio_thumbnail" style="width:100%; padding:0px;" controls>
+                <a href="{{route('musicvoting_genre',['id' => $track->id])}}">
+                   <audio  class="audio_thumbnail" style="width:100%; padding:0px;"  controls>
                     <source src="horse.ogg" type="audio/ogg">
-                    <source src="http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a" type="audio/mpeg">
+                    <source src="{{asset('public/dashboard/musician/tracks/videos/'.$track->video)}}" type="audio/mpeg">
                   Your browser does not support the audio element.
                 </audio>
+                </a>
               </div>
               <!-- End Audio Tag -->
-                <a href="{{route('musicvoting_genre',['id' => $track->id])}}">
-                  <img class="" src="https://www.w3schools.com/howto/img_forest.jpg" class="img-responsive center-block" width="100%" height="180" >
-                  <audio controls class="col-md-12" style="padding:0px;">
-                        <source src="{{asset('public/dashboard/musician/tracks/videos/'.$track->video)}}" type="video/mp4">
-                  </audio>
-                </a>
+                
             </div>
             <h3 class="album_person_name">
                 {{$track->name}}

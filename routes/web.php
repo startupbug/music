@@ -91,7 +91,7 @@ Route::get('/metallic_songs','PagesController@metallic_songs')->name('metallic_s
 
 Route::post('/subscribe','PagesController@subscribe')->name('subscribe');
 
-Route::get('/contest','PagesController@contest')->name('contest');
+Route::get('/contest/','PagesController@contest')->name('contest');
 
 Route::get('/winner','PagesController@winner')->name('winner');
 

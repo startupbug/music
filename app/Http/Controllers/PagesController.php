@@ -31,14 +31,6 @@ class PagesController extends Controller
       return view('profile')->with($args);
     }
 
-    public function contest()
-    {
-        // $contest = DB::table('contests')->get();
-        // dd($contest);
-    
-        return view('contest');
-    }
-
     public function terms()
     {
         return view('musicvoting_terms');
@@ -605,9 +597,12 @@ class PagesController extends Controller
         return redirect('/');
     }
 
-    public function contest_listing(){
-    
-      return view('contest_listing');
+    public function contest_listing()
+    {
+        $contests = DB::table('contests')->get();
+        // dd($contest);
+        return view('contest_listing',['contests'=>$contests]);
     }
+
 
 }
