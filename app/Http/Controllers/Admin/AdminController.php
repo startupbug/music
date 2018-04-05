@@ -140,6 +140,45 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
+     public function admin_update_password(Request $request)
+    {
+        $this->validate(request(),[
+            'old_password' => 'required',
+            'password' => 'required',
+            'password_confirmation' => 'required|same:password',
+        ]);
+        if (Hash::check($request->old_password, Auth::user()->password))
+        {
+            if($request->password === $request->password_confirmation)
+            {
+                $user = User::where('id', Auth::user()->id)->update([
+                    'password' => bcrypt($request->password)
+                ]);
+                if($user)
+                {
+                    $this->set_session('You Have Successfully Updated Password', true);
+                    return redirect()->back(); 
+                }
+                else
+                {
+                    $this->set_session('Password Update Failed, Please Try Again ', false);
+                    return redirect()->back();
+                }
+            }
+            else
+            {
+                $this->set_session('Password Does Not Match, Please Try Again ', false);
+                    return redirect()->back();
+            }
+        }
+        else
+        {
+            $this->set_session('Old Password Is Incorrect, Please Try Again ', false);
+            return redirect()->back(); 
+        }
+
+                   
+    }
     public function admin_logout(Request $request) {     
       Auth::logout();
       return redirect('/');

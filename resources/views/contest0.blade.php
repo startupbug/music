@@ -2,11 +2,6 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="col-md-12 text-center s_text_color">
-			<h3 class="contest_heading s_text_color">
-				ABOUT THE CONTEST
-			</h3>
-		</div>
 		<div class="col-md-6">
 			<h3 class="contest_heading">
 				ABOUT THE CONTEST
@@ -14,70 +9,11 @@
 			<p class="contest_paragraph">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lorem sem, eleifend et urna at, pharetra venenatis ipsum. Nunc sodales nisl vel placerat rutrum. Nam tincidunt, nulla at vehicula ultrices, odio quam consequat nunc, vel imperdiet ante ante in tortor. Aenean blandit vel lectus maximus congue. Sed at eros commodo, malesuada justo non, tincidunt purus. Nam euismod, libero id semper mollis, nulla quam mattis odio, ut pretium nulla libero ac ipsum. Donec aliquam vehicula ipsum, ullamcorper vestibulum elit accumsan vel. Maecenas varius ex at est tristique ultrices. Sed magna nisl.
 			</p>
-
-			<h4 class="contest_heading">
-				CONTEST TYPE : <span>Daily</span>
-			</h4>
-			<p class="contest_date_s">
-				<i class="fa fa-calendar fa-lg"> </i> Fir, Mar 16, 3:00 Pm Fir, Mar 16, 3:00 Pm
-			</p>
-			<button class="btn btn-info s-btn-info" type="button" data-toggle="modal" data-target="#myModal">JOIN CONTEST</button>
-
 		</div>
 		<div class="col-md-6">
-			<div class="img_video">
-				<img src="{{asset('public/assets/images/contest_video.png')}}" class="img-responsive">
-			</div>
+			<div class="img_video"><img src="{{asset('public/assets/images/contest_video.png')}}" class="img-responsive"></div>
 		</div>
 	</div>
-	<!-- Modal -->
-	  <div class="modal fade" id="myModal" role="dialog">
-	    <div class="modal-dialog">
-	      <!-- Modal content-->
-	      <div class="modal-content">
-	        <div class="modal-header">
-	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-	          <h4 class="s-modal-title">Join Contest</h4>
-	        </div>
-	        <div class="modal-body">
-						<form action="/action_page.php">
-							<div class="form-group">
-								<div class="radio" style="display: inline;">
-								  <label>
-										<input type="radio" name="optradio_contest" value="select" checked>Select Song
-									</label>
-								</div>
-								<div class="radio" style="display: inline; margin-left:5px">
-								  <label>
-										<input type="radio" name="optradio_contest" value="file"> Upload Song
-									</label>
-								</div>
-							</div>
-						  <div class="form-group s-form-group" id="combox_song">
-						    <label for="songs">Select Song :</label>
-								<select class="form-control s-form-control" name="song_list" id="song_list">
-									<option selected disabled>Select Song</option>
-									<option>Song 1</option>
-									<option>Song 1</option>
-									<option>Song 1</option>
-									<option>Song 1</option>
-									<option>Song 1</option>
-								</select>
-						  </div>
-							<div class="form-group s-form-group" id="file_song" style="display:none">
-						    <label for="songs">Upload Song :</label>
-								<input type="file" class="form-control s-form-control" name="upload_song" value="" id="upload_song" disabled style="line-height: 1;">
-						  </div>
-							<div class="form-group text-right">
-							  <button type="submit" class="btn btn-default">Submit</button>
-							</div>
-						</form>
-	        </div>
-	      </div>
-
-	    </div>
-	  </div>
-
 </div>
  <div class="container">
 	<div class="row">
