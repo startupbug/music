@@ -10,8 +10,8 @@
       <div class="contest_image">
         @if($contest->contest_image == null)
           <img src="{{asset('public/assets/images/newcontest.jpg')}}" alt="" class="img-responsive">
-        @else
-          <img src="{{asset('public/assets/images/'.$contest->contest_image)}}" alt="" class="img-responsive">
+        @elseif($contest->contest_image != null)
+          <img src="{{asset('public/storage/contest_images/'.$contest->contest_image)}}" alt="" class="img-responsive">
         @endif
       </div>
     </div>
@@ -29,7 +29,9 @@
       </p>
       <p class="contest_head">Description</p>
       <p class="contest_description">{{$contest->description}}</p>
-      <button class="btn btn-info btn-lg footer contest_button" type="submit">Participate in Contest</button>
+      <form action="{{route('musician_contest',['id'=>$contest->id])}}" method="get">
+          <button class="btn btn-info btn-lg footer contest_button" type="submit">Participate in Contest</button>
+      </form>
     </div>
   </div>
   @endforeach

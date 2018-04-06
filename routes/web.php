@@ -77,7 +77,6 @@ Route::get('/profile/{id}','PagesController@profile')->name('profile');
 Route::post('/submit_rating','PagesController@submit_rating')->name('submit_rating');
 Route::post('/submit_points','PagesController@submit_points')->name('submit_points');
 Route::post('/download_file/{file_name}/{track_id}/{name?}','PagesController@download_file')->name('download_file');
-
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify')->name('verified_email');
 
 
@@ -93,7 +92,8 @@ Route::get('/metallic_songs','PagesController@metallic_songs')->name('metallic_s
 
 Route::post('/subscribe','PagesController@subscribe')->name('subscribe');
 
-Route::get('/contest/','PagesController@contest')->name('contest');
+Route::get('/musician_contest/{id}','PagesController@musician_contest')->name('musician_contest');
+Route::post('/join_contest','PagesController@upload_track')->name('join_contest');
 
 Route::get('/winner','PagesController@winner')->name('winner');
 
