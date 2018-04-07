@@ -1487,7 +1487,7 @@ p.track_name {
 }
 
 .top_ranking {
-    margin-top: 16px;
+    margin-top: 40px;
 }
 
 .border_contest img.img-responsive {
@@ -2042,4 +2042,30 @@ h4.contest_heading span {
     font-family: Conv_Montserrat-Regular;
     margin-top: 18px;
     color: #76767a;
+}
+
+.top_ranking_button{
+  padding: 6px 10px !important;
+  margin-left: 0px !important;
+}
+.top_ranking_play{
+  position: fixed;
+  bottom: 0;
+  z-index: 9;
+}
+
+.s-form-group .form-control {
+    margin: 0px 0px !important;
+}
+.s-form-group {
+    margin: 16px 0px;
+}
+
+.not_display_data{
+  font-size: 25px;
+  text-align: center;
+  padding: 15px 0px 60px 0px;
+  font-family: 'Conv_bebas';
+  word-spacing: 6px;
+  letter-spacing: 1px;
 }

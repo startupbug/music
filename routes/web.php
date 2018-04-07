@@ -63,6 +63,7 @@ Route::group(['prefix' => 'admin','middleware' => 'is-admin'], function () {
     Route::get('view_contest/{id}', 'Admin\ContestController@view_contest')->name('view_contest');
     Route::post('update_contest/{id}', 'Admin\ContestController@update')->name('update_contest');
 
+    Route::get('subscribers', 'Admin\AdminController@subscribers')->name('subscribers');
 
     Route::get('contest_participant/{id}', 'Admin\ContestController@contest_participant')->name('contest_participant');
     Route::get('/accept_request/{id}/', ["as" => "accept-request", "uses" => "Admin\ContestController@accept_request"]);
@@ -116,6 +117,8 @@ Route::get('/genre','PagesController@genre')->name('genre');
 Route::get('/terms','PagesController@terms')->name('terms');
 
 Route::get('/privacy','PagesController@privacy')->name('privacy');
+
+Route::get('/participated_tracks','PagesController@participated_tracks')->name('participated_tracks');
 
 Route::group(['prefix' => 'promoter', 'middleware' => 'promoter'], function () {
 Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'Promoter\PrmoterController@promoter_image']);

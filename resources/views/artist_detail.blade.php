@@ -55,7 +55,7 @@
           </div>
         </div>
       @endforeach
-      <!--<h3 class="last_heading">TRACKS</h3>-->
+      <br>
         {{ $musician_details->links() }}
     </div>
     <br>

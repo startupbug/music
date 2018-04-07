@@ -10,6 +10,16 @@
 //      }
 // })
 
+function music(path) {
+  $("#song_play").attr('src', path);
+  $("#song_play").css('display', 'block');
+  $("#song_play")[0].play();
+// console.log(path);
+}
+
+
+
+
 var $radios = $('input[name=optradio_contest]').change(function () {
     var value = $radios.filter(':checked').val();
     console.log(value);
@@ -17,14 +27,25 @@ var $radios = $('input[name=optradio_contest]').change(function () {
       $("#combox_song").css("display", "block");
       $("#file_song").css("display", "none");
 
+      $("#name").prop('disabled', true);
+      $("#description").prop('disabled', true);
+      $("#category_list").prop('disabled', true);
       $("#upload_song").prop('disabled', true);
+      $("#upload_image").prop('disabled', true);
+
       $("#song_list").prop('disabled', false);
     }
     else if(value == "file") {
       $("#combox_song").css("display", "none");
       $("#file_song").css("display", "block");
 
+
+      $("#name").prop('disabled', false);
+      $("#description").prop('disabled', false);
+      $("#category_list").prop('disabled', false);
       $("#upload_song").prop('disabled', false);
+      $("#upload_image").prop('disabled', false);
+
       $("#song_list").prop('disabled', true);
     }
 });

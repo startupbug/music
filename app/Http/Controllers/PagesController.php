@@ -607,16 +607,21 @@ class PagesController extends Controller
 
     public function musician_contest($id)
     {   
+        $tracks_list = 0;
         $contest = DB::table('contests')->where('id','=',$id)->first();
+        $tracks_list = DB::table('request_contest')->join('tracks','request_contest.track_id','=','tracks.id')->get();
+
         if(Auth::check())
         {
+            $category = DB::table('Categories')->get();
             $user_id = Auth::user()->id;
             $tracks = DB::table('tracks')->where('user_id','=',$user_id)->get();
-            return view('contest',['contest' => $contest, 'tracks' => $tracks]);        
+            
+            return view('contest',['contest' => $contest, 'tracks' => $tracks, 'categories' => $category,'tracks_list' => $tracks_list]);        
         }
         else
         {
-            return view('contest',['contest' => $contest]);
+            return view('contest',['contest' => $contest,'tracks_list' => $tracks_list]);
         }   
     }
 
@@ -626,34 +631,43 @@ class PagesController extends Controller
         $radio_button = Input::get('optradio_contest');
         if($radio_button == 'select')
         {
-            dd('yahoooo');
+            
             $request_contest = new Request_Contest;
             $request_contest->user_id = Auth::user()->id;
             $request_contest->track_id = Input::get('song_list');
             $request_contest->contest_id = Input::get('contest_id');
             $request_contest->save();
+            Session::flash('insert_track','Your track request has been sent wait for admin to approve it.');
             
         }
         elseif($radio_button == 'file' )
         {
-            ini_set('memory_limit','256M');      
-            $this->validate($request, [         
-                'name'=> 'required|min:3|max:40|regex:/^[(a-zA-Z\s)]{3,25}+[a-z0-9A-Z ]*/',            
+
+            ini_set('memory_limit','256M'); 
+
+            $this->validate($request, [ 
+
+                'name'=> 'required|min:3|max:40',            
                 'image' => 'required|mimes:jpeg,JPEG,jpg,bmp,png',
-                'audio' => 'required|mimes:mp3,mp4'           
+                'audio' => 'required|mimes:mp3,mp4'    
             ]);
+                 
             $p = new Track;
+            
             $p->name = Input::get('name');
             $p->description = Input::get('description');
             $p->category_id = Input::get('category');
             $p->user_id = Auth::user()->id;
             if ($request->hasFile('audio')) {
-              $audio=$request->file('adio');
-              $filename=time() . '.' . $audio->getClientOriginalExtension();          
+              $audio=$request->file('audio');
+              // dd($audio);
+              $filename=time() . '.' . $audio->getClientOriginalExtension();
+              // dd($filename);          
               $location=public_path('dashboard/musician/tracks/videos/'.$filename);
-              $p->audio=$filename;         
+              // dd($location);
+              $p->video=$filename;         
             }
-            $p->audio = $this->UploadFiles('audio', Input::file('audio'));
+            $p->video = $this->UploadFiles('audio', Input::file('audio'));
             if ($request->hasFile('image')) {
               $image=$request->file('image');
               $filename=time() . '.' . $image->getClientOriginalExtension();          
@@ -661,25 +675,37 @@ class PagesController extends Controller
               $p->image=$filename;         
             }
             $p->image = $this->UploadFiles('image', Input::file('image'));   
-            $p->save();      
-            Session::flash('upload_track','new track upload'); 
-            dd(54545);
+
+            $p->save(); 
+            $request_contest = new Request_Contest;
+            $request_contest->user_id = Auth::user()->id;
+            $request_contest->track_id = $p->id;
+            $request_contest->contest_id = Input::get('contest_id');
+            $request_contest->save();    
+            
+            Session::flash('insert_track','Your track request has been sent wait for admin to approve it.');
+
 
         }
 
-         return view('contest_listing');
+         return redirect()->back();
     }
 
     public function UploadFiles($type, $files){
         // Uploading Files[image & video]
         ini_set('memory_limit','256M');
         $path = base_path() . '/public/dashboard/musician/tracks/images/';
-        if( $type == 'video' ){
+        if( $type == 'audio' ){
             $path = base_path() . '/public/dashboard/musician/tracks/videos/';
         }         
         $filename = md5($files->getClientOriginalName() . time()) . '.' . $files->getClientOriginalExtension();
         $files->move( $path , $filename);   
         return $filename;
+    }
+
+    public function participated_tracks()
+    {
+        
     }
 
 }
