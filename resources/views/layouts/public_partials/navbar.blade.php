@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right music_navbar">
                 <li><a href="{{route('home1')}}">HOME</a></li>
-                <li><a href="{{route('contest')}}">CONTEST</a></li>
+                <li><a href="{{route('contest_listing')}}">CONTEST</a></li>
                 <li><a href="{{route('winner')}}">WINNER</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"

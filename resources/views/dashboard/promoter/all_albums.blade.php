@@ -3,11 +3,11 @@
 
   <div class="col-md-9">
     <h3 class="heading_dashboard">
-        ARTIST DASHBOARD
+      PROMOTER &nbsp; DASHBOARD
     </h3>
     <div class="border_red">
         <h3 class="album">
-            MY ALBUMS
+            MY &nbsp; ALBUMS
         </h3>
     </div>
     <div class="row">
@@ -30,11 +30,10 @@
     </div>
       @endforeach
     </div>
-    <hr class="line">
     <div class="row">
       <div class="col-md-10 color_bottom">
         <h3 class="all_album">
-            ALL VIDEOS &nbsp
+            ALL &nbsp; VIDEOS &nbsp;
         </h3>
       </div>
     </div>
@@ -55,18 +54,15 @@
                     </div>
                   </a>
                 </div>
-                <audio  class="audio_thumbnail" controls>
+                <a href="{{route('musicvoting_genre',['id' => $album_track->id])}}">
+                <audio  class="audio_thumbnail" style="width:100%; padding:0px;" controls>
                     <source src="horse.ogg" type="audio/ogg">
-                    <source src="http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a" type="audio/mpeg">
+                    <source src="{{asset('public/dashboard/musician/tracks/videos/'.$album_track->video)}}" type="audio/mpeg">
                   Your browser does not support the audio element.
                 </audio>
+              </a>
               </div>
               <!-- End Audio Tag -->
-              <a href="">
-                <video width="100%" height="160px" controls>
-                  <source src="{{asset('public/dashboard/musician/tracks/videos/'.$album_track->video)}}" type="video/mp4">
-                </video>
-              </a>
               <h3 class="album_person_name">
         				{{$album_track->name}}
         			</h3>

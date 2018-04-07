@@ -58,8 +58,8 @@
             Action <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
-            <li><a data-toggle="modal" data-target="#AddVideoModal">Add Video</a></li>
-            <li><a data-toggle="modal" data-target="#UploadVideoModal">Upload Video</a></li>
+            <li><a data-toggle="modal" data-target="#AddVideoModal">Add Track</a></li>
+            <li><a data-toggle="modal" data-target="#UploadVideoModal">Upload Track</a></li>
           </ul>
         </div>
       </div>
@@ -122,10 +122,21 @@
               </div>
             </div>
           </div>
+        </div>    
+      @endforeach   
+    </div> 
+    @if(count($errors))
+        <div class="form-group">
+         <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $erroring)
+                  <li>{{$erroring}}  </li>
+                  @endforeach
+            </ul>
+          </div>
         </div>
-      @endforeach
+        @endif 
     </div>
-  </div>
   <div class="container">
     <!-- Edit Album Modal -->
     <div class="modal fade" id="EditAlbumModal" role="dialog">

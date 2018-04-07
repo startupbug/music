@@ -9,24 +9,6 @@
             OVERVIEW
        </h3>
     </div>
-    <div class="row">
-        <div class="col-md-12 color_bottom">
-            <h3 class="all_album">
-               EARNED &nbsp; POINTS
-            </h3>
-             <div class="btn-group">
-           <button type="button" class="btn btn-default btn-number" data-type="minus" data-field="quant[1]">
-                 <span class="glyphicon glyphicon-calendar"></span>
-              </button><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            Action <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another</a></li>    
-          </ul>
-        </div>
-          </div>
-    </div>
     <hr class="line">
     <div class="row">
         <div class="col-md-12 color_bottom">

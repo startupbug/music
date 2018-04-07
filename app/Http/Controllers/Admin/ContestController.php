@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Contest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +15,7 @@ use App\Track;
 use App\Contest;
 use App\Album;
 use App\Album_Video;
+use App\Request_Contest;
 use Auth;
 
 class ContestController extends Controller
@@ -130,4 +131,6 @@ class ContestController extends Controller
         $this->set_session('You Have Successfully Rejected Request ', true);     
         return redirect()->back();
     }
+
+    
 }

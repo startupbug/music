@@ -3,10 +3,7 @@
  @if (Session::has('upload_video_album'))
     <div class="alert alert-info">{{ Session::get('upload_video_album') }}</div>
     @endif
-
-
   <div class="col-md-12">
-
     <div class="row">
       <div class="col-md-10">
         <h3 class="all_album">
@@ -54,19 +51,14 @@
                 </div>
               </a>
             </div>
-            <audio  class="audio_thumbnail" controls>
-                <source src="horse.ogg" type="audio/ogg">
-                <source src="http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a" type="audio/mpeg">
-              Your browser does not support the audio element.
-            </audio>
+            
           </div>
           <!-- End Audio Tag -->
-
-
-          <!-- <a href="http://localhost/music-a1/musicvoting_genre/25"> -->
-          <video controls="" width="100%" height="245px">
-            <source src="{{asset('public/dashboard/musician/tracks/videos/'.$tracks->track_video)}}" type="video/mp4">
-          </video>
+          <audio  class="audio_thumbnail" controls>
+                <source src="horse.ogg" type="audio/ogg">
+                <source src="{{asset('public/dashboard/musician/tracks/videos/'.$tracks->track_video)}}" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
           <!-- </a> -->
           <h3 class="album_person_name">
             {{$tracks->track_name}}
@@ -74,6 +66,9 @@
         </div>
       </div>
       @endforeach
+      @if(count($album_tracks) == 0)
+        <h1>There is no tracks to display</h1>
+    @endif
     </div>
   </div>
 

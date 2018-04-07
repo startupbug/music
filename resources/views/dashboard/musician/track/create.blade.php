@@ -22,19 +22,19 @@
           {{csrf_field()}}
            <div class="col-md-7 col-sm-12 col-xs-12 col-md-offset-3 ">
             <h3>SELECT A TRACK</h3>
-            <input type="text" class="form-control" name="name"> 
+            <input type="text" class="form-control" name="name">
           </div>
           <div class="col-md-7 col-sm-12 col-xs-12 col-md-offset-3 ">
             <h3>DESCRIPTION</h3>
-            <input type="text" class="form-control" name="description"> 
+            <input type="text" class="form-control" name="description">
           </div>
           <div class="col-md-7 col-sm-12 col-xs-12 col-md-offset-3">
-              <h3>CATEGORY</h3>                         
+              <h3>CATEGORY</h3>
                <select class="form-control" name="category">
                  @foreach($categories as $category)
-                 <option value="{{$category->id}}">{{$category->name}}</option>     
+                 <option value="{{$category->id}}">{{$category->name}}</option>
                  @endforeach
-               </select>      
+               </select>
           </div>
           <div class="col-md-7 col-sm-12 col-xs-12 col-md-offset-3 ">
             <h3>SELECT &nbsp; A &nbsp; TRACK</h3>

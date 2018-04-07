@@ -39,3 +39,12 @@ $('#change_admin_profile_pic').change(function(e){
         }
     });
 });
+
+$(document).ready(function() {
+    $('#example22').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [            
+            'csvHtml5'
+        ]
+    } );
+} );

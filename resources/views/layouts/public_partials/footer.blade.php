@@ -10,7 +10,7 @@
                         <li><a href="{{route('home1')}}"><i class="fa fa-angle-double-right"></i>
                             Home
                         </a></li>
-                        <li><a href="{{route('contest')}}"><i class="fa fa-angle-double-right"></i>
+                        <li><a href="{{route('contest_listing')}}"><i class="fa fa-angle-double-right"></i>
                             Contests
                         </a></li>
                         <li><a href="{{route('winner')}}"><i class="fa fa-angle-double-right"></i>
@@ -42,7 +42,7 @@
                         <li><a href="{{url('register')}}"><i class="fa fa-angle-double-right"></i>
                             Sign Up Now
                         </a></li>
-                        <li><a href="{{route('contest')}}"><i class="fa fa-angle-double-right"></i>
+                        <li><a href="{{route('contest_listing')}}"><i class="fa fa-angle-double-right"></i>
                             Contests
                         </a></li>
                         <li><a href="{{route('how_it_works')}}"><i class="fa fa-angle-double-right"></i>

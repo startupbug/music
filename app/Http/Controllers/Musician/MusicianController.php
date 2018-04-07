@@ -66,7 +66,7 @@ class MusicianController extends Controller
         \File::delete(Auth::user()->image);
         DB::table('users')
         ->where('id', Auth::user()->id)
-        ->update(['image' => 'Default-avatar.jpg']);
+        ->update(['image' => 'default-avatar.png']);
         Session::flash('delete','profile image is removed');
         return redirect()->route('main_index'); 
     }
@@ -93,12 +93,13 @@ class MusicianController extends Controller
      */
     public function overview()
     {
-        $args['all_tracks'] = Track::take(8)->orderBy('id','DESC')->get();
+        $args['all_tracks'] = Track::where('user_id', Auth::user()->id)->take(8)->orderBy('id','DESC')->get();
         $args['all_albums'] = Album::where('user_id', Auth::user()->id)->take(8)->orderBy('id','DESC')->get();
         return view('dashboard.musician.overview')->with($args);
     }
      public function redeem()
     {   
+
         if(Auth::check())
         {
             $musician_points = DB::table('points')
@@ -116,23 +117,26 @@ class MusicianController extends Controller
 
         //current month points gained
         $currentMonth = date('m');
-        $data = DB::table("points")
-                    ->whereRaw('MONTH(created_at) = ?',[$currentMonth])
-                    ->get();
-        foreach ($data as $value)
-        {
-            $musician_points_in_this_month = DB::table('points')
-                                            ->leftjoin('tracks','tracks.id','=','points.track_id')
-                                            ->leftjoin('users','users.id','=','tracks.user_id')
-                                            ->select('points.point')                                
-                                            ->where('points.user_id','=',Auth::user()->id)
-                                            ->get();
-            $total_points_in_this_month = 0;             
-            foreach ($musician_points_in_this_month as $value)
-            {                                         
-                $total_points_in_this_month += $value->point;
-            }   
-        }
+
+        // $data = DB::table("points")
+        //             ->whereRaw('MONTH(created_at) = ?',[$currentMonth])
+        //             ->get();
+        //             // dd($data);         
+        // foreach ($data as $value)
+        // {
+        //     $musician_points_in_this_month = DB::table('points')
+        //                                     ->leftjoin('tracks','tracks.id','=','points.track_id')
+        //                                     ->leftjoin('users','users.id','=','tracks.user_id')
+        //                                     ->select('points.point')                                
+        //                                     ->where('points.user_id','=',Auth::user()->id)
+        //                                     ->get();
+        //     $total_points_in_this_month = 0;             
+        //     foreach ($musician_points_in_this_month as $value)
+        //     {                                         
+        //         $total_points_in_this_month += $value->point;
+
+        //     }   
+        // }
         //current month points gained
 
         //redeemed points
@@ -148,10 +152,10 @@ class MusicianController extends Controller
         //redeemed points
 
         //redeemable points
-        $redeemable_points = $total_points-$total_redeemed_points;     
+        $redeemable_points = $total_points - $total_redeemed_points;     
         //redeemable points  
 
-        return view('dashboard.musician.redeem',['total_points'=>$total_points,'total_points_in_this_month'=>$total_points_in_this_month,'total_redeemed_points'=>$total_redeemed_points,'redeemable_points'=>$redeemable_points]);
+        return view('dashboard.musician.redeem',['total_points'=>$total_points,'total_redeemed_points'=>$total_redeemed_points,'redeemable_points'=>$redeemable_points]);
     }
     public function redeemed_request()
     {

@@ -63,6 +63,7 @@ Route::group(['prefix' => 'admin','middleware' => 'is-admin'], function () {
     Route::get('view_contest/{id}', 'Admin\ContestController@view_contest')->name('view_contest');
     Route::post('update_contest/{id}', 'Admin\ContestController@update')->name('update_contest');
 
+    Route::get('subscribers', 'Admin\AdminController@subscribers')->name('subscribers');
 
     Route::get('contest_participant/{id}', 'Admin\ContestController@contest_participant')->name('contest_participant');
     Route::get('/accept_request/{id}/', ["as" => "accept-request", "uses" => "Admin\ContestController@accept_request"]);
@@ -77,7 +78,6 @@ Route::get('/profile/{id}','PagesController@profile')->name('profile');
 Route::post('/submit_rating','PagesController@submit_rating')->name('submit_rating');
 Route::post('/submit_points','PagesController@submit_points')->name('submit_points');
 Route::post('/download_file/{file_name}/{track_id}/{name?}','PagesController@download_file')->name('download_file');
-
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify')->name('verified_email');
 
 
@@ -93,7 +93,8 @@ Route::get('/metallic_songs','PagesController@metallic_songs')->name('metallic_s
 
 Route::post('/subscribe','PagesController@subscribe')->name('subscribe');
 
-Route::get('/contest','PagesController@contest')->name('contest');
+Route::get('/musician_contest/{id}','PagesController@musician_contest')->name('musician_contest');
+Route::post('/join_contest','PagesController@upload_track')->name('join_contest');
 
 Route::get('/winner','PagesController@winner')->name('winner');
 
@@ -117,6 +118,8 @@ Route::get('/terms','PagesController@terms')->name('terms');
 
 Route::get('/privacy','PagesController@privacy')->name('privacy');
 
+Route::get('/participated_tracks','PagesController@participated_tracks')->name('participated_tracks');
+
 Route::group(['prefix' => 'promoter', 'middleware' => 'promoter'], function () {
 Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'Promoter\PrmoterController@promoter_image']);
     Route::get('/promoterindex','Promoter\PrmoterController@index')->name('promoterindex');
@@ -133,7 +136,7 @@ Route::post('ajaxImageUpload',['as'=>'promoterImageUpload','uses'=>'Promoter\Prm
     Route::get('/unapproved_invitations','Promoter\PrmoterController@unapproved_invitations')->name('unapproved_invitations');
     Route::get('/approve_status/{id}/', ["as" => "approve-status", "uses" => "Promoter\PrmoterController@approve_status"]);
     Route::get('/disapprove_status/{id}/', ["as" => "disapprove-status", "uses" => "Promoter\PrmoterController@disapprove_status"]);
-    Route::get('/albums/{id}','Promoter\PrmoterController@all_albums')->name('all_albums');
+    Route::get('/all_albums/{id}/','Promoter\PrmoterController@all_albums')->name('promoter_all_albums');
     Route::get('delete_image','Promoter\PrmoterController@delete_image')->name('delete_image2');
     Route::get('/promoter_logout', 'Promoter\PrmoterController@promoter_logout')->name('logout_promoter');
     //promoter_redeemed_request
@@ -207,7 +210,7 @@ Route::get('home1', 'HomeController@user_dashboard')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/search_result','PagesController@search_result')->name('search_result');
+Route::get('/search_result','PagesController@search_result')->name('search_result');
 
 
 Route::get('/getAffiliatedID', 'PagesController@getAffiliatedID')->name('getAffiliatedID');

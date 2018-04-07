@@ -40,20 +40,14 @@
                     </div>
                   </a>
                 </div>
-                <audio  class="audio_thumbnail" style="width:100%; padding:0px;" controls>
-                    <source src="horse.ogg" type="audio/ogg">
-                    <source src="http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a" type="audio/mpeg">
-                  Your browser does not support the audio element.
-                </audio>
               </div>
               <!-- End Audio Tag -->
               <a href="{{route('musicvoting_genre',['id' => $value->id])}}">
-
-
-              <video width="100%" height="160px" controls>
-                <source src="{{asset('public/dashboard/musician/tracks/videos/'.$value->video)}}" type="video/mp4">
-              </video>
-              </a>
+                <audio  class="audio_thumbnail" style="width:100%; padding:0px;" controls>
+                    <source src="horse.ogg" type="audio/ogg">
+                    <source src="{{asset('public/dashboard/musician/tracks/videos/'.$value->video)}}" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
               <h3 class="album_person_name">
                 {{$value->name}}
               </h3>

@@ -18,6 +18,7 @@ use App\Album;
 use App\Album_Video;
 use App\Point;
 use App\Subscriber;
+use App\Request_Contest; 
 
 class PagesController extends Controller
 {
@@ -29,11 +30,6 @@ class PagesController extends Controller
       $args['tracks'] = Track::where('user_id',$id)->take(12)->get();
       $args['albumss'] = Album::where('user_id',$id)->get();
       return view('profile')->with($args);
-    }
-
-    public function contest()
-    {
-        return view('contest');
     }
 
     public function terms()
@@ -357,18 +353,17 @@ class PagesController extends Controller
                             $view_count_exist = $view_count_exist + 1;
                             $view_count_exist = DB::table('tracks')->where('id',$id)->update(['view_count' => $view_count_exist]);
                         }
-                    }
-                    else
-                    {
-                        //user not loggedin
-                        $view_count_exist = $view_count_exist + 1;
-                        $view_count_exist = DB::table('tracks')->where('id',$id)->update(['view_count' => $view_count_exist]);
-                    }
+                }
+                else
+                {
+                    //user not loggedin
+                    $view_count_exist = $view_count_exist + 1;
+                    $view_count_exist = DB::table('tracks')->where('id',$id)->update(['view_count' => $view_count_exist]);
+                }
 
 
             return view('musicvoting_genre',['track_video' => $track_video , 'track_uploader' => $track_uploader , 'commenting' => $commenting, 'albums_tracks' => $albums_tracks, 'name' => $name])->with($args);
         }
-
         else
         {
        // dd($id);
@@ -603,9 +598,114 @@ class PagesController extends Controller
         return redirect('/');
     }
 
-    public function contest_listing(){
-    
-      return view('contest_listing');
+    public function contest_listing()
+    {
+        $contests = DB::table('contests')->get();
+        // dd($contest);
+        return view('contest_listing',['contests'=>$contests]);
+    }
+
+    public function musician_contest($id)
+    {   
+        $tracks_list = 0;
+        $contest = DB::table('contests')->where('id','=',$id)->first();
+        $tracks_list = DB::table('request_contest')->join('tracks','request_contest.track_id','=','tracks.id')->get();
+
+        if(Auth::check())
+        {
+            $category = DB::table('Categories')->get();
+            $user_id = Auth::user()->id;
+            $tracks = DB::table('tracks')->where('user_id','=',$user_id)->get();
+            
+            return view('contest',['contest' => $contest, 'tracks' => $tracks, 'categories' => $category,'tracks_list' => $tracks_list]);        
+        }
+        else
+        {
+            return view('contest',['contest' => $contest,'tracks_list' => $tracks_list]);
+        }   
+    }
+
+    public function upload_track(Request $request)
+    {
+        
+        $radio_button = Input::get('optradio_contest');
+        if($radio_button == 'select')
+        {
+            
+            $request_contest = new Request_Contest;
+            $request_contest->user_id = Auth::user()->id;
+            $request_contest->track_id = Input::get('song_list');
+            $request_contest->contest_id = Input::get('contest_id');
+            $request_contest->save();
+            Session::flash('insert_track','Your track request has been sent wait for admin to approve it.');
+            
+        }
+        elseif($radio_button == 'file' )
+        {
+
+            ini_set('memory_limit','256M'); 
+
+            $this->validate($request, [ 
+
+                'name'=> 'required|min:3|max:40',            
+                'image' => 'required|mimes:jpeg,JPEG,jpg,bmp,png',
+                'audio' => 'required|mimes:mp3,mp4'    
+            ]);
+                 
+            $p = new Track;
+            
+            $p->name = Input::get('name');
+            $p->description = Input::get('description');
+            $p->category_id = Input::get('category');
+            $p->user_id = Auth::user()->id;
+            if ($request->hasFile('audio')) {
+              $audio=$request->file('audio');
+              // dd($audio);
+              $filename=time() . '.' . $audio->getClientOriginalExtension();
+              // dd($filename);          
+              $location=public_path('dashboard/musician/tracks/videos/'.$filename);
+              // dd($location);
+              $p->video=$filename;         
+            }
+            $p->video = $this->UploadFiles('audio', Input::file('audio'));
+            if ($request->hasFile('image')) {
+              $image=$request->file('image');
+              $filename=time() . '.' . $image->getClientOriginalExtension();          
+              $location=public_path('dashboard/musician/tracks/videos/'.$filename);
+              $p->image=$filename;         
+            }
+            $p->image = $this->UploadFiles('image', Input::file('image'));   
+
+            $p->save(); 
+            $request_contest = new Request_Contest;
+            $request_contest->user_id = Auth::user()->id;
+            $request_contest->track_id = $p->id;
+            $request_contest->contest_id = Input::get('contest_id');
+            $request_contest->save();    
+            
+            Session::flash('insert_track','Your track request has been sent wait for admin to approve it.');
+
+
+        }
+
+         return redirect()->back();
+    }
+
+    public function UploadFiles($type, $files){
+        // Uploading Files[image & video]
+        ini_set('memory_limit','256M');
+        $path = base_path() . '/public/dashboard/musician/tracks/images/';
+        if( $type == 'audio' ){
+            $path = base_path() . '/public/dashboard/musician/tracks/videos/';
+        }         
+        $filename = md5($files->getClientOriginalName() . time()) . '.' . $files->getClientOriginalExtension();
+        $files->move( $path , $filename);   
+        return $filename;
+    }
+
+    public function participated_tracks()
+    {
+        
     }
 
 }

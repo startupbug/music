@@ -9,7 +9,7 @@
           <div class="col-md-4">
             <div class="img-side">
               @if($musician_detail->image == 0)
-                <img src="{{asset('public/dashboard/profile_images/Default-avatar.jpg')}}" class="img-responsive" style="width: 100%; height: 175px;"/>
+                <img src="{{asset('public/dashboard/profile_images/default-avatar.png')}}" class="img-responsive" style="width: 100%; height: 175px;"/>
               @else
                 <img src="{{asset('public/dashboard/profile_images/'.$musician_detail->image)}}" class="img-responsive" style="width: 100%; height: 175px;"/>
               @endif
@@ -56,7 +56,7 @@
           </div>
         </div>
       @endforeach
-      <!--<h3 class="last_heading">TRACKS</h3>-->
+
         {{ $musician_details->links() }}
     </div>
     <br>

@@ -4,11 +4,9 @@
 <div class="container">
     <div class="row">
        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 clearfix col-center signup_form">
-
-
-
-
-
+                @if (Session::has('message'))
+                    <div class="alert alert-alert">{{ Session::get('message') }}</div>
+                @endif
                  <div class="signup_form_box">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }} " id="Sign_up_form">
                         {{ csrf_field() }}
@@ -25,7 +23,6 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
@@ -39,7 +36,6 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                             <label for="username" class="col-md-4 control-label">User Name</label>
 
@@ -53,7 +49,6 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="s_account form-group{{ $errors->has('role_id') ? ' has-error' : '' }}  ">
                             <label for="role_id" class="col-md-4 control-label">Account</label>
 

@@ -5,7 +5,7 @@
     <div class="col-md-11 col-md-offset-1">
             <div class="input-group" id="adv-search">
 
-              <form action="{{route('search_result')}}" method="POST">
+              <form action="{{route('search_result')}}" method="GET">
                 {{csrf_field()}}
                 
                 <input type="text" class="form-control form_control" placeholder="Search artist" name="search_item" />

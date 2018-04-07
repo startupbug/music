@@ -16,8 +16,6 @@
     <h3 class="all_album">
      EARNED &nbsp; POINTS
    </h3>
-
-
    <div class="btn-group">
      <button type="button" class="btn btn-default btn-number" data-type="minus" data-field="quant[1]">
        <span class="glyphicon glyphicon-calendar"></span>

@@ -39,7 +39,7 @@ class AlbumsController extends Controller
       ini_set('memory_limit','256M');      
       $this->validate($request, [
        'name'=> 'required|min:3|max:40|regex:/^[(a-zA-Z\s)]{3,25}+[a-z0-9A-Z ]*/',           
-       'video' => 'required'           
+       'video' => 'required|mimetypes:video/avi,video/mpeg,video/mp4,mp4,video/quicktime'           
       ]);       
       $p = new Track;
       $p->name = Input::get('name');        
@@ -86,7 +86,7 @@ class AlbumsController extends Controller
       ini_set('memory_limit','256M');      
       $this->validate($request, [
         'name'=> 'required|min:3|max:40|regex:/^[(a-zA-Z\s)]{3,25}+[a-z0-9A-Z ]*/',            
-        'image' => 'required',      
+        'image' => 'required|mimes:jpeg,JPEG,jpg,bmp,png',      
       ]);       
       $p = new Album;
       $p->name = Input::get('name');        
@@ -129,7 +129,11 @@ class AlbumsController extends Controller
     return view('dashboard.musician.album.edit')->with($args);
   }
   public function update_album(Request $request, $id)
-  {        
+  {
+    $this->validate($request, [         
+            'image' => 'required|mimes:jpeg,JPEG,jpg,bmp,png'         
+        ]);  
+        // dd(1223333);      
     $p = Album::find($id);
     if(!empty(Input::get('name')))
     {
