@@ -2,13 +2,18 @@
 @section('content')
 <div class="container">
 	<div class="row">
+
 		<div class="col-md-12 text-center s_text_color">
 			@if (Session::has('insert_track'))
-                    <div class="alert alert-success">{{ Session::get('insert_track') }}</div>
-                @endif
+                <div class="alert alert-success">{{ Session::get('insert_track') }}</div>
+            @endif
+            @if(Session::has('vote'))
+                <div class="alert alert-danger">{{ Session::get('vote') }}</div>
+            @endif
 			<h3 class="contest_heading s_text_color">
 				{{$contest->name}}
 			</h3>
+
 		</div>
 		<div class="col-md-6">
 			<h3 class="contest_heading">
@@ -160,275 +165,50 @@
 		</div>
 	</div>
 </div>
-<div class="container-fluid border_bottom">
+
+<div class="container-fluid">
 	<div class="container">
-		<div class="row">
-			<div class="col-md-6 col-sm-6 col-xs-12 border_right">
+		<div class="row s_row_border">
+			
+		@foreach($tracks_list as $track_list)
+			<div class="col-md-6 col-sm-6 col-xs-12 s_col_border">
 				<div class="row">
 					<div class="col-md-4">
-						<div class="top_ranking"><img src="{{asset('public/assets/images/contest_1.png')}}" class="img-responsive"></div>
+						<div class="top_ranking"><img src="{{asset('public/dashboard/musician/tracks/images/'.$track_list->track_image)}}" class="img-responsive"></div>
 					</div>
 					<div class="col-md-8">
 						<h3 class="ranking">
 							IST
 						</h3>
 						<p class="track_name">
-							Track Name: Insurgency
+							Track Name: {{$track_list->track_name}}
 						</p>
 						<p class="track_name">
-							Artist: John Doe
+							Artist: {{$track_list->user_name}}
 						</p>
-						<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
+						<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('{{asset('public/dashboard/musician/tracks/videos/'.$track_list->track_video)}}')">
 							Play
 						</button>
-						<button class="btn btn-default top_ranking_button col-md-3" type="button">
-							Vote
-						</button>
+						<form action="{{route('voting')}}" method="post">
+							{{csrf_field()}}
+							<input type="hidden" name="track_id" value="{{$track_list->track_id}}">
+							<input type="hidden" name="contest_id" value="{{$track_list->contest_id}}">
+							@if(empty($voter))
+							<input type="submit" name="vote" value="Vote" class="btn btn-default top_ranking_button">
+							@elseif(!empty($voter))
+							<input type="submit" name="vote" value="Vote" class="btn btn-default top_ranking_button" disabled="">
+							@endif
+						</form>
+
+						Total Votes{{$total_votes[$track_list->track_id]}}
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6 col-sm-6 col-xs-12">
-				<div class="row">
-					<div class="col-md-4">
-						<div class="top_ranking"><img src="{{asset('public/assets/images/contest_2.png')}}" class="img-responsive"></div>
-					</div>
-					<div class="col-md-8">
-						<h3 class="ranking">
-							2ND
-						</h3>
-						<p class="track_name">
-							Track Name: Xscape
-						</p>
-						<p class="track_name">
-							Artist: Michael Jackson
-						</p>
-						<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
-							Play
-						</button>
-						<button class="btn btn-default top_ranking_button col-md-3" type="button">
-							Vote
-						</button>
-					</div>
-				</div>
-			</div>
+			@endforeach
 		</div>
 	</div>
 </div>
-<div class="container-fluid border_bottom">
-	<div class="container">
-     <div class="row">
-		<div class="col-md-6 col-sm-6 col-xs-12 border_right">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="top_ranking"><img src="{{asset('public/assets/images/contest_3.png')}}" class="img-responsive"></div>
-				</div>
-				<div class="col-md-8">
-					<h3 class="ranking">
-						3RD
-					</h3>
-					<p class="track_name">
-						Track Name: All Apologees
-					</p>
-					<p class="track_name">
-						Artist: Nirvana
-					</p>
-					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
-						Play
-					</button>
-					<button class="btn btn-default top_ranking_button col-md-3" type="button">
-						Vote
-					</button>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-6 col-sm-6 col-xs-12">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="top_ranking"><img src="{{asset('public/assets/images/contest_4.png')}}" class="img-responsive"></div>
-				</div>
-				<div class="col-md-8">
-					<h3 class="ranking">
-						4TH
-					</h3>
-					<p class="track_name">
-						Track Name: American Idiot
-					</p>
-					<p class="track_name">
-						Artist: Green Day
-					</p>
-					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
-						Play
-					</button>
-					<button class="btn btn-default top_ranking_button col-md-3" type="button">
-						Vote
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
-<div class="container-fluid border_bottom">
-	<div class="container">
-     <div class="row">
-		<div class="col-md-6 col-sm-6 col-xs-12 border_right">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="top_ranking"><img src="{{ asset('public/assets/images/contest_5.png') }}" class="img-responsive"></div>
-				</div>
-				<div class="col-md-8">
-					<h3 class="ranking">
-						4TH
-					</h3>
-					<p class="track_name">
-						Track Name: Hey You
-					</p>
-					<p class="track_name">
-						Artist: Pink Floyd
-					</p>
-					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
-						Play
-					</button>
-					<button class="btn btn-default top_ranking_button col-md-3" type="button">
-						Vote
-					</button>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-6 col-sm-6 col-xs-12">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="top_ranking"><img src="{{asset('public/assets/images/contest_6.png')}}" class="img-responsive"></div>
-				</div>
-				<div class="col-md-8">
-					<h3 class="ranking">
-						6TH
-					</h3>
-					<p class="track_name">
-						Track Name: Arabella
-					</p>
-					<p class="track_name">
-						Artist: Arctic Monkeys
-					</p>
-					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
-						Play
-					</button>
-					<button class="btn btn-default top_ranking_button col-md-3" type="button">
-						Vote
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
-<div class="container-fluid border_bottom">
-	<div class="container">
-     <div class="row">
-		<div class="col-md-6 col-sm-6 col-xs-12 border_right">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="top_ranking"><img src="{{asset('public/assets/images/contest_7.png')}}" class="img-responsive"></div>
-				</div>
-				<div class="col-md-8">
-					<h3 class="ranking">
-						5TH
-					</h3>
-					<p class="track_name">
-						Track Name: 99 Problems
-					</p>
-					<p class="track_name">
-						Artist: Jay-Z
-					</p>
-					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
-						Play
-					</button>
-					<button class="btn btn-default top_ranking_button col-md-3" type="button">
-						Vote
-					</button>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-6 col-sm-6 col-xs-12">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="top_ranking"><img src="{{asset('public/assets/images/contest_8.png')}}" class="img-responsive"></div>
-				</div>
-				<div class="col-md-8">
-					<h3 class="ranking">
-						8TH
-					</h3>
-					<p class="track_name">
-						Artist: Jay-Z
-					</p>
-					<p class="track_name">
-						Artist: Halsey
-					</p>
-					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
-						Play
-					</button>
-					<button class="btn btn-default top_ranking_button col-md-3" type="button">
-						Vote
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
-<div class="container-fluid">
-	<div class="container">
-     <div class="row">
-		<div class="col-md-6 col-sm-6 col-xs-12 border_right">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="top_ranking"><img src="{{asset('public/assets/images/contest_9.png')}}" class="img-responsive"></div>
-				</div>
-				<div class="col-md-8">
-					<h3 class="ranking">
-						6TH
-					</h3>
-					<p class="track_name">
-						rack Name: Stairway To Heaven
-					</p>
-					<p class="track_name">
-						Artist: Led Zepplin
-					</p>
-					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
-						Play
-					</button>
-					<button class="btn btn-default top_ranking_button col-md-3" type="button">
-						Vote
-					</button>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-6 col-sm-6 col-xs-12">
-			<div class="row">
-				<div class="col-md-4">
-					<div class="top_ranking"><img src="{{asset('public/assets/images/contest_10.png')}}" class="img-responsive"></div>
-				</div>
-				<div class="col-md-8">
-					<h3 class="ranking">
-						10TH
-					</h3>
-					<p class="track_name">
-						Track Name: Beautiful
-					</p>
-					<p class="track_name">
-						Artist: Eminem
-					</p>
-					<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a')">
-						Play
-					</button>
-					<button class="btn btn-default top_ranking_button col-md-3" type="button">
-						Vote
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+
 </div>
 <audio controls class="top_ranking_play" id="song_play" controlsList="nodownload" style="display:none">
 	<source src="" type="audio/mpeg">

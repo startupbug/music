@@ -19,6 +19,7 @@ use App\Album_Video;
 use App\Point;
 use App\Subscriber;
 use App\Request_Contest; 
+use App\Vote;
 
 class PagesController extends Controller
 {
@@ -609,19 +610,32 @@ class PagesController extends Controller
     {   
         $tracks_list = 0;
         $contest = DB::table('contests')->where('id','=',$id)->first();
-        $tracks_list = DB::table('request_contest')->join('tracks','request_contest.track_id','=','tracks.id')->get();
+        $tracks_list = DB::table('request_contest')
+        ->join('tracks','request_contest.track_id','=','tracks.id')
+        ->join('users','request_contest.user_id','=','users.id')   
+        ->select('users.id as user_id','users.name as user_name','tracks.id as track_id','tracks.name as track_name','tracks.image as track_image','tracks.video as track_video','request_contest.contest_id as contest_id')
+        ->where('request_contest.contest_id','=',$id)
+        ->get();
+        $total_votes = array();
+        foreach ($tracks_list as $value) {
+            $total_votes[$value->track_id] = DB::table('votes')->select('id')->where('track_id',$value->track_id)->count();
 
+        }
+
+        // dd($votes);
+        $voter = DB::table('votes')->where('user_id','=',Auth::user()->id)->first();
+        // dd($voter);
         if(Auth::check())
         {
             $category = DB::table('Categories')->get();
             $user_id = Auth::user()->id;
             $tracks = DB::table('tracks')->where('user_id','=',$user_id)->get();
             
-            return view('contest',['contest' => $contest, 'tracks' => $tracks, 'categories' => $category,'tracks_list' => $tracks_list]);        
+            return view('contest',['contest' => $contest, 'tracks' => $tracks, 'categories' => $category,'tracks_list' => $tracks_list, 'voter' => $voter, 'total_votes' => $total_votes]);        
         }
         else
         {
-            return view('contest',['contest' => $contest,'tracks_list' => $tracks_list]);
+            return view('contest',['contest' => $contest,'tracks_list' => $tracks_list , 'voter' => $voter,'total_votes' => $total_votes]);
         }   
     }
 
@@ -649,7 +663,7 @@ class PagesController extends Controller
 
                 'name'=> 'required|min:3|max:40',            
                 'image' => 'required|mimes:jpeg,JPEG,jpg,bmp,png',
-                'audio' => 'required|mimes:mp3,mp4'    
+                'audio' => 'required|mimes:mp3,mp4,audio/ogg'    
             ]);
                  
             $p = new Track;
@@ -705,6 +719,25 @@ class PagesController extends Controller
 
     public function participated_tracks()
     {
+        
+    }
+
+    public function voting()
+    {
+        $v = new Vote;
+        if(Auth::check())
+        {
+            $v->user_id = Auth::user()->id;
+            $v->track_id = Input::get('track_id');
+            $v->contest_id = Input::get('contest_id'); 
+            $v->save();
+            return redirect()->back();
+        }
+        elseif(Auth::check() == false)
+        {
+            Session::flash('vote','Please login to vote');
+            return redirect()->back();   
+        }
         
     }
 
