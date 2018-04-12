@@ -451,7 +451,7 @@ class PagesController extends Controller
                                 GROUP BY users.id) as tracks_no")
                 )
           ->orderBy('username','asc')
-          ->paginate(10);
+          ->paginate(5);
 
           //dd($musician_details);
 
@@ -465,7 +465,7 @@ class PagesController extends Controller
 
 
         //   dd($musician_details);
-            $albums = Album::get();
+            $albums = Album::take(10)->orderBy('created_at', 'desc')->get();
             $albums_tracks = array();
             foreach ($albums as $key => $value)
             {
@@ -615,18 +615,21 @@ class PagesController extends Controller
         ->join('users','request_contest.user_id','=','users.id')   
         ->select('users.id as user_id','users.name as user_name','tracks.id as track_id','tracks.name as track_name','tracks.image as track_image','tracks.video as track_video','request_contest.contest_id as contest_id')
         ->where('request_contest.contest_id','=',$id)
-        ->get();
+        ->paginate(4);
         $total_votes = array();
         foreach ($tracks_list as $value) {
             $total_votes[$value->track_id] = DB::table('votes')->select('id')->where('track_id',$value->track_id)->count();
 
         }
-
+        
+            
+       
         // dd($votes);
-        $voter = DB::table('votes')->where('user_id','=',Auth::user()->id)->first();
+        
         // dd($voter);
         if(Auth::check())
         {
+            $voter = DB::table('votes')->where('user_id','=',Auth::user()->id)->first();
             $category = DB::table('Categories')->get();
             $user_id = Auth::user()->id;
             $tracks = DB::table('tracks')->where('user_id','=',$user_id)->get();
@@ -635,7 +638,7 @@ class PagesController extends Controller
         }
         else
         {
-            return view('contest',['contest' => $contest,'tracks_list' => $tracks_list , 'voter' => $voter,'total_votes' => $total_votes]);
+            return view('contest',['contest' => $contest,'tracks_list' => $tracks_list ,'total_votes' => $total_votes]);
         }   
     }
 
@@ -731,6 +734,7 @@ class PagesController extends Controller
             $v->track_id = Input::get('track_id');
             $v->contest_id = Input::get('contest_id'); 
             $v->save();
+            Session::flash('votes','your vote has been submitted');
             return redirect()->back();
         }
         elseif(Auth::check() == false)

@@ -10,6 +10,9 @@
             @if(Session::has('vote'))
                 <div class="alert alert-danger">{{ Session::get('vote') }}</div>
             @endif
+            @if(Session::has('votes'))
+                <div class="alert alert-danger">{{ Session::get('votes') }}</div>
+            @endif
 			<h3 class="contest_heading s_text_color">
 				{{$contest->name}}
 			</h3>
@@ -170,45 +173,45 @@
 	<div class="container">
 		<div class="row s_row_border">
 			
-		@foreach($tracks_list as $track_list)
-			<div class="col-md-6 col-sm-6 col-xs-12 s_col_border">
-				<div class="row">
-					<div class="col-md-4">
-						<div class="top_ranking"><img src="{{asset('public/dashboard/musician/tracks/images/'.$track_list->track_image)}}" class="img-responsive"></div>
-					</div>
-					<div class="col-md-8">
-						<h3 class="ranking">
-							IST
-						</h3>
-						<p class="track_name">
-							Track Name: {{$track_list->track_name}}
-						</p>
-						<p class="track_name">
-							Artist: {{$track_list->user_name}}
-						</p>
-						<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('{{asset('public/dashboard/musician/tracks/videos/'.$track_list->track_video)}}')">
-							Play
-						</button>
-						<form action="{{route('voting')}}" method="post">
-							{{csrf_field()}}
-							<input type="hidden" name="track_id" value="{{$track_list->track_id}}">
-							<input type="hidden" name="contest_id" value="{{$track_list->contest_id}}">
-							@if(empty($voter))
-							<input type="submit" name="vote" value="Vote" class="btn btn-default top_ranking_button">
-							@elseif(!empty($voter))
-							<input type="submit" name="vote" value="Vote" class="btn btn-default top_ranking_button" disabled="">
-							@endif
-						</form>
+			@foreach($tracks_list as $track_list)
+				<div class="col-md-6 col-sm-6 col-xs-12 s_col_border">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="top_ranking"><img src="{{asset('public/dashboard/musician/tracks/images/'.$track_list->track_image)}}" class="img-responsive"></div>
+						</div>
+						<div class="col-md-8">
+							<h3 class="ranking">
+								IST
+							</h3>
+							<p class="track_name">
+								Track Name: {{$track_list->track_name}}
+							</p>
+							<p class="track_name">
+								Artist: {{$track_list->user_name}}
+							</p>
+							<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('{{asset('public/dashboard/musician/tracks/videos/'.$track_list->track_video)}}')">
+								Play
+							</button>
+							<form action="{{route('voting')}}" method="post">
+								{{csrf_field()}}
+								<input type="hidden" name="track_id" value="{{$track_list->track_id}}">
+								<input type="hidden" name="contest_id" value="{{$track_list->contest_id}}">
+								@if(empty($voter))
+								<input type="submit" name="vote" value="Vote" class="btn btn-default top_ranking_button">
+								@elseif(!empty($voter))
+								<input type="submit" name="vote" value="Vote" class="btn btn-default top_ranking_button" disabled="">
+								@endif
+							</form>
 
-						Total Votes{{$total_votes[$track_list->track_id]}}
+							Total Votes{{$total_votes[$track_list->track_id]}}
+						</div>
 					</div>
 				</div>
-			</div>
 			@endforeach
 		</div>
 	</div>
 </div>
-
+	{{ $tracks_list->links() }}
 </div>
 <audio controls class="top_ranking_play" id="song_play" controlsList="nodownload" style="display:none">
 	<source src="" type="audio/mpeg">
