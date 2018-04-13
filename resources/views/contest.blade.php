@@ -1,9 +1,9 @@
+
 @extends('layouts.public_index')
 @section('content')
 <div class="container">
 	<div class="row">
-
-		<div class="col-md-12 text-center s_text_color">
+			<div class="col-md-12 text-center s_text_color">
 			@if (Session::has('insert_track'))
                 <div class="alert alert-success">{{ Session::get('insert_track') }}</div>
             @endif
@@ -12,6 +12,9 @@
             @endif
             @if(Session::has('votes'))
                 <div class="alert alert-danger">{{ Session::get('votes') }}</div>
+            @endif
+            @if(Session::has('not_insert'))
+                <div class="alert alert-danger">{{ Session::get('not_insert') }}</div>
             @endif
 			<h3 class="contest_heading s_text_color">
 				{{$contest->name}}
@@ -172,7 +175,6 @@
 <div class="container-fluid">
 	<div class="container">
 		<div class="row s_row_border">
-			
 			@foreach($tracks_list as $track_list)
 				<div class="col-md-6 col-sm-6 col-xs-12 s_col_border">
 					<div class="row">
@@ -203,15 +205,15 @@
 								@endif
 							</form>
 
-							Total Votes{{$total_votes[$track_list->track_id]}}
+								Total Votes: {{($track_list->votes)}}
 						</div>
 					</div>
 				</div>
 			@endforeach
+			{{ $tracks_list->links() }}
 		</div>
 	</div>
 </div>
-	{{ $tracks_list->links() }}
 </div>
 <audio controls class="top_ranking_play" id="song_play" controlsList="nodownload" style="display:none">
 	<source src="" type="audio/mpeg">
