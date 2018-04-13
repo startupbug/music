@@ -14,7 +14,7 @@ function music(path) {
   $("#song_play").attr('src', path);
   $("#song_play").css('display', 'block');
   $("#song_play")[0].play();
-// console.log(path);
+console.log(path);
 }
 
 

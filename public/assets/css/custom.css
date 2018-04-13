@@ -2069,3 +2069,26 @@ h4.contest_heading span {
   word-spacing: 6px;
   letter-spacing: 1px;
 }
+
+.s_col_border:nth-of-type(2n+1) {
+    border-right: 1px solid #cf1828;
+    height: 235px;
+    border-bottom: 1px solid #cf1828;
+}
+.s_col_border:nth-of-type(2n) {
+    height: 235px;
+    border-bottom: 1px solid #cf1828;
+}
+
+
+.s_col_border:nth-of-type(2n+1):nth-last-child(1) {
+    border-bottom: 0px solid #cf1828;
+}
+
+.s_col_border:nth-of-type(2n):nth-last-child(1) {
+    border-bottom: 0px solid #cf1828;
+}
+
+.s_col_border:nth-of-type(2n+1):nth-last-child(2) {
+    border-bottom: 0px solid #cf1828;
+}

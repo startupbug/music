@@ -220,6 +220,6 @@ Route::get('/getAffiliatedID', 'PagesController@getAffiliatedID')->name('getAffi
 Route::get('redeem_points/{flag}', 'PaypalController@getCheckout')->name('redeem_points');
 Route::get('getDone/', 'PaypalController@getDone')->name('getDone');
 Route::get('getCancel/', 'PaypalController@getCancel')->name('getCancel');
-
+Route::post('/vote','PagesController@voting')->name('voting');
 
 Route::get('redirectDashboard', 'Auth\LoginController@authenticated')->name('redirectDashboard');
