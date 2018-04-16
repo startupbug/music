@@ -1,6 +1,6 @@
-
 @extends('layouts.public_index')
 @section('content')
+
 <div class="container">
 	<div class="row">
 			<div class="col-md-12 text-center s_text_color">
@@ -42,10 +42,18 @@
 			    </span>
 			</h4>
 			<p class="contest_date_s">
-				<i class="fa fa-calendar fa-lg"> </i> FROM, {{$contest->start_date}} TO, {{$contest->end_date}}
+				<i class="fa fa-calendar fa-lg"> </i> FROM, <span> {{$contest->start_date}} </span>  TO, <span> {{$contest->end_date}} </span>
 			</p>
+			
+			@if($contest->end_date >= $current_date)
 			<button class="btn btn-info s-btn-info" type="button" data-toggle="modal" data-target="#myModal">JOIN CONTEST</button>
-
+			@else
+			<h4 class="contest_heading">
+				<span>
+					Contest Ended
+			    </span>
+			</h4>
+			@endif
 		</div>
 		<div class="col-md-6">
 			<div class="img_video">
@@ -78,6 +86,7 @@
 								</label>
 							</div>
 						</div>
+
 					  <div class="form-group s-form-group" id="combox_song">
 					    <label for="songs">Select Song :</label>
 							<select class="form-control s-form-control" name="song_list" id="song_list">
@@ -175,40 +184,58 @@
 <div class="container-fluid">
 	<div class="container">
 		<div class="row s_row_border">
+			
+			@php $k = 1 @endphp
 			@foreach($tracks_list as $track_list)
-				<div class="col-md-6 col-sm-6 col-xs-12 s_col_border">
-					<div class="row">
-						<div class="col-md-4">
-							<div class="top_ranking"><img src="{{asset('public/dashboard/musician/tracks/images/'.$track_list->track_image)}}" class="img-responsive"></div>
-						</div>
-						<div class="col-md-8">
-							<h3 class="ranking">
-								IST
-							</h3>
-							<p class="track_name">
-								Track Name: {{$track_list->track_name}}
-							</p>
-							<p class="track_name">
-								Artist: {{$track_list->user_name}}
-							</p>
-							<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('{{asset('public/dashboard/musician/tracks/videos/'.$track_list->track_video)}}')">
-								Play
-							</button>
-							<form action="{{route('voting')}}" method="post">
-								{{csrf_field()}}
-								<input type="hidden" name="track_id" value="{{$track_list->track_id}}">
-								<input type="hidden" name="contest_id" value="{{$track_list->contest_id}}">
-								@if(empty($voter))
-								<input type="submit" name="vote" value="Vote" class="btn btn-default top_ranking_button">
-								@elseif(!empty($voter))
-								<input type="submit" name="vote" value="Vote" class="btn btn-default top_ranking_button" disabled="">
-								@endif
-							</form>
+				@if($track_list->request_status == 0)
 
-								Total Votes: {{($track_list->votes)}}
+
+				@elseif($track_list->request_status == 1)
+
+					<div class="col-md-6 col-sm-6 col-xs-12 s_col_border">
+						<div class="row">
+							<div class="col-md-4">
+								<div class="top_ranking"><img src="{{asset('public/dashboard/musician/tracks/images/'.$track_list->track_image)}}" class="img-responsive"></div>
+							</div>
+							<div class="col-md-8">
+								
+								
+								<h3 class="ranking" style="margin-top: 39px;">
+									{{$k}}
+								</h3>
+								
+								<p class="track_name">
+									Track Name: {{$track_list->track_name}}
+								</p>
+								<p class="track_name">
+									Artist: {{$track_list->user_name}}
+								</p>
+								<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('{{asset('public/dashboard/musician/tracks/videos/'.$track_list->track_video)}}')">
+									Play
+								</button>
+
+								<form action="{{route('voting')}}" method="post">
+									{{csrf_field()}}
+									<input type="hidden" name="track_id" value="{{$track_list->track_id}}">
+									<input type="hidden" name="contest_id" value="{{$track_list->contest_id}}">
+									@if(empty($voter))
+									<button class="btn top_ranking_button col-md-3" type="submit" >
+										Vote -  {{($track_list->votes)}}
+									</button>
+									<!-- <input type="submit" name="vote" value="Vote" class="btn top_ranking_button"> -->
+									@elseif(!empty($voter))
+									<!-- <input type="submit" name="vote" value="Vote" class="btn btn-default top_ranking_button" disabled=""> -->
+									<button class="btn top_ranking_button col-md-3" type="submit" disabled="">
+										Vote -  {{($track_list->votes)}}
+									</button>
+									@endif
+								</form>
+									<!-- Total Votes: {{($track_list->votes)}} -->	
+							</div>
 						</div>
 					</div>
-				</div>
+				@endif
+			@php $k++ @endphp				
 			@endforeach
 			{{ $tracks_list->links() }}
 		</div>
@@ -227,34 +254,71 @@
 			</h3>
 		</div>
 	</div>
-	<div class="row">
+
+	<div class="row" style="margin-bottom: 20px">
+		@if(isset($winner_list[1]))
+			<div class="col-md-4 col-sm-6 col-xs-12">
+				<div class="border_contest"><img src="{{asset('public/dashboard/profile_images/'.$winner_list[1]->user_image)}}" class="img-responsive"></div>
+				<h3 class="contest_winner">
+					2ND RUNNER UP
+				</h3>
+				<h3 class="contest_winner">
+					{{$winner_list[1]->user_name}}
+				</h3>
+			</div>
+		@else
+			<div class="col-md-4 col-sm-6 col-xs-12">
+				<div class="border_contest"><img src="{{asset('public/assets/images/2.png')}}" class="img-responsive"></div>
+				<h3 class="contest_winner">
+					2ND RUNNER UP
+				</h3>
+				<h3 class="contest_winner">
+					JOHNATHAN DOE
+				</h3>
+			</div>
+		@endif
+		@if(isset($winner_list[0]))
 		<div class="col-md-4 col-sm-6 col-xs-12">
-			<div class="border_contest"><img src="{{asset('public/assets/images/contest_img1.png')}}" class="img-responsive"></div>
+			<div class="border_contest"><img src="{{asset('public/dashboard/profile_images/'.$winner_list[0]->user_image)}}" class="img-responsive winner"></div>
 			<h3 class="contest_winner">
-				IST RUNNER UP
+				IST 
+			</h3>
+			<h3 class="contest_winner">
+				{{$winner_list[0]->user_name}}
+			</h3>
+		</div>
+		@else
+		<div class="col-md-4 col-sm-6 col-xs-12">
+			<div class="border_contest"><img src="{{asset('public/assets/images/1.png')}}" class="img-responsive"></div>
+			<h3 class="contest_winner">
+				IST 
 			</h3>
 			<h3 class="contest_winner">
 				JOHNATHAN DOE
 			</h3>
 		</div>
+		@endif
+		@if(isset($winner_list[2]))
 		<div class="col-md-4 col-sm-6 col-xs-12">
-			<div class="border_contest"><img src="{{asset('public/assets/images/contest_img2.png')}}" class="img-responsive winner"></div>
+			<div class="border_contest"><img src="{{asset('public/dashboard/profile_images/'.$winner_list[0]->user_image)}}" class="img-responsive"></div>
 			<h3 class="contest_winner">
-				IST RUNNER UP
+				3RD RUNNER UP
 			</h3>
 			<h3 class="contest_winner">
-				JOHNATHAN DOE
+				{{$winner_list[2]->user_name}}
 			</h3>
 		</div>
-		<div class="col-md-4 col-sm-6 col-xs-12">
-			<div class="border_contest"><img src="{{asset('public/assets/images/contest_img3.png')}}" class="img-responsive"></div>
-			<h3 class="contest_winner">
-				IST RUNNER UP
-			</h3>
-			<h3 class="contest_winner">
-				JOHNATHAN DOE
-			</h3>
+		@else
+			<div class="col-md-4 col-sm-6 col-xs-12">
+				<div class="border_contest"><img src="{{asset('public/assets/images/33.png')}}" class="img-responsive"></div>
+				<h3 class="contest_winner">
+					3RD RUNNER UP
+				</h3>
+				<h3 class="contest_winner">
+					JOHNATHAN DOE
+				</h3>
 		</div>
+		@endif
 	</div>
 </div>
 @endsection

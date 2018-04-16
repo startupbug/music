@@ -41,10 +41,10 @@
 <!-- <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script> -->
 <!-- datepicker -->
 <script src="{{asset('public/admin_assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
-<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="{{asset('public/admin_assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="{{asset('public/admin_assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
-<script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<script src="{{asset('public/admin_assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
 <!-- Slimscroll -->
 <script src="{{asset('public/admin_assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
 <!-- <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script> -->
@@ -69,6 +69,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 
 <script src="{{asset('public/admin_assets/js/custom.js')}}"></script>
 <!-- <script src="dist/js/demo.js"></script> -->
@@ -76,5 +77,22 @@
 <script src="{{asset('public/admin_assets/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('public/admin_assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
  -->
+
+
 </body>
 </html>
+<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker({
+    				 format:'YYYY-MM-DD HH:mm:ss',
+                });
+            });
+        </script>
+
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker2').datetimepicker({
+                	format:'YYYY-MM-DD HH:mm:ss',
+                });
+            });
+        </script>

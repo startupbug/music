@@ -27,13 +27,23 @@
             <div class="form-group">
               <label for="inputName" class="col-sm-2 control-label">Start Date</label>
               <div class="col-sm-10">
-                <input type="date" name="start_date" value="" class="form-control"  placeholder="Start Date">
+                <div class='input-group date col-md-8' id='datetimepicker1'>
+                    <input type='text' class="form-control" name="start_date" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
               </div>
             </div> 
             <div class="form-group">
               <label for="inputName" class="col-sm-2 control-label">End Date</label>
               <div class="col-sm-10">
-                <input type="date" name="end_date" value="" class="form-control"  placeholder="End Date">
+                <div class='input-group date col-md-8' id='datetimepicker2'>
+                    <input type='text' class="form-control" name="end_date" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
               </div>
             </div>                      
             <div class="form-group">

@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Contest;
+namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -38,6 +38,7 @@ class ContestController extends Controller
         return view('dashboard.admin.contest.view',['view'=>$view]);
     }
     public function store(Request $request){
+
     	$store = new Contest;
     	$store->name = $request->name;
         $store->contest_type = $request->contest_type;
@@ -132,5 +133,6 @@ class ContestController extends Controller
         return redirect()->back();
     }
 
+    
     
 }

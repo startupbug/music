@@ -221,5 +221,6 @@ Route::get('redeem_points/{flag}', 'PaypalController@getCheckout')->name('redeem
 Route::get('getDone/', 'PaypalController@getDone')->name('getDone');
 Route::get('getCancel/', 'PaypalController@getCancel')->name('getCancel');
 Route::post('/vote','PagesController@voting')->name('voting');
+Route::get('contest_winner','ContestController@contest_winner')->name('contest_winner');
 
 Route::get('redirectDashboard', 'Auth\LoginController@authenticated')->name('redirectDashboard');
