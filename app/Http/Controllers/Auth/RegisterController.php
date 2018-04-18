@@ -84,20 +84,22 @@ class RegisterController extends Controller
                 'password' => bcrypt($data['password']),
                 'role_id' => $data['role_id'],
                 'email_token' => str_random(10),
-                ]);
+            ]);
 
-             //dd($user);
-                //Updating unique id of User
-                $update_uniqueid = User::find($user->id);
-                $update_uniqueid->promoter_affiliated_id = $user->id.Hash::make(str_random(5));
-                $update_uniqueid->save();
 
-                // Mail::to($data['email'])->send(new EmailVerification($user));
-                // auth()->login($user);
-                $email = new EmailVerification(new User(['email_token' => $user->email_token, 'name' => $user->name, 'email'=> $user->email]));
-                Mail::to($user->email)->send($email);
-                DB::commit();
-                Session::flash('message', 'We have sent you a verification email!');
+
+            //Updating unique id of User
+            $update_uniqueid = User::find($user->id);
+            $update_uniqueid->promoter_affiliated_id = $user->id.Hash::make(str_random(5));
+            $update_uniqueid->save();
+
+            // Mail::to($data['email'])->send(new EmailVerification($user));
+            // auth()->login($user);
+            $email = new EmailVerification(new User(['email_token' => $user->email_token, 'name' => $user->name, 'email'=> $user->email]));
+            Mail::to($user->email)->send($email);
+            DB::commit();
+            Session::flash('message', 'We have sent you a verification email!');
+
 
                 return $user;
         }

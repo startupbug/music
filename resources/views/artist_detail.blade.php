@@ -3,6 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
+
       @foreach($musician_details as $musician_detail)
         <div class="row">
           <div class="col-md-4">
@@ -55,7 +56,7 @@
           </div>
         </div>
       @endforeach
-      <br>
+
         {{ $musician_details->links() }}
     </div>
     <br>
