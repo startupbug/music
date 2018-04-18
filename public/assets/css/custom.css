@@ -1422,18 +1422,45 @@ p.winner_paragraph {
     margin-bottom: 40px;
 }
 
-h3.winner_name {
-    color: #cf1828;
-    font-size: 40px;
-    font-family: 'Conv_bebas';
-    margin-top: 150px;
+.s_winner{
+    font-family: 'Conv_Montserrat-Regular';
+}
+.s_winner b{
+    font-family: 'Conv_Montserrat-Regular';
+}
+.s_winner a{
+    font-family: 'Conv_Montserrat-Regular';
 }
 
-p.winner_detail {
+
+
+h3.winner_name {
+    color: #435057;
+    font-size: 35px;
+    font-family: 'Conv_bebas';
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+
+h3.winner_name_heading {
+    color: #cf1828;
+    font-size: 50px;
+    font-family: 'Conv_bebas';
+    margin-top: 65px;
+}
+
+p.winner_detail b{
     COLOR: #454545;
     FONT-SIZE: 16px;
     font-family: 'Conv_Montserrat-Regular';
-    margin-top: 20px;
+    margin-top: 5px;
+}
+p.winner_detail {
+    COLOR: #454545;
+    FONT-SIZE: 14px;
+    font-family: 'Conv_Montserrat-Regular';
+    margin-top: 7px;
 }
 
 
@@ -1474,11 +1501,17 @@ h3.contest_subheading {
 }
 
 h3.ranking {
-    font-size: 20px;
+    font-size: 50px;
     color: #cf1828;
     font-family: 'Conv_bebas';
     margin-top: 52px;
 }
+
+h3.ranking sup {
+    color: #cf1828;
+    font-family: 'Conv_bebas';
+}
+
 
 p.track_name {
     font-size: 18px;
@@ -1488,6 +1521,11 @@ p.track_name {
 
 .top_ranking {
     margin-top: 40px;
+}
+.top_ranking img {
+    width: 100%;
+    min-height: 145px;
+    max-height: 100%;
 }
 
 .border_contest img.img-responsive {

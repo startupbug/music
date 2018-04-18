@@ -47,14 +47,15 @@ class PagesController extends Controller
     {
 
         $args['tracks'] = Track::leftJoin('users','users.id','=','tracks.user_id')
-        ->join('albums','users.id','=','albums.user_id')
-        ->select('albums.id as album_id','albums.name as album_name','albums.image as album_image','albums.user_id as album_user_id','tracks.id as track_id','users.name as user_name','users.id as user_id','tracks.name as track_name','tracks.image as track_image')
+        //generating random tracks
+        ->select('tracks.id as track_id','users.name as user_name','users.id as user_id','tracks.name as track_name','tracks.image as track_image')
         ->inRandomOrder()
         ->take(12)
         ->get();
+        //dd($args['tracks']);
 
 
-        $args['abc'] = $args['tracks'];
+        $args['abc'] = $args['tracks']->first();
 
 
         // dd(1234);
@@ -76,7 +77,7 @@ class PagesController extends Controller
             }
         }
 
-
+        //generating random albums
         $args['albums'] = Album::leftJoin('users','users.id','=','albums.user_id')
         //->rightjoin('tracks','users.id','=','tracks.user_id')
         ->select('albums.id as album_id','albums.name as album_name','albums.image as album_image','albums.user_id as album_user_id','users.name as user_name','users.id as user_id')
@@ -274,11 +275,6 @@ class PagesController extends Controller
         Session::flash('err_msg','error occured');
     }
     return( \Response::download($download_path));
-    }
-
-    public function winner()
-    {
-        return view('winner');
     }
 
     public function faq()
@@ -604,6 +600,21 @@ class PagesController extends Controller
         $contests = DB::table('contests')->get();
         // dd($contest);
         return view('contest_listing',['contests'=>$contests]);
+    }
+
+     public function winner()
+    {
+        $current_date = date('Y-m-d H:i:s');
+           $winner_list = DB::table('contests')->where('end_date','<=',$current_date)
+           ->join('votes', 'contests.id', '=', 'votes.contest_id' )
+           ->join('tracks', 'votes.track_id','=','tracks.id')
+           ->join('users', 'tracks.user_id','=','users.id')
+           ->select('contests.id as contest_id','contests.name as contest_name','contests.description as contests_description', 'tracks.name as track_name', 'tracks.id as track_id' , 'tracks.user_id as user_id', 'users.name as user_name', 'users.image as user_image' , DB::raw('count(votes.track_id) as votes'))
+           ->groupby('votes.track_id')
+           ->orderBy('votes', 'DESC')
+           ->limit(1)
+           ->get();
+            return view('winner',['winner_list' => $winner_list]);
     }
 
     public function musician_contest($id)

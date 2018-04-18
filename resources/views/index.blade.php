@@ -15,10 +15,10 @@
                 </div>
                 <div class="player_audio">
                     <div class="player_box clearfix">
-                        @if( count($tracks) != 0 && !empty($abc[0]->track_image))
+                        @if( count($tracks) != 0 && !empty($abc->track_image))
                             <div class="s_player_left_side col-md-3 col-xs-12 col-sm-12">
                                 <a href="#">
-                                    <img class="img-responsive" src="{{asset('public/dashboard/musician/tracks/images/'.$abc[0]->track_image)}}" alt="" style="height: 260px;">
+                                    <img class="img-responsive" src="{{asset('public/dashboard/musician/tracks/images/'.$abc->track_image)}}" alt="" style="height: 260px;">
                                 </a>
                             </div>
                          @else

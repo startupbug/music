@@ -201,7 +201,7 @@
 								
 								
 								<h3 class="ranking" style="margin-top: 39px;">
-									{{$k}}
+									{{$k}} <sup>position</sup>
 								</h3>
 								
 								<p class="track_name">
@@ -258,7 +258,7 @@
 	<div class="row" style="margin-bottom: 20px">
 		@if(isset($winner_list[1]))
 			<div class="col-md-4 col-sm-6 col-xs-12">
-				<div class="border_contest"><img src="{{asset('public/dashboard/profile_images/'.$winner_list[1]->user_image)}}" class="img-responsive"></div>
+				<div class="border_contest"><img src="{{asset('public/dashboard/profile_images/'.$winner_list[1]->user_image)}}" class="img-responsive" style="height: 240px;"></div>
 				<h3 class="contest_winner">
 					2ND RUNNER UP
 				</h3>
@@ -268,7 +268,7 @@
 			</div>
 		@else
 			<div class="col-md-4 col-sm-6 col-xs-12">
-				<div class="border_contest"><img src="{{asset('public/assets/images/2.png')}}" class="img-responsive"></div>
+				<div class="border_contest"><img src="{{asset('public/assets/images/2.png')}}" class="img-responsive"  style="height: 240px;"></div>
 				<h3 class="contest_winner">
 					2ND RUNNER UP
 				</h3>
@@ -281,7 +281,7 @@
 		<div class="col-md-4 col-sm-6 col-xs-12">
 			<div class="border_contest"><img src="{{asset('public/dashboard/profile_images/'.$winner_list[0]->user_image)}}" class="img-responsive winner"></div>
 			<h3 class="contest_winner">
-				IST 
+				1ST 
 			</h3>
 			<h3 class="contest_winner">
 				{{$winner_list[0]->user_name}}
@@ -291,7 +291,7 @@
 		<div class="col-md-4 col-sm-6 col-xs-12">
 			<div class="border_contest"><img src="{{asset('public/assets/images/1.png')}}" class="img-responsive"></div>
 			<h3 class="contest_winner">
-				IST 
+				1ST 
 			</h3>
 			<h3 class="contest_winner">
 				JOHNATHAN DOE
@@ -300,7 +300,7 @@
 		@endif
 		@if(isset($winner_list[2]))
 		<div class="col-md-4 col-sm-6 col-xs-12">
-			<div class="border_contest"><img src="{{asset('public/dashboard/profile_images/'.$winner_list[0]->user_image)}}" class="img-responsive"></div>
+			<div class="border_contest"><img src="{{asset('public/dashboard/profile_images/'.$winner_list[0]->user_image)}}" class="img-responsive" style="height: 240px;"></div>
 			<h3 class="contest_winner">
 				3RD RUNNER UP
 			</h3>
@@ -310,7 +310,7 @@
 		</div>
 		@else
 			<div class="col-md-4 col-sm-6 col-xs-12">
-				<div class="border_contest"><img src="{{asset('public/assets/images/33.png')}}" class="img-responsive"></div>
+				<div class="border_contest"><img src="{{asset('public/assets/images/33.png')}}" class="img-responsive" style="height: 240px;"></div>
 				<h3 class="contest_winner">
 					3RD RUNNER UP
 				</h3>

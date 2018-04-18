@@ -16,7 +16,7 @@
                     Phasellus varius velit ut turpis dapibus,
                     quis consectetur lectus tristique.
                 </p>
-                <a href="#" class="btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-sm">Go to contest
+                <a href="{{route('contest_listing')}}" class="btn btn-danger" >Go to contest
                     <i class="fa fa-arrow-right" aria-hidden="true"></i>
                 </a>
             </div>

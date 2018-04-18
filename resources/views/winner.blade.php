@@ -12,55 +12,33 @@
 			</p>
 		</div>
 	</div>
+	@foreach($winner_list as $winner)
 	<div class="row">
 		<div class="col-md-4 col-sm-6 col-xs-12">
 			<div class="winner_border">
-			<div class="image_winner"><img src="{{asset('public/assets/images/winner_img.png')}}" class="img-responsive"></div>
+				<div class="image_winner">
+					<img src="{{asset('public/dashboard/profile_images/'. $winner->user_image )}}" class="img-responsive">
+				</div>
+			</div>
 		</div>
-	</div>
-		<div class="col-md-8">
-			<h3 class="winner_name">
-				JOHN &nbsp; DOE
+		<div class="col-md-8 s_winner">
+			<h3 class="winner_name_heading">
+				Winner
 			</h3>
+			<h3 class="winner_name">
+				{{$winner->user_name}} 
+			</h3>
+			<b>Track :</b> <a href="{{route('musicvoting_genre',['id' => $winner->track_id])}}">{{$winner->track_name}}</a><br>
+			<b>Contest Title :</b> {{$winner->contest_name}}
 			<p class="winner_detail">
-				Winner of the 2017 annual contests, out classed
-42 other different opponents, finibus aliquam diam convallis et. In eu facilisis nulla. Ut bibendum at erat et feugiat. Cras congue ornare fringilla.
+				<b>Contest Description :</b>
+				<br> 
+				{{$winner->contests_description}}
 			</p>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-md-4 col-sm-6 col-xs-12">
-			<div class="winner_border">
-			<div class="image_winner"><img src="{{asset('public/assets/images/winner_img.png')}}" class="img-responsive"></div>
-		</div>
-	</div>
-		<div class="col-md-8">
-			<h3 class="winner_name">
-				JOHN &nbsp; DOE
-			</h3>
-			<p class="winner_detail">
-				Winner of the 2017 annual contests, out classed
-42 other different opponents, finibus aliquam diam convallis et. In eu facilisis nulla. Ut bibendum at erat et feugiat. Cras congue ornare fringilla.
-			</p>
-		</div>
-		
-	</div>
-	<div class="row">
-		<div class="col-md-4 col-sm-6 col-xs-12">
-			<div class="winner_border">
-			<div class="image_winner"><img src="{{asset('public/assets/images/winner_img.png')}}" class="img-responsive"></div>
-		</div>
-	</div>
-		<div class="col-md-8">
-			<h3 class="winner_name">
-				JOHN &nbsp; DOE
-			</h3>
-			<p class="winner_detail">
-				Winner of the 2017 annual contests, out classed
-42 other different opponents, finibus aliquam diam convallis et. In eu facilisis nulla. Ut bibendum at erat et feugiat. Cras congue ornare fringilla.
-			</p>
-		</div>
-</div>
+	@endforeach
+	
 </div>
 
 
