@@ -614,26 +614,44 @@ class PagesController extends Controller
         ->join('tracks','request_contest.track_id','=','tracks.id')
         ->join('users','request_contest.user_id','=','users.id')   
         ->join('votes', 'votes.track_id', '=', 'request_contest.track_id', 'left outer')
-        ->select('users.id as user_id','users.name as user_name','tracks.id as track_id','tracks.name as track_name','tracks.image as track_image','tracks.video as track_video','request_contest.contest_id as contest_id', DB::raw('count(votes.id) as votes'))
+        ->select('users.id as user_id','users.name as user_name','tracks.id as track_id','tracks.name as track_name','tracks.image as track_image','tracks.video as track_video', 'request_contest.contest_id as contest_id' ,'request_contest.status as request_status', DB::raw('count(votes.id) as votes'))
         ->where('request_contest.contest_id','=',$id)
         ->groupBy('request_contest.track_id')
         ->orderBy('votes', 'DESC')
         ->paginate(5);  
         // dd($votes);
+        $current_date = date('Y-m-d H:i:s');
+        $winner_list = null;
+        if($contest->end_date < $current_date)
+        {
+           $winner_list = DB::table('request_contest')
+            ->join('tracks','request_contest.track_id','=','tracks.id')
+            ->join('users','request_contest.user_id','=','users.id')   
+            ->join('votes', 'votes.track_id', '=', 'request_contest.track_id', 'left outer')
+            ->select('users.id as user_id','users.name as user_name', 'users.image as user_image' ,'tracks.id as track_id','tracks.name as track_name','tracks.image as track_image','tracks.video as track_video', 'request_contest.contest_id as contest_id' ,'request_contest.status as request_status', DB::raw('count(votes.id) as votes'))
+            ->where('request_contest.contest_id','=',$id)
+            ->groupBy('request_contest.track_id')
+            ->orderBy('votes', 'DESC')
+            ->limit(3)->get();
+            
+        }
+
         
+
         // dd($voter);
         if(Auth::check())
         {
             $voter = DB::table('votes')->where('user_id','=',Auth::user()->id)->first();
+
             $category = DB::table('Categories')->get();
             $user_id = Auth::user()->id;
             $tracks = DB::table('tracks')->where('user_id','=',$user_id)->get();
             
-            return view('contest',['contest' => $contest, 'tracks' => $tracks, 'categories' => $category,'tracks_list' => $tracks_list, 'voter' => $voter]);        
+            return view('contest',['contest' => $contest, 'tracks' => $tracks, 'categories' => $category,'tracks_list' => $tracks_list, 'voter' => $voter, 'current_date' => $current_date, 'winner_list' => $winner_list]);        
         }
         else
         {
-            return view('contest',['contest' => $contest,'tracks_list' => $tracks_list]);
+            return view('contest',['contest' => $contest,'tracks_list' => $tracks_list,'current_date' => $current_date, 'winner_list' => $winner_list]);
         }   
     }
 
@@ -650,6 +668,7 @@ class PagesController extends Controller
                 $request_contest->user_id = Auth::user()->id;
                 $request_contest->track_id = Input::get('song_list');
                 $request_contest->contest_id = Input::get('contest_id');
+                $request_contest->status = 1;
                 $request_contest->save();
                 Session::flash('insert_track','Your track request has been sent wait for admin to approve it.');    
             }
@@ -702,6 +721,7 @@ class PagesController extends Controller
                 $request_contest->user_id = Auth::user()->id;
                 $request_contest->track_id = $p->id;
                 $request_contest->contest_id = Input::get('contest_id');
+                $request_contest->status = 1;
                 $request_contest->save();    
                 Session::flash('insert_track','Your track request has been sent wait for admin to approve it.');
             }

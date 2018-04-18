@@ -27,5 +27,6 @@ class CountEventListener
     public function handle(ViewPostHandler $event)
     {
         //
+        
     }
 }

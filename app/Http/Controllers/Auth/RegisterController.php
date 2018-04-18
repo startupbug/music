@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Mail\EmailVerification;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 use Mail;
 use DB;
 use Hash;
@@ -56,6 +58,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'username' => 'required|string',
             'password' => 'required|string|min:6|confirmed',
             'role_id' => 'required|string|',
         ]);
@@ -73,14 +76,16 @@ class RegisterController extends Controller
         {
 
              $user =  User::create([
-                'suspend'=> 1,
+                'suspend'=> 0,
                 'name' => $data['name'],
                 'email' => $data['email'],
+                'username' => $data['username'],
                 'image'=>'default-avatar.png',
                 'password' => bcrypt($data['password']),
                 'role_id' => $data['role_id'],
                 'email_token' => str_random(10),
             ]);
+
 
 
             //Updating unique id of User
@@ -95,14 +100,16 @@ class RegisterController extends Controller
             DB::commit();
             Session::flash('message', 'We have sent you a verification email!');
 
+
                 return $user;
         }
         else
         {
             $user =  User::create([
-                'suspend'=> 1,
+                'suspend'=> 0,
                 'name' => $data['name'],
                 'email' => $data['email'],
+                'username' => $data['username'],
                 'image'=>'default-avatar.png',
                 'password' => bcrypt($data['password']),
                 'role_id' => $data['role_id'],
@@ -120,19 +127,36 @@ class RegisterController extends Controller
 
     }
 
+ public function register(Request $request)
+    {
+       
+        $this->validator($request->all())->validate();
 
+        event(new Registered($user = $this->create($request->all())));
+        
+         Session::flash('not_activate','activate you account by clicking on link given on email');
+        return redirect()->route('home1');
+        //$this->guard()->login($user);
+
+        //return $this->registered($request, $user)
+          //              ?: redirect($this->redirectPath());
+    }
 
     public function verify($token)
 {
     // The verified method has been added to the user model and chained here
     // for better readability
     //dd($token)
-    $user = User::where('email_token',$token)->first();
-    // dd($user);
+
+    $user = User::where('email_token','=',$token)->get();
+    
 
     if(isset($user)){
-        $result = User::where('email_token',$token)->update(['suspend'=> 0, 'email_token'=> null]);
-        auth()->login($user);
+        $user2 = User::where('email_token','=',$token)->first();
+        $result = User::where('email_token',$token)->update(['suspend'=> 1, 'email_token'=> null]);
+        
+       $asdasd = Auth::login($user2);
+        
         //$this->suspend = 0;
         //$this->email_token = null;
         //return $this->save();

@@ -36,12 +36,17 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+      //dd(888888);
         $this->middleware('guest')->except('logout');
     }
 
      protected function authenticated()
     {
+         //dd(111);
+
+        //dd(456);
         $user = Auth::user();
+        //dd($user);
         if($user == null)
         {
             return redirect()->intended('/');
@@ -54,8 +59,7 @@ class LoginController extends Controller
         }
 
         elseif($user->role_id === 2)
-        {
-            
+        {   
             return redirect()->intended('/musician/index');
         }
 
@@ -66,6 +70,40 @@ class LoginController extends Controller
         }
 
         return redirect()->intended('/index');
+    }
+
+
+    public function login(Request $request)
+    {
+
+        $this->validateLogin($request);
+ 
+        // If the class is using the ThrottlesLogins trait, we can automatically throttle
+        // the login attempts for this application. We'll key this by the username and
+        // the IP address of the client making these requests into this application.
+        if ($this->hasTooManyLoginAttempts($request)) {
+            $this->fireLockoutEvent($request);
+
+            return $this->sendLockoutResponse($request);
+        }
+
+        if ($this->attemptLogin($request)) {
+            return $this->sendLoginResponse($request);
+        }
+
+        // If the login attempt was unsuccessful we will increment the number of attempts
+        // to login and redirect the user back to the login form. Of course, when this
+        // user surpasses their maximum number of attempts they will get locked out.
+        $this->incrementLoginAttempts($request);
+
+        return $this->sendFailedLoginResponse($request);
+    }
+
+
+    protected function credentials(Request $request)
+    {
+        $credentials = ['email' => $request->email, 'password' => $request->password, 'suspend' => 1];
+        return $credentials;
     }
 
     

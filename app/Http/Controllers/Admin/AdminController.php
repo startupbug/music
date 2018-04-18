@@ -20,6 +20,7 @@ use App\Album;
 use App\Album_Video;
 use App\Subscriber;
 use App\Point;
+use App\Contest;
 
 class AdminController extends Controller
 {    
