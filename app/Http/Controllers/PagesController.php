@@ -499,9 +499,9 @@ class PagesController extends Controller
         // dd($search_item);
         $genre = Input::get('genre');
         // dd($genre);
-        $data[] = "";
-            $data['searching_tracks'] = DB::table('tracks')
-            ->where('name','LIKE','%'.$search_item.'%');
+            $data[] = "";
+                $data['searching_tracks'] = DB::table('tracks')
+                ->where('name','LIKE','%'.$search_item.'%');
 
             if($genre != ""){
                $data['searching_tracks']->where('tracks.category_id','=',$genre);

@@ -130,6 +130,7 @@ class TracksController extends Controller
         }
         $p->video = $this->UploadFiles('video', Input::file('video'));
         $p->save();
+        Session::flash('update_track','your track is updated');
         return redirect()->back();
     }
     public function UploadFiles($type, $files){

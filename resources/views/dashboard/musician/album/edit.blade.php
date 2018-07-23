@@ -12,6 +12,8 @@
         <div class="alert alert-info">{{ Session::get('upload_video_album') }}</div>
       @elseif(Session::has('add_track'))
         <div class="alert alert-info">{{ Session::get('add_track') }}</div>
+      @elseif(Session::has('update_track'))
+        <div class="alert alert-info">{{ Session::get('update_track')}}</div>
       @endif
     </div>
     <div class="row">
@@ -95,7 +97,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><b>ADD &nbsp; VIDEO</b></h4>
+                <h4 class="modal-title"><b>ADD VIDEO909</b></h4>
               </div>
               <div class="modal-body">
                 <form action="{{route('update_video',['id'=>$value->id])}}" enctype="multipart/form-data" method="post" >
@@ -105,7 +107,7 @@
                       <input type="hidden" name="track_id" value="{{$value->id}}">
                       <h4><b>EDIT VIDEO</b></h4>
                       <div class="input-group">
-                        <input type="text" class="form-control" readonly>
+                        <input type="text" class="form-control" value="{{$value->video}}" readonly>
                         <label class="input-group-btn label_cus">
                             <span class="btn btn-primary">SELECT VIDEO
                               <input type="file" name="video" style="display: none;">
