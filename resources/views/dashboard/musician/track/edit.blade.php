@@ -16,19 +16,19 @@
           </h3>
       </div>
       <div class="col-md-2 color_bottom">
-          <div class="btn-group" style="margin-top:32px">
+            <div class="btn-group" style="margin-top:32px">
             <button type="button" class="btn btn-default btn-number" data-type="minus" data-field="quant[1]">
               <span class="glyphicon glyphicon-pencil" style="color:#fff"></span>
             </button>
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
               Action <span class="caret"></span>
             </button>
-            <ul class="dropdown-menu" role="menu">
+           <ul class="dropdown-menu" role="menu">
               <li><a data-toggle="modal" data-target="#EditTrackModal">Edit</a></li>
               <li><a href="{{route('delete_track',['id' => $edit_track->id])}}">Delete</a></li>
               <li><a data-toggle="modal" data-target="#selectPromoter">Assign Promoter</a></li>
-            </ul>
-          </div>
+            </ul> 
+          </div> 
       </div>
     </div>
     <hr class="line">
@@ -44,14 +44,14 @@
             <audio width="100%" controls class="col-md-12" style="padding:0px;"> 
               <source src="{{asset('public/dashboard/musician/tracks/videos/'.$edit_track->video)}}" type="video/mp4">
             </audio>
-            <div class="dropdownmenu">
+         <!--    <div class="dropdownmenu">
               <div class="middle"><i class="fa fa-ellipsis-v"></i></div>
               <div class="dropdown-content">
                 <a href="#">Edit</a>
                 <a href="#">Delete</a>
                 <a href="#">Delete From Album</a>
               </div>
-            </div>
+            </div> -->
           </div>
       </div>
     </div>

@@ -277,8 +277,10 @@ class PrmoterController extends Controller
                                 ->leftJoin('tracks','tracks.id','=','invitations.track_id')
                                 ->select('invitations.id','users.name as musician_name','tracks.name as track_name','invitations.status','tracks.image as image')
                                 ->where('invitations.promoter_id','=',Auth::user()->id)
-                                ->where('invitations.status',0)
+                                //->where('invitations.status',0)
+                                    
                                 ->get();
+                                //dd($unapproved_invitations);
         return view("dashboard.promoter.tracks_assign.invitations",['unapproved_invitations' => $unapproved_invitations]);
     }
     public function disapprove_status($id)

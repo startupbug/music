@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Musician;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\Album_Video;
@@ -12,6 +13,7 @@ use App\User;
 use Auth;
 use DB;
 use Session;
+
 
 class AlbumsController extends Controller
 {
@@ -36,11 +38,16 @@ class AlbumsController extends Controller
     }
     public function upload_video(Request $request)
     {         
-      ini_set('memory_limit','256M');      
-      $this->validate($request, [
-       'name'=> 'required|min:3|max:40|regex:/^[(a-zA-Z\s)]{3,25}+[a-z0-9A-Z ]*/',           
-       'video' => 'required|mimetypes:video/avi,video/mpeg,video/mp4,mp4,video/quicktime'           
-      ]);       
+      //dd();
+
+      ini_set('memory_limit','256M');
+
+      // $this->validate($request, [
+      //  'name'=> 'required|min:3|max:40|regex:/^[(a-zA-Z\s)]{3,25}+[a-z0-9A-Z ]*/',           
+      //  //'video' => 'required|mimes:mpga,wavmimetypes:video/avi,video/mpeg,video/mp4,mp4,video/quicktime'           
+      //   'video' => 'required|mimes:mpga,wav'
+      // ]);
+
       $p = new Track;
       $p->name = Input::get('name');        
       $p->user_id = Auth::user()->id;        
