@@ -236,11 +236,11 @@
                        </select>
                   </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                  <h4><b>VIDEO</b></h4>
+                  <h4><b>AUDIO</b></h4>
                   <div class="input-group">
                     <input type="text" class="form-control" readonly>
                     <label class="input-group-btn label_cus">
-                        <span class="btn btn-primary">SELECT VIDEO
+                        <span class="btn btn-primary">SELECT AUDIO
                           <input type="file" name="video" style="display: none;">
                         </span>
                     </label>

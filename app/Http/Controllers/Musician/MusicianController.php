@@ -108,6 +108,7 @@ class MusicianController extends Controller
                             ->select('points.point','points.user_id','tracks.id','users.role_id','tracks.user_id as tracks._user_id')
                             ->where('points.user_id','=',Auth::user()->id)
                             ->get();
+                            
             $total_points = 0;             
             foreach ($musician_points as $value)
             {
