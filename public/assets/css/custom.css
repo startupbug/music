@@ -1355,6 +1355,8 @@ button.btn.btn-info.btn-lg.footer {
     padding: 9px 9px;
     font-size: 14px;
     position: absolute;
+    border-radius: 0;
+    margin-left: 0;
 }
 
 
@@ -1965,6 +1967,7 @@ a:hover {
   padding-left: 10px;
   border-radius: 6px 0px 0px 6px;
   margin-right: 0px;
+  border:none;
 
 }
 

@@ -4,7 +4,10 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Contest List</h3>
+                <h3 class="box-title pull-left">Contest List</h3>
+                <div class="pull-right">
+                    <a class="btn btn-primary" href="{{route('create_contest')}}">Create</a>
+                </div>
             </div>
             @if (Session::has('success_msg'))
                 <div class="alert alert-success">{{ Session::get('success_msg') }}</div>
@@ -49,9 +52,7 @@
                         @endforeach                           
                     </tbody>    
                 </table>
-                <div class="s_button">
-                    <a class="btn btn-primary" href="{{route('create_contest')}}">Create</a>
-                </div>
+                
             </div>
             <!-- /.box-body -->
         </div>
