@@ -57,6 +57,7 @@ $(function() {
     $('#change_profile').change(function(e){
         e.preventDefault();
         var form = new FormData(this);
+
         $.ajax({
             type: $(this).attr('method'),
             url: $(this).attr('action'),
@@ -64,11 +65,11 @@ $(function() {
             processData: false,
             contentType: false,
             success: function(response){
-              console.log(response);
+              //console.log(response);
                 if(response.code === 200){
 
                     $('.image-box > img').attr('src', response.img);
-
+                    location.reload();
 
                 }
                 if(response.code === 202){

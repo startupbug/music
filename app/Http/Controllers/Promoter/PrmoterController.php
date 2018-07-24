@@ -285,6 +285,7 @@ class PrmoterController extends Controller
     }
     public function disapprove_status($id)
     {
+        // dd($id);
         DB::table('invitations')
             ->where('id', $id)
             ->update(['status' => 0]);        
@@ -292,6 +293,7 @@ class PrmoterController extends Controller
     }
     public function approve_status($id)
     {   
+        
         DB::table('invitations')
             ->where('id', $id)
             ->update(['status' => 1]);       

@@ -83,7 +83,7 @@ class RegisteredController extends Controller
             \File::delete(Auth::user()->image);
             DB::table('users')
             ->where('id', Auth::user()->id)
-            ->update(['image' => 'Default-avatar.jpg']);
+            ->update(['image' => 'default-avatar.png']);
             Session::flash('delete','profile image is removed');
             return redirect()->route('user_index'); 
     }
