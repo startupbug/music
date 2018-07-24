@@ -63,12 +63,21 @@ class MusicianController extends Controller
         {
             @unlink($path);
         }
-        \File::delete(Auth::user()->image);
+        
+        if(Auth::user()->image == "default-avatar.png")
+        {
+            dd(Auth::user()->image);
+            return redirect()->route('main_index');
+        }
+        else{
+            \File::delete(Auth::user()->image);
         DB::table('users')
         ->where('id', Auth::user()->id)
         ->update(['image' => 'default-avatar.png']);
         Session::flash('delete','profile image is removed');
-        return redirect()->route('main_index'); 
+        return redirect()->route('main_index');    
+        }
+         
     }
 
     public function disapprove_featured($id)

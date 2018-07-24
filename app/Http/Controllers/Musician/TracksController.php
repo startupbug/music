@@ -9,6 +9,7 @@ use App\Category;
 use App\Invitation;
 use Auth;
 use Session;
+use Validator;
 
 class TracksController extends Controller
 {
@@ -118,10 +119,11 @@ class TracksController extends Controller
      public function update_video(Request $request,$id)
     {
         $this->validate($request, [         
-            'video' => 'required|mimetypes:video/avi,video/mpeg,video/mp4,mp4,video/quicktime'           
+            'video' => 'required|mimes:mpga'         
         ]);
-
+        
         $p = Track::find($id);
+        
         if ($request->hasFile('video')) {
           $video=$request->file('video');
           $filename=time() . '.' . $video->getClientOriginalExtension();
@@ -134,6 +136,7 @@ class TracksController extends Controller
         return redirect()->back();
     }
     public function UploadFiles($type, $files){
+
         // Uploading Files[image & video]
         ini_set('memory_limit','256M');
         $path = base_path() . '/public/dashboard/musician/tracks/images/';

@@ -28,6 +28,7 @@ $(function() {
     $('#change_profile').change(function(e){
         e.preventDefault();
         var form = new FormData(this);
+        
         $.ajax({
             type: $(this).attr('method'),
             url: $(this).attr('action'),

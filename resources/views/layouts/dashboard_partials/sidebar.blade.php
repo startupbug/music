@@ -1,18 +1,21 @@
 <div class="col-md-3 color_bg">
 	<div class="dashboard_name">
 	<div class="dashboard_name">
-
+	
 		@if(Auth::user()->role_id == 2)
-		<a href="{{route('delete_image1')}}" data-toggle="tooltip" title="Remove Profile Picture">
-			<i class="fa fa-lg fa-remove delete_image_profile"> </i>
+		<a href="{{route('delete_image1')}}" data-toggle="tooltip" title="Remove Profile Picture">	@if(!(Auth::user()->image == "default-avatar.png"))
+				<i class="fa fa-lg fa-remove delete_image_profile"> </i>
+			@endif
 		</a>
 		@elseif(Auth::user()->role_id == 3)
-		<a href="{{route('delete_image2')}}" data-toggle="tooltip" title="Remove Profile Picture">
-			<i class="fa fa-lg fa-remove delete_image_profile"> </i>
+		<a href="{{route('delete_image2')}}" data-toggle="tooltip" title="Remove Profile Picture">	@if(!(Auth::user()->image == "default-avatar.png"))
+				<i class="fa fa-lg fa-remove delete_image_profile"> </i>
+			@endif
 		</a>
 		@elseif(Auth::user()->role_id == 4)
-		<a href="{{route('delete_image3')}}" data-toggle="tooltip" title="Remove Profile Picture">
-			<i class="fa fa-lg fa-remove delete_image_profile"> </i>
+		<a href="{{route('delete_image3')}}" data-toggle="tooltip" title="Remove Profile Picture">	@if(!(Auth::user()->image == "default-avatar.png"))
+				<i class="fa fa-lg fa-remove delete_image_profile"> </i>
+			@endif
 		</a>
 		@endif
 		<div class="image-box">

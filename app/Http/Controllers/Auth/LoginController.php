@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request; 
 use Auth;
-
+use validator;
 class LoginController extends Controller
 {
     /*
@@ -42,9 +42,7 @@ class LoginController extends Controller
 
      protected function authenticated()
     {
-         //dd(111);
-
-        //dd(456);
+        
         $user = Auth::user();
         //dd($user);
         if($user == null)
