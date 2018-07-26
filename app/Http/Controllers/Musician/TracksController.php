@@ -32,7 +32,7 @@ class TracksController extends Controller
         $this->validate($request, [         
             'name'=> 'required|min:3|max:40|regex:/^[(a-zA-Z\s)]{3,25}+[a-z0-9A-Z ]*/',            
             'image' => 'required|mimes:jpeg,JPEG,jpg,bmp,png',
-            'video' => 'required|mimetypes:video/avi,video/mpeg,video/mp4,mp4,video/quicktime'           
+            'video' => 'required|mimes:mpga'           
         ]);
         $p = new Track;
         $p->name = Input::get('name');
@@ -85,7 +85,7 @@ class TracksController extends Controller
          $this->validate($request, [         
             'name'=> 'required|min:3|max:40|regex:/^[(a-zA-Z\s)]{3,25}+[a-z0-9A-Z ]*/',            
             'image' => 'required|mimes:jpeg,JPEG,jpg,bmp,png',
-            'video' => 'required|mimetypes:video/avi,video/mpeg,video/mp4,mp4,video/quicktime'           
+            'video' => 'required|mimes:mpga'           
         ]);
         $p = Track::find($id);
         $p->name = Input::get('name');

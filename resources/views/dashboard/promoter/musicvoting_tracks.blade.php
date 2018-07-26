@@ -23,12 +23,12 @@
       <div class="box">  
         <div class="dashboard_album">
           <img src="{{asset('public/dashboard/musician/tracks/images/'.$value->image)}}" class="img-responsive custom-image-dashboard" >
-          <span class="caption fade-caption"> 
+          <!-- <span class="caption fade-caption"> 
               <div class="star"><span class="glyphicon glyphicon-star"></span></div>
               <h3 class="hover_heading">MAKE &nbsp; SONG &nbsp; FEATURED</h3>
               <div class="trophy"><i class="fa fa-trophy" style="font-size:24px"></i></div>
               <h3 class="hover_heading">ADD &nbsp; SONG &nbsp;TO &nbsp; CONTEST</h3> 
-          </span>
+          </span> -->
         </div>  
       </div>
       <a href="{{route('musicvoting_genre',['id' => $value->track_id])}}">    

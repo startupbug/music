@@ -33,9 +33,9 @@
                 <td><a href="{{route('musicvoting_genre',['id' => $value->track_id])}}">{{$value->track_name}}</a></td>                                         
                 <td>
                   @if($value->status == '0')
-                    <a href="{{route('approve-status',['id'=>$value->id])}}" title="Click To DisApprove" class="btn btn-sm btn-danger">DisApproved</a>
+                    <a href="{{route('approve-status',['id'=>$value->id])}}" title="Click To DisApprove" class="btn btn-sm btn-danger">DisApproved</a> &nbsp&nbsp Click to Approve 
                     @else
-                    <a href="{{route('disapprove-status',['id'=>$value->id])}}" title="Click To Approve" class="btn btn-sm btn-success" >Approve</a>
+                    <a href="{{route('disapprove-status',['id'=>$value->id])}}" title="Click To Approve" class="btn btn-sm btn-success" >Approve</a> &nbsp&nbsp Click to Disapprove
                   @endif
                 </td>
             </tr>

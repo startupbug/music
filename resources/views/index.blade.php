@@ -248,7 +248,7 @@
                                 euismod,
                                 at suscipit lectus blandit. Nam lacinia neque vel sollicitudin ultricies.
                             </p>
-                            <a href="#" class="btn btn-default wow flipInX" data-wow-duration="2s"
+                            <a href="{{route('contest_listing')}}" class="btn btn-default wow flipInX" data-wow-duration="2s"
                                data-wow-delay="0.5s">
                                 go to contests now!
                             </a>
