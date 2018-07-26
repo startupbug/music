@@ -4,11 +4,15 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Users List</h3>
+                <h3 class="box-title pull-left">Categories List</h3>
+                <div class="pull-right">
+                    <a class="btn btn-primary" href="{{route('create_category')}}">Create</a>
+                </div>  
             </div>
             @include('general_partials.error_section')
             <!-- /.box-header -->            
             <div class="box-body">
+                <div class=""></div>
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -36,9 +40,7 @@
                         @endforeach                           
                     </tbody>
                 </table> 
-                <div class="s_button">
-            <a class="btn btn-primary" href="{{route('create_category')}}">Create</a>
-            </div>               
+                             
             </div>
             <!-- /.box-body -->
         </div>
