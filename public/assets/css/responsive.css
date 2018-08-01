@@ -593,6 +593,46 @@
   ##Screen = B/w 320px to 479px
 */
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (min-width: 320px) and (max-width: 767px) {
 
+.s_btn_random {
+    margin-top: 22px;
+}
+
+.img-responsive.center-block {
+    height: auto !important;
+}
+h4.f_reg {
+    margin-top: 35px !important;
+}
+
+.work_box p {
+   
+    font-size: 9px !important;
+  
+    padding: 0px 0px !important;
+}
+.contest_box h2 {
+   
+    font-size: 28px !important;
+    text-align: center;
+}
+.contest_box p {
+
+    font-size: 12px !important;
+ 
+    text-align: left !important;
+}
+h3.subscribe {
+    FONT-SIZE: 14PX !important;
+    LINE-HEIGHT: 13px !important;
+    margin-top: 22px !important;
+}
+footer {
+    margin-top: 40px;
+}
+h3.winner_name_heading {
+  
+    text-align: center;
+}
 }

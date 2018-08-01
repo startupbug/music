@@ -2,7 +2,7 @@
     <div class="container-fluid bg_greycolor">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
                     <h3 class="footer_heading">
                         PAGES
                     </h3>
@@ -18,7 +18,7 @@
                         </a></li>
                     </ul>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
                     <h3 class="footer_heading">
                         SUPPORT
                     </h3>
@@ -34,7 +34,7 @@
                         </a></li>
                     </ul>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
                     <h3 class="footer_heading">
                      QUICK LINKS
                  </h3>
@@ -50,7 +50,7 @@
                         </a></li>
                     </ul>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
                     <ul class="social_icon_footer">
                         <li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></a></i></li>
                         <li><a href="https://twitter.com/"  target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></a></i></li>

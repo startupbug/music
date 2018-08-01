@@ -11,7 +11,7 @@
 	</div>
 	<hr class="line">
 	@foreach($jazz_songs as $jazz_song)
-	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 change_width">
+	<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
 		<div class="songs_box">
 			<a href="{{route('musicvoting_genre',['id' => $jazz_song->id])}}">
 				<img src="{{asset('public/dashboard/musician/tracks/images/'.$jazz_song->image)}}" class="img-responsive center-block" style="height: 184px;"/>

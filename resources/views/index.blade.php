@@ -167,7 +167,7 @@
             <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                 <div class="work_box wow bounceIn" data-wow-duration="2s" data-wow-delay="0.5s">
                     <img src="{{asset('public/assets/images/user_icon.png')}}" class="img-responsive center-block"/>
-                    <h4>register</h4>
+                    <h4 class="f_reg">register</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pharetra at augue et
                         facilisis.</p>
                 </div>
@@ -181,7 +181,7 @@
                     facilisis.</p>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 text-center col-md-offset-0 col-sm-offset-3 col-xs-offset-0">
                 <div class="work_box wow bounceIn" data-wow-duration="2s" data-wow-delay="0.5s"
                 ">
                 <img src="{{asset('public/assets/images/get_famous_icon.png')}}" class="img-responsive center-block"/>
