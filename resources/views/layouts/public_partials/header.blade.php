@@ -9,7 +9,7 @@
     <div class="carousel-inner" role="listbox">
         <div class="item active">
             <img src="{{asset('public/assets/images/slider_banner_1.png')}}" class="img-responsive center-block" width="100%" alt="music voting">
-            <div class="carousel-caption">
+            <div class="carousel-caption f_caption">
                 <h2>the &nbsp; biggest &nbsp; contest &nbsp; is &nbsp; in &nbsp; session!</h2>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pharetra at augue et facilisis.

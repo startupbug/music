@@ -8,10 +8,10 @@
         <div class="row">
           <div class="col-md-4">
             <div class="img-side">
-              @if($musician_detail->image == 0)
+              @if(is_dir('public/dashboard/profile_images/'.$musician_detail->image))             
+              <img src="{{asset('public/dashboard/profile_images/'.$musician_detail->image)}}" class="img-responsive" style="width: 100%; height: 175px;"/>
+              @else                
                 <img src="{{asset('public/dashboard/profile_images/default-avatar.png')}}" class="img-responsive" style="width: 100%; height: 175px;"/>
-              @else
-                <img src="{{asset('public/dashboard/profile_images/'.$musician_detail->image)}}" class="img-responsive" style="width: 100%; height: 175px;"/>
               @endif
             </div>
           </div>

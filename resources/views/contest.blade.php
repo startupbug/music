@@ -1,6 +1,5 @@
 @extends('layouts.public_index')
 @section('content')
-
 <div class="container">
 	<div class="row">
 			<div class="col-md-12 text-center s_text_color">
@@ -24,6 +23,7 @@
 		<div class="col-md-6">
 			<h3 class="contest_heading">
 				Description
+			
 			</h3>
 			<p class="contest_paragraph">
 				{{$contest->description}}
@@ -195,12 +195,12 @@
 					<div class="col-md-6 col-sm-6 col-xs-12 s_col_border">
 						<div class="row">
 							<div class="col-md-4">
-								<div class="top_ranking"><img src="{{asset('public/dashboard/musician/tracks/images/'.$track_list->track_image)}}" class="img-responsive"></div>
+								<div class="top_ranking"><img src="{{asset('public/dashboard/musician/tracks/images/'.$track_list->track_image)}}" class="img-responsive f_img"></div>
 							</div>
 							<div class="col-md-8">
 								
 								
-								<h3 class="ranking" style="margin-top: 39px;">
+								<h3 class="ranking" style="">
 									{{$k}} <sup>position</sup>
 								</h3>
 								
@@ -210,16 +210,16 @@
 								<p class="track_name">
 									Artist: {{$track_list->user_name}}
 								</p>
-								<button class="btn btn-default top_ranking_button col-md-3" type="button" onclick="music('{{asset('public/dashboard/musician/tracks/videos/'.$track_list->track_video)}}')">
+								<button class="btn btn-default top_ranking_button col-md-3 f_btn f_button" type="button" onclick="music('{{asset('public/dashboard/musician/tracks/videos/'.$track_list->track_video)}}')">
 									Play
 								</button>
 
-								<form action="{{route('voting')}}" method="post">
+								<form action="{{route('voting')}}" method="post" class="f_form">
 									{{csrf_field()}}
 									<input type="hidden" name="track_id" value="{{$track_list->track_id}}">
 									<input type="hidden" name="contest_id" value="{{$track_list->contest_id}}">
 									@if(empty($voter))
-									<button class="btn top_ranking_button col-md-3" type="submit" >
+									<button class="btn top_ranking_button col-md-3 fa_btn f_res" type="submit"  >
 										Vote -  {{($track_list->votes)}}
 									</button>
 									<!-- <input type="submit" name="vote" value="Vote" class="btn top_ranking_button"> -->
@@ -299,7 +299,7 @@
 		</div>
 		@endif
 		@if(isset($winner_list[2]))
-		<div class="col-md-4 col-sm-6 col-xs-12">
+		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 text-center col-md-offset-0 col-sm-offset-3 col-xs-offset-0">
 			<div class="border_contest"><img src="{{asset('public/dashboard/profile_images/'.$winner_list[0]->user_image)}}" class="img-responsive" style="height: 240px;"></div>
 			<h3 class="contest_winner">
 				3RD RUNNER UP
@@ -309,7 +309,7 @@
 			</h3>
 		</div>
 		@else
-			<div class="col-md-4 col-sm-6 col-xs-12">
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 text-center col-md-offset-0 col-sm-offset-3 col-xs-offset-0">
 				<div class="border_contest"><img src="{{asset('public/assets/images/33.png')}}" class="img-responsive" style="height: 240px;"></div>
 				<h3 class="contest_winner">
 					3RD RUNNER UP

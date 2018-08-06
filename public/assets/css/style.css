@@ -21,6 +21,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     padding: 0;
     vertical-align: baseline;
 }
+
 .profileName{
     text-align: left;
     font-size: 40px;
@@ -892,3 +893,60 @@ h3.all_album {
 }
 
 
+
+
+
+
+
+
+/* New Fareha Css start */
+@media only screen and (max-width: 767px){
+
+.carousel-caption{
+    left:0px;
+    right:0px;
+    width:100%;
+    bottom:0;
+    max-width:96%;
+    margin:0px auto;
+    padding-bottom: 10px;
+}
+.music_voting_slider .carousel-inner .item .carousel-caption h2{
+  font-size: 22px;
+}
+.music_voting_slider .carousel-inner .item .carousel-caption p {
+      padding:0px 0px;
+      font-size: 12px;
+  }  
+.music_voting_slider .carousel-inner .item .carousel-caption a.btn{
+      padding: 0px 5px;
+      line-height: 24px;
+      margin-bottom: 25px;
+      margin-top:10px;
+}
+.carousel-indicators{
+  bottom: 4px;
+}
+
+
+}
+
+
+
+@media only screen and (max-width: 767px) and (orientation: landscape){
+
+
+}
+
+
+.navbar-toggle .icon-bar{
+  background:#fff;
+}
+#carousel-example-generic{
+      margin-top: 58px;
+      
+}
+.navbar-fixed-top{
+  background:#cf1828;
+}
+/* New Fareha Css end */

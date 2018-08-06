@@ -175,6 +175,10 @@
   ##Screen = B/w 768px to 1024px
 */
 @media (min-width: 768px) and (max-width: 1024px) {
+    .fa_btn {
+    padding-right: 38px !important;
+    
+}
     .shrink {
         background-color: #0a292d96 !important;
     }
@@ -385,6 +389,46 @@
     .copy_right p {
         font-size: 14px;
     }
+    .img-responsive.center-block {
+    height: 0px !important;
+}
+.modal-dialog.modal-sm {
+    width: 95% !important;
+}
+.container-fluid.bg_greycolor {
+   
+    margin-top: 50px !important;
+}
+.top_ranking {
+    margin-top: -12px !important;
+}
+
+.top_ranking img {
+   
+    min-height: 0px !important;
+   
+}
+
+.f_btn {
+    margin-left: 82px !important;
+    padding: 6px 46px !important;
+}
+.s_col_border:nth-of-type(2n+1) {
+    border-right: none !important;
+    height: 235px;
+    border-bottom: none !important;
+}
+h3.contest_subheading {
+    
+    padding-bottom: 25px;
+    padding-top: 25px;
+}
+form.f_form {
+    text-align: center;
+}
+.col-md-6.col-sm-6.col-xs-12.s_col_border {
+    margin: 25px 0px;
+}
 }
 
 /*
@@ -635,4 +679,107 @@ h3.winner_name_heading {
   
     text-align: center;
 }
+
+.music_voting_slider .carousel-inner .item .carousel-caption h2 {
+    
+    font-size: 16px !important;
+}
+
+.music_voting_slider .carousel-inner .item .carousel-caption p {
+    font-family: 'Conv_Montserrat-Regular';
+    color: #ffffff;
+    font-size: 9px !important;
+    font-weight: normal;
+    margin-top: 14px;
+    padding: 0px 0px !important;
+}
+
+.navbar-toggle {
+  
+    background-color: #c7c3c3f2 !important;
+   
+    border: 1px solid #c7c3c3f2 !important;
+   
+}
+.music_voting_slider .carousel-inner .item .carousel-caption a.btn {
+  
+    margin-top: 4px !important;
+    
+
+
+}
+.s_col_border:nth-of-type(2n+1) {
+   
+    height: 374px !important;
+    border-right: none !important;
+    
+    border-bottom: none !important;
+    
+}
+.s_col_border:nth-of-type(2n) {
+    height: 370px !important;
+   
+}
+.f_btn {
+    /* text-align: center; */
+    /* margin: 0 auto; */
+    margin-left: 91px !important;
+}
+.fa_btn {
+    /* padding-right: 89px !important; */
+    /* padding-left: 33px !important; */
+    margin-left: 91px !important;
+}
+.f_btn {
+  
+    padding-right: 61px !important;
+}
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-height: 812px){
+    .songs_box {
+   
+    height: 445px !important;
+   
+}
+.sign_up_now {
+   
+    margin-top: 186px !important;
+}
+.s_col_border:nth-of-type(2n+1) {
+    border-right: none !important; 
+  
+    border-bottom:none !important; 
+}
+.s_col_border:nth-of-type(2n) {
+   
+    border-bottom: none !important;
+}
+/*form.f_form {
+    margin-left: 90px;
+}*/
+.f_btn {
+    /* text-align: center; */
+    /* margin: 0 auto; */
+    /* padding: 10px; */
+    margin-left: 96px !important;
+}
+h3.contest_subheading {
+   
+    margin-bottom: 27px !important;
+}
+.s_col_border:nth-of-type(2n) {
+    height: 377px !important;
+   
+}
+.s_col_border:nth-of-type(2n+1) {
+   
+    height: 375px !important;
+   
+}
+.f_btn {
+ 
+    padding-right: 71px !important;
+}
+
 }
