@@ -324,7 +324,7 @@
     }
 
     .work_box {
-        height: 215px;
+        
         margin-bottom: 20px;
     }
 
@@ -546,7 +546,7 @@ form.f_form {
 
     .songs_box {
         text-align: center;
-        height: 190px;
+        /*height: 190px;*/
         margin-bottom: 30px;
     }
 
@@ -666,9 +666,9 @@ form.f_form {
     margin-top: 22px;
 }
 
-.img-responsive.center-block {
+/*.img-responsive.center-block {
     height: auto !important;
-}
+}*/
 h4.f_reg {
     margin-top: 35px !important;
 }
@@ -751,7 +751,7 @@ h3.winner_name_heading {
 .fa_btn {
     /* padding-right: 89px !important; */
     /* padding-left: 33px !important; */
-    margin-left: 100px !important;
+    margin-left: 195px !important;
 }
 .f_btn {
   
@@ -764,7 +764,7 @@ h3.winner_name_heading {
 @media only screen and (min-device-width: 375px) and (max-device-height: 812px){
     .songs_box {
    
-    height: 445px !important;
+   /* height: 445px !important;*/
    
 }
 .sign_up_now {
@@ -787,7 +787,7 @@ h3.winner_name_heading {
     /* text-align: center; */
     /* margin: 0 auto; */
     /* padding: 10px; */
-    margin-left: 96px !important;
+    margin-left: 194px !important;
 }
 h3.contest_subheading {
    

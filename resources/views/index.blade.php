@@ -87,9 +87,9 @@
                 <div class="songs_box">
                     <a href="{{route('musicvoting_genre',['id' => $value->track_id])}}">
                         @if(isset($value->track_image) )
-                        <img src="{{asset('public//dashboard/musician/tracks/images/'.$value->track_image)}}" class="img-responsive center-block" style="height: 150px;"/>
+                        <img src="{{asset('public//dashboard/musician/tracks/images/'.$value->track_image)}}" class="img-responsive center-block" />
                         @else
-                        <img src="{{asset('public//dashboard/musician/tracks/images/no-thumbnail.png')}}" class="img-responsive center-block" style="height: 150px;"/>
+                        <img src="{{asset('public//dashboard/musician/tracks/images/no-thumbnail.png')}}" class="img-responsive center-block" />
                         @endif
                         <div class="mask s_mask">
                         <span class="play_icon">
@@ -133,9 +133,9 @@
                 <div class="songs_box">
                     <a href="{{route('album_view',['id' => $value->album_id])}}">
                         @if(isset($value->album_image))
-                        <img src="{{asset('public//dashboard/musician/albums/images/'.$value->album_image)}}" class="img-responsive center-block" style="height:150px;"/>
+                        <img src="{{asset('public//dashboard/musician/albums/images/'.$value->album_image)}}" class="img-responsive center-block" "/>
                         @else
-                        <img src="{{asset('public//dashboard/musician/albums/images/no-thumbnail.png')}}" class="img-responsive center-block" style="height:150px;"/>
+                        <img src="{{asset('public//dashboard/musician/albums/images/no-thumbnail.png')}}" class="img-responsive center-block" />
                         @endif
 
                     </a>
