@@ -4,6 +4,11 @@
 */
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+    .button_submit {
+    
+    right: -23px !important;
+}
     .shrink {
         background-color: #0a292d96 !important;
     }
@@ -175,8 +180,18 @@
   ##Screen = B/w 768px to 1024px
 */
 @media (min-width: 768px) and (max-width: 1024px) {
+    .button_submit {
+   
+    top: -5%;
+    right: -25px !important;
+}
+
+    .s_col_border:nth-of-type(2n) {
+ 
+    border-bottom: none !important;
+}
     .fa_btn {
-    padding-right: 38px !important;
+    padding-right: 56px !important;
     
 }
     .shrink {
@@ -429,6 +444,9 @@ form.f_form {
 .col-md-6.col-sm-6.col-xs-12.s_col_border {
     margin: 25px 0px;
 }
+.s_btn_random {
+    margin-top: 23px !important;
+}
 }
 
 /*
@@ -638,6 +656,11 @@ form.f_form {
 */
 
 @media (min-width: 320px) and (max-width: 767px) {
+    .button_submit {
+   
+    top: -2% !important;
+    right: 19px !important;
+}
 
 .s_btn_random {
     margin-top: 22px;
@@ -673,7 +696,7 @@ h3.subscribe {
     margin-top: 22px !important;
 }
 footer {
-    margin-top: 40px;
+    margin-top: 76px;
 }
 h3.winner_name_heading {
   
@@ -728,12 +751,14 @@ h3.winner_name_heading {
 .fa_btn {
     /* padding-right: 89px !important; */
     /* padding-left: 33px !important; */
-    margin-left: 91px !important;
+    margin-left: 100px !important;
 }
 .f_btn {
   
     padding-right: 61px !important;
 }
+
+
 }
 
 @media only screen and (min-device-width: 375px) and (max-device-height: 812px){
@@ -783,3 +808,15 @@ h3.contest_subheading {
 }
 
 }
+
+@media (min-width: 320px) and (max-width: 767px) and (orientation:landscape){
+
+    footer {
+    margin-top: 99px !important;
+}
+.button_submit {
+   
+    top: -6% !important;
+    right: -36px !important;
+}
+    }

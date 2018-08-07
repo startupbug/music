@@ -176,7 +176,7 @@
                     <a href="login.php" class="btn btn-default all_r_login">SIGN UP</a>
 
                 </div>
-                <h1 class="form_heading">x`sword?</h1>
+                <h1 class="form_heading">Password?</h1>
 
                 <a href="{{route('register')}}"><h1 class="form_heading">Don't have an account? Sign Up Now!</h1></a>
             </form>

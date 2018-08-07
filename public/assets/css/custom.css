@@ -1668,7 +1668,7 @@ p.track_name {
 h3.ranking {
     font-size: 20px;
 
-    margin-top: 0px;
+    margin-top: 10px !important;
     text-align: center;
 }
 p.track_name {
@@ -2142,4 +2142,13 @@ h4.contest_heading span {
     padding: 30px 0px 10px 0px;
     font-weight: 500;
     color: #cf1828;
+}
+@media only screen and (max-device-width : 1024px) and (min-device-width : 768px) and (orientation:landscape){
+   .fa_btn {
+    padding-right: 78px !important;
+    margin-left: 39px !important;
+}
+
+
+
 }
