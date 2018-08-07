@@ -405,7 +405,7 @@
         font-size: 14px;
     }
     .img-responsive.center-block {
-    height: 0px !important;
+    /*height: 0px !important;*/
 }
 .modal-dialog.modal-sm {
     width: 95% !important;
