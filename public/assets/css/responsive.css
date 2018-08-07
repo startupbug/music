@@ -751,7 +751,7 @@ h3.winner_name_heading {
 .fa_btn {
     /* padding-right: 89px !important; */
     /* padding-left: 33px !important; */
-    margin-left: 195px !important;
+    margin-left: 88px !important;
 }
 .f_btn {
   
@@ -787,7 +787,7 @@ h3.winner_name_heading {
     /* text-align: center; */
     /* margin: 0 auto; */
     /* padding: 10px; */
-    margin-left: 194px !important;
+    margin-left: 90px !important;
 }
 h3.contest_subheading {
    
@@ -818,5 +818,16 @@ h3.contest_subheading {
    
     top: -6% !important;
     right: -36px !important;
+}
+.f_btn {
+    /* text-align: center; */
+    /* margin: 0 auto; */
+    /* padding: 10px; */
+    margin-left: 180px !important;
+}
+.fa_btn {
+    /* padding-right: 89px !important; */
+    /* padding-left: 33px !important; */
+    margin-left: 181px !important;
 }
     }
