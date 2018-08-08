@@ -4,6 +4,21 @@
 */
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .carousel-caption {
+    /* right: 20%; */
+    left: 20% !important;
+    /* padding-bottom: 30px; */
+    top: -2% !important;
+}
+
+.music_voting_slider .carousel-inner .item .carousel-caption h2 {
+   
+    padding-top: 199px !important;
+}
+.music_voting_slider .carousel-inner .item .carousel-caption {
+    text-align: center;
+    padding-top: 57px !important;
+}
 
     .button_submit {
     
@@ -180,6 +195,18 @@
   ##Screen = B/w 768px to 1024px
 */
 @media (min-width: 768px) and (max-width: 1024px) {
+    .carousel-caption {
+    /* right: 20%; */
+    left: 20% !important;
+    /* padding-bottom: 30px; */
+    top: -23% !important;
+}
+.music_voting_slider .carousel-inner .item .carousel-caption h2 {
+    font-family: 'Conv_bebas';
+    text-transform: uppercase;
+    font-size: 33px !important;
+    padding-top: 62px !important;
+}
     .button_submit {
    
     top: -5%;
