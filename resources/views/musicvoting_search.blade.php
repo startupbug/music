@@ -19,7 +19,7 @@
                 </div>
                 <br>
    
-                <div class="button_submit"><input type="submit"></div>
+                <div class="button_submit"><input type="submit" class="f_sub"></div>
               </form>
 
 

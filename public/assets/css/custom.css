@@ -1930,7 +1930,7 @@ text-align: center;
     width: 68% !important;
 }
 button, input, optgroup, select, textarea {
-    margin: 9px;
+    margin: 3px;
         margin-top: 9px;
     font: inherit;
         font-family: inherit;
@@ -1944,8 +1944,8 @@ button, input, optgroup, select, textarea {
 }
 .button_submit {
     position: absolute;
-    top: -5%;
-    right: 76px;
+    top: -2%;
+    right: 60px;
 }
 .button_submit input {
 
@@ -2151,4 +2151,16 @@ h4.contest_heading span {
 
 
 
+}
+input.f_sub {
+    background-color: #cf1828;
+    border-color: #cf1828;
+    background-color: #cf1828;
+    border-color: #cf1828;
+    font-family: 'Conv_Montserrat-Regular';
+    background-color: #cf1828;
+    color: #ffffff;
+}
+.select.select_volvo {
+    font-family: 'Conv_Montserrat-Regular';
 }

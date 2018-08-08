@@ -816,18 +816,18 @@ h3.contest_subheading {
 }
 .button_submit {
    
-    top: -6% !important;
-    right: -36px !important;
+    top: -3% !important;
+    right: -31px !important;
 }
 .f_btn {
     /* text-align: center; */
     /* margin: 0 auto; */
     /* padding: 10px; */
-    margin-left: 180px !important;
+    margin-left: 195px !important;
 }
 .fa_btn {
     /* padding-right: 89px !important; */
     /* padding-left: 33px !important; */
-    margin-left: 181px !important;
+   margin-left: 195px !important;
 }
     }
