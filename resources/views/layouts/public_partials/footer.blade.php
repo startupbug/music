@@ -104,6 +104,7 @@
           <form class="form-horizontal" method="POST" action="{{ route('login') }}" id="loginForm">
                         {{ csrf_field() }}
             <div class="form-group validationEmail">
+                <p class="f_email">Email:</p>
               <input type="email" name="email" class="form-control red-color" id="loginemail" placeholder="Email">
 
                 <span class="help-block validationEmail">
@@ -111,6 +112,7 @@
                 </span>
             </div>
             <div class="form-group validationPassword">
+                <p class="f_email">Password:</p>
               <input type="password" name="password" class="form-control red-color" id="pwd" placeholder="Password">
 
                     <span class="help-block validationPassword">

@@ -656,10 +656,14 @@ form.f_form {
 */
 
 @media (min-width: 320px) and (max-width: 767px) {
+    h3.artist {
+    font-size: 10px !important;
+  
+}
     .button_submit {
    
     top: -2% !important;
-    right: 19px !important;
+    right: 14px !important;
 }
 
 .s_btn_random {
@@ -814,10 +818,14 @@ h3.contest_subheading {
     footer {
     margin-top: 99px !important;
 }
+input.f_sub {
+    
+    font-size: 12px !important;
+}
 .button_submit {
    
-    top: -3% !important;
-    right: -31px !important;
+    top: 0% !important;
+    right: -43px !important;
 }
 .f_btn {
     /* text-align: center; */

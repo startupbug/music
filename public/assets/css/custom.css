@@ -1918,7 +1918,6 @@ text-align: center;
 .images_person img {
     vertical-align: middle;
     width: 100%;
-    height: 200px;
 }
 /*.img-responsive.center-block {
     height: 200px;
@@ -2000,6 +1999,11 @@ a:hover {
     font-size: 9px;
     letter-spacing: 1px;
     border-top: 0.5px solid;
+}
+
+p.f_email {
+    font-size: 14px;
+    font-family: 'Conv_Montserrat-Regular';
 }
 .contest_header {
     font-family: Conv_bebas;
